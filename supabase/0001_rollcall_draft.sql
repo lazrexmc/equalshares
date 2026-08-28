@@ -53,6 +53,10 @@ create table if not exists filers (
   added_at timestamptz not null
 );
 
+-- NOTE (2026-08-28): filings.series_name and vote_records.vote_source /
+-- categories_all were added to the sqlite contract after this draft was first
+-- written; the draft now includes them. Re-diff against pipeline/store.py
+-- SCHEMA before applying - the sqlite DDL is the contract of record.
 create table if not exists filings (
   accession text primary key,
   cik text not null references filers(cik),
@@ -99,6 +103,12 @@ create table if not exists vote_records (
   mgmt_rec_raw text,
   mgmt_rec text check (mgmt_rec is null or mgmt_rec in ('FOR','AGAINST','ABSTAIN','WITHHOLD')),
   vote_series text,
+  -- Added 2026-08-28 with the sqlite contract: who proposed the item
+  -- (ISSUER / SECURITY HOLDER - concordance semantics depend on it) and the
+  -- full '|'-joined category list (grouping uses the first; the rest are
+  -- disclosed, never double-counted).
+  vote_source text,
+  categories_all text,
   source_url text not null,
   -- FK added beyond the SQLite DDL: it makes extractor-provenance acceptance
   -- 7.1 (no orphan engine ids) mechanical. Safe because the pipeline inserts
@@ -201,25 +211,34 @@ with cfg as (
   select coalesce((select nullif(value, '')::bigint
                      from publication_config where key = 'thin_n'), 5) as thin_n
 ), per_cat as (
-  select category_type as category,
+  -- Bucketing rule LOCKSTEP with export_site.py: NULL/blank category ->
+  -- 'UNCATEGORIZED', so this view publishes the SAME category set as
+  -- rollup.json (review finding 2026-08-28: it used to group raw
+  -- category_type and could diverge for the same data). And the tri-valued
+  -- split: unparseable (raw kept, normalized null) is a different state from
+  -- absent-in-source (no raw at all).
+  select coalesce(nullif(trim(category_type), ''), 'UNCATEGORIZED') as category,
          count(*) as n,
          count(*) filter (where how_voted = 'FOR')      as votes_for,
          count(*) filter (where how_voted = 'AGAINST')  as votes_against,
          count(*) filter (where how_voted = 'ABSTAIN')  as votes_abstain,
          count(*) filter (where how_voted = 'WITHHOLD') as votes_withhold,
-         count(*) filter (where how_voted is null)      as votes_other,
+         count(*) filter (where how_voted is null and how_voted_raw is not null)
+                                                        as votes_unparseable,
+         count(*) filter (where how_voted_raw is null)  as votes_absent,
          sum(shares_voted) as shares_voted_total,
          count(*) filter (where how_voted is not null and mgmt_rec is not null) as n_comparable,
          count(*) filter (where how_voted is not null and mgmt_rec is not null
                             and how_voted = mgmt_rec) as with_mgmt
   from vote_records
-  group by category_type
+  group by coalesce(nullif(trim(category_type), ''), 'UNCATEGORIZED')
 )
 select p.category,
        nullif(trim(both '-' from regexp_replace(lower(coalesce(p.category, '')),
                                                 '[^a-z0-9]+', '-', 'g')), '') as slug,
        p.n, p.votes_for, p.votes_against, p.votes_abstain, p.votes_withhold,
-       p.votes_other, p.shares_voted_total, p.n_comparable, p.with_mgmt,
+       p.votes_unparseable, p.votes_absent,
+       p.shares_voted_total, p.n_comparable, p.with_mgmt,
        case when p.n_comparable = 0 then null
             else round(100.0 * p.with_mgmt / p.n_comparable, 1) end as with_mgmt_pct,
        (p.n_comparable < c.thin_n) as thin
@@ -305,6 +324,18 @@ end $$;
 --   done
 --
 -- Views: require 200 (with rows once data is loaded) under the same anon key.
+--
+-- ROWS, not just status codes (trap 6.4 - a column-shape check passed for
+-- weeks while a view handed anon unpublished rows). After loading data,
+-- compare a whole row set against the pipeline's own export:
+--
+--   curl -s "https://PROJECT.supabase.co/rest/v1/public_category_rollup?select=category,n&order=n.desc" \
+--     -H "apikey: ANON" -H "Authorization: Bearer ANON" \
+--     | python -c "import json,sys;print(sorted((r['category'],r['n']) for r in json.load(sys.stdin)))"
+--
+-- must equal the (category, n) pairs in site/data/rollup.json for the same
+-- database state. A definer view is the wall's one door - probe what walks
+-- through it, not just whether it opens.
 --
 --   for v in public_votes public_category_rollup public_filing public_freshness; do
 --     curl -s -o /dev/null -w "$v %{http_code}" "https://PROJECT.supabase.co/rest/v1/$v?select=*&limit=1" -H "apikey: ANON" -H "Authorization: Bearer ANON"; echo

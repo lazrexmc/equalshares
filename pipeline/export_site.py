@@ -221,7 +221,15 @@ def main():
             if sv is not None:
                 shares_sum += sv
                 any_shares = True
-        votes["OTHER"] = n - sum(votes[k] for k in VOTE_ENUM)
+        # Tri-valued honesty (review finding 2026-08-28): 'unparseable' (raw
+        # kept, normalization failed) and 'absent in source' (no how-voted at
+        # all) are DIFFERENT states and the old single OTHER column conflated
+        # them - the page visibly contradicted its own totals line because of
+        # it. enum + UNPARSEABLE + ABSENT == n exactly.
+        votes["UNPARSEABLE"] = sum(
+            1 for r in rs
+            if r["how_voted_raw"] is not None and r["how_voted"] is None)
+        votes["ABSENT"] = sum(1 for r in rs if r["how_voted_raw"] is None)
         with_mgmt_pct = round(100 * with_mgmt / n_comparable, 1) if n_comparable else None
         categories.append(
             {

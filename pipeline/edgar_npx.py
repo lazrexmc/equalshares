@@ -158,7 +158,12 @@ def list_filings(source, base_url_data):
 
     found = []
     for i, form in enumerate(forms):
-        if form != source["form"]:
+        # Review finding (2026-08-28): accept amendments too. An N-PX/A is the
+        # filer's own CORRECTION of its voting record; filtering it out is trap
+        # 6.5 (corrections silently discarded) operating at the source layer.
+        # Newest-first sort below means an amendment naturally supersedes its
+        # original under max_filings.
+        if form not in (source["form"], source["form"] + "/A"):
             continue
         found.append({
             "accession": accessions[i],

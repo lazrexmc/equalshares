@@ -1,5 +1,5 @@
 # Local pipeline stores - never committed (site/data/ IS committed: it is the publication)
-data/
+/data/
 *.db
 __pycache__/
 *.pyc

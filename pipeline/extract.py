@@ -35,6 +35,7 @@ if hasattr(sys.stdout, "reconfigure"):
 
 import argparse
 import hashlib
+import os
 import re
 import subprocess
 import xml.etree.ElementTree as ET
@@ -53,7 +54,10 @@ REPO_ROOT = _PIPELINE_DIR.parent
 
 # The files whose bytes define extraction behaviour, in contract order.
 # sources.py's CONFIG is covered separately by config_hash.
-FINGERPRINT_FILES = ["extract.py", "edgar_npx.py", "store.py"]
+# export_site.py computes every PUBLISHED number from these rows, so it is
+# part of the behaviour the fingerprint must cover (review finding 2026-08-28:
+# published behaviour could change without the fingerprint changing).
+FINGERPRINT_FILES = ["extract.py", "edgar_npx.py", "store.py", "export_site.py"]
 
 # If any of these localnames is entirely absent from a parsed vote document,
 # the structure has deviated from what this extractor understands - fail
@@ -76,7 +80,11 @@ def utcnow():
 def compute_code_fingerprint():
     h = hashlib.sha256()
     for name in FINGERPRINT_FILES:
-        h.update((_PIPELINE_DIR / name).read_bytes())
+        # Line-ending normalization: core.autocrlf can hand a fresh Windows
+        # clone CRLF bytes for the identical commit, which would mint a
+        # different engine_run_id for byte-identical logic (review finding
+        # 2026-08-28). The fingerprint hashes the LOGIC, so normalize.
+        h.update((_PIPELINE_DIR / name).read_bytes().replace(b"\r\n", b"\n"))
     return h.hexdigest()
 
 
@@ -283,6 +291,16 @@ def main():
                          "no writes. Gate G6's verification seam.")
     args = ap.parse_args()
 
+    # The perturb env var is a TEST SEAM for --print-fingerprint only. A real,
+    # writing extraction under it would mint a phantom engine and re-tag the
+    # whole table (review finding 2026-08-28) - refuse loudly instead.
+    if (not args.print_fingerprint
+            and os.environ.get("EXTRACT_CONFIG_PERTURB") == "1"):
+        log("ERROR: EXTRACT_CONFIG_PERTURB is set. That seam exists for "
+            "--print-fingerprint (gate G6) only; refusing to run a writing "
+            "extraction under a perturbed fingerprint. Unset it and re-run.")
+        sys.exit(1)
+
     if args.print_fingerprint:
         code_fp = compute_code_fingerprint()
         cfg_hash = sources.config_hash()
@@ -310,6 +328,9 @@ def main():
     git_commit = git_commit_or_empty()
     store.ensure_engine_run(conn, engine_run_id, engine_version, code_fp,
                             cfg_hash, utcnow(), git_commit)
+    # Trace-only backfill: fill an empty git_commit recorded before the code
+    # was committed. Never part of the id (trap 6.2).
+    store.update_engine_run_commit(conn, engine_run_id, git_commit)
     conn.commit()
     log(f"engine_run_id={engine_run_id} engine_version={engine_version}")
     log(f"  code_fingerprint={code_fp}")
@@ -318,6 +339,11 @@ def main():
 
     grand = Counter()
     grand_categories = Counter()
+    # Per-filing failures are collected and reported at the end (exit 1), so
+    # one damaged filing cannot deadlock extraction of every OTHER filing
+    # (review finding 2026-08-28). Each failure is still loud, and the run
+    # still fails - it just fails after doing all the work it could.
+    filing_failures = []
     for filing in filings:
         accession = filing["accession"]
 
@@ -325,7 +351,8 @@ def main():
             log(f"ERROR: {accession}: filings.index_url is empty - every vote "
                 f"record must carry the reader-facing receipt verbatim; "
                 f"re-run run_ingest.py")
-            sys.exit(1)
+            filing_failures.append((accession, "empty index_url"))
+            continue
 
         raw_path = Path(filing["raw_path"])
         if not raw_path.is_absolute():
@@ -333,7 +360,8 @@ def main():
         log(f"filing {accession}: parsing {raw_path}")
         if not raw_path.exists():
             log(f"ERROR: raw file missing: {raw_path} - re-run run_ingest.py")
-            sys.exit(1)
+            filing_failures.append((accession, "raw file missing"))
+            continue
 
         digest = hashlib.sha256(raw_path.read_bytes()).hexdigest()
         if digest != filing["raw_sha256"]:
@@ -342,14 +370,16 @@ def main():
             log(f"  computed {digest}")
             log("  the raw store is immutable; a mismatch means corruption or "
                 "hand-editing - refusing to extract")
-            sys.exit(1)
+            filing_failures.append((accession, "raw sha256 mismatch"))
+            continue
 
         stats = Counter()
         try:
             rows, histogram = parse_filing(raw_path, stats)
         except ET.ParseError as e:
             log(f"ERROR: XML parse failure for {accession}: {e}")
-            sys.exit(1)
+            filing_failures.append((accession, f"XML parse failure: {e}"))
+            continue
 
         missing = [n for n in EXPECTED_LOCALNAMES if histogram.get(n, 0) == 0]
         if not rows or missing:
@@ -357,7 +387,8 @@ def main():
             detail = ("zero records parsed" if not rows
                       else f"expected localnames absent: {', '.join(missing)}")
             log(f"ERROR: {accession}: structure assert failed ({detail})")
-            sys.exit(1)
+            filing_failures.append((accession, detail))
+            continue
 
         now = utcnow()
         db_rows = []
@@ -400,6 +431,13 @@ def main():
     log("=" * 60)
     log(f"EXTRACT SUMMARY: {len(filings)} filing(s), "
         f"engine_run_id={engine_run_id}")
+    if filing_failures:
+        log("=" * 60)
+        log(f"EXTRACT FAILURES: {len(filing_failures)} filing(s) could not be "
+            f"extracted:")
+        for acc, why in filing_failures:
+            log(f"  {acc}: {why}")
+        sys.exit(1)
     log(f"  parsed records: {grand['parsed_records']}")
     log(f"  emitted rows:   {grand['emitted_rows']}")
     log(f"  unparseable how_voted: {grand['unparseable_how_voted']}")

@@ -97,6 +97,20 @@ function renderFatal(err) {
 // ---------- header ----------
 
 function renderHeader(meta) {
+  // Review finding (2026-08-28): filer/filing objects existing is not enough -
+  // a meta.json missing filer.name rendered the literal header
+  // "undefined (CIK undefined)". Require the actual strings, loudly.
+  for (const [label, v] of [
+    ['filer.name', meta.filer.name],
+    ['filer.cik', meta.filer.cik],
+    ['filing.accession', meta.filing.accession],
+  ]) {
+    if (typeof v !== 'string' || v.length === 0) {
+      throw new DataShapeError(
+        '/data/meta.json is missing ' + label + ' - refusing to render a ' +
+        'header with invented placeholders.');
+    }
+  }
   const filerLine = $('filer-line');
   filerLine.textContent =
     meta.filer.name +
@@ -141,7 +155,17 @@ function renderProvenance(meta) {
   const voteUrl = filingVoteDocUrl(meta);
   if (voteName || voteUrl) {
     const size = fmtBytes(filing.raw_bytes);
-    const label = (voteName || 'vote document') + (size ? ' (' + size + ')' : '');
+    // Review finding (2026-08-28): when the link opens the complete-submission
+    // bundle rather than the named section (the live case: proxytable.xml
+    // lives INSIDE the ~18MB .txt), say so - a label naming one document while
+    // opening another is a receipt that misdescribes itself. raw_bytes (and
+    // the SHA-256 row) describe the EXTRACTED section, not the bundle.
+    const urlBase = voteUrl ? voteUrl.split('/').pop() : '';
+    const isBundle = Boolean(voteUrl) && voteName && urlBase !== voteName;
+    const label = isBundle
+      ? 'complete submission — contains ' + voteName +
+        (size ? ' (' + size + ' extracted)' : '')
+      : (voteName || 'vote document') + (size ? ' (' + size + ')' : '');
     let node;
     if (voteUrl) {
       node = el('a', null, label);
@@ -153,7 +177,9 @@ function renderProvenance(meta) {
     }
     if (typeof filing.raw_bytes === 'number' && isFinite(filing.raw_bytes)) {
       node.title =
-        filing.raw_bytes.toLocaleString('en-US') + ' bytes as stored' +
+        filing.raw_bytes.toLocaleString('en-US') +
+        ' bytes of extracted vote-document XML as stored (the SHA-256 below ' +
+        'is of this extracted section, not of the bundle)' +
         (filing.vote_doc_type ? ' · type: ' + filing.vote_doc_type : '');
     }
     provenanceRow(dl, 'Vote document', node);
@@ -283,7 +309,11 @@ function renderRollup(rollup) {
     tr.appendChild(el('td', 'num', fmtInt(v.AGAINST)));
     tr.appendChild(el('td', 'num', fmtInt(v.ABSTAIN)));
     tr.appendChild(el('td', 'num', fmtInt(v.WITHHOLD)));
-    tr.appendChild(el('td', 'num', fmtInt(v.OTHER)));
+    // Tri-valued honesty: unparseable (raw kept, normalization failed) and
+    // absent-in-source are DIFFERENT states (locked decision 5); the old
+    // single OTHER column conflated them and visibly contradicted the totals.
+    tr.appendChild(el('td', 'num', fmtInt(v.UNPARSEABLE)));
+    tr.appendChild(el('td', 'num', fmtInt(v.ABSENT)));
     tr.appendChild(el('td', 'num', fmtInt(cat.n_comparable)));
 
     // % voted with management — plain cell text, never headline-styled.
@@ -320,7 +350,10 @@ function renderRollup(rollup) {
 
 // ---------- category detail: fetch, page, render ----------
 
+let openSeq = 0; // review finding (2026-08-28): last click must win
+
 async function openCategory(cat) {
+  const seq = ++openSeq;
   const detail = $('category-detail');
   const heading = $('detail-heading');
   const errBox = $('detail-error');
@@ -361,9 +394,20 @@ async function openCategory(cat) {
           fmtInt(cat.n) + ' — refusing to render an empty table for a broken export.'
         );
       }
+      // Review finding (2026-08-28): a truncated or mixed-version category
+      // file used to render silently under a rollup from a different export.
+      // The file must agree with rollup.json's declared count - both its own
+      // header n and its actual record count.
+      if (data.n !== cat.n || data.records.length !== cat.n) {
+        throw new DataShapeError(
+          path + ' disagrees with rollup.json: file n=' + fmtInt(data.n) +
+          ', records=' + fmtInt(data.records.length) + ', rollup n=' +
+          fmtInt(cat.n) + ' - mixed export versions; re-run export_site.py.');
+      }
       categoryCache.set(cat.slug, data); // cache successes only
     }
   } catch (err) {
+    if (seq !== openSeq) return; // a later click superseded this one
     heading.textContent = cat.category;
     clear(errBox);
     errBox.appendChild(el('strong', null, 'Could not load the records for this category.'));
@@ -371,6 +415,8 @@ async function openCategory(cat) {
     show(errBox);
     return;
   }
+
+  if (seq !== openSeq) return; // a later click superseded this fetch
 
   detailState = {
     category: textOr(data.category, cat.category),

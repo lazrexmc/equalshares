@@ -90,6 +90,15 @@ SCHEMA = [
         sources_ok INTEGER,
         sources_failed INTEGER,
         notes TEXT)""",
+    """CREATE TABLE IF NOT EXISTS listings(
+        run_id INTEGER NOT NULL,
+        source_id TEXT NOT NULL,
+        accession TEXT NOT NULL,
+        form TEXT,
+        period_of_report TEXT,
+        filed_at TEXT,
+        seen_at TEXT NOT NULL,
+        PRIMARY KEY(run_id, accession))""",
 ]
 
 
@@ -235,6 +244,18 @@ def ensure_engine_run(conn, engine_run_id, engine_version, code_fingerprint,
          created_at, git_commit))
 
 
+def update_engine_run_commit(conn, engine_run_id, git_commit):
+    """Trace-only backfill: an engine first fingerprinted BEFORE its code was
+    committed carries git_commit='' forever under insert-ignore. Filling an
+    empty trace with the now-known commit adds information and changes no
+    behaviour - the commit is never part of the id (trap 6.2)."""
+    if git_commit:
+        conn.execute(
+            """UPDATE engine_runs SET git_commit = ?
+               WHERE engine_run_id = ? AND (git_commit IS NULL OR git_commit = '')""",
+            (git_commit, engine_run_id))
+
+
 # ---------------------------------------------------------------- skip/terminal
 
 def get_skip_attempts(conn, accession):
@@ -255,6 +276,28 @@ def record_skip(conn, accession, error, at):
              last_error = excluded.last_error""",
         (accession, at, error))
     return get_skip_attempts(conn, accession)
+
+
+def clear_skip(conn, accession):
+    """A successful ingest clears the skip ledger for that accession - review
+    finding 2026-08-28: without this, stale counts from OLD transient failures
+    accumulate, and one new failure can retire an accession that only ever
+    failed transiently."""
+    conn.execute("DELETE FROM skip WHERE accession = ?", (accession,))
+
+
+def record_listing(conn, run_id, source_id, filings, seen_at):
+    """Persist what the source LISTED this run - the expected set. This is the
+    denominator the coverage gates need: without it, a filing that retires to
+    terminal simply vanishes from every check (trap 6.1 re-entering through the
+    terminal table - review finding 2026-08-28)."""
+    conn.executemany(
+        """INSERT OR REPLACE INTO listings(run_id, source_id, accession, form,
+             period_of_report, filed_at, seen_at)
+           VALUES(?, ?, ?, ?, ?, ?, ?)""",
+        [(run_id, source_id, f["accession"], f.get("form"),
+          f.get("period_of_report"), f.get("filed_at"), seen_at)
+         for f in filings])
 
 
 def get_terminal_reason(conn, accession):

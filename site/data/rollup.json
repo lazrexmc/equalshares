@@ -1,0 +1,220 @@
+{
+  "categories": [
+    {
+      "category": "DIRECTOR ELECTIONS",
+      "n": 21846,
+      "n_comparable": 21845,
+      "shares_voted_total": 21182596584.5275,
+      "slug": "director-elections",
+      "thin": false,
+      "votes": {
+        "ABSENT": 1,
+        "ABSTAIN": 3094,
+        "AGAINST": 3594,
+        "FOR": 15077,
+        "UNPARSEABLE": 0,
+        "WITHHOLD": 80
+      },
+      "with_mgmt": 18671,
+      "with_mgmt_pct": 85.5
+    },
+    {
+      "category": "AUDIT-RELATED",
+      "n": 2142,
+      "n_comparable": 2142,
+      "shares_voted_total": 1955390478.1927,
+      "slug": "audit-related",
+      "thin": false,
+      "votes": {
+        "ABSENT": 0,
+        "ABSTAIN": 304,
+        "AGAINST": 545,
+        "FOR": 1293,
+        "UNPARSEABLE": 0,
+        "WITHHOLD": 0
+      },
+      "with_mgmt": 1838,
+      "with_mgmt_pct": 85.8
+    },
+    {
+      "category": "COMPENSATION",
+      "n": 1921,
+      "n_comparable": 1921,
+      "shares_voted_total": 857182284.9518,
+      "slug": "compensation",
+      "thin": false,
+      "votes": {
+        "ABSENT": 0,
+        "ABSTAIN": 402,
+        "AGAINST": 498,
+        "FOR": 1021,
+        "UNPARSEABLE": 0,
+        "WITHHOLD": 0
+      },
+      "with_mgmt": 1490,
+      "with_mgmt_pct": 77.6
+    },
+    {
+      "category": "CORPORATE GOVERNANCE",
+      "n": 1330,
+      "n_comparable": 1322,
+      "shares_voted_total": 1531698097.0095,
+      "slug": "corporate-governance",
+      "thin": false,
+      "votes": {
+        "ABSENT": 0,
+        "ABSTAIN": 224,
+        "AGAINST": 489,
+        "FOR": 617,
+        "UNPARSEABLE": 0,
+        "WITHHOLD": 0
+      },
+      "with_mgmt": 541,
+      "with_mgmt_pct": 40.9
+    },
+    {
+      "category": "SECTION 14A SAY-ON-PAY VOTES",
+      "n": 1328,
+      "n_comparable": 1240,
+      "shares_voted_total": 4034482407.2285,
+      "slug": "section-14a-say-on-pay-votes",
+      "thin": false,
+      "votes": {
+        "ABSENT": 0,
+        "ABSTAIN": 11,
+        "AGAINST": 64,
+        "FOR": 1165,
+        "UNPARSEABLE": 88,
+        "WITHHOLD": 0
+      },
+      "with_mgmt": 1229,
+      "with_mgmt_pct": 99.1
+    },
+    {
+      "category": "CAPITAL STRUCTURE",
+      "n": 410,
+      "n_comparable": 410,
+      "shares_voted_total": 284844002.7937,
+      "slug": "capital-structure",
+      "thin": false,
+      "votes": {
+        "ABSENT": 0,
+        "ABSTAIN": 55,
+        "AGAINST": 62,
+        "FOR": 293,
+        "UNPARSEABLE": 0,
+        "WITHHOLD": 0
+      },
+      "with_mgmt": 339,
+      "with_mgmt_pct": 82.7
+    },
+    {
+      "category": "ENVIRONMENT OR CLIMATE",
+      "n": 266,
+      "n_comparable": 266,
+      "shares_voted_total": 593373683.7791,
+      "slug": "environment-or-climate",
+      "thin": false,
+      "votes": {
+        "ABSENT": 0,
+        "ABSTAIN": 43,
+        "AGAINST": 160,
+        "FOR": 63,
+        "UNPARSEABLE": 0,
+        "WITHHOLD": 0
+      },
+      "with_mgmt": 0,
+      "with_mgmt_pct": 0.0
+    },
+    {
+      "category": "OTHER SOCIAL ISSUES",
+      "n": 264,
+      "n_comparable": 264,
+      "shares_voted_total": 339524767.7517,
+      "slug": "other-social-issues",
+      "thin": false,
+      "votes": {
+        "ABSENT": 0,
+        "ABSTAIN": 49,
+        "AGAINST": 147,
+        "FOR": 68,
+        "UNPARSEABLE": 0,
+        "WITHHOLD": 0
+      },
+      "with_mgmt": 9,
+      "with_mgmt_pct": 3.4
+    },
+    {
+      "category": "SHAREHOLDER RIGHTS AND DEFENSES",
+      "n": 168,
+      "n_comparable": 166,
+      "shares_voted_total": 153499238.0066,
+      "slug": "shareholder-rights-and-defenses",
+      "thin": false,
+      "votes": {
+        "ABSENT": 0,
+        "ABSTAIN": 2,
+        "AGAINST": 71,
+        "FOR": 95,
+        "UNPARSEABLE": 0,
+        "WITHHOLD": 0
+      },
+      "with_mgmt": 59,
+      "with_mgmt_pct": 35.5
+    },
+    {
+      "category": "EXTRAORDINARY TRANSACTIONS",
+      "n": 125,
+      "n_comparable": 125,
+      "shares_voted_total": 164913362.0296,
+      "slug": "extraordinary-transactions",
+      "thin": false,
+      "votes": {
+        "ABSENT": 0,
+        "ABSTAIN": 22,
+        "AGAINST": 28,
+        "FOR": 75,
+        "UNPARSEABLE": 0,
+        "WITHHOLD": 0
+      },
+      "with_mgmt": 94,
+      "with_mgmt_pct": 75.2
+    },
+    {
+      "category": "HUMAN RIGHTS OR HUMAN CAPITAL/WORKFORCE",
+      "n": 68,
+      "n_comparable": 68,
+      "shares_voted_total": 207366909.6277,
+      "slug": "human-rights-or-human-capital-workforce",
+      "thin": false,
+      "votes": {
+        "ABSENT": 0,
+        "ABSTAIN": 0,
+        "AGAINST": 53,
+        "FOR": 15,
+        "UNPARSEABLE": 0,
+        "WITHHOLD": 0
+      },
+      "with_mgmt": 0,
+      "with_mgmt_pct": 0.0
+    },
+    {
+      "category": "DIVERSITY, EQUITY, AND INCLUSION",
+      "n": 23,
+      "n_comparable": 23,
+      "shares_voted_total": 98801838.1694,
+      "slug": "diversity-equity-and-inclusion",
+      "thin": false,
+      "votes": {
+        "ABSENT": 0,
+        "ABSTAIN": 0,
+        "AGAINST": 20,
+        "FOR": 3,
+        "UNPARSEABLE": 0,
+        "WITHHOLD": 0
+      },
+      "with_mgmt": 0,
+      "with_mgmt_pct": 0.0
+    }
+  ]
+}

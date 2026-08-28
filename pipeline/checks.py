@@ -531,7 +531,8 @@ def g7_export_consistency():
         dbn = db_counts.get(name, 0)
         chk(n == dbn, f"rollup n for {name!r}", f"rollup={n} db={dbn}")
         votes = c.get("votes") or {}
-        vote_sum = sum(votes.get(k, 0) for k in (*VOTE_ENUM, "OTHER"))
+        vote_sum = sum(votes.get(k, 0)
+                       for k in (*VOTE_ENUM, "UNPARSEABLE", "ABSENT"))
         chk(vote_sum == n, f"votes sum to n for {name!r}", f"sum={vote_sum} n={n}")
         nc, wm = c.get("n_comparable"), c.get("with_mgmt")
         if isinstance(nc, int) and isinstance(wm, int):
@@ -633,6 +634,75 @@ def g8_anti_blend():
 
 
 # ---------------------------------------------------------------- main ------
+def g9_listing_coverage():
+    """The denominator gate (review finding 2026-08-28). The source-listed
+    expected set is persisted per run in `listings`; the NEWEST listed
+    accession per source must actually be in `filings` with vote_records - a
+    terminal retirement or silent miss of the newest filing must FAIL here,
+    never read as a quiet day."""
+    con = dbcon()
+    try:
+        run = con.execute("SELECT MAX(run_id) AS r FROM listings").fetchone()
+    except Exception as e:
+        con.close()
+        return False, f"listings table missing ({e}) - re-run run_ingest.py"
+    if run is None or run["r"] is None:
+        con.close()
+        return False, "listings table empty - re-run run_ingest.py"
+    rid = run["r"]
+    ok = True
+    details = []
+    for s in con.execute(
+            "SELECT DISTINCT source_id FROM listings WHERE run_id = ?",
+            (rid,)).fetchall():
+        sid = s["source_id"]
+        newest = con.execute(
+            "SELECT accession FROM listings WHERE run_id = ? AND source_id = ? "
+            "ORDER BY (filed_at IS NULL), filed_at DESC, accession DESC LIMIT 1",
+            (rid, sid)).fetchone()
+        acc = newest["accession"]
+        have = con.execute(
+            "SELECT 1 FROM filings WHERE accession = ?", (acc,)).fetchone()
+        nrec = con.execute(
+            "SELECT COUNT(*) AS n FROM vote_records WHERE accession = ?",
+            (acc,)).fetchone()["n"]
+        why = con.execute(
+            "SELECT reason FROM terminal WHERE accession = ?", (acc,)).fetchone()
+        good = bool(have) and nrec > 0
+        term = " TERMINAL({})".format(why["reason"]) if why else ""
+        line = "{}: newest listed {} in_filings={} vote_records={}{}".format(
+            sid, acc, bool(have), nrec, term)
+        log("  [{}] {}".format("ok" if good else "FAIL", line))
+        details.append(line)
+        ok = ok and good
+    con.close()
+    if ok:
+        return True, "newest listed filing extracted for every source (run {})".format(rid)
+    return False, "; ".join(details)
+
+
+def g10_publication_committed():
+    """Regression guard for the critical review finding (2026-08-28): an
+    unanchored data/ gitignore pattern silently ignored site/data/ - the
+    ENTIRE publication payload - while export_site.py regenerated it before
+    every check, so nothing automated could ever see the miss. Ask git
+    directly."""
+    import subprocess as sp
+    probe = sp.run(["git", "check-ignore", "-q", "site/data/meta.json"],
+                   cwd=str(ROOT), capture_output=True)
+    not_ignored = probe.returncode != 0
+    log("  [{}] git check-ignore site/data/meta.json -> exit {} "
+        "(0 = IGNORED = the publication would deploy empty)".format(
+            "ok" if not_ignored else "FAIL", probe.returncode))
+    tracked = sp.run(["git", "ls-files", "site/data/"],
+                     cwd=str(ROOT), capture_output=True, text=True)
+    n_tracked = len([l for l in tracked.stdout.splitlines() if l.strip()])
+    log("  tracked publication files: {} (0 acceptable only before the "
+        "first commit of a fresh export)".format(n_tracked))
+    if not not_ignored:
+        return False, "site/data is GITIGNORED - the publication cannot deploy"
+    return True, "site/data not ignored; {} file(s) tracked".format(n_tracked)
+
 def main():
     parser = argparse.ArgumentParser(description="EqualShares deterministic gates")
     parser.add_argument(
@@ -655,6 +725,8 @@ def main():
         ("G6", "provenance", g6_provenance),
         ("G7", "export-consistency", g7_export_consistency),
         ("G8", "anti-blend", g8_anti_blend),
+        ("G9", "listing-coverage", g9_listing_coverage),
+        ("G10", "publication-committed", g10_publication_committed),
     ]
 
     results = []

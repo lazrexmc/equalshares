@@ -37,7 +37,12 @@ test of them.
     python pipeline/extract.py          # 2. parse raw -> vote_records, provenance-stamped
     python pipeline/export_site.py      # 3. write site/data/*.json
     python pipeline/checks.py           # 4. acceptance gates - must pass before publishing
-    python -m http.server 8000 --directory site    # 5. view at http://localhost:8000
+    python pipeline/serve_local.py      # 5. view at http://127.0.0.1:8765
+
+Step 5 uses serve_local.py ON PURPOSE: it forces correct MIME types (Windows
+registry entries can poison .json into text/plain and serve a silently blank
+page) and it serves the SAME security headers as production by parsing
+site/_headers - a bare `python -m http.server` does neither.
 
 EDGAR requires a declared User-Agent (in code: `EqualShares/0.1
 (lancemccarter1316@hotmail.com)`) and >= 0.5s between requests - anonymous
@@ -46,14 +51,44 @@ keep it out of git.
 
 ## Acceptance gates (`pipeline/checks.py`)
 
+Ten gates, exit 0 only on all-pass. These are the REAL gate names - this table
+is a summary; checks.py's own output is the authority.
+
 | Gate | Proves |
 |---|---|
-| Outage != quiet day | `run_ingest.py` pointed at an unreachable host (`--base-url-data` / `--base-url-archives`) exits **2**; a no-new-filings day exits **0**; partial failure exits **1**. Three different codes, always. |
-| Terminal audit | Every `terminal` row has a non-empty written reason. |
-| G5 re-parse | `extract.py` run twice: identical counts, no duplicates. Hand-alter one extracted value, re-run: the correct value is restored. Proves UPSERT, not insert-ignore. |
-| G6 provenance | `EXTRACT_CONFIG_PERTURB=1` yields a **different** `engine_run_id`; unset returns the original. A git commit alone must **not** change the id (`git_commit` is trace, never part of the fingerprint). |
-| Artifact integrity | `site/data` JSON totals match the database; the rollup contains no blended number; every record's `source_url` equals the filing's `index_url`. |
-| Failure state | A non-2xx or unparseable fetch on the site renders an error box, never an empty table. |
+| G1 raw-integrity | Every filing's raw file exists with matching sha256 and size. |
+| G2 coverage | Every filing in the store extracted to >0 vote_records (trap 6.8). |
+| G3 outage-distinguishable | `run_ingest.py` against an unreachable host exits **2**; quiet day **0**; partial **1**. |
+| G4 terminal-audit | Every `terminal` row has a non-empty written reason. |
+| G5 reparse | Run extract twice: identical counts, no dupes; hand-corrupt one value, re-run: restored (UPSERT proven). |
+| G6 provenance | Perturbed config -> different `engine_run_id`; unset -> original; a git commit alone never changes the id. |
+| G7 export-consistency | Every `site/data` number recomputes from the database exactly - counts, slugs, ordering, formulas, totals. |
+| G8 anti-blend | `rollup.json` carries NO top-level blended number; concordance is per-category only. |
+| G9 listing-coverage | The NEWEST source-listed filing is actually ingested and extracted - a terminal retirement of the current filing can never read as a quiet day. |
+| G10 publication-committed | `site/data` is not gitignored (the critical review finding: an unanchored `data/` pattern silently ignored the whole publication while CI regenerated it before every check). |
+
+**Checked in the browser, not by checks.py:** the failure-is-not-emptiness
+rendering (a failed fetch shows an error box, never an empty table) is
+exercised manually against serve_local.py - break a data file and reload.
+
+## Known limitations, accepted deliberately (2026-08-28 review)
+
+Two review findings are DEFERRED, not fixed - recorded here so nobody mistakes
+silence for coverage:
+
+1. **No shadow/promotion path yet** (extractor-provenance module section 5.4).
+   A rewritten extractor's first run overwrites production rows in place; the
+   fingerprint records THAT it changed, not a side-by-side comparison. The
+   module's own trigger applies: build the shadow mode when the extractor is
+   actually rewritten. Until then, the raw store + UPSERT means any bad
+   re-parse is recoverable by re-running the previous extractor version.
+2. **`max_filings: 1` over a multi-series trust is an unstable pointer.**
+   VANGUARD INDEX FUNDS files one N-PX per fund series (108 in the recent
+   window), so "the most recent filing" changes fund whenever any series
+   files. The page always SAYS which series it shows (header + provenance
+   box), so it is honest - but a slice reader refreshing across a filing day
+   may see a different fund. Fix lands with multi-filing support, not with a
+   pin hack.
 
 ## OPEN OWNER DECISION - where does the data live long-term?
 

@@ -1,0 +1,36 @@
+{
+  "engine_run": {
+    "code_fingerprint": "b8d335fb6568a1518c6502b7d496a9f6768be7a4595fb445c915c2a8ba960f1f",
+    "config_hash": "6afa0fab9f846ba9b6a1fde170197ddeaaa01ff3644b5f57870e8779864b8d95",
+    "engine_run_id": "01db0923e67186ec",
+    "engine_version": "0.1+01db0923",
+    "git_commit": "c9e2cb4f2d5e7aa8db23d33851dbc443207ba599"
+  },
+  "filer": {
+    "cik": "0000036405",
+    "name": "VANGUARD INDEX FUNDS"
+  },
+  "filing": {
+    "accession": "0001104659-26-102001",
+    "fetched_at": "2026-08-28T18:41:32+00:00",
+    "filed_at": "2026-08-27",
+    "form": "N-PX",
+    "index_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+    "period_of_report": "2026-06-30",
+    "raw_bytes": 18536160,
+    "raw_sha256": "2299061d3fe326e18bd445b902fe4dc429374c441ad1e419329d86e8479e919f",
+    "series_name": "Vanguard Morningstar Value Index Fund",
+    "vote_doc_name": "proxytable.xml",
+    "vote_doc_type": "PROXY VOTING RECORD",
+    "vote_doc_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001.txt"
+  },
+  "generated_at": "2026-08-28T19:13:47+00:00",
+  "thin_n": 5,
+  "totals": {
+    "categories": 12,
+    "comparable_records": 29792,
+    "multi_category_records": 50,
+    "records": 29891,
+    "unparseable_how_voted": 88
+  }
+}

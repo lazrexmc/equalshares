@@ -110,7 +110,7 @@ def already_ingested(conn, accession):
     return True
 
 
-def process_source(conn, source, base_url_data, base_url_archives):
+def process_source(conn, source, base_url_data, base_url_archives, run_id):
     """One source, wrapped by the caller in its own try/except.
     Returns (ok: bool, note: str)."""
     sid = source["id"]
@@ -132,12 +132,24 @@ def process_source(conn, source, base_url_data, base_url_archives):
     if source.get("name") and entity_name and \
             source["name"].upper() != entity_name.upper():
         # Trap 6.6: confirm source identity against real output (r/CoMo was
-        # Como, Italy). A CIK typo would surface right here.
-        log(f"  WARNING: configured name '{source['name']}' != EDGAR entity "
-            f"name '{entity_name}' - confirm source identity before trusting "
-            f"this data")
+        # Como, Italy). A CIK typo surfaces right here - and a wrong-CIK config
+        # must NOT publish a different registrant's votes under a green run
+        # (review finding 2026-08-28), so a mismatch now FAILS the source
+        # unless the config explicitly opts into a warning.
+        msg = (f"configured name '{source['name']}' != EDGAR entity name "
+               f"'{entity_name}'")
+        if source.get("identity_warn_only"):
+            log(f"  WARNING: {msg} - identity_warn_only is set; continuing")
+        else:
+            log(f"  FAILED identity check: {msg} - refusing to ingest under a "
+                f"mismatched identity (set identity_warn_only: True to "
+                f"downgrade after confirming)")
+            return False, f"identity mismatch: {msg}"
     log(f"source {sid}: entity '{entity_name}', "
         f"{len(listing['filings'])} filing(s) selected")
+    # Persist the expected set - the denominator for listing-coverage (G9).
+    store.record_listing(conn, run_id, sid, listing["filings"], utcnow())
+    conn.commit()
 
     ingested = already = retired = failed = 0
     for filing in listing["filings"]:
@@ -199,6 +211,7 @@ def process_source(conn, source, base_url_data, base_url_archives):
             "raw_bytes": len(raw),
             "fetched_at": utcnow(),
         })
+        store.clear_skip(conn, accession)
         conn.commit()
         ingested += 1
         log(f"  {accession}: ingested {len(raw):,} bytes -> {rel_path} "
@@ -208,6 +221,22 @@ def process_source(conn, source, base_url_data, base_url_archives):
 
     note = (f"ingested={ingested} already={already} retired={retired} "
             f"failed={failed}")
+
+    # Review finding (2026-08-28): a filing that retires to terminal used to
+    # vanish from every check - runs exited 0 while the site silently served
+    # the PREVIOUS filing forever (trap 6.1 re-entering through the terminal
+    # table). The NEWEST listed filing is the one the site publishes, so if it
+    # is not actually in the store, this source is NOT ok - whatever the
+    # per-filing counters say.
+    if listing["filings"]:
+        newest = listing["filings"][0]["accession"]
+        row = store.get_filing(conn, newest)
+        if row is None:
+            why = store.get_terminal_reason(conn, newest)
+            detail = f"terminal ({why})" if why else "not ingested"
+            log(f"  NEWEST listed filing {newest} is {detail} - the published "
+                f"filing would be stale. Source marked FAILED.")
+            return False, f"newest listed filing {newest} {detail}; {note}"
     return failed == 0, note
 
 
@@ -237,7 +266,8 @@ def main():
     for source in enabled:
         try:
             ok, note = process_source(
-                conn, source, args.base_url_data, args.base_url_archives)
+                conn, source, args.base_url_data, args.base_url_archives,
+                run_id)
         except Exception as e:
             # Every source is wrapped: a dead source is recorded in the
             # summary and never kills the run.
