@@ -29,19 +29,20 @@
 
 ## INBOX (captured, not chased)
 
-- **2026-08-28, Lance:** *"The ultimate goal would be to compare tables system wide and see if
-  board members across the major companies are in cahoots."* Decomposes into three layers:
-  1. **Interlocking directorates** — resolve director names across issuers from the 73% of records
-     that are director elections. Entity resolution already exists: `VisibleGov/src/lib/person-identity.js`
-     (source-agnostic by design). Name parsing from `voteDescription` free text will be rewritten
-     → the shadow path (above) becomes necessary here.
-  2. **Bloc voting across filers** — same directors, same proposals, many funds; do they move
-     together? The original contrast-set thesis, now with a pipeline under it. Must be crosstabbed
-     by `voteSource` first (today's finding).
-  3. **Board conduct** — committees, pay, related-party — is NOT in N-PX. Needs **DEF 14A**
-     enrichment, correctly parked by DRYRUN_001. Layer 3 waits on it.
-  The site publishes the graph with receipts; it never says "cahoots" — the reader infers.
-  Thesis-forward, instrument-backed (decision 4).
+- **2026-08-28, Lance — system-wide comparison** *(framing corrected the same day: EqualShares
+  is a transparency instrument, not an investigation; it shows how funds voted the shares they hold
+  and lets funds be compared. It draws no conclusion about anyone.)* Put many funds' Roll Calls side
+  by side so a shareholder can see how *different* funds voted the *same* proposals and directors —
+  the contrast-set thesis, decision 3. Layers, in order of reach:
+  1. **Cross-filer comparison** of identical proposals and director elections — more `SOURCES`
+     entries, same pipeline. Crosstab by `voteSource` first (today's finding).
+  2. **Director-name resolution across issuers**, so one director's elections can be compared across
+     the companies they serve — a data structure, not a verdict. Entity resolution already exists:
+     `VisibleGov/src/lib/person-identity.js`. The free-text name parser will be rewritten → the
+     shadow path becomes necessary here.
+  3. **DEF 14A enrichment** — full proposal text, proponent, outcome — correctly parked by
+     DRYRUN_001; layer 3 waits on it.
+  Every edge carries a receipt; the reader compares. Thesis-forward, instrument-backed (decision 4).
 - Concordance semantics vary by filer convention on shareholder proposals — verify per filer
   before any cross-filer comparison is published.
 - 50 multi-category records: consider counting under every category with a disclosure, once a
