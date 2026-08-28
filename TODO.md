@@ -33,7 +33,9 @@
   have enough funds to become the major voting entity in Blackrock vanguard and state street,
   equalshares could redistribute the wealth through the same processes these entities run now,
   their system would be used against them to drain them and make the playing field level for all."*
-  Captured as stated, not reworded. Two notes recorded alongside it, for Lance to weigh:
+  **Lance, moments later:** *"Well if voters choose too"* — the redistribution happens only if the
+  shareholders choose it. That makes the goal consent-based: EqualShares enables the choice; it
+  never makes it. Captured as stated, not reworded. Two notes recorded alongside it, for Lance to weigh:
   - **It sits against locked decision 1** (`RapidForge/ProjectContext.md` §4: *activate, not
     accumulate — no pooled fund, no custody, no token; '40 Act / Howey / money-transmitter
     exposure*). Decision 1 is the **v1 route**, not a verdict on the larger goal. Re-opening it is
