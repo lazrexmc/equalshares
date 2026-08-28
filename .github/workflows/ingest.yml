@@ -1,0 +1,98 @@
+name: rollcall-ingest
+
+# EqualShares "The Roll Call" - the scheduled worker, PARKED on manual dispatch.
+# Module: F:/RapidForge/modules/scheduled-worker-github-actions.md.
+#
+# Trigger is workflow_dispatch ONLY for now. The cron below stays COMMENTED
+# until the un-park condition holds - never schedule a cron before it can
+# succeed (module trap 6.2: a failing cron teaches the owner to ignore alerts,
+# permanently, and the next real failure goes unseen).
+#
+# UN-PARK CONDITION (record the date + evidence here when it happens):
+#   un-park when the publication target exists and a push destination for
+#   site/data is decided (commit-back to this repo, a direct Pages upload, or
+#   Supabase writes per the README owner decision). Until then a scheduled run
+#   has nowhere durable to put its output, so it must not be scheduled.
+#
+# BUDGET ARITHMETIC (module 7.5), for the proposed weekly cron:
+#   est. ~4 min/run x ~4.35 runs/month = ~18 of 2,000 free-tier minutes (<1%).
+#   Replace the estimate with the observed duration after the first dispatch.
+# cron is UTC (trap 6.5): 09:17 UTC = 03:17/04:17 US Central across DST; the
+# hour is chosen so no human-facing meaning shifts with the clock change.
+
+on:
+  workflow_dispatch: {}
+  # schedule:
+  #   - cron: "17 9 * * 1"   # weekly, Monday 09:17 UTC - see UN-PARK CONDITION above
+
+permissions:
+  contents: read   # least privilege; widen only when a step needs it
+
+concurrency:
+  group: rollcall-ingest
+  cancel-in-progress: false   # let a slow run finish; never overlap
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15   # a hung run must not eat the month's minutes
+    steps:
+      # GUARD FIRST - before checkout, before setup (trap 6.3: placed later it
+      # burns ~40s per tick instead of ~2s).
+      #
+      # WHY A GUARD WHEN NOTHING NEEDS GUARDING YET: the EDGAR fetch needs no
+      # secrets (only the declared User-Agent, which lives in code), and this
+      # run's only output destination is a build artifact - so today the guard
+      # has nothing to check and always reports configured=true. It exists
+      # anyway because (a) every later step already carries the if:, so when a
+      # push destination IS decided its secret check drops into this one step
+      # and an unconfigured repo skips GREEN with a notice instead of emailing
+      # failures every tick, and (b) this is the module's pattern demonstrated
+      # in place rather than re-derived later. Currently the job just runs
+      # ingest -> extract -> export -> checks and uploads site/data as a build
+      # artifact.
+      - name: Check setup
+        id: cfg
+        run: |
+          echo "configured=true" >> "$GITHUB_OUTPUT"
+          echo "::notice title=Setup::No secrets are required for the EDGAR fetch. When a push destination for site/data is added, this guard will check its secret and skip green when it is absent - that skip is NOT a failure."
+
+      - uses: actions/checkout@v5
+        if: steps.cfg.outputs.configured == 'true'
+
+      - uses: actions/setup-python@v5
+        if: steps.cfg.outputs.configured == 'true'
+        with:
+          python-version: "3.12"
+
+      # Exit codes are meaningful and the workflow honors them (ingestion-
+      # pipeline trap 6.1): 0 = all sources ok, 1 = partial, 2 = EVERY source
+      # failed. A quiet day exits 0; an outage exits 2 and this step goes red -
+      # a dead source must never look like a quiet day.
+      - name: Ingest (fetch EDGAR, store raw)
+        if: steps.cfg.outputs.configured == 'true'
+        run: python pipeline/run_ingest.py
+
+      - name: Extract (raw -> vote_records, provenance-stamped)
+        if: steps.cfg.outputs.configured == 'true'
+        run: python pipeline/extract.py
+
+      - name: Export site JSON
+        if: steps.cfg.outputs.configured == 'true'
+        run: python pipeline/export_site.py
+
+      # Checks run IN FULL - no outage skip. The outage gate re-points the
+      # ingester at localhost via --base-url-data/--base-url-archives, which
+      # works fine on a runner. Exit code alone is not evidence (scheduled-
+      # worker trap 6.6); checks.py is the evidence extractor and fails loudly.
+      - name: Acceptance checks
+        if: steps.cfg.outputs.configured == 'true'
+        run: python pipeline/checks.py
+
+      - name: Upload site data artifact
+        if: steps.cfg.outputs.configured == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-data
+          path: site/data
+          if-no-files-found: error   # an empty upload would be silent emptiness

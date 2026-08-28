@@ -1,0 +1,312 @@
+/* site.css — The Roll Call (EqualShares slice v0).
+   No framework, no build step. Dark-on-light, system font stack, generous
+   whitespace. Every table lives inside .table-scroll so wide content scrolls
+   in its own container and the page body never scrolls horizontally. */
+
+:root {
+  --ink: #1c1c1c;
+  --ink-soft: #5a5a56;
+  --paper: #fcfcfa;
+  --panel: #f4f3ee;
+  --line: #d9d7d0;
+  --line-strong: #b9b7ae;
+  --link: #1a4d8f;
+  --row-hover: #eef2f7;
+  --error-ink: #8f1d1d;
+  --error-bg: #fbeeee;
+  --error-line: #d8a5a5;
+  --mark-bg: #f4e9c8;
+  --mark-ink: #6b5312;
+}
+
+* { box-sizing: border-box; }
+
+[hidden] { display: none !important; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono",
+    Menlo, monospace;
+  font-size: 0.875em;
+  background: var(--panel);
+  padding: 0.1em 0.35em;
+  border-radius: 3px;
+}
+
+a { color: var(--link); }
+a:hover { text-decoration-thickness: 2px; }
+
+.site-header,
+main,
+.site-footer {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.site-header { padding-top: 2.5rem; }
+
+.site-header h1 {
+  margin: 0 0 0.25rem;
+  font-size: 2rem;
+  letter-spacing: -0.01em;
+}
+
+.tagline {
+  margin: 0 0 1rem;
+  color: var(--ink-soft);
+}
+
+.filer-line {
+  margin: 0 0 0.25rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.freshness {
+  margin: 0 0 1rem;
+  color: var(--ink-soft);
+  font-size: 0.875rem;
+}
+
+main { padding-bottom: 3rem; }
+
+section { margin: 2rem 0; }
+
+h2 { margin: 0 0 0.75rem; font-size: 1.25rem; }
+
+/* ---- error state: loud, never empty ---- */
+
+.error-box {
+  border: 1px solid var(--error-line);
+  background: var(--error-bg);
+  color: var(--error-ink);
+  padding: 1rem 1.25rem;
+  border-radius: 6px;
+  margin: 1.5rem 0;
+}
+
+.error-box p { margin: 0.5rem 0 0; }
+
+/* ---- provenance box ---- */
+
+.provenance {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 1.25rem 1.5rem;
+}
+
+.provenance-list {
+  margin: 0;
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.35rem 1.25rem;
+}
+
+.provenance-list dt {
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+
+.provenance-list dd {
+  margin: 0;
+  font-size: 0.9375rem;
+  overflow-wrap: anywhere;
+}
+
+.provenance-claim {
+  margin: 1rem 0 0;
+  font-weight: 600;
+}
+
+/* ---- anti-blend note ---- */
+
+.anti-blend {
+  margin: 0 0 1rem;
+  padding: 0.6rem 0.9rem;
+  border-left: 3px solid var(--line-strong);
+  color: var(--ink-soft);
+  font-size: 0.9375rem;
+}
+
+.hint {
+  color: var(--ink-soft);
+  font-size: 0.875rem;
+  margin: 0.75rem 0 0;
+}
+
+/* ---- tables ---- */
+
+.table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #fff;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.9375rem;
+}
+
+th, td {
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+thead th {
+  border-bottom: 2px solid var(--line-strong);
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--ink-soft);
+  white-space: nowrap;
+  background: var(--panel);
+}
+
+tbody tr:last-child th,
+tbody tr:last-child td { border-bottom: none; }
+
+tbody th[scope="row"] {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.nowrap { white-space: nowrap; }
+
+/* clickable category rows */
+
+.category-row { cursor: pointer; }
+.category-row:hover { background: var(--row-hover); }
+.category-row:focus-visible {
+  outline: 2px solid var(--link);
+  outline-offset: -2px;
+}
+
+/* proposal text: truncate; the full text lives in the title attribute */
+
+.desc {
+  max-width: 28rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* absent-in-source cells */
+
+.absent { color: var(--ink-soft); }
+
+/* unparseable values: the raw value is shown, marked honestly */
+
+.raw-mark {
+  display: inline-block;
+  margin-left: 0.4rem;
+  padding: 0 0.35rem;
+  font-size: 0.6875rem;
+  line-height: 1.5;
+  border-radius: 3px;
+  background: var(--mark-bg);
+  color: var(--mark-ink);
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+/* thin-sample label: visible, never headline-styled */
+
+.thin-flag {
+  display: inline-block;
+  margin-left: 0.5rem;
+  padding: 0 0.4rem;
+  font-size: 0.6875rem;
+  line-height: 1.6;
+  font-weight: 400;
+  border-radius: 3px;
+  background: var(--mark-bg);
+  color: var(--mark-ink);
+  white-space: nowrap;
+}
+
+/* ---- pager ---- */
+
+.pager {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 0.75rem 0;
+}
+
+.pager button {
+  font: inherit;
+  font-size: 0.875rem;
+  padding: 0.35rem 0.9rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 4px;
+  background: #fff;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.pager button:hover:not(:disabled) { background: var(--row-hover); }
+
+.pager button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.pager-status {
+  color: var(--ink-soft);
+  font-size: 0.875rem;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---- footer ---- */
+
+.site-footer {
+  border-top: 1px solid var(--line);
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+  color: var(--ink-soft);
+  font-size: 0.8125rem;
+}
+
+/* ---- small screens ---- */
+
+@media (max-width: 40rem) {
+  body { font-size: 15px; }
+  .site-header, main, .site-footer { padding-left: 0.875rem; padding-right: 0.875rem; }
+  .site-header h1 { font-size: 1.6rem; }
+  th, td { padding: 0.45rem 0.55rem; }
+  .desc { max-width: 16rem; }
+  .provenance-list { grid-template-columns: 1fr; gap: 0.1rem; }
+  .provenance-list dd { margin-bottom: 0.5rem; }
+}
+
+/* footnotes under the category table */
+.footnotes { margin-top: 1rem; }
+.footnote { font-size: 0.82rem; color: #5a6472; max-width: 62rem; margin: 0.4rem 0; }
+.footnote code { font-size: 0.78rem; }
+.th-note { font-weight: 400; font-size: 0.72rem; color: #7a8494; }
