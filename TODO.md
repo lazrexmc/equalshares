@@ -29,6 +29,22 @@
 
 ## INBOX (captured, not chased)
 
+- **THE LARGER GOAL — Lance, 2026-08-28, verbatim:** *"Equalshares has a larger goal, if it can
+  have enough funds to become the major voting entity in Blackrock vanguard and state street,
+  equalshares could redistribute the wealth through the same processes these entities run now,
+  their system would be used against them to drain them and make the playing field level for all."*
+  Captured as stated, not reworded. Two notes recorded alongside it, for Lance to weigh:
+  - **It sits against locked decision 1** (`RapidForge/ProjectContext.md` §4: *activate, not
+    accumulate — no pooled fund, no custody, no token; '40 Act / Howey / money-transmitter
+    exposure*). Decision 1 is the **v1 route**, not a verdict on the larger goal. Re-opening it is
+    Lance's call, not the build's.
+  - **The lever that already exists needs participation, not capital.** The Big Three each run
+    pass-through "voting choice" programs that let fund investors direct how their shares are voted.
+    An organizer of *existing* shareholders' voting rights reaches voting power without pooling
+    assets or registering a fund — which is the "activate" path decision 1 chose, and is the same
+    system used from inside. Verify current program terms before building on them (class B).
+  The Roll Call is step one on that road either way: nobody can direct a vote they cannot see.
+
 - **2026-08-28, Lance — system-wide comparison: a CORE CAPABILITY, not the ultimate goal.**
   The goal is transparency — show how funds voted the shares they hold, with receipts. Comparison
   via the graphs is how that transparency becomes *useful*: put many funds' Roll Calls side by side
