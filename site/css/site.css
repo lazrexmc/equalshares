@@ -310,3 +310,6 @@ tbody th[scope="row"] {
 .footnote { font-size: 0.82rem; color: #5a6472; max-width: 62rem; margin: 0.4rem 0; }
 .footnote code { font-size: 0.78rem; }
 .th-note { font-weight: 400; font-size: 0.72rem; color: #7a8494; }
+
+/* the cold-reader intro (first dogfood finding, 2026-08-28) */
+.intro { max-width: 46rem; margin: 0.75rem 0 1.25rem; font-size: 1.02rem; line-height: 1.55; color: #2a3442; }
