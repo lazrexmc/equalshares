@@ -1,10 +1,10 @@
 {
   "engine_run": {
-    "code_fingerprint": "b8d335fb6568a1518c6502b7d496a9f6768be7a4595fb445c915c2a8ba960f1f",
+    "code_fingerprint": "c3b6c39c0735cb1830b2385ac3f57bd995d4cf91e283d40fbb8d373400dfcef4",
     "config_hash": "6afa0fab9f846ba9b6a1fde170197ddeaaa01ff3644b5f57870e8779864b8d95",
-    "engine_run_id": "01db0923e67186ec",
-    "engine_version": "0.1+01db0923",
-    "git_commit": "c9e2cb4f2d5e7aa8db23d33851dbc443207ba599"
+    "engine_run_id": "b13f9c5877e362ce",
+    "engine_version": "0.1+b13f9c58",
+    "git_commit": "df0c576603244298ae4f333cdb8106317f184d5e"
   },
   "filer": {
     "cik": "0000036405",
@@ -22,9 +22,10 @@
     "series_name": "Vanguard Morningstar Value Index Fund",
     "vote_doc_name": "proxytable.xml",
     "vote_doc_type": "PROXY VOTING RECORD",
-    "vote_doc_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001.txt"
+    "vote_doc_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001.txt",
+    "vote_doc_view_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml"
   },
-  "generated_at": "2026-08-28T19:13:47+00:00",
+  "generated_at": "2026-08-28T20:17:14+00:00",
   "thin_n": 5,
   "totals": {
     "categories": 12,

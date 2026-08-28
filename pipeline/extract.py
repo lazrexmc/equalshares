@@ -398,7 +398,12 @@ def main():
             db_rows.append({**row,
                             "accession": accession,
                             "seq": seq,
-                            "source_url": filing["index_url"],
+                            # Dogfood finding 2: land the reader where the row
+                            # can be FOUND - EDGAR's rendered vote table when
+                            # it exists, else the filing index page. Both are
+                            # EDGAR's own URLs stored verbatim at ingest.
+                            "source_url": (filing["vote_doc_view_url"]
+                                           or filing["index_url"]),
                             "engine_run_id": engine_run_id,
                             "extracted_at": now})
 

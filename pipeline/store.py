@@ -37,6 +37,7 @@ SCHEMA = [
         vote_doc_name TEXT,
         vote_doc_type TEXT,
         vote_doc_url TEXT,
+        vote_doc_view_url TEXT,
         index_url TEXT,
         raw_path TEXT NOT NULL,
         raw_sha256 TEXT NOT NULL,
@@ -139,10 +140,10 @@ def upsert_filing(conn, f):
     conn.execute(
         """INSERT INTO filings(accession, cik, form, period_of_report, filed_at,
              series_name, primary_doc, vote_doc_name, vote_doc_type, vote_doc_url,
-             index_url, raw_path, raw_sha256, raw_bytes, fetched_at)
+             vote_doc_view_url, index_url, raw_path, raw_sha256, raw_bytes, fetched_at)
            VALUES(:accession, :cik, :form, :period_of_report, :filed_at,
              :series_name, :primary_doc, :vote_doc_name, :vote_doc_type, :vote_doc_url,
-             :index_url, :raw_path, :raw_sha256, :raw_bytes, :fetched_at)
+             :vote_doc_view_url, :index_url, :raw_path, :raw_sha256, :raw_bytes, :fetched_at)
            ON CONFLICT(accession) DO UPDATE SET
              cik = excluded.cik,
              form = excluded.form,
@@ -153,12 +154,28 @@ def upsert_filing(conn, f):
              vote_doc_name = excluded.vote_doc_name,
              vote_doc_type = excluded.vote_doc_type,
              vote_doc_url = excluded.vote_doc_url,
+             vote_doc_view_url = excluded.vote_doc_view_url,
              index_url = excluded.index_url,
              raw_path = excluded.raw_path,
              raw_sha256 = excluded.raw_sha256,
              raw_bytes = excluded.raw_bytes,
              fetched_at = excluded.fetched_at""",
         f)
+
+
+def update_filing_links(conn, accession, vote_doc_view_url, series_name):
+    """Cheap link/series refresh for an already-ingested filing (no raw
+    re-download). Only fills values that are present; never blanks a stored
+    value with None (absent-in-source stays whatever was known)."""
+    if vote_doc_view_url:
+        conn.execute(
+            "UPDATE filings SET vote_doc_view_url = ? WHERE accession = ?",
+            (vote_doc_view_url, accession))
+    if series_name:
+        conn.execute(
+            "UPDATE filings SET series_name = ? WHERE accession = ? "
+            "AND (series_name IS NULL OR series_name = '')",
+            (series_name, accession))
 
 
 def get_filing(conn, accession):

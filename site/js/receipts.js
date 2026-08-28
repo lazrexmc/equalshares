@@ -25,6 +25,15 @@ export function filingIndexUrl(meta) {
   return storedUrl(meta.filing.index_url);
 }
 
+// Filing-level receipt: EDGAR's own rendered, human-readable vote table for
+// this filing (the xsl view listed on the filing index page), stored
+// verbatim at ingest time in filings.vote_doc_view_url. Null when EDGAR
+// listed none.
+export function filingVoteTableUrl(meta) {
+  if (!meta || typeof meta !== 'object' || !meta.filing) return null;
+  return storedUrl(meta.filing.vote_doc_view_url);
+}
+
 // Filing-level receipt: the URL that was actually fetched and parsed (the
 // sibling vote XML when one existed, else the complete-submission .txt
 // bundle), stored verbatim at ingest time in filings.vote_doc_url.

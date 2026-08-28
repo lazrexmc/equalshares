@@ -15,7 +15,7 @@
 //     field is absent in the source. Nothing is invented.
 
 import { fetchJson, FetchError, DataShapeError } from './data.js';
-import { receiptUrl, filingIndexUrl, filingVoteDocUrl } from './receipts.js';
+import { receiptUrl, filingIndexUrl, filingVoteDocUrl, filingVoteTableUrl } from './receipts.js';
 
 const PATHS = {
   meta: '/data/meta.json',
@@ -193,6 +193,18 @@ function renderProvenance(meta) {
     a.rel = 'noopener';
     a.target = '_blank';
     provenanceRow(dl, 'Filing page', a);
+  }
+
+  // Dogfood finding 2 (2026-08-28): the filing index page is a document
+  // list, not a place a reader can find a vote. EDGAR renders the proxy
+  // table as a searchable HTML page - link it when it was listed.
+  const tableUrl = filingVoteTableUrl(meta);
+  if (tableUrl) {
+    const t = el('a', null, 'EDGAR\u2019s rendered vote table (search it by issuer or CUSIP)');
+    t.href = tableUrl;
+    t.rel = 'noopener';
+    t.target = '_blank';
+    provenanceRow(dl, 'Readable table', t);
   }
 
   if (typeof filing.raw_sha256 === 'string' && filing.raw_sha256) {
@@ -491,6 +503,16 @@ function recordRow(r) {
   if (url) {
     const a = el('a', null, 'source');
     a.href = url;
+    // Tell the reader how to FIND this row once they land there (dogfood
+    // finding 2). Data goes into a title attribute via the property, never
+    // markup.
+    const finder = [
+      r.issuer_name ? 'issuer "' + r.issuer_name + '"' : null,
+      r.cusip ? 'CUSIP ' + r.cusip : null,
+      r.meeting_date ? 'meeting ' + r.meeting_date : null,
+    ].filter(Boolean).join(' \u00b7 ');
+    a.title = 'Opens EDGAR\u2019s own page for this filing. Search it for ' +
+      (finder || 'this proposal') + '.';
     a.rel = 'noopener';
     a.target = '_blank';
     src.appendChild(a);

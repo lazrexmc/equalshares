@@ -14,7 +14,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 48,
       "shares_voted": 4154523.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "A shareholder proposal requesting an annual report regarding the alignment of the Company's direct and indirect lobbying activities with the Company's 2050 climate neutrality ambition.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -30,7 +30,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 154,
       "shares_voted": 1036652.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "To vote on a shareholder proposal requesting the Company disclose measurable targets for reducing greenhouse emissions.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -46,7 +46,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 187,
       "shares_voted": 4846738.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder Proposal - Disclosure of Regenerative Agriculture Practices Within Supply Chain.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -62,7 +62,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 208,
       "shares_voted": 20797141.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder Proposal Requesting Additional Reporting on Plastic Packaging",
       "vote_source": "SECURITY HOLDER"
     },
@@ -78,7 +78,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 13626,
       "shares_voted": 43.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Stockholder Proposal - Approval to request the Board to conduct an evaluation and issue a report assessing how Cisco's Inclusion programs provide positive financial value to shareholders.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -94,7 +94,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 13627,
       "shares_voted": 29.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Stockholder Proposal - Approval to request the Board to conduct an evaluation and issue a report assessing how Cisco's Inclusion programs provide positive financial value to shareholders.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -110,7 +110,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 13628,
       "shares_voted": 2497.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Stockholder Proposal - Approval to request the Board to conduct an evaluation and issue a report assessing how Cisco's Inclusion programs provide positive financial value to shareholders.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -126,7 +126,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 404,
       "shares_voted": 31950078.31405,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Stockholder Proposal - Approval to request the Board to conduct an evaluation and issue a report assessing how Cisco's Inclusion programs provide positive financial value to shareholders.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -142,7 +142,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 14070,
       "shares_voted": 1.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal regarding report on environmental and human health impacts from waste lagoons.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -158,7 +158,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 14071,
       "shares_voted": 22.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal regarding report on environmental and human health impacts from waste lagoons.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -174,7 +174,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 14072,
       "shares_voted": 160.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal regarding report on environmental and human health impacts from waste lagoons.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -190,7 +190,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 26024,
       "shares_voted": 0.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal regarding report on environmental and human health impacts from waste lagoons.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -206,7 +206,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 564,
       "shares_voted": 2602708.18465,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal regarding report on environmental and human health impacts from waste lagoons.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -222,7 +222,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 5020,
       "shares_voted": 6129.26,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal regarding report on environmental and human health impacts from waste lagoons.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -238,7 +238,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 9214,
       "shares_voted": 3509.92,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal regarding report on environmental and human health impacts from waste lagoons.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -254,7 +254,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 14184,
       "shares_voted": 2.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal on a report on the return on investment of emission reduction goals",
       "vote_source": "SECURITY HOLDER"
     },
@@ -270,7 +270,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 14185,
       "shares_voted": 2.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal on a report on the return on investment of emission reduction goals",
       "vote_source": "SECURITY HOLDER"
     },
@@ -286,7 +286,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 14186,
       "shares_voted": 185.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal on a report on the return on investment of emission reduction goals",
       "vote_source": "SECURITY HOLDER"
     },
@@ -302,7 +302,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 26062,
       "shares_voted": 0.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal on a report on the return on investment of emission reduction goals",
       "vote_source": "SECURITY HOLDER"
     },
@@ -318,7 +318,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 605,
       "shares_voted": 2347329.21664,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal on a report on the return on investment of emission reduction goals",
       "vote_source": "SECURITY HOLDER"
     },
@@ -334,7 +334,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 5058,
       "shares_voted": 5622.85,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal on a report on the return on investment of emission reduction goals",
       "vote_source": "SECURITY HOLDER"
     },
@@ -350,7 +350,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 9252,
       "shares_voted": 3236.69,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal on a report on the return on investment of emission reduction goals",
       "vote_source": "SECURITY HOLDER"
     },
@@ -366,7 +366,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 14545,
       "shares_voted": 1063.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal, if properly presented at the meeting, requesting a report on the expected and potential return on investment from climate commitments.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -382,7 +382,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 14546,
       "shares_voted": 13.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal, if properly presented at the meeting, requesting a report on the expected and potential return on investment from climate commitments.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -398,7 +398,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 14547,
       "shares_voted": 400.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal, if properly presented at the meeting, requesting a report on the expected and potential return on investment from climate commitments.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -414,7 +414,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 26177,
       "shares_voted": 0.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal, if properly presented at the meeting, requesting a report on the expected and potential return on investment from climate commitments.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -430,7 +430,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 5173,
       "shares_voted": 39848.43,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal, if properly presented at the meeting, requesting a report on the expected and potential return on investment from climate commitments.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -446,7 +446,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 9367,
       "shares_voted": 22793.96,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal, if properly presented at the meeting, requesting a report on the expected and potential return on investment from climate commitments.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -462,7 +462,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 16142,
       "shares_voted": 18.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "To consider a shareholder proposal (if properly presented) requesting a report assessing the bases for the company's diversity, equity and inclusion initiatives",
       "vote_source": "SECURITY HOLDER"
     },
@@ -478,7 +478,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 16143,
       "shares_voted": 23.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "To consider a shareholder proposal (if properly presented) requesting a report assessing the bases for the company's diversity, equity and inclusion initiatives",
       "vote_source": "SECURITY HOLDER"
     },
@@ -494,7 +494,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 16144,
       "shares_voted": 2204.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "To consider a shareholder proposal (if properly presented) requesting a report assessing the bases for the company's diversity, equity and inclusion initiatives",
       "vote_source": "SECURITY HOLDER"
     },
@@ -510,7 +510,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 1297,
       "shares_voted": 2893571.38112,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "To consider a shareholder proposal (if properly presented) requesting a report assessing the bases for the company's diversity, equity and inclusion initiatives",
       "vote_source": "SECURITY HOLDER"
     },
@@ -526,7 +526,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 16536,
       "shares_voted": 223.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder Proposal - Energy Supply Ratio.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -542,7 +542,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 16537,
       "shares_voted": 4635.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder Proposal - Energy Supply Ratio.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -558,7 +558,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 16538,
       "shares_voted": 17653.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder Proposal - Energy Supply Ratio.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -574,7 +574,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 16539,
       "shares_voted": 226.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder Proposal - Report on High-Carbon Financing Litigation Risks.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -590,7 +590,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 16540,
       "shares_voted": 2270.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder Proposal - Report on High-Carbon Financing Litigation Risks.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -606,7 +606,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 16541,
       "shares_voted": 20016.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder Proposal - Report on High-Carbon Financing Litigation Risks.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -622,7 +622,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 16542,
       "shares_voted": 300.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder Proposal - Board Committee on Indigenous Peoples' Rights.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -638,7 +638,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 16543,
       "shares_voted": 1282.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder Proposal - Board Committee on Indigenous Peoples' Rights.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -654,7 +654,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 16544,
       "shares_voted": 20928.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder Proposal - Board Committee on Indigenous Peoples' Rights.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -670,7 +670,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 16545,
       "shares_voted": 216.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder Proposal - Report on Respecting Vendor Civil Liberties.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -686,7 +686,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 16546,
       "shares_voted": 432.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder Proposal - Report on Respecting Vendor Civil Liberties.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -702,7 +702,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 16547,
       "shares_voted": 21862.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder Proposal - Report on Respecting Vendor Civil Liberties.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -718,7 +718,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 26840,
       "shares_voted": 0.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder Proposal - Energy Supply Ratio.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -734,7 +734,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 26841,
       "shares_voted": 0.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder Proposal - Report on High-Carbon Financing Litigation Risks.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -750,7 +750,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 1437,
       "shares_voted": 29012563.13547,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder Proposal - Energy Supply Ratio.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -766,7 +766,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 1438,
       "shares_voted": 29012563.13547,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder Proposal - Report on High-Carbon Financing Litigation Risks.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -782,7 +782,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 1440,
       "shares_voted": 29012563.13547,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder Proposal - Report on Respecting Vendor Civil Liberties.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -798,7 +798,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 5836,
       "shares_voted": 85952.76,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder Proposal - Energy Supply Ratio.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -814,7 +814,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 5837,
       "shares_voted": 85952.76,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder Proposal - Report on High-Carbon Financing Litigation Risks.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -830,7 +830,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 10030,
       "shares_voted": 43853.45,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder Proposal - Energy Supply Ratio.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -846,7 +846,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 10031,
       "shares_voted": 43853.45,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder Proposal - Report on High-Carbon Financing Litigation Risks.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -862,7 +862,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 16719,
       "shares_voted": 212.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Vote on a shareowner proposal requesting a sustainability committee by-law amendment",
       "vote_source": "SECURITY HOLDER"
     },
@@ -878,7 +878,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 16720,
       "shares_voted": 244.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Vote on a shareowner proposal requesting a sustainability committee by-law amendment",
       "vote_source": "SECURITY HOLDER"
     },
@@ -894,7 +894,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 16721,
       "shares_voted": 24222.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Vote on a shareowner proposal requesting a sustainability committee by-law amendment",
       "vote_source": "SECURITY HOLDER"
     },
@@ -910,7 +910,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 16722,
       "shares_voted": 191.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Vote on a shareowner proposal requesting a report evaluating the Company's plastics packaging policies",
       "vote_source": "SECURITY HOLDER"
     },
@@ -926,7 +926,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 16723,
       "shares_voted": 199.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Vote on a shareowner proposal requesting a report evaluating the Company's plastics packaging policies",
       "vote_source": "SECURITY HOLDER"
     },
@@ -942,7 +942,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 16724,
       "shares_voted": 24288.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Vote on a shareowner proposal requesting a report evaluating the Company's plastics packaging policies",
       "vote_source": "SECURITY HOLDER"
     },
@@ -958,7 +958,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 16731,
       "shares_voted": 196.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Vote on a shareowner proposal requesting a report on the Company's plans to increase sustainability disclosure",
       "vote_source": "SECURITY HOLDER"
     },
@@ -974,7 +974,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 16732,
       "shares_voted": 5821.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Vote on a shareowner proposal requesting a report on the Company's plans to increase sustainability disclosure",
       "vote_source": "SECURITY HOLDER"
     },
@@ -990,7 +990,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 16733,
       "shares_voted": 18661.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Vote on a shareowner proposal requesting a report on the Company's plans to increase sustainability disclosure",
       "vote_source": "SECURITY HOLDER"
     },
@@ -1006,7 +1006,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 26901,
       "shares_voted": 0.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Vote on a shareowner proposal requesting a sustainability committee by-law amendment",
       "vote_source": "SECURITY HOLDER"
     },
@@ -1022,7 +1022,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 26905,
       "shares_voted": 0.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Vote on a shareowner proposal requesting a report on the Company's plans to increase sustainability disclosure",
       "vote_source": "SECURITY HOLDER"
     },
@@ -1038,7 +1038,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 16785,
       "shares_voted": 16.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder Proposal Regarding Disclosure of Energy Supply Ratio",
       "vote_source": "SECURITY HOLDER"
     },
@@ -1054,7 +1054,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 16786,
       "shares_voted": 427.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder Proposal Regarding Disclosure of Energy Supply Ratio",
       "vote_source": "SECURITY HOLDER"
     },
@@ -1070,7 +1070,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 16787,
       "shares_voted": 1603.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder Proposal Regarding Disclosure of Energy Supply Ratio",
       "vote_source": "SECURITY HOLDER"
     },
@@ -1086,7 +1086,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 26923,
       "shares_voted": 0.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder Proposal Regarding Disclosure of Energy Supply Ratio",
       "vote_source": "SECURITY HOLDER"
     },
@@ -1102,7 +1102,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 1504,
       "shares_voted": 31805478.3474,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Vote on a shareowner proposal requesting a report evaluating the Company's plastics packaging policies",
       "vote_source": "SECURITY HOLDER"
     },
@@ -1118,7 +1118,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 1506,
       "shares_voted": 31805478.3474,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Vote on a shareowner proposal requesting a report on risks related to ingredients",
       "vote_source": "SECURITY HOLDER"
     },
@@ -1134,7 +1134,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 5897,
       "shares_voted": 94227.06,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Vote on a shareowner proposal requesting a sustainability committee by-law amendment",
       "vote_source": "SECURITY HOLDER"
     },
@@ -1150,7 +1150,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 5898,
       "shares_voted": 94227.06,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Vote on a shareowner proposal requesting a report evaluating the Company's plastics packaging policies",
       "vote_source": "SECURITY HOLDER"
     },
@@ -1166,7 +1166,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 5901,
       "shares_voted": 94227.06,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Vote on a shareowner proposal requesting a report on the Company's plans to increase sustainability disclosure",
       "vote_source": "SECURITY HOLDER"
     },
@@ -1182,7 +1182,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 10091,
       "shares_voted": 48075.03,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Vote on a shareowner proposal requesting a sustainability committee by-law amendment",
       "vote_source": "SECURITY HOLDER"
     },
@@ -1198,7 +1198,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 10092,
       "shares_voted": 48075.03,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Vote on a shareowner proposal requesting a report evaluating the Company's plastics packaging policies",
       "vote_source": "SECURITY HOLDER"
     },
@@ -1214,7 +1214,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 10095,
       "shares_voted": 48075.03,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Vote on a shareowner proposal requesting a report on the Company's plans to increase sustainability disclosure",
       "vote_source": "SECURITY HOLDER"
     },
@@ -1230,7 +1230,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 1525,
       "shares_voted": 2637377.09235,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder Proposal Regarding Disclosure of Energy Supply Ratio",
       "vote_source": "SECURITY HOLDER"
     },
@@ -1246,7 +1246,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 5919,
       "shares_voted": 7813.51,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder Proposal Regarding Disclosure of Energy Supply Ratio",
       "vote_source": "SECURITY HOLDER"
     },
@@ -1262,7 +1262,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 10113,
       "shares_voted": 3986.48,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder Proposal Regarding Disclosure of Energy Supply Ratio",
       "vote_source": "SECURITY HOLDER"
     },
@@ -1278,7 +1278,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 16950,
       "shares_voted": 50.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "To vote on a stockholder proposal requesting a report on the risks of ESG and DEI executive compensation metrics, if properly presented at the Annual Meeting.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -1294,7 +1294,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 16951,
       "shares_voted": 49.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "To vote on a stockholder proposal requesting a report on the risks of ESG and DEI executive compensation metrics, if properly presented at the Annual Meeting.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -1310,7 +1310,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 16952,
       "shares_voted": 8837.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "To vote on a stockholder proposal requesting a report on the risks of ESG and DEI executive compensation metrics, if properly presented at the Annual Meeting.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -1326,7 +1326,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 1584,
       "shares_voted": 11512239.21027,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "To vote on a stockholder proposal requesting a report on the risks of ESG and DEI executive compensation metrics, if properly presented at the Annual Meeting.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -1342,7 +1342,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 27119,
       "shares_voted": 154556.22638,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal requesting report on board oversight of risks related to animal welfare",
       "vote_source": "SECURITY HOLDER"
     },
@@ -1358,7 +1358,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 17498,
       "shares_voted": 55.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal regarding political bias risk oversight.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -1374,7 +1374,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 17499,
       "shares_voted": 33.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal regarding political bias risk oversight.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -1390,7 +1390,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 17500,
       "shares_voted": 3384.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal regarding political bias risk oversight.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -1406,7 +1406,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 17684,
       "shares_voted": 7.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder Proposal Regarding a Report on the Use of ESG and DEI Metrics in Executive Compensation Plans",
       "vote_source": "SECURITY HOLDER"
     },
@@ -1422,7 +1422,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 17685,
       "shares_voted": 7.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder Proposal Regarding a Report on the Use of ESG and DEI Metrics in Executive Compensation Plans",
       "vote_source": "SECURITY HOLDER"
     },
@@ -1438,7 +1438,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 17686,
       "shares_voted": 701.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder Proposal Regarding a Report on the Use of ESG and DEI Metrics in Executive Compensation Plans",
       "vote_source": "SECURITY HOLDER"
     },
@@ -1454,7 +1454,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 1829,
       "shares_voted": 7890719.75808,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder Proposal Regarding a Report on the Use of ESG and DEI Metrics In Executive Compensation Plans",
       "vote_source": "SECURITY HOLDER"
     },
@@ -1470,7 +1470,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 27351,
       "shares_voted": 30265.20336,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder Proposal - Report Evaluating the Treatment of Animals within Supply Chain.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -1486,7 +1486,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 18110,
       "shares_voted": 105.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder Proposal to issue a report on filter cleanup costs and extended producer responsibility laws for filters",
       "vote_source": "SECURITY HOLDER"
     },
@@ -1502,7 +1502,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 18111,
       "shares_voted": 486.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder Proposal to issue a report on filter cleanup costs and extended producer responsibility laws for filters",
       "vote_source": "SECURITY HOLDER"
     },
@@ -1518,7 +1518,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 18112,
       "shares_voted": 10501.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder Proposal to issue a report on filter cleanup costs and extended producer responsibility laws for filters",
       "vote_source": "SECURITY HOLDER"
     },
@@ -1534,7 +1534,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 1980,
       "shares_voted": 14476478.82327,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder Proposal to issue a report on filter cleanup costs and extended producer responsibility laws for filters",
       "vote_source": "SECURITY HOLDER"
     },
@@ -1550,7 +1550,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 27430,
       "shares_voted": 11853.32058,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Stockholder Proposal Regarding Issuance of a Report on Pesticide Use Data Reporting in Regenerative Agriculture Program Disclosures.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -1566,7 +1566,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 2051,
       "shares_voted": 4470414.50574,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Stockholder Proposal Regarding Issuance of a Report on Pesticide Use Data Reporting in Regenerative Agriculture Program Disclosures.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -1582,7 +1582,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 6426,
       "shares_voted": 13971.59,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Stockholder proposal regarding issuance of a report on pesticide use data reporting in regenerative agriculture program disclosures.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -1598,7 +1598,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 10620,
       "shares_voted": 7301.28,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Stockholder proposal regarding issuance of a report on pesticide use data reporting in regenerative agriculture program disclosures.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -1614,7 +1614,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 18791,
       "shares_voted": 0.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal to disclose greenhouse gas emissions.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -1630,7 +1630,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 18792,
       "shares_voted": 8.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal to disclose greenhouse gas emissions.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -1646,7 +1646,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 18793,
       "shares_voted": 11.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal to disclose greenhouse gas emissions.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -1662,7 +1662,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 27591,
       "shares_voted": 61.61022,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal to disclose greenhouse gas emissions.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -1678,7 +1678,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 2223,
       "shares_voted": 25159.28128,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal to disclose greenhouse gas emissions.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -1694,7 +1694,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 6587,
       "shares_voted": 75.3,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal to disclose greenhouse gas emissions.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -1710,7 +1710,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 10781,
       "shares_voted": 38.28,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal to disclose greenhouse gas emissions.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -1726,7 +1726,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 18971,
       "shares_voted": 64.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "To require UPS to engage a third-party to audit and prepare an additional report on the impacts of UPS operations affecting BIPOC and low income communities.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -1742,7 +1742,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 18972,
       "shares_voted": 533.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "To require UPS to engage a third-party to audit and prepare an additional report on the impacts of UPS operations affecting BIPOC and low income communities.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -1758,7 +1758,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 18973,
       "shares_voted": 4660.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "To require UPS to engage a third-party to audit and prepare an additional report on the impacts of UPS operations affecting BIPOC and low income communities.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -1774,7 +1774,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 18974,
       "shares_voted": 55.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "To require UPS to provide an additional report describing the alignment of its operations and investments with its carbon neutrality goals.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -1790,7 +1790,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 18975,
       "shares_voted": 640.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "To require UPS to provide an additional report describing the alignment of its operations and investments with its carbon neutrality goals.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -1806,7 +1806,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 18976,
       "shares_voted": 4561.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "To require UPS to provide an additional report describing the alignment of its operations and investments with its carbon neutrality goals.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -1822,7 +1822,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 27635,
       "shares_voted": 18262.068,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "To require UPS to engage a third-party to audit and prepare an additional report on the impacts of UPS operations affecting BIPOC and low income communities.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -1838,7 +1838,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 27636,
       "shares_voted": 18262.068,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "To require UPS to provide an additional report describing the alignment of its operations and investments with its carbon neutrality goals.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -1854,7 +1854,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 2287,
       "shares_voted": 6861418.655,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "To require UPS to engage a third-party to audit and prepare an additional report on the impacts of UPS operations affecting BIPOC and low income communities.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -1870,7 +1870,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 2288,
       "shares_voted": 6861418.655,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "To require UPS to provide an additional report describing the alignment of its operations and investments with its carbon neutrality goals.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -1886,7 +1886,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 6647,
       "shares_voted": 21305.75,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "To require UPS to engage a third-party to audit and prepare an additional report on the impacts of UPS operations affecting BIPOC and low income communities.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -1902,7 +1902,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 6648,
       "shares_voted": 21305.75,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "To require UPS to provide an additional report describing the alignment of its operations and investments with its carbon neutrality goals.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -1918,7 +1918,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 10841,
       "shares_voted": 11206.27,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "To require UPS to engage a third-party to audit and prepare an additional report on the impacts of UPS operations affecting BIPOC and low income communities.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -1934,7 +1934,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 10842,
       "shares_voted": 11206.27,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "To require UPS to provide an additional report describing the alignment of its operations and investments with its carbon neutrality goals.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -1950,7 +1950,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 19220,
       "shares_voted": 43.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Stockholder proposal entitled \"Remove DEI from Board Candidate Considerations.\"",
       "vote_source": "SECURITY HOLDER"
     },
@@ -1966,7 +1966,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 19221,
       "shares_voted": 90.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Stockholder proposal entitled \"Remove DEI from Board Candidate Considerations.\"",
       "vote_source": "SECURITY HOLDER"
     },
@@ -1982,7 +1982,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 19222,
       "shares_voted": 5603.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Stockholder proposal entitled \"Remove DEI from Board Candidate Considerations.\"",
       "vote_source": "SECURITY HOLDER"
     },
@@ -1998,7 +1998,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 2376,
       "shares_voted": 7487806.4807,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Stockholder proposal entitled \"Remove DEI from Board Candidate Considerations.\"",
       "vote_source": "SECURITY HOLDER"
     },
@@ -2014,7 +2014,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 20501,
       "shares_voted": 97.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Stockholder proposal regarding a report on data center costs",
       "vote_source": "SECURITY HOLDER"
     },
@@ -2030,7 +2030,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 20502,
       "shares_voted": 752.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Stockholder proposal regarding a report on data center costs",
       "vote_source": "SECURITY HOLDER"
     },
@@ -2046,7 +2046,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 20503,
       "shares_voted": 6977.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Stockholder proposal regarding a report on data center costs",
       "vote_source": "SECURITY HOLDER"
     },
@@ -2062,7 +2062,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 20504,
       "shares_voted": 97.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Stockholder proposal regarding a report on climate due diligence",
       "vote_source": "SECURITY HOLDER"
     },
@@ -2078,7 +2078,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 20505,
       "shares_voted": 85.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Stockholder proposal regarding a report on climate due diligence",
       "vote_source": "SECURITY HOLDER"
     },
@@ -2094,7 +2094,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 20506,
       "shares_voted": 7645.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Stockholder proposal regarding a report on climate due diligence",
       "vote_source": "SECURITY HOLDER"
     },
@@ -2110,7 +2110,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 28142,
       "shares_voted": 27702.67179,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Stockholder proposal regarding a report on climate due diligence",
       "vote_source": "SECURITY HOLDER"
     },
@@ -2126,7 +2126,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 2836,
       "shares_voted": 10213532.25816,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Stockholder proposal regarding a report on data center costs",
       "vote_source": "SECURITY HOLDER"
     },
@@ -2142,7 +2142,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 2837,
       "shares_voted": 10213532.25816,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Stockholder proposal regarding a report on climate due diligence",
       "vote_source": "SECURITY HOLDER"
     },
@@ -2158,7 +2158,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 7158,
       "shares_voted": 32542.92,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Stockholder proposal regarding a report on climate due diligence",
       "vote_source": "SECURITY HOLDER"
     },
@@ -2174,7 +2174,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 11352,
       "shares_voted": 16786.38,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Stockholder proposal regarding a report on climate due diligence",
       "vote_source": "SECURITY HOLDER"
     },
@@ -2190,7 +2190,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 21602,
       "shares_voted": 223.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Report on congruence of security, resiliency, and climate initiatives",
       "vote_source": "SECURITY HOLDER"
     },
@@ -2206,7 +2206,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 21603,
       "shares_voted": 192.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Report on congruence of security, resiliency, and climate initiatives",
       "vote_source": "SECURITY HOLDER"
     },
@@ -2222,7 +2222,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 21604,
       "shares_voted": 17621.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Report on congruence of security, resiliency, and climate initiatives",
       "vote_source": "SECURITY HOLDER"
     },
@@ -2238,7 +2238,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 21611,
       "shares_voted": 251.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Sustainability ROI report",
       "vote_source": "SECURITY HOLDER"
     },
@@ -2254,7 +2254,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 21612,
       "shares_voted": 308.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Sustainability ROI report",
       "vote_source": "SECURITY HOLDER"
     },
@@ -2270,7 +2270,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 21613,
       "shares_voted": 17476.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Sustainability ROI report",
       "vote_source": "SECURITY HOLDER"
     },
@@ -2286,7 +2286,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 28528,
       "shares_voted": 62885.9363,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Report on congruence of security, resiliency, and climate initiatives",
       "vote_source": "SECURITY HOLDER"
     },
@@ -2302,7 +2302,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 28531,
       "shares_voted": 62885.9363,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Sustainability ROI report",
       "vote_source": "SECURITY HOLDER"
     },
@@ -2318,7 +2318,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 3230,
       "shares_voted": 23535951.5556,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Report on congruence of security, resiliency, and climate initiatives",
       "vote_source": "SECURITY HOLDER"
     },
@@ -2334,7 +2334,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 3233,
       "shares_voted": 23535951.5556,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Sustainability ROI report",
       "vote_source": "SECURITY HOLDER"
     },
@@ -2350,7 +2350,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 7524,
       "shares_voted": 74988.51,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Report on congruence of security, resiliency, and climate initiatives",
       "vote_source": "SECURITY HOLDER"
     },
@@ -2366,7 +2366,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 7527,
       "shares_voted": 74988.51,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Sustainability ROI report",
       "vote_source": "SECURITY HOLDER"
     },
@@ -2382,7 +2382,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 11718,
       "shares_voted": 38680.78,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Report on congruence of security, resiliency, and climate initiatives",
       "vote_source": "SECURITY HOLDER"
     },
@@ -2398,7 +2398,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 11721,
       "shares_voted": 38680.78,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Sustainability ROI report",
       "vote_source": "SECURITY HOLDER"
     },
@@ -2414,7 +2414,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 22266,
       "shares_voted": 1.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal for a report on the Company's strategies and action plans to mitigate material environmental risks.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -2430,7 +2430,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 22267,
       "shares_voted": 17.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal for a report on the Company's strategies and action plans to mitigate material environmental risks.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -2446,7 +2446,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 22268,
       "shares_voted": 68.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal for a report on the Company's strategies and action plans to mitigate material environmental risks.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -2462,7 +2462,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 28749,
       "shares_voted": 296.09184,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal for a report on the Company's strategies and action plans to mitigate material environmental risks.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -2478,7 +2478,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 22308,
       "shares_voted": 113.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal requesting a report on objective evaluation of plastics packaging policies",
       "vote_source": "SECURITY HOLDER"
     },
@@ -2494,7 +2494,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 22309,
       "shares_voted": 104.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal requesting a report on objective evaluation of plastics packaging policies",
       "vote_source": "SECURITY HOLDER"
     },
@@ -2510,7 +2510,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 22310,
       "shares_voted": 9087.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal requesting a report on objective evaluation of plastics packaging policies",
       "vote_source": "SECURITY HOLDER"
     },
@@ -2526,7 +2526,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 28763,
       "shares_voted": 31896.68592,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal requesting a report on objective evaluation of plastics packaging policies",
       "vote_source": "SECURITY HOLDER"
     },
@@ -2542,7 +2542,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 7745,
       "shares_voted": 349.93,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal for a report on the Company's strategies and action plans to mitigate material environmental risks.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -2558,7 +2558,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 11939,
       "shares_voted": 182.81,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal for a report on the Company's strategies and action plans to mitigate material environmental risks.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -2574,7 +2574,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 3483,
       "shares_voted": 11983729.88508,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal requesting a report on objective evaluation of plastics packaging policies",
       "vote_source": "SECURITY HOLDER"
     },
@@ -2590,7 +2590,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 7759,
       "shares_voted": 37575.26,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal requesting a report on objective evaluation of plastics packaging policies.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -2606,7 +2606,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 11953,
       "shares_voted": 19572.97,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal requesting a report on objective evaluation of plastics packaging policies.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -2622,7 +2622,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 22653,
       "shares_voted": 15.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal relating to a report on climate-related pricing and coverage decisions, if presented at the Annual Meeting of Shareholders.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -2638,7 +2638,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 22654,
       "shares_voted": 221.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal relating to a report on climate-related pricing and coverage decisions, if presented at the Annual Meeting of Shareholders.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -2654,7 +2654,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 22655,
       "shares_voted": 1321.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal relating to a report on climate-related pricing and coverage decisions, if presented at the Annual Meeting of Shareholders.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -2670,7 +2670,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 28878,
       "shares_voted": 5513.84095,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal relating to a report on climate-related pricing and coverage decisions, if presented at the Annual Meeting of Shareholders.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -2686,7 +2686,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 3607,
       "shares_voted": 2032865.0188,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal relating to a report on climate-related pricing and coverage decisions, if presented at the Annual Meeting of Shareholders.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -2702,7 +2702,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 7874,
       "shares_voted": 6477.23,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal relating to a report on climate-related pricing and coverage decisions, if presented at the Annual Meeting of Shareholders.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -2718,7 +2718,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 12068,
       "shares_voted": 3341.1,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal relating to a report on climate-related pricing and coverage decisions, if presented at the Annual Meeting of Shareholders.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -2734,7 +2734,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 23230,
       "shares_voted": 158.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "A proposal entitled \"Paris Agreement Alignment\" requesting NextEra Energy publish a report describing if and how the Company plans to reduce its total contribution to climate change and align its operations and investments with the Paris Agreement's goal of maintaining global temperatures well below 2 degrees Celsius, and ideally, 1.5 degrees Celsius.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -2750,7 +2750,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 23231,
       "shares_voted": 4597.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "A proposal entitled \"Paris Agreement Alignment\" requesting NextEra Energy publish a report describing if and how the Company plans to reduce its total contribution to climate change and align its operations and investments with the Paris Agreement's goal of maintaining global temperatures well below 2 degrees Celsius, and ideally, 1.5 degrees Celsius.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -2766,7 +2766,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 23232,
       "shares_voted": 9304.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "A proposal entitled \"Paris Agreement Alignment\" requesting NextEra Energy publish a report describing if and how the Company plans to reduce its total contribution to climate change and align its operations and investments with the Paris Agreement's goal of maintaining global temperatures well below 2 degrees Celsius, and ideally, 1.5 degrees Celsius.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -2782,7 +2782,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 23233,
       "shares_voted": 167.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "A proposal entitled \"Report on Net Zero Business Performance Risks\" requesting the Board of Directors of NextEra Energy prepare a report within the next year, evaluating the potential costs and benefits to NextEra Energy created by aggressive emission reduction policies.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -2798,7 +2798,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 23234,
       "shares_voted": 159.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "A proposal entitled \"Report on Net Zero Business Performance Risks\" requesting the Board of Directors of NextEra Energy prepare a report within the next year, evaluating the potential costs and benefits to NextEra Energy created by aggressive emission reduction policies.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -2814,7 +2814,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 23235,
       "shares_voted": 13732.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "A proposal entitled \"Report on Net Zero Business Performance Risks\" requesting the Board of Directors of NextEra Energy prepare a report within the next year, evaluating the potential costs and benefits to NextEra Energy created by aggressive emission reduction policies.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -2830,7 +2830,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 29070,
       "shares_voted": 49762.71888,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "A proposal entitled \"Paris Agreement Alignment\" requesting NextEra Energy publish a report describing if and how the Company plans to reduce its total contribution to climate change and align its operations and investments with the Paris Agreement's goal of maintaining global temperatures well below 2 degrees Celsius, and ideally, 1.5 degrees Celsius.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -2846,7 +2846,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 29071,
       "shares_voted": 49762.71888,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "A proposal entitled \"Report on Net Zero Business Performance Risks\" requesting the Board of Directors of NextEra Energy prepare a report within the next year, evaluating the potential costs and benefits to NextEra Energy created by aggressive emission reduction policies.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -2862,7 +2862,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 3812,
       "shares_voted": 18346718.98752,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "A proposal entitled \"Paris Agreement Alignment\" requesting NextEra Energy publish a report describing if and how the Company plans to reduce its total contribution to climate change and align its operations and investments with the Paris Agreement's goal of maintaining global temperatures well below 2 degrees Celsius, and ideally, 1.5 degrees Celsius.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -2878,7 +2878,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 3813,
       "shares_voted": 18346718.98752,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "A proposal entitled \"Report on Net Zero Business Performance Risks\" requesting the Board of Directors of NextEra Energy prepare a report within the next year, evaluating the potential costs and benefits to NextEra Energy created by aggressive emission reduction policies.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -2894,7 +2894,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 8066,
       "shares_voted": 58457.32,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "A proposal entitled \"Paris Agreement Alignment\" requesting NextEra Energy publish a report describing if and how the Company plans to reduce its total contribution to climate change and align its operations and investments with the Paris Agreement's goal of maintaining global temperatures well below 2 degrees Celsius, and ideally, 1.5 degrees Celsius.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -2910,7 +2910,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 8067,
       "shares_voted": 58457.32,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "A proposal entitled \"Report on Net Zero Business Performance Risks\" requesting the Board of Directors of NextEra Energy prepare a report within the next year, evaluating the potential costs and benefits to NextEra Energy created by aggressive emission reduction policies.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -2926,7 +2926,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 12260,
       "shares_voted": 30153.62,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "A proposal entitled \"Paris Agreement Alignment\" requesting NextEra Energy publish a report describing if and how the Company plans to reduce its total contribution to climate change and align its operations and investments with the Paris Agreement's goal of maintaining global temperatures well below 2 degrees Celsius, and ideally, 1.5 degrees Celsius.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -2942,7 +2942,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 12261,
       "shares_voted": 30153.62,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "A proposal entitled \"Report on Net Zero Business Performance Risks\" requesting the Board of Directors of NextEra Energy prepare a report within the next year, evaluating the potential costs and benefits to NextEra Energy created by aggressive emission reduction policies.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -2958,7 +2958,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 23411,
       "shares_voted": 108.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder Proposal Regarding Evaluation of Recycling-Related Plastics Targets",
       "vote_source": "SECURITY HOLDER"
     },
@@ -2974,7 +2974,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 23412,
       "shares_voted": 67.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder Proposal Regarding Evaluation of Recycling-Related Plastics Targets",
       "vote_source": "SECURITY HOLDER"
     },
@@ -2990,7 +2990,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 23413,
       "shares_voted": 6907.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder Proposal Regarding Evaluation of Recycling-Related Plastics Targets",
       "vote_source": "SECURITY HOLDER"
     },
@@ -3006,7 +3006,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 23414,
       "shares_voted": 93.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder Proposal Regarding Report on Packaging Policies for Plastics",
       "vote_source": "SECURITY HOLDER"
     },
@@ -3022,7 +3022,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 23415,
       "shares_voted": 1343.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder Proposal Regarding Report on Packaging Policies for Plastics",
       "vote_source": "SECURITY HOLDER"
     },
@@ -3038,7 +3038,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 23416,
       "shares_voted": 5646.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder Proposal Regarding Report on Packaging Policies for Plastics",
       "vote_source": "SECURITY HOLDER"
     },
@@ -3054,7 +3054,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 23423,
       "shares_voted": 102.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder Proposal Regarding Biodiversity Impact and Dependency Assessment",
       "vote_source": "SECURITY HOLDER"
     },
@@ -3070,7 +3070,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 23424,
       "shares_voted": 1059.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder Proposal Regarding Biodiversity Impact and Dependency Assessment",
       "vote_source": "SECURITY HOLDER"
     },
@@ -3086,7 +3086,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 23425,
       "shares_voted": 5921.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder Proposal Regarding Biodiversity Impact and Dependency Assessment",
       "vote_source": "SECURITY HOLDER"
     },
@@ -3102,7 +3102,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 29114,
       "shares_voted": 25068.20684,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder Proposal Regarding Biodiversity Impact and Dependency Assessment",
       "vote_source": "SECURITY HOLDER"
     },
@@ -3118,7 +3118,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 29133,
       "shares_voted": 25068.20684,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder Proposal Regarding Evaluation of Recycling-Related Plastics Targets",
       "vote_source": "SECURITY HOLDER"
     },
@@ -3134,7 +3134,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 29134,
       "shares_voted": 25068.20684,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder Proposal Regarding Report on Packaging Policies for Plastics",
       "vote_source": "SECURITY HOLDER"
     },
@@ -3150,7 +3150,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 3878,
       "shares_voted": 9242247.14336,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder Proposal Regarding Evaluation of Recycling-Related Plastics Targets",
       "vote_source": "SECURITY HOLDER"
     },
@@ -3166,7 +3166,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 3879,
       "shares_voted": 9242247.14336,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder Proposal Regarding Report on Packaging Policies for Plastics",
       "vote_source": "SECURITY HOLDER"
     },
@@ -3182,7 +3182,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 3882,
       "shares_voted": 9242247.14336,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder Proposal Regarding Biodiversity Impact and Dependency Assessment",
       "vote_source": "SECURITY HOLDER"
     },
@@ -3198,7 +3198,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 8126,
       "shares_voted": 29448.15,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder Proposal Regarding Evaluation of Recycling-Related Plastics Targets",
       "vote_source": "SECURITY HOLDER"
     },
@@ -3214,7 +3214,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 8127,
       "shares_voted": 29448.15,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder Proposal Regarding Report on Packaging Policies for Plastics",
       "vote_source": "SECURITY HOLDER"
     },
@@ -3230,7 +3230,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 8130,
       "shares_voted": 29448.15,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder Proposal Regarding Biodiversity Impact and Dependency Assessment",
       "vote_source": "SECURITY HOLDER"
     },
@@ -3246,7 +3246,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 12320,
       "shares_voted": 15190.03,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder Proposal Regarding Evaluation of Recycling-Related Plastics Targets",
       "vote_source": "SECURITY HOLDER"
     },
@@ -3262,7 +3262,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 12321,
       "shares_voted": 15190.03,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder Proposal Regarding Report on Packaging Policies for Plastics",
       "vote_source": "SECURITY HOLDER"
     },
@@ -3278,7 +3278,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 12324,
       "shares_voted": 15190.03,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder Proposal Regarding Biodiversity Impact and Dependency Assessment",
       "vote_source": "SECURITY HOLDER"
     },
@@ -3294,7 +3294,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 23468,
       "shares_voted": 804.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Board oversight of material issues related to climate change",
       "vote_source": "SECURITY HOLDER"
     },
@@ -3310,7 +3310,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 23469,
       "shares_voted": 3720.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Board oversight of material issues related to climate change",
       "vote_source": "SECURITY HOLDER"
     },
@@ -3326,7 +3326,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 23470,
       "shares_voted": 22477.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Board oversight of material issues related to climate change",
       "vote_source": "SECURITY HOLDER"
     },
@@ -3342,7 +3342,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 23474,
       "shares_voted": 724.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Risks of non-fiduciary executive compensation metrics",
       "vote_source": "SECURITY HOLDER"
     },
@@ -3358,7 +3358,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 23475,
       "shares_voted": 705.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Risks of non-fiduciary executive compensation metrics",
       "vote_source": "SECURITY HOLDER"
     },
@@ -3374,7 +3374,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 23476,
       "shares_voted": 25571.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Risks of non-fiduciary executive compensation metrics",
       "vote_source": "SECURITY HOLDER"
     },
@@ -3390,7 +3390,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 29149,
       "shares_voted": 95567.21305,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Board oversight of material issues related to climate change",
       "vote_source": "ISSUER"
     },
@@ -3406,7 +3406,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 3898,
       "shares_voted": 35234103.7972,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Board oversight of material issues related to climate change",
       "vote_source": "SECURITY HOLDER"
     },
@@ -3422,7 +3422,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 3900,
       "shares_voted": 35234103.7972,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Risks of non-fiduciary executive compensation metrics",
       "vote_source": "SECURITY HOLDER"
     },
@@ -3438,7 +3438,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 8145,
       "shares_voted": 112264.83,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Board oversight of material issues related to climate change",
       "vote_source": "SECURITY HOLDER"
     },
@@ -3454,7 +3454,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 12339,
       "shares_voted": 57908.76,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Board oversight of material issues related to climate change",
       "vote_source": "SECURITY HOLDER"
     },
@@ -3470,7 +3470,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 23663,
       "shares_voted": 20.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal requesting a report on use of ESG and DEI metrics in executive compensation.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -3486,7 +3486,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 23664,
       "shares_voted": 17.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal requesting a report on use of ESG and DEI metrics in executive compensation.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -3502,7 +3502,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 23665,
       "shares_voted": 1815.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal requesting a report on use of ESG and DEI metrics in executive compensation.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -3518,7 +3518,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 29214,
       "shares_voted": 6556.57372,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal requesting a report on use of ESG and DEI metrics in executive compensation.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -3534,7 +3534,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 3967,
       "shares_voted": 2354937.48167,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal requesting a report on use of ESG and DEI metrics in executive compensation.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -3550,7 +3550,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 23750,
       "shares_voted": 215.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal regarding a report on DEI risks in federal contracting.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -3566,7 +3566,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 23751,
       "shares_voted": 200.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal regarding a report on DEI risks in federal contracting.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -3582,7 +3582,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 23752,
       "shares_voted": 17293.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal regarding a report on DEI risks in federal contracting.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -3598,7 +3598,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 23753,
       "shares_voted": 214.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal regarding a report on healthcare coverage gaps.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -3614,7 +3614,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 23754,
       "shares_voted": 205.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal regarding a report on healthcare coverage gaps.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -3630,7 +3630,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 23755,
       "shares_voted": 17289.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal regarding a report on healthcare coverage gaps.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -3646,7 +3646,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 3998,
       "shares_voted": 22803034.41378,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal regarding a report on DEI risks in federal contracting.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -3662,7 +3662,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 3999,
       "shares_voted": 22803034.41378,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal regarding a report on healthcare coverage gaps.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -3678,7 +3678,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 24110,
       "shares_voted": 22.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "A stockholder proposal regarding enhanced water risk disclosure, if properly presented.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -3694,7 +3694,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 24111,
       "shares_voted": 544.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "A stockholder proposal regarding enhanced water risk disclosure, if properly presented.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -3710,7 +3710,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 24112,
       "shares_voted": 1884.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "A stockholder proposal regarding enhanced water risk disclosure, if properly presented.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -3726,7 +3726,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 29363,
       "shares_voted": 8687.52339,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "A stockholder proposal regarding enhanced water risk disclosure, if properly presented.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -3742,7 +3742,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 4126,
       "shares_voted": 3155225.75693,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "A stockholder proposal regarding enhanced water risk disclosure, if properly presented.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -3758,7 +3758,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 8359,
       "shares_voted": 10628.69,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "A stockholder proposal regarding enhanced water risk disclosure, if properly presented.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -3774,7 +3774,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 12553,
       "shares_voted": 5250.7,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "A stockholder proposal regarding enhanced water risk disclosure, if properly presented.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -3790,7 +3790,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 24224,
       "shares_voted": 49.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder Proposal requesting a report describing how the Company could disclose its plastic packaging footprint.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -3806,7 +3806,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 24225,
       "shares_voted": 1037.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder Proposal requesting a report describing how the Company could disclose its plastic packaging footprint.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -3822,7 +3822,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 24226,
       "shares_voted": 2904.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder Proposal requesting a report describing how the Company could disclose its plastic packaging footprint.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -3838,7 +3838,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 29401,
       "shares_voted": 14125.03667,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder Proposal requesting a report describing how the Company could disclose its plastic packaging footprint.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -3854,7 +3854,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 4166,
       "shares_voted": 5207675.22968,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder Proposal requesting a report describing how the Company could disclose its plastic packaging footprint.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -3870,7 +3870,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 8397,
       "shares_voted": 16592.98,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder Proposal requesting a report describing how the Company could disclose its plastic packaging footprint.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -3886,7 +3886,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 12591,
       "shares_voted": 8559.04,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder Proposal requesting a report describing how the Company could disclose its plastic packaging footprint.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -3902,7 +3902,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 24810,
       "shares_voted": 289.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "To vote on a stockholder proposal entitled \"Sustainability ROI Report\", if properly presented.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -3918,7 +3918,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 24811,
       "shares_voted": 634.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "To vote on a stockholder proposal entitled \"Sustainability ROI Report\", if properly presented.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -3934,7 +3934,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 24812,
       "shares_voted": 16467.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "To vote on a stockholder proposal entitled \"Sustainability ROI Report\", if properly presented.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -3950,7 +3950,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 4375,
       "shares_voted": 21511543.47732,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "To vote on a stockholder proposal entitled \"Sustainability ROI Report\", if properly presented.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -3966,7 +3966,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 8592,
       "shares_voted": 91082.45,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "To vote on a stockholder proposal entitled \"Sustainability ROI Report\", if properly presented.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -3982,7 +3982,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 12786,
       "shares_voted": 43258.73,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "To vote on a stockholder proposal entitled \"Sustainability ROI Report\", if properly presented.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -3998,7 +3998,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 25074,
       "shares_voted": 42.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal requesting a report on reducing plastic microfiber shedding.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -4014,7 +4014,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 25075,
       "shares_voted": 600.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal requesting a report on reducing plastic microfiber shedding.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -4030,7 +4030,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 25076,
       "shares_voted": 2709.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal requesting a report on reducing plastic microfiber shedding.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -4046,7 +4046,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 29684,
       "shares_voted": 0.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal requesting a report on reducing plastic microfiber shedding.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -4062,7 +4062,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 4468,
       "shares_voted": 4144815.94956,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal requesting a report on presence of pesticides in Target's private label brands.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -4078,7 +4078,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 4469,
       "shares_voted": 4144815.94956,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal requesting a report on reducing plastic microfiber shedding.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -4094,7 +4094,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 8679,
       "shares_voted": 17718.44,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal requesting a report on presence of pesticides in Target's private label brands.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -4110,7 +4110,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 8680,
       "shares_voted": 17718.44,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal requesting a report on reducing plastic microfiber shedding.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -4126,7 +4126,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 12873,
       "shares_voted": 8377.51,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal requesting a report on presence of pesticides in Target's private label brands.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -4142,7 +4142,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 12874,
       "shares_voted": 8377.51,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal requesting a report on reducing plastic microfiber shedding.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -4158,7 +4158,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 25600,
       "shares_voted": 34.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Report on GHG emissions reductions.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -4174,7 +4174,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 25601,
       "shares_voted": 585.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Report on GHG emissions reductions.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -4190,7 +4190,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 25602,
       "shares_voted": 2885.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Report on GHG emissions reductions.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -4206,7 +4206,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 29859,
       "shares_voted": 0.0,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Report on GHG emissions reductions.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -4222,7 +4222,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 4659,
       "shares_voted": 4225025.5518,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Report on GHG emissions reductions.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -4238,7 +4238,7 @@
       "mgmt_rec_raw": "FOR",
       "seq": 8855,
       "shares_voted": 19999.11,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Report on GHG emissions reductions.",
       "vote_source": "SECURITY HOLDER"
     },
@@ -4254,7 +4254,7 @@
       "mgmt_rec_raw": "AGAINST",
       "seq": 13049,
       "shares_voted": 8931.23,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Report on GHG emissions reductions.",
       "vote_source": "SECURITY HOLDER"
     }

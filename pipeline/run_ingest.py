@@ -164,6 +164,17 @@ def process_source(conn, source, base_url_data, base_url_archives, run_id):
         if already_ingested(conn, accession):
             log(f"  {accession}: already ingested, raw sha256 verified - "
                 f"skipping fetch")
+            # Links are cheap (one index.html) and can improve after ingest -
+            # the rendered vote-table view is the receipt readers can use.
+            try:
+                links = adapter.vote_document_links(source, filing, base_url_archives)
+                store.update_filing_links(
+                    conn, accession, links["vote_doc_view_url"], links["series_name"])
+                conn.commit()
+                if links["vote_doc_view_url"]:
+                    log(f"  {accession}: rendered vote-table link refreshed")
+            except Exception as e:
+                log(f"  {accession}: link refresh failed (non-fatal): {e}")
             already += 1
             continue
 
@@ -205,6 +216,7 @@ def process_source(conn, source, base_url_data, base_url_archives, run_id):
             "vote_doc_name": result["vote_doc_name"],
             "vote_doc_type": result["vote_doc_type"],
             "vote_doc_url": result["vote_doc_url"],
+            "vote_doc_view_url": result.get("vote_doc_view_url"),
             "index_url": result["index_url"],
             "raw_path": rel_path,
             "raw_sha256": sha,

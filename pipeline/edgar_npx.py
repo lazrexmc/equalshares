@@ -35,6 +35,7 @@ dead source must never read as a quiet day).
 
 import gzip
 import json
+import re
 import sys
 import tempfile
 import time
@@ -183,6 +184,73 @@ def list_filings(source, base_url_data):
     return {"entity_name": entity_name, "filings": found[:max_filings]}
 
 
+_TR_RE = re.compile(r"<tr[^>]*>(.*?)</tr>", re.S | re.I)
+_TD_RE = re.compile(r"<td[^>]*>(.*?)</td>", re.S | re.I)
+_HREF_RE = re.compile(r'href="([^"]+)"', re.I)
+_TAG_RE = re.compile(r"<[^>]+>")
+
+
+def enumerate_index_html(dir_url, index_url, base_url_archives):
+    """Parse EDGAR's filing index PAGE (not index.json) into
+    {"docs": {name: {"type", "url", "view_url"}}, "series_name": str|None}.
+
+    Dogfood finding 2 (2026-08-28, live): index.json OMITS documents that the
+    filing page lists. For the target accession index.json showed only
+    primary_doc.xml, while index.html lists proxytable.xml (18.5MB, fetchable
+    directly) AND a rendered human-readable view of it
+    (xslNPX-INFO-TABLE_X01/proxytable.xml). The rendered view is the receipt a
+    reader can actually use; the index page is a document list. Every URL
+    returned here is EDGAR's own href, made absolute, stored verbatim.
+    """
+    import html as _html
+    body = _http_get(index_url).decode("utf-8", "replace")
+    docs = {}
+    series_name = None
+    for row in _TR_RE.findall(body):
+        cells = [_html.unescape(_TAG_RE.sub("", c)).strip()
+                 for c in _TD_RE.findall(row)]
+        hrefs = _HREF_RE.findall(row)
+        if not cells:
+            continue
+        # The series row: ['Series S000002840', '', '<fund name>']
+        if cells[0].startswith("Series ") and len(cells) >= 3 and series_name is None:
+            series_name = cells[2].strip() or None
+            continue
+        if not hrefs or len(cells) < 4:
+            continue
+        href = hrefs[0]
+        if href.startswith("/"):
+            href = f"{base_url_archives}{href}"
+        doc_type = cells[3].strip()
+        basename = href.rsplit("/", 1)[-1].lower()
+        entry = docs.setdefault(basename, {"type": doc_type, "url": None, "view_url": None})
+        if "/xsl" in href.lower():
+            entry["view_url"] = href
+        else:
+            entry["url"] = href
+        if doc_type and not entry["type"]:
+            entry["type"] = doc_type
+    return {"docs": docs, "series_name": series_name}
+
+
+def vote_document_links(source, filing, base_url_archives):
+    """Cheap link refresh for an ALREADY-INGESTED filing: one index.html fetch,
+    no raw download. Returns {"vote_doc_view_url", "series_name"} - either may
+    be None (absent-in-source), never guessed."""
+    accession = filing["accession"]
+    acc_nodash = accession.replace("-", "")
+    cik_int = int(source["cik"])
+    dir_url = f"{base_url_archives}/Archives/edgar/data/{cik_int}/{acc_nodash}"
+    index_url = f"{dir_url}/{accession}-index.html"
+    page = enumerate_index_html(dir_url, index_url, base_url_archives)
+    view_url = None
+    for name, d in page["docs"].items():
+        if "proxy voting" in (d["type"] or "").lower() or name.startswith("proxytable"):
+            view_url = d["view_url"]
+            break
+    return {"vote_doc_view_url": view_url, "series_name": page["series_name"]}
+
+
 def fetch_filing(source, filing, base_url_archives):
     """One filing -> its metadata plus the raw vote-document XML bytes.
 
@@ -211,9 +279,17 @@ def fetch_filing(source, filing, base_url_archives):
 
     primary_doc_lower = (filing.get("primary_doc") or "").lower()
 
+    # index.json is NOT the complete document list (dogfood finding 2): union
+    # it with the filing index PAGE, which also carries the rendered view URL
+    # and the fund series name.
+    page = enumerate_index_html(dir_url, index_url, base_url_archives)
+    view_url = None
+    page_series = page["series_name"]
+
     # Path 1: a non-primary vote-bearing XML sibling (some filers expose
     # proxytable*.xml directly). primary_doc.xml is the cover page: REJECT.
     siblings = []
+    seen = set()
     for item in items:
         name = (item.get("name") or "").strip()
         low = name.lower()
@@ -223,6 +299,18 @@ def fetch_filing(source, filing, base_url_archives):
         if (low.startswith("proxytable") and low.endswith(".xml")) or \
                 ("proxy voting" in item_type.lower()):
             siblings.append((name, item_type))
+            seen.add(low)
+    for low, d in page["docs"].items():
+        if low == primary_doc_lower or low in seen or not d["url"]:
+            continue
+        if (low.startswith("proxytable") and low.endswith(".xml")) or \
+                ("proxy voting" in (d["type"] or "").lower()):
+            siblings.append((low, d["type"] or ""))
+            seen.add(low)
+    for low in seen:
+        d = page["docs"].get(low)
+        if d and d["view_url"]:
+            view_url = d["view_url"]
 
     if len(siblings) > 1:
         names = ", ".join(n for n, _ in siblings)
@@ -240,12 +328,14 @@ def fetch_filing(source, filing, base_url_archives):
             "form": filing["form"],
             "filed_at": filing.get("filed_at"),
             "period_of_report": filing.get("period_of_report"),
-            # No SGML header on this path, so the series name is absent-in-source.
-            "series_name": None,
+            # Series name from the filing index page (the SGML header is not
+            # fetched on this path).
+            "series_name": page_series,
             "primary_doc": filing.get("primary_doc"),
             "vote_doc_name": name,
             "vote_doc_type": item_type or None,
             "vote_doc_url": vote_doc_url,
+            "vote_doc_view_url": view_url,
             "index_url": index_url,
             "raw": raw,
         }
@@ -278,11 +368,12 @@ def fetch_filing(source, filing, base_url_archives):
         "form": filing["form"],
         "filed_at": filing.get("filed_at"),
         "period_of_report": filing.get("period_of_report"),
-        "series_name": series_name,
+        "series_name": series_name or page_series,
         "primary_doc": filing.get("primary_doc"),
         "vote_doc_name": doc["filename"] or "proxy_voting_record.xml",
         "vote_doc_type": doc["type"] or None,
         "vote_doc_url": txt_url,
+        "vote_doc_view_url": view_url,
         "index_url": index_url,
         "raw": doc["payload"],
     }

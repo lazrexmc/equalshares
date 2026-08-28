@@ -268,7 +268,7 @@ def main():
         filing_obj = {
             k: filing[k]
             for k in (
-                "accession", "form", "filed_at", "period_of_report", "series_name",
+                "accession", "form", "filed_at", "period_of_report", "series_name", "vote_doc_view_url",
                 "vote_doc_name", "vote_doc_type", "vote_doc_url", "index_url",
                 "raw_sha256", "raw_bytes", "fetched_at",
             )
