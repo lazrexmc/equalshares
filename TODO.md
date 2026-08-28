@@ -29,11 +29,12 @@
 
 ## INBOX (captured, not chased)
 
-- **2026-08-28, Lance — system-wide comparison** *(framing corrected the same day: EqualShares
-  is a transparency instrument, not an investigation; it shows how funds voted the shares they hold
-  and lets funds be compared. It draws no conclusion about anyone.)* Put many funds' Roll Calls side
-  by side so a shareholder can see how *different* funds voted the *same* proposals and directors —
-  the contrast-set thesis, decision 3. Layers, in order of reach:
+- **2026-08-28, Lance — system-wide comparison: a CORE CAPABILITY, not the ultimate goal.**
+  The goal is transparency — show how funds voted the shares they hold, with receipts. Comparison
+  via the graphs is how that transparency becomes *useful*: put many funds' Roll Calls side by side
+  so a shareholder can see how *different* funds voted the *same* proposals and directors (the
+  contrast-set thesis, decision 3). The instrument draws no conclusion; the reader compares.
+  Layers, in order of reach:
   1. **Cross-filer comparison** of identical proposals and director elections — more `SOURCES`
      entries, same pipeline. Crosstab by `voteSource` first (today's finding).
   2. **Director-name resolution across issuers**, so one director's elections can be compared across
