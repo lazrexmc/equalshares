@@ -10,8 +10,12 @@
 - [ ] **Dogfood** (rung three): Lance is using the page at http://127.0.0.1:8765/ and reporting.
       Two findings so far, both fixed and deposited: the cold-reader intro; receipts land on EDGAR's
       rendered vote table.
-- [ ] **Cloudflare Pages connect** (~2 min, Lance): repo `equalshares`, **Root: `site`, Build
-      output: EMPTY**. Rung two.
+- [x] ~~**Cloudflare Pages connect**~~ — **DONE 2026-08-29. LIVE at https://equalshares.pages.dev/**
+      Root `site`, output empty (the pairing `deploy-runbook` trap 6.1 warns about — Lance checked
+      the wizard against the runbook before saving). Verified at the ORIGIN with curl, then in a
+      browser: CSP + nosniff + referrer-policy applied by Pages, JSON served as `application/json`,
+      anti-blend holds in the served payload, receipts resolve, category drill-down 200. **Zero
+      console errors under the production CSP.** Rung two reached.
 - [ ] **Where does the publication database live?** — the one open interruption. $10/mo project /
       schema-in-existing / stay static ($0, current). `README.md` has the facts.
 

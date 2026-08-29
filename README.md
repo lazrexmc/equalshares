@@ -71,6 +71,18 @@ is a summary; checks.py's own output is the authority.
 rendering (a failed fetch shows an error box, never an empty table) is
 exercised manually against serve_local.py - break a data file and reload.
 
+## Live
+
+**https://equalshares.pages.dev/** — deployed 2026-08-29 (Cloudflare Pages, root `site`, build
+output empty). Deploys on push to `master`. Verified at the origin, not in a browser: the CSP in
+`site/_headers` is applied by Pages, JSON is served as `application/json`, and the served payload
+carries no blended number.
+
+**Host semantics enumerated** (`deploy-runbook` §7.1, for this host): `/` → 200; `/index.html` →
+308 → `/`; **an unknown path returns 200, not 404** — there is no `404.html`, so a mistyped URL
+renders the Roll Call page. Cosmetic for a single-page site with no deep links; recorded rather
+than fixed.
+
 ## Known limitations, accepted deliberately (2026-08-28 review)
 
 Two review findings are DEFERRED, not fixed - recorded here so nobody mistakes
