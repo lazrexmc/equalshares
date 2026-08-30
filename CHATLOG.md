@@ -517,3 +517,9 @@ run `f97e5b26827a3e1d`. README: sources, layout, G11 row, deferred finding 2 clo
 delta. verify_claims C2/C3 now find the README's filing through the index.
 
 **Part 2 shipped, 2026-08-30 00:59 CDT (clock):** commit `4843198` (git 2026-08-30 00:58:03 -0500), pushed; `verify_deploy` at 00:59 CDT: 28 markers DEPLOYED (index, compare, four filing directories, JSON content-types, headers). Report and deposit candidates to rapidforge-79. Next on the queue: the contrast set (one SOURCES entry each once their series ids are read off EDGAR), a cold read of the compare view when unread readers exist, round four with Lance.
+
+**Part 2.1 (the contrast set) built, 2026-08-30 01:03 CDT (clock).** Series ids from the SEC's mutual-fund
+ticker file, which also confirmed the three Big Three pins exactly. Ingested in one run of seven sources, every series matched by id on the first or second index page read: Fidelity 500 Index Fund (138 MB, 22 series in the filing), T. Rowe Price Equity Index 500 Fund (45 MB, 6 series), Schwab S&P 500 Index Fund (88 MB, 12 series), Growth Fund of America (3 MB, 1 series). Extraction scoped to each pinned series: 110,666 rows across eight filings. The recommendation test then did what it was built for: Fidelity's and T. Rowe's filings carry zero self-contradicting proposals and are judged a board's view by evidence (headline_allowed true), while Vanguard's, iShares', SPDR's, Schwab's (12) and Growth Fund of America's (18) are not. Every gate passes
+over 8 filings; rendered under the production CSP via serve_local.py in Playwright with zero console messages: eight filings in the picker, a 13-category by 8-filing compare table that says in words that it scrolls, the Fidelity page's semantics line reading its board-view verdict. Engine run `f97e5b26827a3e1d`. A public pension is not an N-PX source
+(pensions file no vote records); decision 3's pension half is recorded as unreachable by this
+form, not built.

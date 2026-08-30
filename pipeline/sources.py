@@ -80,6 +80,62 @@ SOURCES = [
         "series_id": "S000006983",          # State Street(R) SPDR(R) Portfolio S&P 500(R) ETF; 45 series in one N-PX
         "series_match": "Portfolio S&P 500",
     },
+    # The contrast set (DRYRUN_001 decision 3), 2026-08-30. Series ids from the
+    # SEC's own ticker file (https://www.sec.gov/files/company_tickers_mf.json:
+    # FXAIX, PREIX, SWPPX, AGTHX); registrant names from each CIK's submissions
+    # JSON, which the identity check compares against. Three more S&P 500 index
+    # funds (like with like) and one active large-cap fund from Capital Group
+    # (the contrast). A public pension is NOT here: pensions do not file N-PX
+    # vote records (institutional managers file say-on-pay votes only), so that
+    # part of decision 3 has no N-PX source - recorded, not built.
+    {
+        "id": "npx:fidelity-concord-street-trust",
+        "type": "edgar-npx",
+        "enabled": True,
+        "cik": "0000819118",
+        "name": "FIDELITY CONCORD STREET TRUST",
+        "registrant_type": "RMIC",
+        "form": "N-PX",
+        "max_filings": 1,
+        "series_id": "S000006027",          # Fidelity 500 Index Fund (FXAIX)
+        "series_match": "Fidelity 500 Index",
+    },
+    {
+        "id": "npx:t-rowe-price-index-trust",
+        "type": "edgar-npx",
+        "enabled": True,
+        "cik": "0000858581",
+        "name": "T. Rowe Price Index Trust, Inc.",
+        "registrant_type": "RMIC",
+        "form": "N-PX",
+        "max_filings": 1,
+        "series_id": "S000002089",          # T. Rowe Price Equity Index 500 Fund (PREIX)
+        "series_match": "Equity Index 500",
+    },
+    {
+        "id": "npx:schwab-capital-trust",
+        "type": "edgar-npx",
+        "enabled": True,
+        "cik": "0000904333",
+        "name": "SCHWAB CAPITAL TRUST",
+        "registrant_type": "RMIC",
+        "form": "N-PX",
+        "max_filings": 1,
+        "series_id": "S000005911",          # Schwab S&P 500 Index Fund (SWPPX)
+        "series_match": "S&P 500 Index",
+    },
+    {
+        "id": "npx:growth-fund-of-america",
+        "type": "edgar-npx",
+        "enabled": True,
+        "cik": "0000044201",
+        "name": "GROWTH FUND OF AMERICA",
+        "registrant_type": "RMIC",
+        "form": "N-PX",
+        "max_filings": 1,
+        "series_id": "S000009228",          # The Growth Fund of America (AGTHX), Capital Group; active
+        "series_match": "Growth Fund of America",
+    },
 ]
 
 CONFIG = {

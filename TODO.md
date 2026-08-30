@@ -7,9 +7,10 @@
 
 ## RESUME HERE
 
-**Live state as of 2026-08-30 00:58 CDT (from `date` on this machine). This block outranks every other document in this repo.**
+**Live state as of 2026-08-30 01:03 CDT (from `date` on this machine). This block outranks every other document in this repo.**
 
-- **LIVE at https://equalshares.pages.dev/ - rung two** (built, deployed, verified at the origin).
+- **LIVE at https://equalshares.pages.dev/ - rung two** (built, deployed, verified at the origin);
+  8 fund series on the page as of 2026-08-30, the same category comparable across them.
   Rung three is Lance using it and reporting. Two dogfood findings so far, both fixed (`df0c576`
   cold-reader intro, `cc24368` receipts land on EDGAR's rendered vote table).
 - **The one open owner decision is CLOSED: stay static, $0.** Lance, 2026-08-29, on the EventFinds
@@ -80,9 +81,9 @@
 
 - [x] ~~**Big Three**~~ - DONE 2026-08-30 (Part 2): Vanguard 500, iShares Core S&P 500, SPDR Portfolio
       S&P 500, each one `SOURCES` entry pinned by series id.
-- [ ] **Contrast set** (Fidelity, T. Rowe, Capital Group, a large pension) - decision 3; one
-      `SOURCES` entry each once their series ids are read off EDGAR; the IM *notice* reports
-      enumerate a filer's fund registrants for free (DRYRUN_001 finding 4).
+- [x] ~~**Contrast set**~~ - DONE 2026-08-30 (Part 2.1): Fidelity 500 Index, T. Rowe Price Equity Index
+      500, Schwab S&P 500 Index, Growth Fund of America (active, Capital Group). The pension half of
+      decision 3 has no N-PX source (pensions file no vote records) - recorded, not built.
 - [x] ~~**Multi-filing support**~~ - DONE 2026-08-30 (Part 2). Pinned by series id; the page lists every
       filing and compares the same category across them.
 - [ ] **Shadow/promotion path** for the extractor - build it the first time the extractor is

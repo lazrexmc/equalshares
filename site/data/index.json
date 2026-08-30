@@ -2,6 +2,40 @@
   "engine_run_id": "f97e5b26827a3e1d",
   "filings": [
     {
+      "accession": "0000819118-26-000175",
+      "cik": "0000819118",
+      "dir": "filings/0000819118-26-000175",
+      "engine_run_id": "f97e5b26827a3e1d",
+      "filed_at": "2026-08-27",
+      "filer_name": "FIDELITY CONCORD STREET TRUST",
+      "form": "N-PX",
+      "issuers": 495,
+      "lots": 6505,
+      "mgmt_rec_verdict": "board-view",
+      "period_of_report": "2026-06-30",
+      "proposals": 6590,
+      "records": 6591,
+      "series_id": "S000006027",
+      "series_name": "Fidelity 500 Index Fund"
+    },
+    {
+      "accession": "0001104659-26-102934",
+      "cik": "0000044201",
+      "dir": "filings/0001104659-26-102934",
+      "engine_run_id": "f97e5b26827a3e1d",
+      "filed_at": "2026-08-28",
+      "filer_name": "GROWTH FUND OF AMERICA",
+      "form": "N-PX",
+      "issuers": 291,
+      "lots": 3742,
+      "mgmt_rec_verdict": "not-board-view",
+      "period_of_report": "2026-06-30",
+      "proposals": 3773,
+      "records": 3797,
+      "series_id": "S000009228",
+      "series_name": "GROWTH FUND OF AMERICA"
+    },
+    {
       "accession": "0001438934-26-002275",
       "cik": "0001100663",
       "dir": "filings/0001438934-26-002275",
@@ -19,6 +53,23 @@
       "series_name": "iShares Core S&P 500 ETF"
     },
     {
+      "accession": "0001193125-26-373453",
+      "cik": "0000904333",
+      "dir": "filings/0001193125-26-373453",
+      "engine_run_id": "f97e5b26827a3e1d",
+      "filed_at": "2026-08-28",
+      "filer_name": "SCHWAB CAPITAL TRUST",
+      "form": "N-PX",
+      "issuers": 494,
+      "lots": 6614,
+      "mgmt_rec_verdict": "not-board-view",
+      "period_of_report": "2026-06-30",
+      "proposals": 6575,
+      "records": 6614,
+      "series_id": "S000005911",
+      "series_name": "Schwab S&P 500 Index Fund"
+    },
+    {
       "accession": "0001193125-26-351549",
       "cik": "0001064642",
       "dir": "filings/0001193125-26-351549",
@@ -34,6 +85,23 @@
       "records": 8901,
       "series_id": "S000006983",
       "series_name": "State Street(R) SPDR(R) Portfolio S&P 500(R) ETF"
+    },
+    {
+      "accession": "0001193125-26-372939",
+      "cik": "0000858581",
+      "dir": "filings/0001193125-26-372939",
+      "engine_run_id": "f97e5b26827a3e1d",
+      "filed_at": "2026-08-28",
+      "filer_name": "T. Rowe Price Index Trust, Inc.",
+      "form": "N-PX",
+      "issuers": 495,
+      "lots": 6591,
+      "mgmt_rec_verdict": "board-view",
+      "period_of_report": "2026-06-30",
+      "proposals": 6590,
+      "records": 6591,
+      "series_id": "S000002089",
+      "series_name": "T. Rowe Price Equity Index 500 Fund"
     },
     {
       "accession": "0001104659-26-101970",
@@ -70,6 +138,6 @@
       "series_name": "Vanguard Morningstar Value Index Fund"
     }
   ],
-  "generated_at": "2026-08-30T05:55:09+00:00",
+  "generated_at": "2026-08-30T06:02:12+00:00",
   "thin_n": 5
 }

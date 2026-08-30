@@ -259,3 +259,18 @@ Engine run `f97e5b26827a3e1d`; rendered under the production CSP via serve_local
 voted shares on management items: iShares Core S&P 500 80% (4,794 of 5,995), SPDR Portfolio S&P
 500 73.3% (4,514 of 6,159), Vanguard 500 74% (19,994 of 27,004), Vanguard Morningstar Value 71%
 (13,992 of 19,701). Every number is that filing's own; the reader compares.
+
+## 15. Part 2.1 - the contrast set, built 2026-08-30
+
+Decision 3's contrast set, as far as N-PX reaches. Series ids came from the SEC's own
+mutual-fund ticker file (`company_tickers_mf.json`: FXAIX, PREIX, SWPPX, AGTHX), registrant names
+from each CIK's submissions JSON (the identity check compares against them). Added: Fidelity 500
+Index Fund (FIDELITY CONCORD STREET TRUST, S000006027), T. Rowe Price Equity Index 500 Fund
+(T. Rowe Price Index Trust, Inc., S000002089), Schwab S&P 500 Index Fund (SCHWAB CAPITAL TRUST,
+S000005911; not in decision 3, added because it is the fourth large S&P 500 index fund and one
+config line), and The Growth Fund of America (GROWTH FUND OF AMERICA, S000009228; Capital Group;
+active, the contrast). **A public pension is not here and cannot be:** pensions do not file N-PX
+vote records (since 2024 institutional managers file say-on-pay votes only), so that half of
+decision 3 has no N-PX source. Recorded, not built.
+
+Ingested in one run of seven sources, every series matched by id on the first or second index page read: Fidelity 500 Index Fund (138 MB, 22 series in the filing), T. Rowe Price Equity Index 500 Fund (45 MB, 6 series), Schwab S&P 500 Index Fund (88 MB, 12 series), Growth Fund of America (3 MB, 1 series). Extraction scoped to each pinned series: 110,666 rows across eight filings. The recommendation test then did what it was built for: Fidelity's and T. Rowe's filings carry zero self-contradicting proposals and are judged a board's view by evidence (headline_allowed true), while Vanguard's, iShares', SPDR's, Schwab's (12) and Growth Fund of America's (18) are not. Engine run `f97e5b26827a3e1d`; 8 filings on the page; rendered under the production CSP via serve_local.py in Playwright with zero console messages: eight filings in the picker, a 13-category by 8-filing compare table that says in words that it scrolls, the Fidelity page's semantics line reading its board-view verdict.

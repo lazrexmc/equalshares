@@ -1,0 +1,49 @@
+{
+  "category": "OTHER",
+  "n": 2,
+  "records": [
+    {
+      "categories_all": "OTHER",
+      "cusip": "Y74718100",
+      "how_voted": "FOR",
+      "how_voted_raw": "FOR",
+      "isin": "KR7005930003",
+      "issuer_name": "Samsung Electronics Co., Ltd.",
+      "lot_index": 1,
+      "lots_in_proposal": 1,
+      "meeting_date": "2026-03-18",
+      "mgmt_rec": "FOR",
+      "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": false,
+      "other_categories": [],
+      "proposal_no": 685,
+      "seq": 693,
+      "shares_voted": 570019.0,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/44201/000110465926102934/xslNPX-INFO-TABLE_X01/proxytable.xml",
+      "vote_description": "Approval of the Plan for Holding and Disposition of Treasury Shares",
+      "vote_source": "ISSUER"
+    },
+    {
+      "categories_all": "OTHER",
+      "cusip": "Y8085F100",
+      "how_voted": "FOR",
+      "how_voted_raw": "FOR",
+      "isin": "KR7000660001",
+      "issuer_name": "SK hynix, Inc.",
+      "lot_index": 1,
+      "lots_in_proposal": 1,
+      "meeting_date": "2026-03-25",
+      "mgmt_rec": "FOR",
+      "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": false,
+      "other_categories": [],
+      "proposal_no": 724,
+      "seq": 732,
+      "shares_voted": 3705376.0,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/44201/000110465926102934/xslNPX-INFO-TABLE_X01/proxytable.xml",
+      "vote_description": "Approval of the Plan for Holding and Disposition of Treasury Shares",
+      "vote_source": "ISSUER"
+    }
+  ],
+  "slug": "other"
+}

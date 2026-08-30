@@ -1,0 +1,2918 @@
+{
+  "issuers": [
+    {
+      "cusip": "00187Y100",
+      "records": 12,
+      "spellings": [
+        {
+          "lots": 12,
+          "name": "APi Group Corporation"
+        }
+      ]
+    },
+    {
+      "cusip": "00217D100",
+      "records": 13,
+      "spellings": [
+        {
+          "lots": 13,
+          "name": "AST Spacemobile, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "002824100",
+      "records": 16,
+      "spellings": [
+        {
+          "lots": 16,
+          "name": "Abbott Laboratories"
+        }
+      ]
+    },
+    {
+      "cusip": "00287Y109",
+      "records": 8,
+      "spellings": [
+        {
+          "lots": 8,
+          "name": "AbbVie Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "00724F101",
+      "records": 18,
+      "spellings": [
+        {
+          "lots": 18,
+          "name": "Adobe Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "007903107",
+      "records": 12,
+      "spellings": [
+        {
+          "lots": 12,
+          "name": "Advanced Micro Devices, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "00827B106",
+      "records": 6,
+      "spellings": [
+        {
+          "lots": 6,
+          "name": "Affirm Holdings, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "008474108",
+      "records": 13,
+      "spellings": [
+        {
+          "lots": 13,
+          "name": "Agnico Eagle Mines Limited"
+        }
+      ]
+    },
+    {
+      "cusip": "009158106",
+      "records": 12,
+      "spellings": [
+        {
+          "lots": 12,
+          "name": "Air Products and Chemicals, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "012653101",
+      "records": 15,
+      "spellings": [
+        {
+          "lots": 15,
+          "name": "Albemarle Corporation"
+        }
+      ]
+    },
+    {
+      "cusip": "016255101",
+      "records": 13,
+      "spellings": [
+        {
+          "lots": 13,
+          "name": "Align Technology, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "01741R102",
+      "records": 5,
+      "spellings": [
+        {
+          "lots": 5,
+          "name": "ATI Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "02043Q107",
+      "records": 5,
+      "spellings": [
+        {
+          "lots": 5,
+          "name": "Alnylam Pharmaceuticals, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "02079K305",
+      "records": 23,
+      "spellings": [
+        {
+          "lots": 23,
+          "name": "Alphabet Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "023135106",
+      "records": 18,
+      "spellings": [
+        {
+          "lots": 18,
+          "name": "Amazon.com, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "025816109",
+      "records": 17,
+      "spellings": [
+        {
+          "lots": 17,
+          "name": "American Express Company"
+        }
+      ]
+    },
+    {
+      "cusip": "03027X100",
+      "records": 14,
+      "spellings": [
+        {
+          "lots": 14,
+          "name": "American Tower Corporation"
+        }
+      ]
+    },
+    {
+      "cusip": "031162100",
+      "records": 15,
+      "spellings": [
+        {
+          "lots": 15,
+          "name": "Amgen Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "032095101",
+      "records": 10,
+      "spellings": [
+        {
+          "lots": 10,
+          "name": "Amphenol Corporation"
+        }
+      ]
+    },
+    {
+      "cusip": "03769M106",
+      "records": 16,
+      "spellings": [
+        {
+          "lots": 16,
+          "name": "Apollo Global Management, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "037833100",
+      "records": 12,
+      "spellings": [
+        {
+          "lots": 12,
+          "name": "Apple Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "03820C105",
+      "records": 5,
+      "spellings": [
+        {
+          "lots": 5,
+          "name": "Applied Industrial Technologies, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "038222105",
+      "records": 12,
+      "spellings": [
+        {
+          "lots": 12,
+          "name": "Applied Materials, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "03831W108",
+      "records": 13,
+      "spellings": [
+        {
+          "lots": 13,
+          "name": "AppLovin Corporation"
+        }
+      ]
+    },
+    {
+      "cusip": "03852U106",
+      "records": 13,
+      "spellings": [
+        {
+          "lots": 13,
+          "name": "Aramark"
+        }
+      ]
+    },
+    {
+      "cusip": "03990B101",
+      "records": 12,
+      "spellings": [
+        {
+          "lots": 12,
+          "name": "Ares Management Corporation"
+        }
+      ]
+    },
+    {
+      "cusip": "040413205",
+      "records": 5,
+      "spellings": [
+        {
+          "lots": 5,
+          "name": "Arista Networks, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "042068205",
+      "records": 12,
+      "spellings": [
+        {
+          "lots": 12,
+          "name": "Arm Holdings Plc"
+        }
+      ]
+    },
+    {
+      "cusip": "049468101",
+      "records": 15,
+      "spellings": [
+        {
+          "lots": 15,
+          "name": "Atlassian Corporation"
+        }
+      ]
+    },
+    {
+      "cusip": "051774107",
+      "records": 5,
+      "spellings": [
+        {
+          "lots": 5,
+          "name": "Aurora Innovation, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "053015103",
+      "records": 14,
+      "spellings": [
+        {
+          "lots": 14,
+          "name": "Automatic Data Processing, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "05464C101",
+      "records": 11,
+      "spellings": [
+        {
+          "lots": 11,
+          "name": "Axon Enterprise, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "05550J101",
+      "records": 16,
+      "spellings": [
+        {
+          "lots": 16,
+          "name": "BJ's Wholesale Club Holdings, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "060505104",
+      "records": 16,
+      "spellings": [
+        {
+          "lots": 16,
+          "name": "Bank of America Corporation"
+        }
+      ]
+    },
+    {
+      "cusip": "06849F108",
+      "records": 11,
+      "spellings": [
+        {
+          "lots": 11,
+          "name": "Barrick Mining Corporation"
+        }
+      ]
+    },
+    {
+      "cusip": "084670702",
+      "records": 16,
+      "spellings": [
+        {
+          "lots": 16,
+          "name": "Berkshire Hathaway Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "09290D101",
+      "records": 22,
+      "spellings": [
+        {
+          "lots": 22,
+          "name": "BlackRock, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "09581B103",
+      "records": 4,
+      "spellings": [
+        {
+          "lots": 4,
+          "name": "Blue Owl Capital Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "097023105",
+      "records": 17,
+      "spellings": [
+        {
+          "lots": 17,
+          "name": "The Boeing Company"
+        }
+      ]
+    },
+    {
+      "cusip": "097751861",
+      "records": 16,
+      "spellings": [
+        {
+          "lots": 16,
+          "name": "Bombardier Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "09857L108",
+      "records": 16,
+      "spellings": [
+        {
+          "lots": 16,
+          "name": "Booking Holdings Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "101137107",
+      "records": 17,
+      "spellings": [
+        {
+          "lots": 17,
+          "name": "Boston Scientific Corporation"
+        }
+      ]
+    },
+    {
+      "cusip": "11135F101",
+      "records": 10,
+      "spellings": [
+        {
+          "lots": 10,
+          "name": "Broadcom Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "115236101",
+      "records": 17,
+      "spellings": [
+        {
+          "lots": 17,
+          "name": "Brown & Brown, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "12008R107",
+      "records": 10,
+      "spellings": [
+        {
+          "lots": 10,
+          "name": "Builders FirstSource, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "122017106",
+      "records": 10,
+      "spellings": [
+        {
+          "lots": 10,
+          "name": "Burlington Stores, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "126408103",
+      "records": 14,
+      "spellings": [
+        {
+          "lots": 14,
+          "name": "CSX Corporation"
+        }
+      ]
+    },
+    {
+      "cusip": "126650100",
+      "records": 17,
+      "spellings": [
+        {
+          "lots": 17,
+          "name": "CVS Health Corporation"
+        }
+      ]
+    },
+    {
+      "cusip": "127387108",
+      "records": 14,
+      "spellings": [
+        {
+          "lots": 14,
+          "name": "Cadence Design Systems, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "12769G100",
+      "records": 13,
+      "spellings": [
+        {
+          "lots": 13,
+          "name": "Caesars Entertainment, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "136385101",
+      "records": 14,
+      "spellings": [
+        {
+          "lots": 14,
+          "name": "Canadian Natural Resources Limited"
+        }
+      ]
+    },
+    {
+      "cusip": "14040H105",
+      "records": 16,
+      "spellings": [
+        {
+          "lots": 16,
+          "name": "Capital One Financial Corporation"
+        }
+      ]
+    },
+    {
+      "cusip": "14448C104",
+      "records": 12,
+      "spellings": [
+        {
+          "lots": 12,
+          "name": "Carrier Global Corporation"
+        }
+      ]
+    },
+    {
+      "cusip": "146869102",
+      "records": 9,
+      "spellings": [
+        {
+          "lots": 9,
+          "name": "Carvana Co."
+        }
+      ]
+    },
+    {
+      "cusip": "147528103",
+      "records": 15,
+      "spellings": [
+        {
+          "lots": 15,
+          "name": "Casey's General Stores, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "149123101",
+      "records": 13,
+      "spellings": [
+        {
+          "lots": 13,
+          "name": "Caterpillar, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "15135U109",
+      "records": 16,
+      "spellings": [
+        {
+          "lots": 16,
+          "name": "Cenovus Energy Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "15677J108",
+      "records": 3,
+      "spellings": [
+        {
+          "lots": 3,
+          "name": "Dayforce, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "16119P108",
+      "records": 24,
+      "spellings": [
+        {
+          "lots": 24,
+          "name": "Charter Communications, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "166764100",
+      "records": 17,
+      "spellings": [
+        {
+          "lots": 17,
+          "name": "Chevron Corporation"
+        }
+      ]
+    },
+    {
+      "cusip": "16935C109",
+      "records": 6,
+      "spellings": [
+        {
+          "lots": 6,
+          "name": "Chime Financial, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "169656105",
+      "records": 12,
+      "spellings": [
+        {
+          "lots": 12,
+          "name": "Chipotle Mexican Grill, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "18915M107",
+      "records": 14,
+      "spellings": [
+        {
+          "lots": 14,
+          "name": "Cloudflare, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "191216100",
+      "records": 19,
+      "spellings": [
+        {
+          "lots": 19,
+          "name": "The Coca-Cola Company"
+        }
+      ]
+    },
+    {
+      "cusip": "19260Q107",
+      "records": 10,
+      "spellings": [
+        {
+          "lots": 10,
+          "name": "Coinbase Global, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "20825C104",
+      "records": 17,
+      "spellings": [
+        {
+          "lots": 17,
+          "name": "ConocoPhillips"
+        }
+      ]
+    },
+    {
+      "cusip": "21036P108",
+      "records": 14,
+      "spellings": [
+        {
+          "lots": 14,
+          "name": "Constellation Brands, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "21037T109",
+      "records": 14,
+      "spellings": [
+        {
+          "lots": 14,
+          "name": "Constellation Energy Corporation"
+        }
+      ]
+    },
+    {
+      "cusip": "21037X100",
+      "records": 11,
+      "spellings": [
+        {
+          "lots": 11,
+          "name": "Constellation Software Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "217204106",
+      "records": 14,
+      "spellings": [
+        {
+          "lots": 14,
+          "name": "Copart, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "219350105",
+      "records": 13,
+      "spellings": [
+        {
+          "lots": 13,
+          "name": "Corning Incorporated"
+        }
+      ]
+    },
+    {
+      "cusip": "22160K105",
+      "records": 13,
+      "spellings": [
+        {
+          "lots": 13,
+          "name": "Costco Wholesale Corporation"
+        }
+      ]
+    },
+    {
+      "cusip": "22160N109",
+      "records": 11,
+      "spellings": [
+        {
+          "lots": 11,
+          "name": "CoStar Group, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "23331A109",
+      "records": 11,
+      "spellings": [
+        {
+          "lots": 11,
+          "name": "D.R. Horton, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "235851102",
+      "records": 14,
+      "spellings": [
+        {
+          "lots": 14,
+          "name": "Danaher Corporation"
+        }
+      ]
+    },
+    {
+      "cusip": "247361702",
+      "records": 18,
+      "spellings": [
+        {
+          "lots": 18,
+          "name": "Delta Air Lines, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "25278X109",
+      "records": 16,
+      "spellings": [
+        {
+          "lots": 16,
+          "name": "Diamondback Energy, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "256163106",
+      "records": 7,
+      "spellings": [
+        {
+          "lots": 7,
+          "name": "DocuSign, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "256746108",
+      "records": 13,
+      "spellings": [
+        {
+          "lots": 13,
+          "name": "Dollar Tree, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "25809K105",
+      "records": 6,
+      "spellings": [
+        {
+          "lots": 6,
+          "name": "DoorDash, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "26142V105",
+      "records": 13,
+      "spellings": [
+        {
+          "lots": 13,
+          "name": "DraftKings Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "26622P107",
+      "records": 4,
+      "spellings": [
+        {
+          "lots": 4,
+          "name": "Doximity, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "26875P101",
+      "records": 11,
+      "spellings": [
+        {
+          "lots": 11,
+          "name": "EOG Resources, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "26884L109",
+      "records": 13,
+      "spellings": [
+        {
+          "lots": 13,
+          "name": "EQT Corporation"
+        }
+      ]
+    },
+    {
+      "cusip": "27579R104",
+      "records": 15,
+      "spellings": [
+        {
+          "lots": 15,
+          "name": "East West Bancorp, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "278865100",
+      "records": 16,
+      "spellings": [
+        {
+          "lots": 16,
+          "name": "Ecolab Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "294429105",
+      "records": 14,
+      "spellings": [
+        {
+          "lots": 14,
+          "name": "Equifax Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "30233Q108",
+      "records": 17,
+      "spellings": [
+        {
+          "lots": 17,
+          "name": "Exxon Mobil Corporation"
+        }
+      ]
+    },
+    {
+      "cusip": "30303M102",
+      "records": 23,
+      "spellings": [
+        {
+          "lots": 23,
+          "name": "Meta Platforms, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "303250104",
+      "records": 12,
+      "spellings": [
+        {
+          "lots": 12,
+          "name": "Fair Isaac Corporation"
+        }
+      ]
+    },
+    {
+      "cusip": "31428X106",
+      "records": 17,
+      "spellings": [
+        {
+          "lots": 17,
+          "name": "FedEx Corporation"
+        }
+      ]
+    },
+    {
+      "cusip": "335934105",
+      "records": 14,
+      "spellings": [
+        {
+          "lots": 14,
+          "name": "First Quantum Minerals Ltd."
+        }
+      ]
+    },
+    {
+      "cusip": "336433107",
+      "records": 13,
+      "spellings": [
+        {
+          "lots": 13,
+          "name": "First Solar, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "339750101",
+      "records": 14,
+      "spellings": [
+        {
+          "lots": 14,
+          "name": "Floor & Decor Holdings, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "35671D857",
+      "records": 13,
+      "spellings": [
+        {
+          "lots": 13,
+          "name": "Freeport-McMoRan Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "36168Q104",
+      "records": 12,
+      "spellings": [
+        {
+          "lots": 12,
+          "name": "GFL Environmental Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "36266G107",
+      "records": 10,
+      "spellings": [
+        {
+          "lots": 10,
+          "name": "GE Healthcare Technologies, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "366651107",
+      "records": 15,
+      "spellings": [
+        {
+          "lots": 15,
+          "name": "Gartner, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "36828A101",
+      "records": 6,
+      "spellings": [
+        {
+          "lots": 6,
+          "name": "GE Vernova Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "369604301",
+      "records": 14,
+      "spellings": [
+        {
+          "lots": 14,
+          "name": "GE Aerospace"
+        }
+      ]
+    },
+    {
+      "cusip": "37045V100",
+      "records": 17,
+      "spellings": [
+        {
+          "lots": 17,
+          "name": "General Motors Company"
+        }
+      ]
+    },
+    {
+      "cusip": "38141G104",
+      "records": 18,
+      "spellings": [
+        {
+          "lots": 18,
+          "name": "The Goldman Sachs Group, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "40131M109",
+      "records": 5,
+      "spellings": [
+        {
+          "lots": 5,
+          "name": "Guardant Health, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "40412C101",
+      "records": 13,
+      "spellings": [
+        {
+          "lots": 13,
+          "name": "HCA Healthcare, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "406216101",
+      "records": 17,
+      "spellings": [
+        {
+          "lots": 17,
+          "name": "Halliburton Company"
+        }
+      ]
+    },
+    {
+      "cusip": "422806109",
+      "records": 11,
+      "spellings": [
+        {
+          "lots": 11,
+          "name": "HEICO Corporation"
+        }
+      ]
+    },
+    {
+      "cusip": "422806208",
+      "records": 11,
+      "spellings": [
+        {
+          "lots": 11,
+          "name": "HEICO Corporation"
+        }
+      ]
+    },
+    {
+      "cusip": "427866108",
+      "records": 13,
+      "spellings": [
+        {
+          "lots": 13,
+          "name": "The Hershey Company"
+        }
+      ]
+    },
+    {
+      "cusip": "42824C109",
+      "records": 16,
+      "spellings": [
+        {
+          "lots": 16,
+          "name": "Hewlett Packard Enterprise Company"
+        }
+      ]
+    },
+    {
+      "cusip": "43300A203",
+      "records": 13,
+      "spellings": [
+        {
+          "lots": 13,
+          "name": "Hilton Worldwide Holdings Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "437076102",
+      "records": 23,
+      "spellings": [
+        {
+          "lots": 23,
+          "name": "The Home Depot, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "443573100",
+      "records": 10,
+      "spellings": [
+        {
+          "lots": 10,
+          "name": "HubSpot, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "452327109",
+      "records": 11,
+      "spellings": [
+        {
+          "lots": 11,
+          "name": "Illumina, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "45687V106",
+      "records": 13,
+      "spellings": [
+        {
+          "lots": 13,
+          "name": "Ingersoll Rand Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "457669307",
+      "records": 4,
+      "spellings": [
+        {
+          "lots": 4,
+          "name": "Insmed Incorporated"
+        }
+      ]
+    },
+    {
+      "cusip": "458140100",
+      "records": 18,
+      "spellings": [
+        {
+          "lots": 18,
+          "name": "Intel Corporation"
+        }
+      ]
+    },
+    {
+      "cusip": "45866F104",
+      "records": 15,
+      "spellings": [
+        {
+          "lots": 15,
+          "name": "Intercontinental Exchange, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "460146103",
+      "records": 13,
+      "spellings": [
+        {
+          "lots": 13,
+          "name": "International Paper Company"
+        }
+      ]
+    },
+    {
+      "cusip": "461202103",
+      "records": 14,
+      "spellings": [
+        {
+          "lots": 14,
+          "name": "Intuit Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "46120E602",
+      "records": 13,
+      "spellings": [
+        {
+          "lots": 13,
+          "name": "Intuitive Surgical, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "462222100",
+      "records": 6,
+      "spellings": [
+        {
+          "lots": 6,
+          "name": "Ionis Pharmaceuticals, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "46266C105",
+      "records": 13,
+      "spellings": [
+        {
+          "lots": 13,
+          "name": "IQVIA Holdings Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "46625H100",
+      "records": 17,
+      "spellings": [
+        {
+          "lots": 17,
+          "name": "JPMorgan Chase & Co."
+        }
+      ]
+    },
+    {
+      "cusip": "478160104",
+      "records": 15,
+      "spellings": [
+        {
+          "lots": 15,
+          "name": "Johnson & Johnson"
+        }
+      ]
+    },
+    {
+      "cusip": "482480100",
+      "records": 12,
+      "spellings": [
+        {
+          "lots": 12,
+          "name": "KLA Corporation"
+        }
+      ]
+    },
+    {
+      "cusip": "48251W104",
+      "records": 6,
+      "spellings": [
+        {
+          "lots": 6,
+          "name": "KKR & Co. Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "49714P108",
+      "records": 11,
+      "spellings": [
+        {
+          "lots": 11,
+          "name": "Kinsale Capital Group, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "49845K101",
+      "records": 5,
+      "spellings": [
+        {
+          "lots": 5,
+          "name": "Klaviyo, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "50212V100",
+      "records": 16,
+      "spellings": [
+        {
+          "lots": 16,
+          "name": "LPL Financial Holdings Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "512807306",
+      "records": 16,
+      "spellings": [
+        {
+          "lots": 16,
+          "name": "Lam Research Corporation"
+        }
+      ]
+    },
+    {
+      "cusip": "518439104",
+      "records": 10,
+      "spellings": [
+        {
+          "lots": 10,
+          "name": "The Estee Lauder Companies Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "526057104",
+      "records": 13,
+      "spellings": [
+        {
+          "lots": 13,
+          "name": "Lennar Corporation"
+        }
+      ]
+    },
+    {
+      "cusip": "526107107",
+      "records": 5,
+      "spellings": [
+        {
+          "lots": 5,
+          "name": "Lennox International Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "532457108",
+      "records": 10,
+      "spellings": [
+        {
+          "lots": 10,
+          "name": "Eli Lilly and Company"
+        }
+      ]
+    },
+    {
+      "cusip": "538034109",
+      "records": 14,
+      "spellings": [
+        {
+          "lots": 14,
+          "name": "Live Nation Entertainment, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "53947R105",
+      "records": 6,
+      "spellings": [
+        {
+          "lots": 6,
+          "name": "Loar Holdings Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "539830109",
+      "records": 12,
+      "spellings": [
+        {
+          "lots": 12,
+          "name": "Lockheed Martin Corporation"
+        }
+      ]
+    },
+    {
+      "cusip": "55306N104",
+      "records": 8,
+      "spellings": [
+        {
+          "lots": 8,
+          "name": "MKS Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "571748102",
+      "records": 15,
+      "spellings": [
+        {
+          "lots": 15,
+          "name": "Marsh & McLennan Companies, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "571903202",
+      "records": 14,
+      "spellings": [
+        {
+          "lots": 14,
+          "name": "Marriott International, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "57636Q104",
+      "records": 15,
+      "spellings": [
+        {
+          "lots": 15,
+          "name": "Mastercard Incorporated"
+        }
+      ]
+    },
+    {
+      "cusip": "580135101",
+      "records": 16,
+      "spellings": [
+        {
+          "lots": 16,
+          "name": "McDonald's Corporation"
+        }
+      ]
+    },
+    {
+      "cusip": "58507V107",
+      "records": 15,
+      "spellings": [
+        {
+          "lots": 15,
+          "name": "Medline Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "58733R102",
+      "records": 5,
+      "spellings": [
+        {
+          "lots": 5,
+          "name": "MercadoLibre, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "58933Y105",
+      "records": 18,
+      "spellings": [
+        {
+          "lots": 18,
+          "name": "Merck & Co., Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "592688105",
+      "records": 11,
+      "spellings": [
+        {
+          "lots": 11,
+          "name": "Mettler-Toledo International Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "594918104",
+      "records": 21,
+      "spellings": [
+        {
+          "lots": 21,
+          "name": "Microsoft Corporation"
+        }
+      ]
+    },
+    {
+      "cusip": "594972408",
+      "records": 12,
+      "spellings": [
+        {
+          "lots": 12,
+          "name": "Strategy Inc"
+        }
+      ]
+    },
+    {
+      "cusip": "595017104",
+      "records": 8,
+      "spellings": [
+        {
+          "lots": 8,
+          "name": "Microchip Technology Incorporated"
+        }
+      ]
+    },
+    {
+      "cusip": "595112103",
+      "records": 12,
+      "spellings": [
+        {
+          "lots": 12,
+          "name": "Micron Technology, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "601137102",
+      "records": 6,
+      "spellings": [
+        {
+          "lots": 6,
+          "name": "Millrose Properties, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "60770K107",
+      "records": 5,
+      "spellings": [
+        {
+          "lots": 5,
+          "name": "Moderna, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "629377508",
+      "records": 14,
+      "spellings": [
+        {
+          "lots": 14,
+          "name": "NRG Energy, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "62944T105",
+      "records": 15,
+      "spellings": [
+        {
+          "lots": 15,
+          "name": "NVR, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "632307104",
+      "records": 8,
+      "spellings": [
+        {
+          "lots": 8,
+          "name": "Natera, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "64110L106",
+      "records": 18,
+      "spellings": [
+        {
+          "lots": 18,
+          "name": "Netflix, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "65339F101",
+      "records": 16,
+      "spellings": [
+        {
+          "lots": 16,
+          "name": "NextEra Energy, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "654106103",
+      "records": 6,
+      "spellings": [
+        {
+          "lots": 6,
+          "name": "NIKE, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "666807102",
+      "records": 14,
+      "spellings": [
+        {
+          "lots": 14,
+          "name": "Northrop Grumman Corporation"
+        }
+      ]
+    },
+    {
+      "cusip": "67066G104",
+      "records": 16,
+      "spellings": [
+        {
+          "lots": 16,
+          "name": "NVIDIA Corporation"
+        }
+      ]
+    },
+    {
+      "cusip": "67103H107",
+      "records": 12,
+      "spellings": [
+        {
+          "lots": 12,
+          "name": "O'Reilly Automotive, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "68389X105",
+      "records": 16,
+      "spellings": [
+        {
+          "lots": 16,
+          "name": "Oracle Corporation"
+        }
+      ]
+    },
+    {
+      "cusip": "69047Q102",
+      "records": 13,
+      "spellings": [
+        {
+          "lots": 13,
+          "name": "Ovintiv Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "69608A108",
+      "records": 12,
+      "spellings": [
+        {
+          "lots": 12,
+          "name": "Palantir Technologies Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "697435105",
+      "records": 8,
+      "spellings": [
+        {
+          "lots": 8,
+          "name": "Palo Alto Networks, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "70450Y103",
+      "records": 16,
+      "spellings": [
+        {
+          "lots": 16,
+          "name": "PayPal Holdings, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "713448108",
+      "records": 18,
+      "spellings": [
+        {
+          "lots": 18,
+          "name": "PepsiCo, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "71377A103",
+      "records": 15,
+      "spellings": [
+        {
+          "lots": 15,
+          "name": "Performance Food Group Company"
+        }
+      ]
+    },
+    {
+      "cusip": "718172109",
+      "records": 13,
+      "spellings": [
+        {
+          "lots": 13,
+          "name": "Philip Morris International Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "731068102",
+      "records": 6,
+      "spellings": [
+        {
+          "lots": 6,
+          "name": "Polaris Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "742718109",
+      "records": 18,
+      "spellings": [
+        {
+          "lots": 18,
+          "name": "The Procter & Gamble Company"
+        }
+      ]
+    },
+    {
+      "cusip": "743315103",
+      "records": 13,
+      "spellings": [
+        {
+          "lots": 13,
+          "name": "The Progressive Corporation"
+        }
+      ]
+    },
+    {
+      "cusip": "74736K101",
+      "records": 15,
+      "spellings": [
+        {
+          "lots": 15,
+          "name": "Qorvo, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "747525103",
+      "records": 17,
+      "spellings": [
+        {
+          "lots": 17,
+          "name": "QUALCOMM Incorporated"
+        }
+      ]
+    },
+    {
+      "cusip": "74762E102",
+      "records": 12,
+      "spellings": [
+        {
+          "lots": 12,
+          "name": "Quanta Services, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "75513E101",
+      "records": 12,
+      "spellings": [
+        {
+          "lots": 12,
+          "name": "RTX Corporation"
+        }
+      ]
+    },
+    {
+      "cusip": "75734B100",
+      "records": 10,
+      "spellings": [
+        {
+          "lots": 10,
+          "name": "Reddit, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "75886F107",
+      "records": 7,
+      "spellings": [
+        {
+          "lots": 7,
+          "name": "Regeneron Pharmaceuticals, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "760759100",
+      "records": 15,
+      "spellings": [
+        {
+          "lots": 15,
+          "name": "Republic Services, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "76155X100",
+      "records": 4,
+      "spellings": [
+        {
+          "lots": 4,
+          "name": "Revolution Medicines, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "76680R206",
+      "records": 8,
+      "spellings": [
+        {
+          "lots": 8,
+          "name": "RingCentral, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "76954A103",
+      "records": 4,
+      "spellings": [
+        {
+          "lots": 4,
+          "name": "Rivian Automotive, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "771049103",
+      "records": 5,
+      "spellings": [
+        {
+          "lots": 5,
+          "name": "Roblox Corporation"
+        }
+      ]
+    },
+    {
+      "cusip": "77311W101",
+      "records": 5,
+      "spellings": [
+        {
+          "lots": 5,
+          "name": "Rocket Companies, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "773121108",
+      "records": 10,
+      "spellings": [
+        {
+          "lots": 10,
+          "name": "Rocket Lab Corporation"
+        }
+      ]
+    },
+    {
+      "cusip": "780287108",
+      "records": 4,
+      "spellings": [
+        {
+          "lots": 4,
+          "name": "Royal Gold, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "78409V104",
+      "records": 14,
+      "spellings": [
+        {
+          "lots": 14,
+          "name": "S&P Global Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "78473E103",
+      "records": 5,
+      "spellings": [
+        {
+          "lots": 5,
+          "name": "SPX Technologies, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "78709Y105",
+      "records": 12,
+      "spellings": [
+        {
+          "lots": 12,
+          "name": "Saia, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "79466L302",
+      "records": 18,
+      "spellings": [
+        {
+          "lots": 18,
+          "name": "Salesforce, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "806857108",
+      "records": 14,
+      "spellings": [
+        {
+          "lots": 13,
+          "name": "SLB Limited"
+        },
+        {
+          "lots": 1,
+          "name": "Schlumberger N.V."
+        }
+      ]
+    },
+    {
+      "cusip": "817565104",
+      "records": 16,
+      "spellings": [
+        {
+          "lots": 16,
+          "name": "Service Corporation International"
+        }
+      ]
+    },
+    {
+      "cusip": "81762P102",
+      "records": 1,
+      "spellings": [
+        {
+          "lots": 1,
+          "name": "ServiceNow, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "824348106",
+      "records": 13,
+      "spellings": [
+        {
+          "lots": 13,
+          "name": "The Sherwin-Williams Company"
+        }
+      ]
+    },
+    {
+      "cusip": "82509L107",
+      "records": 14,
+      "spellings": [
+        {
+          "lots": 14,
+          "name": "Shopify Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "842587107",
+      "records": 21,
+      "spellings": [
+        {
+          "lots": 21,
+          "name": "The Southern Company"
+        }
+      ]
+    },
+    {
+      "cusip": "84265V105",
+      "records": 11,
+      "spellings": [
+        {
+          "lots": 11,
+          "name": "Southern Copper Corporation"
+        }
+      ]
+    },
+    {
+      "cusip": "852234103",
+      "records": 7,
+      "spellings": [
+        {
+          "lots": 7,
+          "name": "Block, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "855244109",
+      "records": 20,
+      "spellings": [
+        {
+          "lots": 20,
+          "name": "Starbucks Corporation"
+        }
+      ]
+    },
+    {
+      "cusip": "858119100",
+      "records": 10,
+      "spellings": [
+        {
+          "lots": 10,
+          "name": "Steel Dynamics, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "863667101",
+      "records": 12,
+      "spellings": [
+        {
+          "lots": 12,
+          "name": "Stryker Corporation"
+        }
+      ]
+    },
+    {
+      "cusip": "86384P109",
+      "records": 10,
+      "spellings": [
+        {
+          "lots": 10,
+          "name": "Stubhub Holdings, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "871607107",
+      "records": 14,
+      "spellings": [
+        {
+          "lots": 14,
+          "name": "Synopsys, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "872540109",
+      "records": 12,
+      "spellings": [
+        {
+          "lots": 12,
+          "name": "The TJX Companies, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "872590104",
+      "records": 15,
+      "spellings": [
+        {
+          "lots": 15,
+          "name": "T-Mobile US, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "874039100",
+      "records": 3,
+      "spellings": [
+        {
+          "lots": 3,
+          "name": "Taiwan Semiconductor Manufacturing Co., Ltd."
+        }
+      ]
+    },
+    {
+      "cusip": "874054109",
+      "records": 13,
+      "spellings": [
+        {
+          "lots": 13,
+          "name": "Take-Two Interactive Software, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "88033G407",
+      "records": 14,
+      "spellings": [
+        {
+          "lots": 14,
+          "name": "Tenet Healthcare Corporation"
+        }
+      ]
+    },
+    {
+      "cusip": "88160R101",
+      "records": 21,
+      "spellings": [
+        {
+          "lots": 21,
+          "name": "Tesla, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "88162G103",
+      "records": 9,
+      "spellings": [
+        {
+          "lots": 9,
+          "name": "Tetra Tech, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "882508104",
+      "records": 15,
+      "spellings": [
+        {
+          "lots": 15,
+          "name": "Texas Instruments Incorporated"
+        }
+      ]
+    },
+    {
+      "cusip": "882681109",
+      "records": 11,
+      "spellings": [
+        {
+          "lots": 11,
+          "name": "Texas Roadhouse, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "88339J105",
+      "records": 2,
+      "spellings": [
+        {
+          "lots": 2,
+          "name": "The Trade Desk, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "883556102",
+      "records": 14,
+      "spellings": [
+        {
+          "lots": 14,
+          "name": "Thermo Fisher Scientific Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "888787108",
+      "records": 5,
+      "spellings": [
+        {
+          "lots": 5,
+          "name": "Toast, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "889478103",
+      "records": 11,
+      "spellings": [
+        {
+          "lots": 11,
+          "name": "Toll Brothers, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "89055F103",
+      "records": 13,
+      "spellings": [
+        {
+          "lots": 13,
+          "name": "TopBuild Corp."
+        }
+      ]
+    },
+    {
+      "cusip": "892356106",
+      "records": 12,
+      "spellings": [
+        {
+          "lots": 12,
+          "name": "Tractor Supply Company"
+        }
+      ]
+    },
+    {
+      "cusip": "892672106",
+      "records": 7,
+      "spellings": [
+        {
+          "lots": 7,
+          "name": "Tradeweb Markets Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "893641100",
+      "records": 12,
+      "spellings": [
+        {
+          "lots": 12,
+          "name": "TransDigm Group Incorporated"
+        }
+      ]
+    },
+    {
+      "cusip": "89400J107",
+      "records": 15,
+      "spellings": [
+        {
+          "lots": 15,
+          "name": "TransUnion"
+        }
+      ]
+    },
+    {
+      "cusip": "898202106",
+      "records": 11,
+      "spellings": [
+        {
+          "lots": 11,
+          "name": "Trupanion, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "89832Q109",
+      "records": 16,
+      "spellings": [
+        {
+          "lots": 16,
+          "name": "Truist Financial Corporation"
+        }
+      ]
+    },
+    {
+      "cusip": "90353T100",
+      "records": 13,
+      "spellings": [
+        {
+          "lots": 13,
+          "name": "Uber Technologies, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "907818108",
+      "records": 15,
+      "spellings": [
+        {
+          "lots": 15,
+          "name": "Union Pacific Corporation"
+        }
+      ]
+    },
+    {
+      "cusip": "910047109",
+      "records": 14,
+      "spellings": [
+        {
+          "lots": 14,
+          "name": "United Airlines Holdings, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "911363109",
+      "records": 14,
+      "spellings": [
+        {
+          "lots": 14,
+          "name": "United Rentals, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "91324P102",
+      "records": 14,
+      "spellings": [
+        {
+          "lots": 14,
+          "name": "UnitedHealth Group Incorporated"
+        }
+      ]
+    },
+    {
+      "cusip": "91332U101",
+      "records": 5,
+      "spellings": [
+        {
+          "lots": 5,
+          "name": "Unity Software Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "91912E105",
+      "records": 14,
+      "spellings": [
+        {
+          "lots": 14,
+          "name": "Vale SA"
+        }
+      ]
+    },
+    {
+      "cusip": "922475108",
+      "records": 10,
+      "spellings": [
+        {
+          "lots": 10,
+          "name": "Veeva Systems Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "92343V104",
+      "records": 15,
+      "spellings": [
+        {
+          "lots": 15,
+          "name": "Verizon Communications Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "92532F100",
+      "records": 14,
+      "spellings": [
+        {
+          "lots": 14,
+          "name": "Vertex Pharmaceuticals Incorporated"
+        }
+      ]
+    },
+    {
+      "cusip": "92826C839",
+      "records": 18,
+      "spellings": [
+        {
+          "lots": 18,
+          "name": "Visa Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "92840M102",
+      "records": 13,
+      "spellings": [
+        {
+          "lots": 13,
+          "name": "Vistra Corp."
+        }
+      ]
+    },
+    {
+      "cusip": "931142103",
+      "records": 18,
+      "spellings": [
+        {
+          "lots": 18,
+          "name": "Walmart Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "94106L109",
+      "records": 12,
+      "spellings": [
+        {
+          "lots": 12,
+          "name": "Waste Management, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "942622200",
+      "records": 3,
+      "spellings": [
+        {
+          "lots": 3,
+          "name": "Watsco, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "94419L101",
+      "records": 12,
+      "spellings": [
+        {
+          "lots": 12,
+          "name": "Wayfair Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "949746101",
+      "records": 21,
+      "spellings": [
+        {
+          "lots": 21,
+          "name": "Wells Fargo & Company"
+        }
+      ]
+    },
+    {
+      "cusip": "95040Q104",
+      "records": 11,
+      "spellings": [
+        {
+          "lots": 11,
+          "name": "Welltower Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "962879102",
+      "records": 12,
+      "spellings": [
+        {
+          "lots": 12,
+          "name": "Wheaton Precious Metals Corp."
+        }
+      ]
+    },
+    {
+      "cusip": "971378104",
+      "records": 13,
+      "spellings": [
+        {
+          "lots": 13,
+          "name": "WillScot Holdings Corporation"
+        }
+      ]
+    },
+    {
+      "cusip": "97785W106",
+      "records": 9,
+      "spellings": [
+        {
+          "lots": 9,
+          "name": "Wolfspeed, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "983793100",
+      "records": 9,
+      "spellings": [
+        {
+          "lots": 9,
+          "name": "XPO, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "988498101",
+      "records": 14,
+      "spellings": [
+        {
+          "lots": 14,
+          "name": "Yum! Brands, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "98978V103",
+      "records": 16,
+      "spellings": [
+        {
+          "lots": 16,
+          "name": "Zoetis Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "D66992104",
+      "records": 12,
+      "spellings": [
+        {
+          "lots": 12,
+          "name": "SAP SE"
+        }
+      ]
+    },
+    {
+      "cusip": "D6T47E106",
+      "records": 33,
+      "spellings": [
+        {
+          "lots": 33,
+          "name": "Siemens Energy AG"
+        }
+      ]
+    },
+    {
+      "cusip": "F31665106",
+      "records": 30,
+      "spellings": [
+        {
+          "lots": 30,
+          "name": "EssilorLuxottica SA"
+        }
+      ]
+    },
+    {
+      "cusip": "F4035A557",
+      "records": 14,
+      "spellings": [
+        {
+          "lots": 14,
+          "name": "Safran SA"
+        }
+      ]
+    },
+    {
+      "cusip": "F48051100",
+      "records": 20,
+      "spellings": [
+        {
+          "lots": 20,
+          "name": "Hermes International SA"
+        }
+      ]
+    },
+    {
+      "cusip": "F58149620",
+      "records": 22,
+      "spellings": [
+        {
+          "lots": 22,
+          "name": "L'Oreal SA"
+        }
+      ]
+    },
+    {
+      "cusip": "F58149638",
+      "records": 22,
+      "spellings": [
+        {
+          "lots": 22,
+          "name": "L'Oreal SA"
+        }
+      ]
+    },
+    {
+      "cusip": "F6100P153",
+      "records": 22,
+      "spellings": [
+        {
+          "lots": 22,
+          "name": "L'Oreal SA"
+        }
+      ]
+    },
+    {
+      "cusip": "G1151C101",
+      "records": 16,
+      "spellings": [
+        {
+          "lots": 16,
+          "name": "Accenture Plc"
+        }
+      ]
+    },
+    {
+      "cusip": "G25457105",
+      "records": 5,
+      "spellings": [
+        {
+          "lots": 5,
+          "name": "Credo Technology Group Holding Ltd"
+        }
+      ]
+    },
+    {
+      "cusip": "G3323L100",
+      "records": 4,
+      "spellings": [
+        {
+          "lots": 4,
+          "name": "Fabrinet"
+        }
+      ]
+    },
+    {
+      "cusip": "G3643J108",
+      "records": 22,
+      "spellings": [
+        {
+          "lots": 22,
+          "name": "Flutter Entertainment plc"
+        }
+      ]
+    },
+    {
+      "cusip": "G3730V105",
+      "records": 5,
+      "spellings": [
+        {
+          "lots": 5,
+          "name": "FTAI Aviation Ltd."
+        }
+      ]
+    },
+    {
+      "cusip": "G39420107",
+      "records": 17,
+      "spellings": [
+        {
+          "lots": 17,
+          "name": "Glencore Plc"
+        }
+      ]
+    },
+    {
+      "cusip": "G54950103",
+      "records": 16,
+      "spellings": [
+        {
+          "lots": 16,
+          "name": "Linde Plc"
+        }
+      ]
+    },
+    {
+      "cusip": "G66721104",
+      "records": 8,
+      "spellings": [
+        {
+          "lots": 8,
+          "name": "Norwegian Cruise Line Holdings Ltd."
+        }
+      ]
+    },
+    {
+      "cusip": "G6683N103",
+      "records": 2,
+      "spellings": [
+        {
+          "lots": 2,
+          "name": "Nu Holdings Ltd."
+        }
+      ]
+    },
+    {
+      "cusip": "G76225104",
+      "records": 23,
+      "spellings": [
+        {
+          "lots": 23,
+          "name": "Rolls-Royce Holdings Plc"
+        }
+      ]
+    },
+    {
+      "cusip": "G7709Q104",
+      "records": 18,
+      "spellings": [
+        {
+          "lots": 18,
+          "name": "Royalty Pharma plc"
+        }
+      ]
+    },
+    {
+      "cusip": "G7727C186",
+      "records": 18,
+      "spellings": [
+        {
+          "lots": 18,
+          "name": "Ryanair Holdings Plc"
+        }
+      ]
+    },
+    {
+      "cusip": "G80827101",
+      "records": 23,
+      "spellings": [
+        {
+          "lots": 23,
+          "name": "Shell Plc"
+        }
+      ]
+    },
+    {
+      "cusip": "G87052109",
+      "records": 17,
+      "spellings": [
+        {
+          "lots": 17,
+          "name": "TE Connectivity plc"
+        }
+      ]
+    },
+    {
+      "cusip": "G87110105",
+      "records": 18,
+      "spellings": [
+        {
+          "lots": 18,
+          "name": "TechnipFMC plc"
+        }
+      ]
+    },
+    {
+      "cusip": "G93A5A101",
+      "records": 10,
+      "spellings": [
+        {
+          "lots": 10,
+          "name": "Viking Holdings Ltd"
+        }
+      ]
+    },
+    {
+      "cusip": "H17182108",
+      "records": 31,
+      "spellings": [
+        {
+          "lots": 31,
+          "name": "CRISPR Therapeutics AG"
+        }
+      ]
+    },
+    {
+      "cusip": "H42097107",
+      "records": 27,
+      "spellings": [
+        {
+          "lots": 27,
+          "name": "UBS Group AG"
+        }
+      ]
+    },
+    {
+      "cusip": "J1357P101",
+      "records": 20,
+      "spellings": [
+        {
+          "lots": 20,
+          "name": "Metaplanet, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "J51699106",
+      "records": 15,
+      "spellings": [
+        {
+          "lots": 15,
+          "name": "Nintendo Co., Ltd."
+        }
+      ]
+    },
+    {
+      "cusip": "J6433A101",
+      "records": 11,
+      "spellings": [
+        {
+          "lots": 11,
+          "name": "Recruit Holdings Co., Ltd."
+        }
+      ]
+    },
+    {
+      "cusip": "J7596P109",
+      "records": 11,
+      "spellings": [
+        {
+          "lots": 11,
+          "name": "SoftBank Group Corp."
+        }
+      ]
+    },
+    {
+      "cusip": "K08588103",
+      "records": 12,
+      "spellings": [
+        {
+          "lots": 12,
+          "name": "Ascendis Pharma A/S"
+        }
+      ]
+    },
+    {
+      "cusip": "K72807140",
+      "records": 22,
+      "spellings": [
+        {
+          "lots": 22,
+          "name": "Novo Nordisk A/S"
+        }
+      ]
+    },
+    {
+      "cusip": "L8681T102",
+      "records": 21,
+      "spellings": [
+        {
+          "lots": 21,
+          "name": "Spotify Technology SA"
+        }
+      ]
+    },
+    {
+      "cusip": "N0280G100",
+      "records": 15,
+      "spellings": [
+        {
+          "lots": 15,
+          "name": "Airbus SE"
+        }
+      ]
+    },
+    {
+      "cusip": "N07059202",
+      "records": 15,
+      "spellings": [
+        {
+          "lots": 15,
+          "name": "ASML Holding NV"
+        }
+      ]
+    },
+    {
+      "cusip": "N07059210",
+      "records": 15,
+      "spellings": [
+        {
+          "lots": 15,
+          "name": "ASML Holding NV"
+        }
+      ]
+    },
+    {
+      "cusip": "N3501V104",
+      "records": 16,
+      "spellings": [
+        {
+          "lots": 16,
+          "name": "Adyen NV"
+        }
+      ]
+    },
+    {
+      "cusip": "V7780T103",
+      "records": 14,
+      "spellings": [
+        {
+          "lots": 14,
+          "name": "Royal Caribbean Cruises Ltd."
+        }
+      ]
+    },
+    {
+      "cusip": "W24508108",
+      "records": 18,
+      "spellings": [
+        {
+          "lots": 18,
+          "name": "Einride AB"
+        }
+      ]
+    },
+    {
+      "cusip": "Y04895101",
+      "records": 10,
+      "spellings": [
+        {
+          "lots": 10,
+          "name": "Avenue Supermarts Limited"
+        }
+      ]
+    },
+    {
+      "cusip": "Y2573F102",
+      "records": 13,
+      "spellings": [
+        {
+          "lots": 13,
+          "name": "Flex Ltd."
+        }
+      ]
+    },
+    {
+      "cusip": "Y74718100",
+      "records": 9,
+      "spellings": [
+        {
+          "lots": 9,
+          "name": "Samsung Electronics Co., Ltd."
+        }
+      ]
+    },
+    {
+      "cusip": "Y8085F100",
+      "records": 15,
+      "spellings": [
+        {
+          "lots": 15,
+          "name": "SK hynix, Inc."
+        }
+      ]
+    },
+    {
+      "cusip": "Y84629107",
+      "records": 3,
+      "spellings": [
+        {
+          "lots": 3,
+          "name": "Taiwan Semiconductor Manufacturing Co., Ltd."
+        }
+      ]
+    }
+  ]
+}

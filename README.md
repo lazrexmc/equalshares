@@ -14,6 +14,11 @@ Published as a static site. **The first build run THROUGH RapidForge**
   S&P 500 ETF (S000004310, one of 29 series in a 180 MB filing), State
   Street(R) SPDR(R) Portfolio S&P 500(R) ETF (S000006983, one of 45 series).
   Extraction is scoped to the pinned series; the raw file keeps every series.
+- Part 2.1 (2026-08-30): the contrast set, ids from the SEC's mutual-fund ticker
+  file: Fidelity 500 Index Fund (S000006027), T. Rowe Price Equity Index 500
+  Fund (S000002089), Schwab S&P 500 Index Fund (S000005911), and Capital Group's
+  Growth Fund of America (S000009228, actively managed: the contrast). A public
+  pension files no N-PX vote records, so that part of decision 3 has no source.
 - Stack: Python 3.14 stdlib only (pipeline) + vanilla JS (site). No frameworks,
   no bundler, no dependency that expires.
 

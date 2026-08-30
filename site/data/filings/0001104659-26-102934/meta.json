@@ -1,0 +1,95 @@
+{
+  "config": {
+    "thin_n": 5
+  },
+  "engine_run": {
+    "code_fingerprint": "f3b209a2ed3a9ec9f5922dd897342500f616c6486ea35dec6d224fbb483f9818",
+    "config_hash": "10c3dfefb138a8124be76188fb562f1bc73c9cdcc8cbaf1e97485d7e1651eb06",
+    "engine_run_id": "f97e5b26827a3e1d",
+    "engine_version": "0.1+f97e5b26",
+    "git_commit": "0adf01cf60f7a777746b3645bf9e51550ebe6792"
+  },
+  "filer": {
+    "cik": "0000044201",
+    "name": "GROWTH FUND OF AMERICA"
+  },
+  "filing": {
+    "accession": "0001104659-26-102934",
+    "fetched_at": "2026-08-30T06:01:18+00:00",
+    "filed_at": "2026-08-28",
+    "form": "N-PX",
+    "index_url": "https://www.sec.gov/Archives/edgar/data/44201/000110465926102934/0001104659-26-102934-index.html",
+    "period_of_report": "2026-06-30",
+    "raw_bytes": 3057363,
+    "raw_sha256": "a50df90f129013cf0c1631e308563f4e77830da2359764eafe06b4faa81c4cc0",
+    "series_id": "S000009228",
+    "series_name": "GROWTH FUND OF AMERICA",
+    "vote_doc_name": "proxytable.xml",
+    "vote_doc_type": "text.gif",
+    "vote_doc_url": "https://www.sec.gov/Archives/edgar/data/44201/000110465926102934/proxytable.xml",
+    "vote_doc_view_url": "https://www.sec.gov/Archives/edgar/data/44201/000110465926102934/xslNPX-INFO-TABLE_X01/proxytable.xml"
+  },
+  "generated_at": "2026-08-30T06:02:09+00:00",
+  "mgmt_rec_semantics": {
+    "agreeing": 0,
+    "agreement": "0/210",
+    "agreement_pct": 0.0,
+    "crosstab_management_lots": {
+      "ABSTAIN/AGAINST": 4,
+      "AGAINST/AGAINST": 105,
+      "AGAINST/NONE": 2,
+      "FOR/FOR": 3381,
+      "FOR/NONE": 1,
+      "WITHHOLD/AGAINST": 5
+    },
+    "crosstab_shareholder_lots": {
+      "ABSTAIN/NONE": 1,
+      "AGAINST/FOR": 149,
+      "AGAINST/NONE": 2,
+      "FOR/AGAINST": 61,
+      "FOR/NONE": 9
+    },
+    "example_category_rule": "a category with no unparseable votes, all lots in one category, then the most lots, then the lowest proposal number",
+    "example_mixed_proposal": {
+      "category_slug": "director-elections",
+      "issuer_name": "Tesla, Inc.",
+      "lots": 2,
+      "meeting_date": "2025-11-06",
+      "proposal_no": 238,
+      "recommendations": [
+        "AGAINST",
+        "FOR"
+      ],
+      "vote_description": "A Tesla proposal to elect three Class III directors to serve for a term of three years, or until their respective successors are duly elected and qualified: Ira Ehrenpreis"
+    },
+    "field": "managementRecommendation",
+    "headline_allowed": false,
+    "lots_with_recommendation": 3727,
+    "proposals_with_mixed_recommendation": 18,
+    "proposals_with_recommendation": 3705,
+    "proposals_without_recommendation": 68,
+    "shareholder_lots": 222,
+    "shareholder_lots_with_recommendation": 210,
+    "test": "a board recommends once per item; proposals whose lots carry more than one recommendation value are counted, and the count must stay below thin_n",
+    "verdict": "not-board-view"
+  },
+  "thin_n": 5,
+  "totals": {
+    "absent_how_voted": 55,
+    "categories": 13,
+    "extra_category_entries": 1,
+    "issuer_name_spellings": 287,
+    "issuers": 291,
+    "issuers_with_multiple_spellings": 1,
+    "lots": 3742,
+    "multi_category_records": 62,
+    "proposals": 3773,
+    "proposals_in_multiple_categories": 1,
+    "records": 3797,
+    "unparseable_how_voted": 22,
+    "zero_lot_rows": 55,
+    "zero_share_lots": 0,
+    "zero_share_lots_readable": 0,
+    "zero_share_lots_unreadable": 0
+  }
+}
