@@ -39,7 +39,7 @@
       console errors under the production CSP. Rung two reached.
 - [x] ~~**Where does the publication database live?**~~ - CLOSED 2026-08-29, stay static ("13. C
       for now"). See RESUME HERE.
-- [x] ~~**Self-catalogue sweep**~~ - sent to `rapidforge-79` 2026-08-29 23:40 CDT: `pipeline/sources.py`,
+- [x] ~~**Self-catalogue sweep**~~ - sent to `rapidforge-79` 2026-08-29 23:34 CDT: `pipeline/sources.py`,
       `.github/workflows/ingest.yml`, `site/_headers`, `tools/verify_claims.py`, `tools/verify_deploy.py`
       have no `MODULE_DIRECTORY.md` row. The registry verifies and catalogues.
 
