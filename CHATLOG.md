@@ -94,3 +94,10 @@ Verified here before recording (rule 10): `MODULE_DIRECTORY.md` rows 71, 238, 26
 `modules/code/verify_deploy.py`; `modules/verify-deploy.md`; `modules/extractor-provenance.md`
 lines 197-203. All present in the registry's working tree (uncommitted there at the time of
 reading; its commit, not this repo's).
+
+**duarte-izer-58 (relayed), later the same night:** a new session announced itself (Duarte-izer:
+pptx -> what-is/what-could-be diagnosis + talk track; building the Sept 10 CoMo AI small-table
+story for Glizzness; adopting the standard as its Phase 0). Context only; it will read this repo's
+`CLAUDE.md` by path as the standard's rule-file exemplar. Replied with the sections the standard
+credits and the two liftable checks in `tools/verify_claims.py` (C4 ASCII scan, C5 pointer
+existence). No change to this repo.
