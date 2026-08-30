@@ -575,3 +575,34 @@ fork the pointers-never-copies rule exists to stop. Two staleness defects found 
 verifying the request and fixed in the same edit: the title still said "slice v0" over eight fund
 series, and the rule-15 deviation still deferred a code sweep that Part 1.1 completed (verified:
 zero em dashes or curly quotes across `pipeline/*.py` and `tools/*.py`).
+
+**Lance, relayed by rapidforge-07, verbatim:** "ask each session if the session agrees with the
+rules for it's session then check if each projects rules can exist with the overall Lazrex
+Enterprise of softwares rules." And an hour later: "the smaller bodies can override rules when
+needed but usually when owner approval states so... We don't need our small projects going no
+where because big brother doesn't understand the need."
+
+**Answered 2026-08-30 14:27 CDT (clock)**, after reading PROJECT_STANDARD section 3b (`3e8faa7`) and checking
+each claim here:
+- **All seven locked rules agreed**, with anti-blend's "ever" defended WITH its cost named: three
+  cold readers wanted a totals row and the rule refuses it (Accepted Risk, because this filing is
+  73% director elections).
+- **One real conflict, mine, found by auditing today's own edit.** Standard rule 3 wants a
+  correction by strikethrough with the original bytes intact and the false sentence quoted; today
+  I replaced two stale passages in `CLAUDE.md` and described rather than quoted them. The
+  evidence made it a distinction rather than a refusal: `grep -c "~~"` gives README 1 and
+  CLAUDE.md 0 - the closed deferred finding stays struck through in README where a reader needs to
+  see it was once open, while the file an agent reads FIRST is rewritten to current fact. Proposed
+  upward: scope rule 3's mechanism to documents whose readers need the correction visible, and
+  exclude rule files by name.
+- **Federal candidate agreed, and sharpened:** the stale-deviation finding is not a new rule, it is
+  standard rule 8 (expected failures carry an expiry condition) extended to a second artifact.
+  Measurable gap in the registry's own tool: `verify_standard.py:133` prints "devs = it declares
+  deviations" - declaration only, never truth.
+- **One-identity-function agreed LOCAL**, with the note that it is standard rule 2 one level up (a
+  number must be derived; the definition it derives from must live in one place), so if the general
+  form is worth having it is a module rather than a standard rule.
+- **Declared rather than claimed clean:** standard rule 9, evidence a stranger can re-run. The
+  gates read `data/rollcall.db`, which is gitignored beneath 626 MB of raw EDGAR filings, so a
+  clone must ingest first (REBUILD.md). The publication JSON is committed; the gates need a network
+  round trip. Not committing 626 MB to satisfy a rule.
