@@ -73,13 +73,13 @@ exercised manually against serve_local.py - break a data file and reload.
 
 ## Live
 
-**https://equalshares.pages.dev/** — deployed 2026-08-29 (Cloudflare Pages, root `site`, build
+**https://equalshares.pages.dev/** - deployed 2026-08-29 (Cloudflare Pages, root `site`, build
 output empty). Deploys on push to `master`. Verified at the origin, not in a browser: the CSP in
 `site/_headers` is applied by Pages, JSON is served as `application/json`, and the served payload
-carries no blended number.
+carries no blended number. Re-check any time with `python tools/verify_deploy.py`.
 
-**Host semantics enumerated** (`deploy-runbook` §7.1, for this host): `/` → 200; `/index.html` →
-308 → `/`; **an unknown path returns 200, not 404** — there is no `404.html`, so a mistyped URL
+**Host semantics enumerated** (`deploy-runbook` §7.1, for this host): `/` -> 200; `/index.html` ->
+308 -> `/`; **an unknown path returns 200, not 404** - there is no `404.html`, so a mistyped URL
 renders the Roll Call page. Cosmetic for a single-page site with no deep links; recorded rather
 than fixed.
 
@@ -95,27 +95,27 @@ silence for coverage:
    actually rewritten. Until then, the raw store + UPSERT means any bad
    re-parse is recoverable by re-running the previous extractor version.
 2. **`max_filings: 1` over a multi-series trust is an unstable pointer.**
-   VANGUARD INDEX FUNDS files one N-PX per fund series (108 in the recent
-   window), so "the most recent filing" changes fund whenever any series
+   VANGUARD INDEX FUNDS files one N-PX per fund series (over a hundred in the
+   window DRYRUN_001 Part 2 observed; that count is not derived here), so "the most recent filing" changes fund whenever any series
    files. The page always SAYS which series it shows (header + provenance
    box), so it is honest - but a slice reader refreshing across a filing day
    may see a different fund. Fix lands with multi-filing support, not with a
    pin hack.
 
-## OPEN OWNER DECISION - where does the data live long-term?
+## Owner decision - where the data lives: CLOSED, stay static (2026-08-29)
 
-The static path is **live today and costs $0**: the pipeline writes JSON to
-`site/data/` and Cloudflare Pages serves it. Three options, facts only - Lance
-decides:
+Lance answered on 2026-08-29, on the EventFinds Build 002 form, verbatim: **"13. C for now."**
+The registry records it as settling this build's one interruption
+(`F:/RapidForge/docs/INTERRUPTIONS.md`) and as the default it earned: `static-publication-site`
+section 5.6, computed static artifacts are the $0 fallback, never an unapproved recurring charge.
 
-| Option | Cost | Notes |
-|---|---|---|
-| A. New dedicated Supabase project | **$10/mo** (a 4th project, past the free allotment) | Draft migration ready: `supabase/0001_rollcall_draft.sql`, written for a dedicated project. Buys a queryable REST surface behind an RLS wall and per-record reads at scale. |
-| B. Schema in an existing Supabase project | $0 | Shares blast radius with the host project. The draft's repo-wide default-privileges revoke must **not** run as-is there (rls-wall trap 6.3): it would change the posture of the host's future tables. Needs rework plus a grant-back audit first. |
-| C. Stay static | $0 | The current shape. At one-filing scale the JSON is small and nothing functional is lost. Revisit when filers multiply. |
-
-Either way the migration is **DRAFT - NOT APPLIED**. Draft-then-apply: Lance
-reviews and applies it himself.
+So the shape stays as it is: the pipeline writes JSON to `site/data/`, the JSON is committed
+(gate G10), and Cloudflare Pages serves it. The draft migration
+`supabase/0001_rollcall_draft.sql` stays **DRAFT - NOT APPLIED**, by his word; it exists so the
+Postgres path is ready if he chooses it later. For the record, the options were: (A) a dedicated
+Supabase project at $10/mo, a fourth project past the free allotment; (B) a schema in an existing
+project, whose repo-wide default-privileges revoke must **not** run as-is there (rls-wall trap 6.3);
+(C) stay static at $0. Revisit when filers multiply.
 
 ## Deploy (Cloudflare Pages, connect-to-git - deploy-runbook phase 1)
 
@@ -130,6 +130,17 @@ reviews and applies it himself.
 
 Note: Pages 308-canonicalizes `.html` to extensionless before rewrites resolve;
 if a `_redirects` file is ever added, its targets must be extensionless.
+
+## Instruments (`tools/`)
+
+Two checks a stranger can re-run from the repo, both stdlib only, both exit 1 on drift:
+
+    python tools/verify_claims.py    # every counted claim in the live documents derives from data, code or git
+    python tools/verify_deploy.py    # the origin serves the bytes git holds; headers applied; JSON content-type
+
+`pipeline/checks.py` remains the data gate. The cross-project standard this repo follows is
+`F:/RapidForge/docs/PROJECT_STANDARD.md`; `python F:/RapidForge/tools/verify_standard.py` measures
+compliance. Deviations are declared in `CLAUDE.md`.
 
 ## Provenance statement
 
