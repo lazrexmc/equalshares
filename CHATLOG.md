@@ -79,3 +79,18 @@ to `glizzness-cc`. Nothing waits on Lance except the dogfood.
 records the commit at 2026-08-29 23:34:37 -0500 (`git log -1 --format=%ci 5140fae`). Rule 1: take
 times from git, not from a guess. TODO.md's sweep line said the same and is corrected in place
 (a live document).
+
+**rapidforge-79 (relayed), 23:4x CDT - the deposit landed.** Verified `5140fae` in this tree and
+catalogued the four sweep units: `sources.py` (section 2, with the note that `config_hash` derives
+from `CONFIG`), `ingest.yml` (section 10, the parked worker), `_headers` (section 9, the one file two
+instruments read), both tools (section 15). `verify-deploy` is now the registry's second code
+module on the strength of this repo being its second running consumer; the content-type check is
+noted as the addition to carry into the canonical file when a third consumer wants it. The Lesson 5
+trap is deposited in `extractor-provenance` 6.x with the rule verbatim, the comment-stripped-hash
+question left open. The rule-15 stamp had already been re-dated to 2026-08-29; the "this morning"
+in the message was its unchecked clock.
+
+Verified here before recording (rule 10): `MODULE_DIRECTORY.md` rows 71, 238, 265, 499, 500;
+`modules/code/verify_deploy.py`; `modules/verify-deploy.md`; `modules/extractor-provenance.md`
+lines 197-203. All present in the registry's working tree (uncommitted there at the time of
+reading; its commit, not this repo's).
