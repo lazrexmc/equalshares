@@ -523,3 +523,5 @@ ticker file, which also confirmed the three Big Three pins exactly. Ingested in 
 over 8 filings; rendered under the production CSP via serve_local.py in Playwright with zero console messages: eight filings in the picker, a 13-category by 8-filing compare table that says in words that it scrolls, the Fidelity page's semantics line reading its board-view verdict. Engine run `f97e5b26827a3e1d`. A public pension is not an N-PX source
 (pensions file no vote records); decision 3's pension half is recorded as unreachable by this
 form, not built.
+
+**Part 2.1 shipped, 2026-08-30 01:06 CDT (clock):** commit `54e169a` (git 2026-08-30 01:05:29 -0500), pushed; `verify_deploy` at 01:06 CDT: 44 markers DEPLOYED (index, compare, eight filing directories, JSON content-types, headers). Report to rapidforge-79. The build queue is now: shadow/promotion path (waits for the extractor rewrite), concordance by voteSource (the by_source split already delivers it), a cold read of the compare view when an unread reader exists, round four with Lance.
