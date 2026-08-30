@@ -112,6 +112,14 @@
 
 ## INBOX (captured, not chased)
 
+- **2026-08-30, from peers on reconnect, take or leave:** (EventFinds) write the export's JSON pair
+  via tmp + os.replace so a failed second write cannot leave a mismatched set, and construct the page
+  inside the init try so a missing script reaches the error box rather than a blank 200 (here: a
+  failing ES-module import of data.js/receipts.js would blank the page before main() runs).
+  (Glizzness) verify_deploy canonical is at sha 0ffcee70 with a NO-LOCAL verdict for a marker
+  missing locally and edge-rewrite reversal (email obfuscation, managed robots.txt); markers derived
+  from the publish tree, which this repo already does from index.json.
+
 - **THE LARGER GOAL - Lance, 2026-08-28, verbatim:** *"Equalshares has a larger goal, if it can
   have enough funds to become the major voting entity in Blackrock vanguard and state street,
   equalshares could redistribute the wealth through the same processes these entities run now,

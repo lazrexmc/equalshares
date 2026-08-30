@@ -37,6 +37,11 @@ the page's JS, and the JSON, and says what a reader would see.
 Ask for the render facts too when the reader has a browser: console errors, which row or category
 they opened.
 
+The four questions are a floor on what gets reported, never a ceiling: a protocol's shape must not
+suppress a finding that has no slot in it. If something is wrong that none of the four asks about,
+report it anyway. (VisibleGov, 2026-08-30, the complement to its own "confusion, not cause" rule,
+which it wrote against its own miss on this site, not as advice passed along.)
+
 ## What comes back, and what to do with it
 
 1. **Record every report in the trail** (CHATLOG), attributed, before touching anything. Condense
