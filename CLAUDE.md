@@ -1,7 +1,9 @@
-# EqualShares - The Roll Call (slice v0)
+# EqualShares - The Roll Call
 
-The first build run THROUGH RapidForge. The method lives at `F:/RapidForge` -
-**pointers, never copies** (copies fork; proven twice on that machine).
+Eight fund series from their SEC Form N-PX filings, per category, with receipts,
+and the same category comparable across them. The first build run THROUGH
+RapidForge. The method lives at `F:/RapidForge` - **pointers, never copies**
+(copies fork; proven twice on that machine).
 
 ## Read order
 
@@ -33,6 +35,24 @@ The first build run THROUGH RapidForge. The method lives at `F:/RapidForge` -
   unparseable (raw kept, normalized NULL). Never invent, never blank a raw.
 - **Receipts verbatim.** Render stored URLs and hashes exactly as stored; never
   construct or guess a URL at render time.
+- **One identity function.** `assign_proposals` in `pipeline/extract.py` decides
+  what a proposal IS - issuer, description and proposer normalised for case,
+  spacing and trailing punctuation; CUSIP and meeting date used as filed - and
+  **every published count derives from the `proposal_no` it assigns**, never
+  from a second grouping written at the point of use. Filing data splits one
+  company across spellings and one proposal across punctuation: the first key
+  did, and fixing it moved the published counts 10,523 -> 8,906 proposals, 198
+  -> 495 spanning categories, 5,022 -> 4,594 self-contradicting. A count
+  computed anywhere else silently disagrees with the page.
+- **No headline rests on a filed field until a computed check on that filer
+  passes.** `managementRecommendation` is named after a board's view and is not
+  one in six of eight filings on disk. `export_site.py` computes
+  `meta.mgmt_rec_semantics` per filing (proposals whose own lots carry more than
+  one value; a board recommends once per item), publishes the evidence, and G8
+  refuses `headline_allowed` unless the verdict is `board-view`. Re-admission is
+  by evidence, never by memory: Fidelity and T. Rowe pass, the other six do not.
+  This is not covered by computed-never-typed, which governs how a number is
+  produced rather than whether it may be published at all.
 - **Draft-then-apply.** Anything touching production data/infra (the Supabase
   migration) is a reviewed draft; Lance applies it himself.
 
@@ -67,11 +87,12 @@ punctuation, pointers, RESUME date, publication committed) and
   in `pipeline/sources.py`, Lance's own.
 - **`CHATLOG.md` starts 2026-08-29.** The trail before that is the commit bodies;
   nothing is retyped.
-- **Rule 15 (plain ASCII punctuation)** is applied to documents and the served
-  `site/index.html`. Code comments and UI strings are swept per file on that
-  file's next real edit: `export_site.py` is inside the behaviour fingerprint,
-  so a punctuation-only change would rotate `engine_run_id` and force a
-  re-extract for nothing (PLAYBOOK_DELTA Lesson 5).
+- **Rule 15 (plain ASCII punctuation)** is applied everywhere: documents, the
+  served `site/index.html` and `site/js/`, and every file under `pipeline/` and
+  `tools/`. The per-file sweep this file once deferred completed during Part 1.1
+  (2026-08-30), each fingerprinted file swept alongside a real behaviour change
+  so no `engine_run_id` rotated for punctuation alone (PLAYBOOK_DELTA Lesson 5).
+  `tools/verify_claims.py` C4 fails on any hit in a live document.
 
 ## Finishing
 

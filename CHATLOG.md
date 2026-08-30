@@ -557,3 +557,21 @@ are a floor, never a ceiling - is now in docs/COLD_READ_PROTOCOL.md).
 **Lance, 2026-08-30 14:15 CDT (clock), verbatim, in this session:** "rapidforge will request an update to the claude.md file, I approve"
 
 Recorded as the owner's word for that one config change (PROJECT_STANDARD section 4.2: a rule file is configuration and changes on Lance's word in the project's own session). Scope: the update RapidForge requests, applied when it arrives, verified for truthfulness against this repo before committing, and reported back with exactly what changed.
+
+**rapidforge-07 (relayed), CLAUDE.md request, applied 2026-08-30 14:18 CDT (clock) on Lance's approval above.**
+Its finding, and it was right: the five locked rules did not include the one-key rule, which
+belongs in the locked block rather than the delta because the delta records what was learned and
+the locked block constrains the next session. Verified in source before writing: `assign_proposals`
+normalises issuer, description and proposer for case, spacing and trailing punctuation (CUSIP and
+meeting date are used as filed - its draft said "issuer, description and proposer", accurate);
+the published counts are 8,906 / 495 / 4,594; G8 refuses `headline_allowed` unless the verdict is
+`board-view` (checks.py line 990).
+
+Applied: two new locked rules (one identity function; no headline on a filed field until a computed
+check on that filer passes). Its third suggestion, the `ROLLCALL_PORT` note, DECLINED with a
+reason: CLAUDE.md carries no run instructions at all - they live in README and in TODO's RESUME
+block, which already names `ROLLCALL_PORT=8766` - and a third copy of a run fact is exactly the
+fork the pointers-never-copies rule exists to stop. Two staleness defects found here while
+verifying the request and fixed in the same edit: the title still said "slice v0" over eight fund
+series, and the rule-15 deviation still deferred a code sweep that Part 1.1 completed (verified:
+zero em dashes or curly quotes across `pipeline/*.py` and `tools/*.py`).
