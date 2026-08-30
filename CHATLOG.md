@@ -101,3 +101,10 @@ story for Glizzness; adopting the standard as its Phase 0). Context only; it wil
 `CLAUDE.md` by path as the standard's rule-file exemplar. Replied with the sections the standard
 credits and the two liftable checks in `tools/verify_claims.py` (C4 ASCII scan, C5 pointer
 existence). No change to this repo.
+
+**rapidforge-79 (relayed):** the deposit is committed at RapidForge `e20ddbf` (verified here with
+`git log -1 e20ddbf` in F:/RapidForge: verify-deploy module, the four sweep units, the fingerprint
+trap). Closes the "uncommitted there" note above. Roster now nine sessions with `duarte-izer-58`
+(repo: `C:\Users\lance\OneDrive\Desktop\Family\Lance\LLM Tools\Duarte-izer`; docs plus stdlib, no
+site, no database; it will read `tools/verify_claims.py` as its claim-checker exemplar). Context,
+no action here.
