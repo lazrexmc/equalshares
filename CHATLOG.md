@@ -314,3 +314,71 @@ cell; a narrow "Receipt" column holds the link; tighter cells and type on that t
 the table is still wider than its container (phones) a sentence above it says to scroll sideways.
 Acceptance, Lance's words reversed: every column reachable without selecting text at laptop
 width, and on a phone the hint shows.
+
+**Cold-read round two, reports two to four** (condensed; key phrases verbatim; full text in each
+sending session and this one).
+
+*league-73* (read the served files, not rendered): (1) "how one Vanguard fund series voted its
+shares at company meetings over the year ending 2026-06-30 ... broken out by the SEC's own vote
+categories, with a link back". (2) which entity is the fund "took work ... As a stranger I would
+have assumed the headline numbers described Vanguard"; "'tracks-lot' is a verdict I could not act
+on ... internal vocabulary appearing in reader-facing text"; "how many distinct COMPANIES this
+covers ... that is the first number I reached for"; fractional `shares_voted_total` with four
+decimals, undisplayed. (3) row-level receipts disclosed rather than hidden, not counted against;
+"thin_n = 5 and min_board_view_pct = 50 ... Both are typed policy constants". (4) "I do not
+believe that number [0/1433] is a measurement ... Exactly 0 out of 1,433 is the tell ... what a
+comparison that can never match looks like - two different vocabularies, or normalised vote
+against raw recommendation string"; "'Every number here is computed from the filing ... none are
+typed' sits directly above output shaped by the two typed constants". Also corrected my message:
+league does carry `engine_runs` (verified in its tree before answering).
+
+*linkedump-80* (real browser, DEI, both filters): (2) "the Cisco DEI proposal shows lots '2 of 3'
+and '3 of 3' and lot 1 of 3 is nowhere in the DEI list"; two Disney rows same date and CUSIP
+"carry different proposal numbers (#6,567 and #677) and different-case issuer names"; "-" in the
+% FOR cells never defined; whether the 3,094 director ABSTAINs are real; the glossary "is thirteen
+terms before the first number"; "Four strangers read..." "reads as a note to yourselves". (3) "the
+Proposals column sums to 10,721; the totals line says 10,523 proposals ... nothing on the page
+does" [explain it]; "2,845 zero-share lots" only checkable by opening all twelve categories;
+"The engine-run id changed from b13f9c5877e362ce to 2e9a5a7bbe8a2d86 with nothing saying why";
+everything else closes, including the shareholder denominators summing to 1,439. (4) "'% FOR ...
+of voted lots' is false as labelled: the DEI shareholder cell is '13% (3 of 23)' and 4 of those 23
+lots are zero-share lots ... A lot that voted zero shares is in the denominator of a ratio called
+'FOR of voted lots'."
+
+*visiblegov-1d* (could not open EDGAR's rendered table: SEC returns 403 "Undeclared Automated
+Tool" to its fetch; "the ordinal's usefulness depends on whether EDGAR's rendered table numbers
+its rows, and neither of us should assume it does until someone opens it in a real browser"):
+(1) "One Vanguard fund series' proxy votes for one year ... with enough on each row to go find it
+in the filing." "The rebuild worked." Arithmetic re-checked and holds. (2) "Lot numbering
+advertises lots that are not in the list" (Cisco, Disney #677, Wells Fargo #1,339, Merck #3,721,
+Ford #2,778 - five of fourteen); "The same ballot item appears under two proposal numbers"
+(Coca-Cola #1,399 lots 1-3 and #7,287 lot "4 of 4" with 0 shares; Disney; Constellation) - "The
+high-numbered twin is always the 0-share lot"; "if a ballot item can hold two proposal numbers I
+cannot tell what that number counts." (3) "10,387 proposals" in my message vs "10,523" on the
+page; the 50% bar "is stated, not derived". (4) nothing false. The semantics sentence lands. "Four
+strangers read an earlier version" is "the most reassuring sentence on it".
+
+**Checked in the store before any reply:**
+- The zero is a measurement, and the reader's suspicion of a vocabulary mismatch is the right
+  question. Both sides are normalised from identical raw spellings; the shareholder-lot crosstab
+  is an exact mirror: fund AGAINST with rec FOR 819, fund FOR with rec AGAINST 408, fund ABSTAIN
+  with rec AGAINST 206 (plus 6 NONE). On management items it is the reverse: FOR/FOR 19,367,
+  AGAINST/AGAINST 4,903, ABSTAIN/AGAINST 3,998, WITHHOLD/AGAINST 80. The field is a function of
+  the vote and the proposer, not a board's view. Threshold-free proof: 5,022 of 10,523 proposals
+  carry different recommendation values on different lots of the same proposal (4,673 are
+  management's own items); every one of the 4,204 ABSTAIN lots carries AGAINST.
+- Missing lots: the Cisco proposal's lot 1 is filed under ENVIRONMENT OR CLIMATE, lots 2 and 3
+  under DEI. 198 proposals have lots in more than one category; counting a proposal in each
+  category it touches gives 10,721 against 10,523 distinct. That is the whole of the 198 gap.
+- Twin proposal numbers: the key uses the issuer name as filed, and the filing spells the same
+  company two ways ("The Walt Disney Company" / "THE WALT DISNEY COMPANY"); the 0-share block
+  carries the upper-case spelling. Normalising case and whitespace merges 10,523 proposals into
+  8,990. 318 distinct CUSIPs; 622 distinct name spellings.
+- Zero-share lots inside "voted lots": DEI shareholder cell has 4 zero-share lots of 23, none FOR.
+  Filing-wide, 2,845 lots carry 0 shares (1,425 FOR, 858 ABSTAIN, 550 AGAINST, 3 WITHHOLD, 9
+  without a readable vote). No lot has a NULL share count.
+
+Dispositions sent to the three readers; the fixes ship together as Part 1.1 after Lance's table
+report (above) was fixed and verified at the origin.
+
+**Table fix shipped, 2026-08-30 00:21 CDT (clock):** commit `218d425` (git 2026-08-30 00:19:39 -0500); `verify_deploy` at 00:20 CDT, every marker DEPLOYED. Measured after the fix: table equals its container at laptop width, hint hidden; at 390 px the container scrolls, the body does not, the hint shows. Lesson 8 in PLAYBOOK_DELTA.

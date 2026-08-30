@@ -185,3 +185,26 @@ Findings from that round are processed the same way: verified in the data, dispo
    `totals` carries `records`, `lots`, `zero_lot_rows` and `proposals` separately and G7 asserts
    `lots + zero_lot_rows == records`.
 4. **G11 and `catalogue_drift`.** Noted for Part 2's gate docstring.
+
+## 12. Part 1.1 - round two findings (2026-08-30), bounded, before Part 2
+
+Round two (Glizzness, league, LinkedUmp, VisibleGov; reports and the data checks in CHATLOG)
+found defects in Part 1 itself. Each verified in the store. Dispositions, all shipping together:
+
+| # | Finding | Data | Change |
+|---|---|---|---|
+| R1 | Heading count and pager count disagree under a filter | UI | heading follows the filter |
+| R2 | Lots of one proposal "2 of 3" with no "1 of 3" in the list; Proposals column sums to 10,721 vs 10,523 | 198 proposals have lots in more than one category; a proposal is counted in each category it touches | each record carries the categories its sibling lots fall in; the lot cell says "lot 1 is under ENVIRONMENT OR CLIMATE"; `totals.proposals_in_multiple_categories` published and explained beside the column |
+| R3 | Same ballot item under two proposal numbers | the key used the issuer name as filed; the filing spells one company two ways; the 0-share block carries the upper-case spelling | proposal key normalises case and whitespace on issuer and description: 10,523 -> 8,990; the page says what the count counts |
+| R4 | Zero-share lots inside "FOR of voted lots" | 2,845 zero-share lots (1,425 FOR); DEI shareholder cell 4 of 23 | denominator = lots with a readable vote AND shares > 0, labelled "of lots that voted shares"; zero-share lots published per cell and per category |
+| R5 | The 50% threshold is an assumption presented as the test; a perfect zero looks like a vocabulary mismatch | both sides normalised from identical raw spellings; exact mirror on shareholder lots (AGAINST/FOR 819, FOR/AGAINST 408, ABSTAIN/AGAINST 206); 5,022 proposals carry different values on different lots; all 4,204 ABSTAIN lots carry AGAINST | `mgmt_rec_semantics` publishes the crosstab (shareholder and management lots) and `proposals_with_mixed_recommendation`; the verdict rule becomes: mixed-recommendation proposals above `thin_n` OR agreement below the configured floor -> not the board's view; reader-facing words replace "tracks-lot" |
+| R6 | `thin_n` and `min_board_view_pct` are typed constants under a "none are typed" claim | true | `meta.config` publishes both; the provenance box shows a "Configuration" row; the claim reads "computed from the filing; two thresholds are configuration, shown here" |
+| R7 | "Mgmt rec FOR" on a row still reads as the board's wish | UI | the column header and cell titles carry the filing's verdict, computed |
+| R8 | "proposal #45" - whose numbering; one link to THIS lot | this page's; EDGAR has no per-lot anchor | labelled "this page's"; done in the table fix |
+| R9 | "zero-lot rows" vs "zero-share lots" conflated; "-" undefined; ABSTAIN unexplained; fractional shares; engine-run id changed silently; no companies count | as filed; 318 CUSIPs | reworded totals; definitions for "-", ABSTAIN as filed, fractional shares as filed, id changes with code or config; `totals.issuers` (distinct CUSIP) |
+| R10 | No Show option for shareholder / management items | UI | two more filters; the semantics line points at them |
+| R11 | Glossary too long before the first number; "Four strangers" sentence | UI | three terms first, the rest collapsed (`<details>`); the sentence moves to one line beside the provenance claim |
+| R12 | Header numbers read as the registrant's | UI | one line: the numbers below are the series', not the registrant's |
+
+Extractor change (R3) rotates the fingerprint; the store is re-extracted. G7 recomputes every
+new field; G8's forbidden keys unchanged. `verify_claims` C3 is unaffected (it uses record counts).
