@@ -34,6 +34,7 @@ let thinN = null;                // from meta.thin_n, used in the thin-sample la
 let totalRecords = null;         // from meta.totals.records, for "row N of TOTAL"
 let recVerdict = null;           // from meta.mgmt_rec_semantics.verdict
 let totalProposals = null;       // from meta.totals.proposals
+let focusProposal = null;        // proposal_no the "one proposal only" filter shows
 let multiCatProposals = null;    // from meta.totals.proposals_in_multiple_categories
 let rollupBySlug = new Map();    // slug -> category row, for deep links from the semantics line
 
@@ -262,16 +263,18 @@ function renderProvenance(meta) {
         null,
         fmtInt(t.records) + ' records (' + fmtInt(t.lots) + ' vote lots + ' +
         fmtInt(t.zero_lot_rows) + ' proposal filed with no lots) | ' +
-        fmtInt(t.proposals) + ' proposals, ' + fmtInt(t.proposals_in_multiple_categories) +
-        ' of them with lots in more than one category | ' +
+        fmtInt(t.proposals) + ' proposals (' + fmtInt(t.proposals_in_multiple_categories) +
+        ' of them have lots in more than one category and so appear ' +
+        fmtInt(t.extra_category_entries) + ' extra times in the table below) | ' +
         fmtInt(t.issuers) + ' companies by CUSIP | ' +
         fmtInt(t.categories) + ' categories | ' +
         fmtInt(t.unparseable_how_voted) + ' unparseable how-voted values | ' +
         fmtInt(t.absent_how_voted) + ' absent in source | ' +
-        fmtInt(t.zero_share_lots) + ' lots of 0 shares'
+        fmtInt(t.zero_share_lots) + ' lots of 0 shares (' + fmtInt(t.zero_share_lots_readable) +
+        ' with a readable vote, shown in the table\'s brackets; ' +
+        fmtInt(t.zero_share_lots_unreadable) + ' without)'
       ),
-      'each of these counts is a list: open a category and use "Show"; the category ' +
-      'table carries per-category counts of zero-share lots and shared proposals'
+      'each of these counts is a list: open a category and use "Show"'
     );
   }
 
@@ -282,26 +285,23 @@ function renderProvenance(meta) {
       t.issuer_name_spellings > t.issuers) {
     sp.textContent =
       'The filing names its ' + fmtInt(t.issuers) + ' companies (by CUSIP) in ' +
-      fmtInt(t.issuer_name_spellings) + ' different spellings. This page groups proposals ' +
-      'after ignoring letter case, spacing and trailing punctuation, and shows every name as filed.';
+      fmtInt(t.issuer_name_spellings) + ' different spellings (' +
+      fmtInt(t.issuers_with_multiple_spellings) + ' companies have more than one). This page ' +
+      'groups proposals after ignoring letter case, spacing and trailing punctuation, and shows ' +
+      'every name as filed.';
     show(sp);
+    wireSpellings();
   } else {
     hide(sp);
   }
 
   const multiNote = $('note-multicat');
-  if (multiNote && typeof t.multi_category_records === 'number') {
-    if (t.multi_category_records > 0) {
-      multiNote.textContent =
-        fmtInt(t.multi_category_records) + ' of ' + fmtInt(t.records) +
-        ' records carry more than one category in the filing. Each is counted ' +
-        'under its first-listed category only, so category counts sum exactly ' +
-        'to the record total and nothing is counted twice.';
-    } else {
-      multiNote.hidden = true;
-    }
-  } else if (multiNote) {
-    multiNote.hidden = true;
+  if (multiNote && typeof t.multi_category_records === 'number' && t.multi_category_records > 0) {
+    multiNote.textContent =
+      'Separately, ' + fmtInt(t.multi_category_records) + ' of the ' + fmtInt(t.records) +
+      ' records carry two category tags on the same lot in the filing; such a lot is listed ' +
+      'under its first tag only.';
+    multiNote.hidden = false;
   }
 
   // The managementRecommendation test - COMPUTED by the exporter, stated in
@@ -316,7 +316,8 @@ function renderProvenance(meta) {
       'so the field should carry one value across all the lots of a proposal. In this filing ' +
       fmtInt(sem.proposals_with_mixed_recommendation) + ' of ' +
       fmtInt(sem.proposals_with_recommendation) +
-      ' proposals with a recommendation carry more than one value across their own lots';
+      ' proposals with a recommendation (' + fmtInt(sem.proposals_without_recommendation) +
+      ' proposals have none) carry more than one value across their own lots';
     const ex = sem.example_mixed_proposal;
     if (ex && typeof ex === 'object') {
       text += ' (for example ' + textOr(ex.issuer_name, ABSENT) + ', ' +
@@ -325,9 +326,13 @@ function renderProvenance(meta) {
       semLine.appendChild(el('span', null, text + '; '));
       const cat = rollupBySlug.get(ex.category_slug);
       if (cat) {
-        const a = el('a', null, 'open its category');
+        const a = el('a', null, 'open its ' + fmtInt(ex.lots) + ' lots');
         a.href = '#category-detail';
-        a.addEventListener('click', (ev) => { ev.preventDefault(); openCategory(cat, 'split'); });
+        a.addEventListener('click', (ev) => {
+          ev.preventDefault();
+          focusProposal = ex.proposal_no;
+          openCategory(cat, 'proposal');
+        });
         semLine.appendChild(a);
       }
       semLine.appendChild(el('span', null, ')'));
@@ -337,9 +342,8 @@ function renderProvenance(meta) {
     if (sem.verdict === 'not-board-view') {
       tail = '. So in this filing the field is not a board\'s recommendation: on shareholder ' +
         'items it agrees with the fund\'s own vote in ' + textOr(sem.agreement, ABSENT) +
-        ' lots, and on management items it matches the vote almost everywhere (the full vote ' +
-        'against recommendation counts are in the page\'s data file). It is shown as filed on ' +
-        'each lot, and no headline on this page is computed from it.';
+        ' lots, and on management items it matches the vote almost everywhere. It is shown as ' +
+        'filed on each lot, and no headline on this page is computed from it. ';
     } else if (sem.verdict === 'board-view') {
       tail = '. That is below the configured floor, so the field is treated as the board\'s ' +
         'recommendation in this filing.';
@@ -348,6 +352,11 @@ function renderProvenance(meta) {
         'nothing rests on it.';
     }
     semLine.appendChild(el('span', null, text + tail));
+    if (sem.verdict === 'not-board-view') {
+      semLine.appendChild(el('span', null, 'The full vote-by-recommendation counts are in '));
+      semLine.appendChild(link('the page\'s data file (meta.json)', PATHS.meta));
+      semLine.appendChild(el('span', null, '; every category\'s "Show" has "proposals whose lots carry more than one recommendation value".'));
+    }
     show(semLine);
   } else {
     hide(semLine);
@@ -372,18 +381,24 @@ function pctCell(cell) {
       (cell && cell.zero_share_lots ? ' (' + fmtInt(cell.zero_share_lots) + ' lots of 0 shares)' : '') + '.';
     return td;
   }
-  td.appendChild(el('span', null, cell.for_pct + '%'));
-  let denom = ' (' + fmtInt(cell.for_lots) + ' of ' + fmtInt(cell.n_voted);
-  if (cell.zero_share_lots) denom += '; ' + fmtInt(cell.zero_share_lots) + ' of 0 shares left out';
-  denom += ')';
-  td.appendChild(el('span', 'denom', denom));
+  // Round three (league): a percentage of one lot invites a screenshot. Thin
+  // cells show their counts and no percentage.
+  let denom = fmtInt(cell.for_lots) + ' of ' + fmtInt(cell.n_voted);
+  if (cell.zero_share_lots) {
+    denom += '; ' + fmtInt(cell.zero_share_lots) + ' of 0 shares left out' +
+      (cell.for_zero_share_lots ? ' (' + fmtInt(cell.for_zero_share_lots) + ' of them FOR)' : '');
+  }
   if (cell.thin) {
+    td.appendChild(el('span', null, denom));
     const flag = el('span', 'thin-flag', thinLabelText());
     flag.title =
       'Fewer than ' + (typeof thinN === 'number' ? thinN : 'the threshold') +
-      ' lots that voted shares: too few to treat as a headline.';
+      ' lots that voted shares: too few for a percentage.';
     td.appendChild(flag);
+    return td;
   }
+  td.appendChild(el('span', null, cell.for_pct + '%'));
+  td.appendChild(el('span', 'denom', ' (' + denom + ')'));
   return td;
 }
 
@@ -427,7 +442,9 @@ function renderRollup(rollup) {
       'The Proposals column sums to ' + fmtInt(propSum) + ', which is ' +
       fmtInt(propSum - totalProposals) + ' more than the ' + fmtInt(totalProposals) +
       ' distinct proposals, because a proposal whose lots were filed under more than one ' +
-      'category is counted in each (' + fmtInt(multiCatProposals) + ' such proposals). ' +
+      'category is counted in each (' + fmtInt(multiCatProposals) + ' such proposals, ' +
+      'some in three or four categories). Lots are never counted twice: each lot sits under ' +
+      'one category, so the Lots column sums exactly to the lot total. ' +
       'Use "Show: proposals with lots in another category" inside any category to see them.';
   } else {
     noteP.textContent =
@@ -444,7 +461,7 @@ function renderRollup(rollup) {
     tr.setAttribute('role', 'button');
     tr.setAttribute(
       'aria-label',
-      'Show all ' + fmtInt(cat.n) + ' records for ' + cat.category
+      'Show every lot for ' + cat.category + ' (' + fmtInt(cat.n_lots) + ' lots)'
     );
 
     const nameCell = el('th', null, cat.category);
@@ -457,8 +474,10 @@ function renderRollup(rollup) {
       props.title = fmtInt(cat.n_proposals_shared) + ' of these also have lots in another category.';
     }
     tr.appendChild(props);
-    const lots = el('td', 'num', fmtInt(cat.n_lots));
+    const lots = el('td', 'num');
+    lots.appendChild(el('span', null, fmtInt(cat.n_lots)));
     if (cat.n_zero_share_lots) {
+      lots.appendChild(el('span', 'denom', ' (' + fmtInt(cat.n_zero_share_lots) + ' of 0 shares)'));
       lots.title = fmtInt(cat.n_zero_share_lots) + ' of these lots voted 0 shares.';
     }
     tr.appendChild(lots);
@@ -496,6 +515,8 @@ const FILTERS = {
   shareholder: (r) => typeof r.vote_source === 'string' && r.vote_source.trim().toUpperCase() === 'SECURITY HOLDER',
   split: (r) => typeof r.lots_in_proposal === 'number' && r.lots_in_proposal > 1,
   elsewhere: (r) => Array.isArray(r.other_categories) && r.other_categories.length > 0,
+  mixed: (r) => r.mixed_recommendation === true,
+  proposal: (r) => focusProposal !== null && r.proposal_no === focusProposal,
   zero: (r) => r.shares_voted === 0 && typeof r.lot_index === 'number' && r.lot_index >= 1,
   unparseable: (r) => r.how_voted_raw !== null && r.how_voted_raw !== undefined && !r.how_voted,
   absent: (r) => r.how_voted_raw === null || r.how_voted_raw === undefined,
@@ -507,6 +528,8 @@ const FILTER_LABEL = {
   shareholder: 'shareholder items',
   split: 'split proposals',
   elsewhere: 'proposals with lots in another category',
+  mixed: 'proposals whose lots carry more than one recommendation value',
+  proposal: 'one proposal only',
   zero: 'zero-share lots',
   unparseable: 'unparseable how-voted',
   absent: 'absent in source',
@@ -573,7 +596,10 @@ async function openCategory(cat, initialFilter) {
   if (seq !== openSeq) return;
 
   const filterName = initialFilter && FILTERS[initialFilter] ? initialFilter : 'all';
-  $('state-filter').value = filterName;
+  const sel = $('state-filter');
+  const one = sel.querySelector('option[value="proposal"]');
+  if (one) one.hidden = filterName !== 'proposal';
+  sel.value = filterName;
   detailState = {
     category: textOr(data.category, cat.category),
     cat: cat,
@@ -587,8 +613,8 @@ async function openCategory(cat, initialFilter) {
   clear(th);
   th.appendChild(el('span', null, 'Mgmt rec '));
   th.appendChild(el('span', 'th-note',
-    recVerdict === 'not-board-view' ? '(as filed; not the board\'s view in this filing)'
-      : recVerdict === 'board-view' ? '(as filed; the board\'s view in this filing)'
+    recVerdict === 'not-board-view' ? '(as filed; not a board\'s view here)'
+      : recVerdict === 'board-view' ? '(as filed; a board\'s view here)'
       : '(as filed)'));
 
   applyFilter(filterName);
@@ -610,10 +636,11 @@ function updateHeading() {
   // a filter. The heading follows the filter.
   const { cat, category, records, view, filter } = detailState;
   let text = category + ': ' + fmtInt(cat.n_lots) + ' vote lots in ' +
-    fmtInt(cat.n_proposals) + ' proposals (' + fmtInt(cat.n) + ' records)';
+    fmtInt(cat.n_proposals) + ' proposals by this page\'s rule (' + fmtInt(cat.n) + ' records)';
   if (filter !== 'all') {
     text += ' - showing ' + fmtInt(view.length) + ' of ' + fmtInt(records.length) +
-      ' records: ' + (FILTER_LABEL[filter] || filter);
+      ' records: ' + (FILTER_LABEL[filter] || filter) +
+      (filter === 'proposal' && focusProposal !== null ? ' #' + fmtInt(focusProposal) : '');
   }
   $('detail-heading').textContent = text;
 }
@@ -682,10 +709,10 @@ function recordRow(r, prev) {
   const lot = el('td', 'nowrap lot');
   if (typeof r.lot_index === 'number' && typeof r.lots_in_proposal === 'number') {
     lot.appendChild(el('span', null, r.lot_index >= 1
-      ? r.lot_index + ' of ' + r.lots_in_proposal
+      ? 'lot ' + r.lot_index + ' of ' + r.lots_in_proposal
       : 'no lots'));
     if (Array.isArray(r.other_categories) && r.other_categories.length > 0) {
-      const note = el('span', 'finder', 'other lots under ' + r.other_categories.join(', '));
+      const note = el('span', 'finder', 'others under: ' + r.other_categories.join('; '));
       lot.appendChild(note);
       lot.title = 'This proposal\'s other lots were filed under: ' + r.other_categories.join(', ') + '.';
     } else {
@@ -756,10 +783,46 @@ function renderDetailPage() {
 // table is still wider than its container - phones, narrow windows - say so in
 // words above it, because overlay scrollbars are invisible until touched.
 function updateScrollHint() {
-  const sc = document.querySelector('#detail-body .table-scroll');
-  const hint = $('scroll-hint');
-  if (!sc || !hint) return;
-  hint.hidden = !(sc.scrollWidth > sc.clientWidth + 1);
+  for (const [scSel, hintId] of [
+    ['#categories .table-scroll', 'scroll-hint-cats'],
+    ['#detail-body .table-scroll', 'scroll-hint'],
+  ]) {
+    const sc = document.querySelector(scSel);
+    const hint = $(hintId);
+    if (!sc || !hint) continue;
+    hint.hidden = !(sc.scrollWidth > sc.clientWidth + 1);
+  }
+}
+
+// The spellings list (round three: "622 different spellings - I wanted to see
+// them"). Loaded on demand from issuers.json, rendered as text only.
+let spellingsLoaded = false;
+function wireSpellings() {
+  const det = $('spellings-details');
+  if (!det) return;
+  show(det);
+  det.addEventListener('toggle', async () => {
+    if (!det.open || spellingsLoaded) return;
+    const status = $('spellings-status');
+    status.textContent = 'Loading /data/issuers.json ...';
+    try {
+      const data = await fetchJson('/data/issuers.json');
+      const list = $('spellings-list');
+      clear(list);
+      const multi = (data.issuers || []).filter((i) => Array.isArray(i.spellings) && i.spellings.length > 1);
+      for (const i of multi) {
+        const li = el('li');
+        li.appendChild(el('code', null, i.cusip));
+        li.appendChild(el('span', null, ': ' + i.spellings.map((s) => s.name + ' (' + fmtInt(s.lots) + ')').join(' | ')));
+        list.appendChild(li);
+      }
+      status.textContent = fmtInt(multi.length) + ' companies with more than one spelling; ' +
+        'each name as filed, with the number of records carrying it.';
+      spellingsLoaded = true;
+    } catch (err) {
+      status.textContent = describeError(err);
+    }
+  });
 }
 
 function updatePagers() {
@@ -833,6 +896,7 @@ async function main() {
     renderHeader(meta);
     renderRollup(rollup);      // before provenance: the semantics line links into a category
     renderProvenance(meta);
+    updateScrollHint();
   } catch (err) {
     renderFatal(err);
   }

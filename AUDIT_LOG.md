@@ -242,3 +242,74 @@ rendered under the production CSP via serve_local.py in Playwright with zero con
 ### Post-Audit Changes
 
 - 2026-08-30: Part 1.1 shipped (this entry).
+
+## Audit 2026-08-30 - Cold-read round three (five readers, all rendered)
+
+### Scope
+
+The Part 1.1 page at `0041014`, read by Glizzness (929 px), LinkedUmp (914 px), Phoenix
+(929 px), league (1280 px, third read), VisibleGov (1920 px). Every finding checked in the store
+before a disposition (CHATLOG). Fixed as Part 1.2.
+
+### Severity-Ranked Findings
+
+#### High
+
+- The headline category table was 2,273 px wide at 929 px and carried no scroll hint: three
+  columns visible, the vote columns and both "% FOR" columns off-screen (three readers). Cause:
+  no-wrap header notes of 390-418 px each. Verdict: **Fixed** (headers wrap, notes drop to their
+  own line, cells tighten; a worded hint above the table whenever it still overflows).
+- The recommendation test's example was a say-on-pay FREQUENCY item, the one proposal type whose
+  ballot vocabulary is not FOR/AGAINST (league). Verdict: **Fixed** (the example rule is now: a
+  category with no unparseable votes, then the most lots; American Express, 8 lots; G7 asserts the
+  pick; the link opens exactly those lots).
+- Two footnotes read as contradicting ("counted in each" vs "nothing is counted twice"; records vs
+  lots) (VisibleGov, league). Verdict: **Fixed** (one explanation: proposals are counted per
+  category, lots never twice; the tag note reworded as lots).
+
+#### Medium
+
+- Per-cell zero-share counts summed to 2,836 against 2,845 (LinkedUmp). Cause: 9 zero-share lots
+  have no readable vote. Verdict: **Fixed** (both halves published and stated; the Lots column
+  shows each category's zero-share count in brackets).
+- 8,906 vs 8,904 (league, VisibleGov). Cause: 2 proposals carry no recommendation on any lot.
+  Verdict: **Fixed** (stated in the test sentence; `proposals_without_recommendation` published).
+- 495 vs 510 (Phoenix). Verdict: **Fixed** (`extra_category_entries` published and explained:
+  some proposals sit in three or four categories).
+- Medtronic's lots arrived 4-7 before 1-3 (Phoenix). Cause: the sort compared issuer names as
+  filed. Verdict: **Fixed** (sort compares names case-insensitively; lockstep in G7).
+- Two FOR numbers per row unexplained (league). Verdict: **Fixed** (the For header says "all
+  lots"; each cell names its zero-share FOR lots; the footnote says why the column runs ahead).
+- "0% (0 of 1)" printed as a percentage on a thin cell (league). Verdict: **Fixed** (thin cells
+  show counts only).
+- Lists wanted behind 622 spellings and 4,594 mixed proposals; no link to the data file
+  (Glizzness, LinkedUmp). Verdict: **Fixed** (`issuers.json` with a collapsed on-demand list;
+  a "mixed recommendation" filter per category with per-category counts; a link to meta.json).
+- The lot cell read as one run-on string; the Mgmt rec header was a sentence (LinkedUmp).
+  Verdict: **Fixed** (two facts separated; header shortened).
+- "Show all 21,846 records" beside Lots 21,845 (VisibleGov). Verdict: **Fixed** (the row's label
+  names lots).
+- Per-category proposal counts changed between visits with nothing on the page reconciling the
+  runs (Glizzness, VisibleGov). Verdict: **Accepted with a statement** (the heading says "by this
+  page's rule"; the rule is in the glossary; the engine run changes with it; the page carries no
+  history by design).
+
+#### Low
+
+- No totals row (league). Verdict: **Accepted Risk, stated** (a blended row would mostly measure
+  director elections; the footnote says so and points at the provenance box).
+- The three hashes are traceable but not usable (VisibleGov). Verdict: **Accepted** (they are for
+  the reader who recomputes; the SHA-256 is the actionable one).
+- The seven-lot pattern on shareholder proposals is unexplained by the filing (LinkedUmp).
+  Verdict: **Accepted as filed** (the glossary says the filing does not say what divides lots).
+
+### Sign-Off Position
+
+Part 1.2 built 2026-08-30: ten gates pass (G7 251 checks), `tools/verify_claims.py` passes,
+rendered under the production CSP via serve_local.py in Playwright with zero console messages: the headline table equals its container at 1366 px and shows the worded hint at 929 px (1,021 px in 857); the example link opens all 7 Medtronic lots in lot order; the spellings list loads 299 companies on demand. Engine run `e3b050bc2353357b`. Round four is a different question (RapidForge): which number
+would a reader quote, and is it the one we would want quoted - asked of readers who have not seen
+the page.
+
+### Post-Audit Changes
+
+- 2026-08-30: Part 1.2 shipped (this entry).

@@ -115,6 +115,11 @@
     <h2 id="provenance-heading">Where these numbers come from</h2>
     <dl id="provenance-list" class="provenance-list"></dl>
     <p id="spellings-line" class="footnote" hidden></p>
+    <details id="spellings-details" class="definitions-more" hidden>
+      <summary>Every company spelled more than one way in the filing</summary>
+      <p id="spellings-status" class="footnote"></p>
+      <ul id="spellings-list" class="spellings"></ul>
+    </details>
     <p id="semantics-line" class="footnote" hidden></p>
     <p class="provenance-claim">Every number on this page is computed from the filing by the engine
       run above; the one configured threshold is shown. This page has been corrected after
@@ -124,20 +129,21 @@
   <section id="categories" aria-labelledby="categories-heading" hidden>
     <h2 id="categories-heading">Votes by category</h2>
     <p id="anti-blend" class="anti-blend" hidden></p>
+    <p id="scroll-hint-cats" class="scroll-hint" hidden>This table is wider than your screen: scroll it sideways to reach the vote columns and both "% FOR" columns.</p>
     <div class="table-scroll">
       <table id="category-table">
         <thead>
           <tr>
             <th scope="col">Category <span class="th-note">(as filed)</span></th>
             <th scope="col" class="num">Proposals <span class="th-note">(counted in each category their lots fall in)</span></th>
-            <th scope="col" class="num">Lots</th>
-            <th scope="col" class="num">For</th>
+            <th scope="col" class="num">Lots <span class="th-note">(of 0 shares in brackets)</span></th>
+            <th scope="col" class="num">For <span class="th-note">(all lots)</span></th>
             <th scope="col" class="num">Against</th>
             <th scope="col" class="num">Abstain</th>
             <th scope="col" class="num">Withhold</th>
             <th scope="col" class="num">Unparseable</th>
             <th scope="col" class="num">Absent in source</th>
-            <th scope="col" class="num">% FOR, management items <span class="th-note">(FOR of lots that voted shares)</span></th>
+            <th scope="col" class="num">% FOR, management items <span class="th-note">(FOR of lots that voted shares; the For column counts every lot)</span></th>
             <th scope="col" class="num">% FOR, shareholder items <span class="th-note">(FOR of lots that voted shares)</span></th>
           </tr>
         </thead>
@@ -149,10 +155,13 @@
       <p id="note-proposals" class="footnote"></p>
       <p id="note-mgmt" class="footnote">"% FOR" is the fund's own vote, split by who proposed the
         item; every cell shows its counts, and lots that voted 0 shares are counted beside them,
-        not inside them. Nothing on this table is derived from the filing's
-        <code>managementRecommendation</code> field. Cells with fewer voting lots than the
-        configured threshold are marked thin.</p>
-      <p id="note-multicat" class="footnote"></p>
+        not inside them. The For column counts every FOR lot, zero-share ones included, which is
+        why it runs ahead of the "% FOR" numerators. Nothing on this table is derived from the
+        filing's <code>managementRecommendation</code> field. Cells with fewer voting lots than
+        the configured threshold show their counts without a percentage. Whole-filing totals are
+        in "Where these numbers come from", not at the foot of this table: a blended percentage
+        across categories would mostly measure director elections.</p>
+      <p id="note-multicat" class="footnote" hidden></p>
     </div>
   </section>
 
@@ -168,6 +177,8 @@
           <option value="shareholder">shareholder items only</option>
           <option value="split">split proposals only (more than one lot)</option>
           <option value="elsewhere">proposals with lots in another category</option>
+          <option value="mixed">proposals whose lots carry more than one recommendation value</option>
+          <option value="proposal" hidden>one proposal only</option>
           <option value="zero">zero-share lots only</option>
           <option value="unparseable">unparseable how-voted only</option>
           <option value="absent">absent in source only</option>

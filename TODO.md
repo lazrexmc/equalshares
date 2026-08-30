@@ -7,7 +7,7 @@
 
 ## RESUME HERE
 
-**Live state as of 2026-08-30 00:32 CDT (from `date` on this machine). This block outranks every other document in this repo.**
+**Live state as of 2026-08-30 00:42 CDT (from `date` on this machine). This block outranks every other document in this repo.**
 
 - **LIVE at https://equalshares.pages.dev/ - rung two** (built, deployed, verified at the origin).
   Rung three is Lance using it and reporting. Two dogfood findings so far, both fixed (`df0c576`
@@ -45,7 +45,12 @@
       `218d425`). All dispositioned in spec section 12 and BUILT as Part 1.1 on 2026-08-30: one proposal
       key (8,906), zero-share lots out of the denominators, the threshold-free recommendation test,
       `meta.config`, the glossary cut to three terms. AUDIT_LOG 2026-08-30.
-- [ ] **Cold-read round three** on the Part 1.1 page, same readers, before Part 2.
+- [x] ~~**Cold-read round three**~~ - five rendered reads; dispositioned (AUDIT_LOG 2026-08-30 round
+      three) and BUILT as Part 1.2 on 2026-08-30: the headline table fits or says it scrolls; a clean
+      example for the recommendation test; every gap a reader found between two numbers now has both
+      numbers named.
+- [ ] **Round four**, different question (RapidForge): which one number would you quote, and is it
+      the one we want quoted. Readers who have not seen the page. Then Part 2.
 - [ ] **Part 2 - multi-filing**: `series_match` per source, three Big Three sources (iShares Trust
       0001100663, SPDR SERIES TRUST 0001064642, Vanguard 500 Index series), `site/data/index.json`
       + per-filing dirs + `compare.json`, gate G11 index-coverage, picker and compare view.

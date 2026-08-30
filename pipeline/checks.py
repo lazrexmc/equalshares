@@ -60,10 +60,11 @@ UNCATEGORIZED = "UNCATEGORIZED"
 VOTE_ENUM = ("FOR", "AGAINST", "ABSTAIN", "WITHHOLD")
 REC_ENUM = VOTE_ENUM + ("NONE",)
 SOURCE_KEYS = ("ISSUER", "SECURITY HOLDER")
-CELL_KEYS = {"n_records", "n_lots", "n_proposals", "n_voted", "zero_share_lots", "for_lots",
-             "for_pct", "thin"}
+CELL_KEYS = {"n_records", "n_lots", "n_proposals", "n_voted", "zero_share_lots",
+             "for_zero_share_lots", "for_lots", "for_pct", "thin"}
 CATEGORY_KEYS = {"category", "slug", "n", "n_lots", "n_proposals", "n_proposals_shared",
-                 "n_zero_share_lots", "votes", "shares_voted_total", "by_source"}
+                 "n_proposals_mixed_recommendation", "n_zero_share_lots", "votes",
+                 "shares_voted_total", "by_source"}
 VERDICTS = ("board-view", "not-board-view", "insufficient")
 # Any key carrying one of these names anywhere in the export is a blended or
 # recommendation-derived headline trying to come back (cold-read round one).
@@ -178,7 +179,7 @@ def record_sort_key(r):
         r.get("meeting_date") is not None,
         r.get("meeting_date") or "",
         r.get("issuer_name") is not None,
-        r.get("issuer_name") or "",
+        (r.get("issuer_name") or "").upper(),
         r.get("proposal_no") if r.get("proposal_no") is not None else -1,
         r.get("lot_index") if r.get("lot_index") is not None else -1,
         r.get("seq"),
@@ -200,6 +201,8 @@ def cell_from_rows(rs, thin_n):
             "n_proposals": len({r["proposal_no"] for r in rs}),
             "n_voted": len(voted),
             "zero_share_lots": sum(1 for r in readable if r["shares_voted"] == 0),
+            "for_zero_share_lots": sum(1 for r in readable
+                                       if r["shares_voted"] == 0 and r["how_voted"] == "FOR"),
             "for_lots": for_lots,
             "for_pct": pct(for_lots, len(voted)), "thin": len(voted) < thin_n}
 
@@ -586,6 +589,18 @@ def g7_export_consistency():
     cats_of_proposal = {}
     for r in rows:
         cats_of_proposal.setdefault(r["proposal_no"], set()).add(bucket(r["category_type"]))
+    by_prop_rec = {}
+    for r in rows:
+        if (r["lot_index"] or 0) >= 1 and r["mgmt_rec"] in VOTE_ENUM:
+            by_prop_rec.setdefault(r["proposal_no"], set()).add(r["mgmt_rec"])
+    mixed_set = {pn for pn, vals in by_prop_rec.items() if len(vals) > 1}
+    issuer_names = {}
+    for r in rows:
+        if r["cusip"]:
+            issuer_names.setdefault(r["cusip"], {})
+            if r["issuer_name"]:
+                issuer_names[r["cusip"]][r["issuer_name"]] = \
+                    issuer_names[r["cusip"]].get(r["issuer_name"], 0) + 1
 
     cats = rollup.get("categories")
     chk(
@@ -624,10 +639,13 @@ def g7_export_consistency():
             f"db lots={db_lots} props={db_props}")
         db_shared = sum(1 for pn in props_here if len(cats_of_proposal[pn]) > 1)
         db_zero = sum(1 for r in rs if (r["lot_index"] or 0) >= 1 and r["shares_voted"] == 0)
-        chk(c.get("n_proposals_shared") == db_shared and c.get("n_zero_share_lots") == db_zero,
-            f"shared proposals / zero-share lots for {name!r}",
+        db_mixed = sum(1 for pn in props_here if pn in mixed_set)
+        chk(c.get("n_proposals_shared") == db_shared and c.get("n_zero_share_lots") == db_zero
+            and c.get("n_proposals_mixed_recommendation") == db_mixed,
+            f"shared / zero-share / mixed-recommendation for {name!r}",
             f"rollup shared={c.get('n_proposals_shared')} zero={c.get('n_zero_share_lots')} "
-            f"db shared={db_shared} zero={db_zero}")
+            f"mixed={c.get('n_proposals_mixed_recommendation')} "
+            f"db shared={db_shared} zero={db_zero} mixed={db_mixed}")
         votes = c.get("votes") or {}
         vote_sum = sum(votes.get(k, 0) for k in (*VOTE_ENUM, "UNPARSEABLE", "ABSENT"))
         chk(vote_sum == n, f"votes sum to n for {name!r}", f"sum={vote_sum} n={n}")
@@ -690,6 +708,10 @@ def g7_export_consistency():
                     cats_of_proposal.get(r.get("proposal_no"), set()) - {name}))
             chk(bad_other == 0, f"other_categories in {slug}.json",
                 f"{bad_other} records disagree with the DB's categories per proposal")
+            bad_mixed = sum(1 for r in recs
+                            if r.get("mixed_recommendation") is not (r.get("proposal_no") in mixed_set))
+            chk(bad_mixed == 0, f"mixed_recommendation flag in {slug}.json",
+                f"{bad_mixed} records disagree with the DB")
 
     on_disk = {p.name for p in CATEGORY_DIR.glob("*.json")} if CATEGORY_DIR.exists() else set()
     stale = sorted(on_disk - expected_files)
@@ -703,14 +725,22 @@ def g7_export_consistency():
         "proposals": len({r["proposal_no"] for r in rows}),
         "proposals_in_multiple_categories": sum(
             1 for cs in cats_of_proposal.values() if len(cs) > 1),
+        "extra_category_entries": sum(len(cs) - 1 for cs in cats_of_proposal.values()),
         "issuers": len({r["cusip"] for r in rows if r["cusip"]}),
         "issuer_name_spellings": len({r["issuer_name"] for r in rows if r["issuer_name"]}),
+        "issuers_with_multiple_spellings": sum(1 for n in issuer_names.values() if len(n) > 1),
         "categories": len(cats),
         "unparseable_how_voted": sum(
             1 for r in rows if r["how_voted_raw"] is not None and r["how_voted"] is None),
         "absent_how_voted": sum(1 for r in rows if r["how_voted_raw"] is None),
         "zero_share_lots": sum(
             1 for r in rows if (r["lot_index"] or 0) >= 1 and r["shares_voted"] == 0),
+        "zero_share_lots_readable": sum(
+            1 for r in rows if (r["lot_index"] or 0) >= 1 and r["shares_voted"] == 0
+            and r["how_voted"] in VOTE_ENUM),
+        "zero_share_lots_unreadable": sum(
+            1 for r in rows if (r["lot_index"] or 0) >= 1 and r["shares_voted"] == 0
+            and r["how_voted"] not in VOTE_ENUM),
         "multi_category_records": sum(
             1 for r in rows if (r["categories_all"] or "").find("|") != -1),
     }
@@ -743,6 +773,7 @@ def g7_export_consistency():
         verdict = "board-view"
     want_sem = {"lots_with_recommendation": len(with_any_rec),
                 "proposals_with_recommendation": len(by_prop),
+                "proposals_without_recommendation": len({r["proposal_no"] for r in rows}) - len(by_prop),
                 "proposals_with_mixed_recommendation": len(mixed),
                 "crosstab_shareholder_lots": crosstab_rows(sh),
                 "crosstab_management_lots": crosstab_rows(
@@ -757,13 +788,38 @@ def g7_export_consistency():
             f"meta={sem.get(k)!r} recomputed={v!r}")
     ex = sem.get("example_mixed_proposal")
     if mixed:
-        ex_ok = (isinstance(ex, dict) and ex.get("proposal_no") in mixed
-                 and ex.get("lots") == lots_per_proposal.get(ex.get("proposal_no"))
-                 and sorted(ex.get("recommendations") or []) == sorted(by_prop[ex.get("proposal_no")]))
-        chk(ex_ok, "meta mgmt_rec_semantics.example_mixed_proposal is a real mixed proposal",
-            f"{ex!r}"[:160])
+        clean = {name for name in db_counts
+                 if not any(r["how_voted_raw"] is not None and r["how_voted"] is None
+                            for r in rows if bucket(r["category_type"]) == name)}
+        cat_of = {}
+        for r in rows:
+            if (r["lot_index"] or 0) >= 1:
+                cat_of.setdefault(r["proposal_no"], bucket(r["category_type"]))
+        pool = ([pn for pn in mixed if cat_of.get(pn) in clean and len(cats_of_proposal[pn]) == 1]
+                or [pn for pn in mixed if cat_of.get(pn) in clean]
+                or list(mixed))
+        want_best = min(pool, key=lambda pn: (-lots_per_proposal.get(pn, 0), pn))
+        ex_ok = (isinstance(ex, dict) and ex.get("proposal_no") == want_best
+                 and ex.get("lots") == lots_per_proposal.get(want_best)
+                 and sorted(ex.get("recommendations") or []) == sorted(by_prop[want_best]))
+        chk(ex_ok, "meta mgmt_rec_semantics.example_mixed_proposal is the rule's pick",
+            f"stated={ex.get('proposal_no') if isinstance(ex, dict) else ex!r} rule={want_best}")
     else:
         chk(ex is None, "no example when no proposal is mixed", f"{ex!r}")
+
+    ipath = SITE_DATA / "issuers.json"
+    if not ipath.exists():
+        chk(False, "site/data/issuers.json exists", "missing")
+    else:
+        pub = load_json(ipath).get("issuers")
+        want_iss = [
+            {"cusip": cusip,
+             "spellings": [{"name": n, "lots": k} for n, k in sorted(names.items())],
+             "records": sum(names.values())}
+            for cusip, names in sorted(issuer_names.items())
+        ]
+        chk(pub == want_iss, "issuers.json recomputes from the DB",
+            f"{len(pub) if isinstance(pub, list) else 'n/a'} CUSIPs published, {len(want_iss)} in DB")
 
     failed = checks.count(False)
     return failed == 0, (
@@ -798,6 +854,8 @@ def g8_anti_blend():
         log("  [ok] only top-level key is 'categories' - no blended number anywhere")
 
     artifacts = {"rollup.json": rollup, "meta.json": meta}
+    if (SITE_DATA / "issuers.json").exists():
+        artifacts["issuers.json"] = load_json(SITE_DATA / "issuers.json")
     for p in (sorted(CATEGORY_DIR.glob("*.json")) if CATEGORY_DIR.exists() else []):
         artifacts[f"category/{p.name}"] = load_json(p)
     hits = []

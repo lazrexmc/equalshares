@@ -3,11 +3,11 @@
     "thin_n": 5
   },
   "engine_run": {
-    "code_fingerprint": "4c16156399c9ec611893b9ab77b7494307d83f734c9f61df4ea6581976689a73",
+    "code_fingerprint": "ce69f1eec29045a22eae0f9bc5a943432c2139fcbfe06fb451c3a2f83dda04d0",
     "config_hash": "10c3dfefb138a8124be76188fb562f1bc73c9cdcc8cbaf1e97485d7e1651eb06",
-    "engine_run_id": "e3b050bc2353357b",
-    "engine_version": "0.1+e3b050bc",
-    "git_commit": "33d9ce99c87fca63a83c3b221e623772fb31579f"
+    "engine_run_id": "4fd9b89612615cce",
+    "engine_version": "0.1+4fd9b896",
+    "git_commit": "d587e2a1843bdf9d89aee497d186d45ffe663d42"
   },
   "filer": {
     "cik": "0000036405",
@@ -29,7 +29,7 @@
     "vote_doc_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001.txt",
     "vote_doc_view_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml"
   },
-  "generated_at": "2026-08-30T05:28:36+00:00",
+  "generated_at": "2026-08-30T05:41:34+00:00",
   "mgmt_rec_semantics": {
     "agreeing": 0,
     "agreement": "0/1433",
@@ -52,23 +52,25 @@
       "FOR/AGAINST": 408,
       "FOR/NONE": 3
     },
+    "example_category_rule": "a category with no unparseable votes, all lots in one category, then the most lots, then the lowest proposal number",
     "example_mixed_proposal": {
-      "category_slug": "section-14a-say-on-pay-votes",
-      "issuer_name": "QUALCOMM Incorporated",
-      "lots": 9,
-      "meeting_date": "2026-03-17",
-      "proposal_no": 651,
+      "category_slug": "audit-related",
+      "issuer_name": "Medtronic plc",
+      "lots": 7,
+      "meeting_date": "2025-10-16",
+      "proposal_no": 207,
       "recommendations": [
         "AGAINST",
         "FOR"
       ],
-      "vote_description": "Approval on an advisory basis, of the frequency of future votes on our executive compensation."
+      "vote_description": "Ratifying, in a non-binding vote, the appointment of PricewaterhouseCoopers LLP as the Company's independent auditor for fiscal year 2026 and authorizing, in a binding vote, the Board of Directors, acting through the Audit Committee, to set the auditor's remuneration;"
     },
     "field": "managementRecommendation",
     "headline_allowed": false,
     "lots_with_recommendation": 29880,
     "proposals_with_mixed_recommendation": 4594,
     "proposals_with_recommendation": 8904,
+    "proposals_without_recommendation": 2,
     "shareholder_lots": 1439,
     "shareholder_lots_with_recommendation": 1433,
     "test": "a board recommends once per item; proposals whose lots carry more than one recommendation value are counted, and the count must stay below thin_n",
@@ -78,8 +80,10 @@
   "totals": {
     "absent_how_voted": 1,
     "categories": 12,
+    "extra_category_entries": 510,
     "issuer_name_spellings": 622,
     "issuers": 318,
+    "issuers_with_multiple_spellings": 299,
     "lots": 29890,
     "multi_category_records": 50,
     "proposals": 8906,
@@ -87,6 +91,8 @@
     "records": 29891,
     "unparseable_how_voted": 88,
     "zero_lot_rows": 1,
-    "zero_share_lots": 2845
+    "zero_share_lots": 2845,
+    "zero_share_lots_readable": 2836,
+    "zero_share_lots_unreadable": 9
   }
 }

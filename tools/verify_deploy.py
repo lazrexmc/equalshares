@@ -43,10 +43,11 @@ MARKERS = [
     ("site/css/site.css", "/css/site.css"),
     ("site/data/meta.json", "/data/meta.json"),
     ("site/data/rollup.json", "/data/rollup.json"),
+    ("site/data/issuers.json", "/data/issuers.json"),
     ("site/_headers", None),          # not served; listed so a reader sees it is deliberately skipped
 ]
 HEADER_MARKERS = ["content-security-policy", "x-content-type-options", "referrer-policy"]
-JSON_MARKERS = ["/data/meta.json", "/data/rollup.json"]   # must come back as application/json
+JSON_MARKERS = ["/data/meta.json", "/data/rollup.json", "/data/issuers.json"]   # must come back as application/json
 USER_AGENT = "equalshares-verify-deploy/1.0"
 
 # Cloudflare Web Analytics injects exactly this tag into HTML at the edge (a zone setting, not a

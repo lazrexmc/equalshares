@@ -99,9 +99,9 @@ def record_sort_key(r):
         r["meeting_date"] is not None,
         r["meeting_date"] or "",
         r["issuer_name"] is not None,
-        r["issuer_name"] or "",
-        r["proposal_no"] if r["proposal_no"] is not None else -1,
-        r["lot_index"] if r["lot_index"] is not None else -1,
+        (r["issuer_name"] or "").upper(),   # round three: "MEDTRONIC PLC" sorted before
+        r["proposal_no"] if r["proposal_no"] is not None else -1,   # "Medtronic plc" and split
+        r["lot_index"] if r["lot_index"] is not None else -1,       # one proposal's lot order
         r["seq"],
     )
 
@@ -149,6 +149,8 @@ def source_cell(rs, thin_n):
         "n_proposals": len({r["proposal_no"] for r in rs}),
         "n_voted": len(voted),
         "zero_share_lots": sum(1 for r in readable if r["shares_voted"] == 0),
+        "for_zero_share_lots": sum(1 for r in readable
+                                   if r["shares_voted"] == 0 and r["how_voted"] == "FOR"),
         "for_lots": for_lots,
         "for_pct": pct(for_lots, len(voted)),
         "thin": len(voted) < thin_n,
@@ -165,7 +167,18 @@ def crosstab(rs):
     return out
 
 
-def mgmt_rec_semantics(rows, thin_n):
+def mixed_recommendation_proposals(rows):
+    """Proposals whose lots carry more than one FOR/AGAINST/ABSTAIN/WITHHOLD recommendation
+    value: the set (for per-record flags and per-category counts) and the per-proposal value
+    sets. LOCKSTEP: checks.py G7."""
+    by_prop = {}
+    for r in rows:
+        if (r["lot_index"] or 0) >= 1 and r["mgmt_rec"] in VOTE_ENUM:
+            by_prop.setdefault(r["proposal_no"], set()).add(r["mgmt_rec"])
+    return {pn for pn, vals in by_prop.items() if len(vals) > 1}, by_prop
+
+
+def mgmt_rec_semantics(rows, thin_n, clean_categories):
     """The computed check behind "no headline rests on managementRecommendation", threshold-free
     (round two, R5, three readers): a board recommends once per item, so a filing in which the
     lots of ONE proposal carry DIFFERENT recommendation values is not publishing a board's view.
@@ -177,14 +190,27 @@ def mgmt_rec_semantics(rows, thin_n):
     recommendation at all; board-view otherwise. Gated by G8: headline_allowed only on board-view."""
     lots = [r for r in rows if (r["lot_index"] or 0) >= 1]
     with_any_rec = [r for r in lots if r["mgmt_rec"] in VOTE_ENUM]
-    by_prop = {}
-    for r in with_any_rec:
-        by_prop.setdefault(r["proposal_no"], set()).add(r["mgmt_rec"])
-    mixed = sorted(pn for pn, vals in by_prop.items() if len(vals) > 1)
+    mixed_set, by_prop = mixed_recommendation_proposals(rows)
+    mixed = sorted(mixed_set)
     example = None
     if mixed:
-        # The example with the most lots, so the contradiction is visible in one place.
-        best = max(mixed, key=lambda pn: sum(1 for r in lots if r["proposal_no"] == pn))
+        # Round three (league): the example must come from a category with no unparseable
+        # votes, or a reader who knows proxies dismisses it as a vocabulary problem (say-on-pay
+        # FREQUENCY answers are ONE YEAR / TWO YEARS / THREE YEARS, not FOR/AGAINST). Among
+        # those, the most lots; ties to the lowest proposal number. Deterministic.
+        lots_of = {}
+        cat_of = {}
+        cats_of = {}
+        for r in lots:
+            lots_of[r["proposal_no"]] = lots_of.get(r["proposal_no"], 0) + 1
+            cat_of.setdefault(r["proposal_no"], bucket(r["category_type"]))
+            cats_of.setdefault(r["proposal_no"], set()).add(bucket(r["category_type"]))
+        # ... and whose lots all sit in ONE category, so "open its N lots" opens all N
+        # (round three render check: the first pick spanned two categories and showed 5 of 8).
+        pool = ([pn for pn in mixed if cat_of.get(pn) in clean_categories and len(cats_of[pn]) == 1]
+                or [pn for pn in mixed if cat_of.get(pn) in clean_categories]
+                or mixed)
+        best = min(pool, key=lambda pn: (-lots_of[pn], pn))
         ex_rows = [r for r in lots if r["proposal_no"] == best]
         example = {
             "proposal_no": best,
@@ -210,7 +236,10 @@ def mgmt_rec_semantics(rows, thin_n):
                 "recommendation value are counted, and the count must stay below thin_n",
         "lots_with_recommendation": len(with_any_rec),
         "proposals_with_recommendation": len(by_prop),
+        "proposals_without_recommendation": len({r["proposal_no"] for r in rows}) - len(by_prop),
         "proposals_with_mixed_recommendation": len(mixed),
+        "example_category_rule": "a category with no unparseable votes, all lots in one category, "
+                                 "then the most lots, then the lowest proposal number",
         "example_mixed_proposal": example,
         "crosstab_shareholder_lots": crosstab(sh),
         "crosstab_management_lots": crosstab(
@@ -323,6 +352,7 @@ def main():
     cats_of_proposal = {}
     for r in rows:
         cats_of_proposal.setdefault(r["proposal_no"], set()).add(bucket(r["category_type"]))
+    mixed_set, _ = mixed_recommendation_proposals(rows)
 
     slug_owner = {}
     categories = []
@@ -370,6 +400,7 @@ def main():
                 "n_lots": sum(1 for r in rs if (r["lot_index"] or 0) >= 1),
                 "n_proposals": len(props_here),
                 "n_proposals_shared": sum(1 for pn in props_here if len(cats_of_proposal[pn]) > 1),
+                "n_proposals_mixed_recommendation": sum(1 for pn in props_here if pn in mixed_set),
                 "n_zero_share_lots": sum(1 for r in rs if (r["lot_index"] or 0) >= 1
                                          and r["shares_voted"] == 0),
                 "votes": votes,
@@ -379,6 +410,17 @@ def main():
         )
     categories.sort(key=lambda c: (-c["n"], c["category"]))
 
+    issuer_names = {}
+    for r in rows:
+        if r["cusip"]:
+            issuer_names.setdefault(r["cusip"], {})
+            if r["issuer_name"]:
+                issuer_names[r["cusip"]][r["issuer_name"]] = \
+                    issuer_names[r["cusip"]].get(r["issuer_name"], 0) + 1
+    clean_categories = {
+        name for name, rs in by_cat.items()
+        if not any(r["how_voted_raw"] is not None and r["how_voted"] is None for r in rs)}
+
     totals = {
         "records": len(rows),
         "lots": sum(1 for r in rows if (r["lot_index"] or 0) >= 1),
@@ -386,8 +428,12 @@ def main():
         "proposals": len({r["proposal_no"] for r in rows}),
         "proposals_in_multiple_categories": sum(
             1 for pn, cs in cats_of_proposal.items() if len(cs) > 1),
+        # Round three (Phoenix): 495 proposals add 510 entries; both named.
+        "extra_category_entries": sum(len(cs) - 1 for cs in cats_of_proposal.values()),
         "issuers": len({r["cusip"] for r in rows if r["cusip"]}),
         "issuer_name_spellings": len({r["issuer_name"] for r in rows if r["issuer_name"]}),
+        "issuers_with_multiple_spellings": sum(
+            1 for cusip, names in issuer_names.items() if len(names) > 1),
         "categories": len(categories),
         "unparseable_how_voted": sum(
             1 for r in rows if r["how_voted_raw"] is not None and r["how_voted"] is None
@@ -395,6 +441,14 @@ def main():
         "absent_how_voted": sum(1 for r in rows if r["how_voted_raw"] is None),
         "zero_share_lots": sum(
             1 for r in rows if (r["lot_index"] or 0) >= 1 and r["shares_voted"] == 0),
+        # Round three (LinkedUmp): the cells count readable zero-share lots; 9 have no
+        # readable vote. Both halves named so the 2,845 reconciles from the table.
+        "zero_share_lots_readable": sum(
+            1 for r in rows if (r["lot_index"] or 0) >= 1 and r["shares_voted"] == 0
+            and r["how_voted"] in VOTE_ENUM),
+        "zero_share_lots_unreadable": sum(
+            1 for r in rows if (r["lot_index"] or 0) >= 1 and r["shares_voted"] == 0
+            and r["how_voted"] not in VOTE_ENUM),
         # Records the filer tagged with MORE than one category. Each is grouped under its FIRST
         # category only (no double counting; sum(n)==records stays exact).
         "multi_category_records": sum(
@@ -436,8 +490,16 @@ def main():
         # The typed constants that shape the page, published so the "computed" claim can name
         # its exceptions (round two, R6). One remains.
         "config": {"thin_n": thin_n},
-        "mgmt_rec_semantics": mgmt_rec_semantics(rows, thin_n),
+        "mgmt_rec_semantics": mgmt_rec_semantics(rows, thin_n, clean_categories),
     }
+    # Round three: readers wanted the 622 spellings as a list. One file, every CUSIP, every
+    # spelling as filed with its lot count. LOCKSTEP: checks.py G7 recomputes it.
+    issuers = [
+        {"cusip": cusip,
+         "spellings": [{"name": n, "lots": k} for n, k in sorted(names.items())],
+         "records": sum(names.values())}
+        for cusip, names in sorted(issuer_names.items())
+    ]
 
     # -- write -----------------------------------------------------------------
     SITE_DATA.mkdir(parents=True, exist_ok=True)
@@ -457,6 +519,9 @@ def main():
         f"mgmt_rec_semantics mixed={sem['proposals_with_mixed_recommendation']} "
         f"agreement={sem['agreement']} -> {sem['verdict']})"
     )
+    b = dump_json(SITE_DATA / "issuers.json", {"issuers": issuers})
+    log(f"wrote site/data/issuers.json  ({b} bytes; {len(issuers)} CUSIPs, "
+        f"{totals['issuers_with_multiple_spellings']} with more than one spelling)")
     b = dump_json(SITE_DATA / "rollup.json", {"categories": categories})
     log(
         f"wrote site/data/rollup.json  ({b} bytes; {len(categories)} categories "
@@ -476,6 +541,7 @@ def main():
                     "lots_in_proposal": r["lots_in_proposal"],
                     "other_categories": sorted(
                         cats_of_proposal[r["proposal_no"]] - {c["category"]}),
+                    "mixed_recommendation": r["proposal_no"] in mixed_set,
                     "issuer_name": r["issuer_name"],
                     "cusip": r["cusip"],
                     "isin": r["isin"],

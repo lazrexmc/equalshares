@@ -14,6 +14,7 @@
       "meeting_date": "2025-10-16",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CAPITAL STRUCTURE"
       ],
@@ -36,6 +37,7 @@
       "meeting_date": "2025-10-16",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -58,6 +60,7 @@
       "meeting_date": "2025-10-25",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CAPITAL STRUCTURE"
       ],
@@ -80,6 +83,7 @@
       "meeting_date": "2025-11-14",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -102,6 +106,7 @@
       "meeting_date": "2025-11-14",
       "mgmt_rec": "AGAINST",
       "mgmt_rec_raw": "AGAINST",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -124,6 +129,7 @@
       "meeting_date": "2025-11-19",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": false,
       "other_categories": [],
       "proposal_no": 325,
       "seq": 350,
@@ -144,6 +150,7 @@
       "meeting_date": "2025-12-18",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": false,
       "other_categories": [],
       "proposal_no": 4496,
       "seq": 4891,
@@ -164,6 +171,7 @@
       "meeting_date": "2025-12-18",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": false,
       "other_categories": [],
       "proposal_no": 4496,
       "seq": 9085,
@@ -184,6 +192,7 @@
       "meeting_date": "2026-01-15",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -206,6 +215,7 @@
       "meeting_date": "2026-01-15",
       "mgmt_rec": "AGAINST",
       "mgmt_rec_raw": "AGAINST",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -228,6 +238,7 @@
       "meeting_date": "2026-02-03",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -250,6 +261,7 @@
       "meeting_date": "2026-02-03",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -272,6 +284,7 @@
       "meeting_date": "2026-02-03",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -294,6 +307,7 @@
       "meeting_date": "2026-02-25",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -316,6 +330,7 @@
       "meeting_date": "2026-02-25",
       "mgmt_rec": "AGAINST",
       "mgmt_rec_raw": "AGAINST",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -338,6 +353,7 @@
       "meeting_date": "2026-03-11",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -360,6 +376,7 @@
       "meeting_date": "2026-03-11",
       "mgmt_rec": "AGAINST",
       "mgmt_rec_raw": "AGAINST",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -382,6 +399,7 @@
       "meeting_date": "2026-03-17",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -404,6 +422,7 @@
       "meeting_date": "2026-03-17",
       "mgmt_rec": "AGAINST",
       "mgmt_rec_raw": "AGAINST",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -426,6 +445,7 @@
       "meeting_date": "2026-03-18",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -448,6 +468,7 @@
       "meeting_date": "2026-03-18",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -470,6 +491,7 @@
       "meeting_date": "2026-03-18",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -492,6 +514,7 @@
       "meeting_date": "2026-03-18",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -514,6 +537,7 @@
       "meeting_date": "2026-03-18",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -536,6 +560,7 @@
       "meeting_date": "2026-03-18",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -558,6 +583,7 @@
       "meeting_date": "2026-03-19",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -580,6 +606,7 @@
       "meeting_date": "2026-03-19",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -602,6 +629,7 @@
       "meeting_date": "2026-03-19",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -624,6 +652,7 @@
       "meeting_date": "2026-03-19",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -646,6 +675,7 @@
       "meeting_date": "2026-03-19",
       "mgmt_rec": "AGAINST",
       "mgmt_rec_raw": "AGAINST",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -668,6 +698,7 @@
       "meeting_date": "2026-04-08",
       "mgmt_rec": "AGAINST",
       "mgmt_rec_raw": "AGAINST",
+      "mixed_recommendation": true,
       "other_categories": [
         "CAPITAL STRUCTURE",
         "CORPORATE GOVERNANCE"
@@ -691,6 +722,7 @@
       "meeting_date": "2026-04-08",
       "mgmt_rec": "AGAINST",
       "mgmt_rec_raw": "AGAINST",
+      "mixed_recommendation": true,
       "other_categories": [
         "CAPITAL STRUCTURE",
         "CORPORATE GOVERNANCE"
@@ -714,6 +746,7 @@
       "meeting_date": "2026-04-16",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -736,6 +769,7 @@
       "meeting_date": "2026-04-16",
       "mgmt_rec": "AGAINST",
       "mgmt_rec_raw": "AGAINST",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -758,6 +792,7 @@
       "meeting_date": "2026-04-21",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": false,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -780,6 +815,7 @@
       "meeting_date": "2026-04-21",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": false,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -802,6 +838,7 @@
       "meeting_date": "2026-04-21",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": false,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -824,6 +861,7 @@
       "meeting_date": "2026-04-21",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": false,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -846,6 +884,7 @@
       "meeting_date": "2026-04-21",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": false,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -868,6 +907,7 @@
       "meeting_date": "2026-04-21",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": false,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -890,6 +930,7 @@
       "meeting_date": "2026-04-22",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -912,6 +953,7 @@
       "meeting_date": "2026-04-22",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -934,6 +976,7 @@
       "meeting_date": "2026-04-22",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -956,6 +999,7 @@
       "meeting_date": "2026-04-22",
       "mgmt_rec": "AGAINST",
       "mgmt_rec_raw": "AGAINST",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -978,6 +1022,7 @@
       "meeting_date": "2026-04-23",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -1000,6 +1045,7 @@
       "meeting_date": "2026-04-23",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -1022,6 +1068,7 @@
       "meeting_date": "2026-04-23",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -1044,6 +1091,7 @@
       "meeting_date": "2026-04-23",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -1066,6 +1114,7 @@
       "meeting_date": "2026-04-28",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -1088,6 +1137,7 @@
       "meeting_date": "2026-04-28",
       "mgmt_rec": "AGAINST",
       "mgmt_rec_raw": "AGAINST",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -1110,6 +1160,7 @@
       "meeting_date": "2026-04-28",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -1132,6 +1183,7 @@
       "meeting_date": "2026-04-28",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -1154,6 +1206,7 @@
       "meeting_date": "2026-04-29",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -1176,6 +1229,7 @@
       "meeting_date": "2026-04-29",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -1198,6 +1252,7 @@
       "meeting_date": "2026-04-29",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -1220,6 +1275,7 @@
       "meeting_date": "2026-04-29",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -1242,6 +1298,7 @@
       "meeting_date": "2026-04-29",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -1264,6 +1321,7 @@
       "meeting_date": "2026-04-29",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -1286,6 +1344,7 @@
       "meeting_date": "2026-04-29",
       "mgmt_rec": "AGAINST",
       "mgmt_rec_raw": "AGAINST",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -1308,6 +1367,7 @@
       "meeting_date": "2026-04-30",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -1330,6 +1390,7 @@
       "meeting_date": "2026-04-30",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -1352,6 +1413,7 @@
       "meeting_date": "2026-05-01",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -1374,6 +1436,7 @@
       "meeting_date": "2026-05-01",
       "mgmt_rec": "AGAINST",
       "mgmt_rec_raw": "AGAINST",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -1396,6 +1459,7 @@
       "meeting_date": "2026-05-04",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -1418,6 +1482,7 @@
       "meeting_date": "2026-05-04",
       "mgmt_rec": "AGAINST",
       "mgmt_rec_raw": "AGAINST",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -1440,6 +1505,7 @@
       "meeting_date": "2026-05-04",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -1462,6 +1528,7 @@
       "meeting_date": "2026-05-04",
       "mgmt_rec": "AGAINST",
       "mgmt_rec_raw": "AGAINST",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -1484,6 +1551,7 @@
       "meeting_date": "2026-05-05",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [],
       "proposal_no": 4959,
       "seq": 6258,
@@ -1504,6 +1572,7 @@
       "meeting_date": "2026-05-05",
       "mgmt_rec": "AGAINST",
       "mgmt_rec_raw": "AGAINST",
+      "mixed_recommendation": true,
       "other_categories": [],
       "proposal_no": 4959,
       "seq": 10452,
@@ -1524,6 +1593,7 @@
       "meeting_date": "2026-05-06",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -1546,6 +1616,7 @@
       "meeting_date": "2026-05-06",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -1568,6 +1639,7 @@
       "meeting_date": "2026-05-06",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -1590,6 +1662,7 @@
       "meeting_date": "2026-05-06",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -1612,6 +1685,7 @@
       "meeting_date": "2026-05-06",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -1634,6 +1708,7 @@
       "meeting_date": "2026-05-06",
       "mgmt_rec": "AGAINST",
       "mgmt_rec_raw": "AGAINST",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -1656,6 +1731,7 @@
       "meeting_date": "2026-05-07",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -1678,6 +1754,7 @@
       "meeting_date": "2026-05-07",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -1700,6 +1777,7 @@
       "meeting_date": "2026-05-07",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -1722,6 +1800,7 @@
       "meeting_date": "2026-05-07",
       "mgmt_rec": "AGAINST",
       "mgmt_rec_raw": "AGAINST",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -1744,6 +1823,7 @@
       "meeting_date": "2026-05-07",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -1766,6 +1846,7 @@
       "meeting_date": "2026-05-07",
       "mgmt_rec": "AGAINST",
       "mgmt_rec_raw": "AGAINST",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -1788,6 +1869,7 @@
       "meeting_date": "2026-05-07",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -1810,6 +1892,7 @@
       "meeting_date": "2026-05-07",
       "mgmt_rec": "AGAINST",
       "mgmt_rec_raw": "AGAINST",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -1818,28 +1901,6 @@
       "shares_voted": 38.28,
       "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder proposal to reduce the ownership threshold required to call a special meeting.",
-      "vote_source": "SECURITY HOLDER"
-    },
-    {
-      "categories_all": "SHAREHOLDER RIGHTS AND DEFENSES",
-      "cusip": "911312106",
-      "how_voted": "FOR",
-      "how_voted_raw": "FOR",
-      "isin": null,
-      "issuer_name": "UNITED PARCEL SERVICE, INC.",
-      "lot_index": 7,
-      "lots_in_proposal": 7,
-      "meeting_date": "2026-05-07",
-      "mgmt_rec": "AGAINST",
-      "mgmt_rec_raw": "AGAINST",
-      "other_categories": [
-        "CAPITAL STRUCTURE"
-      ],
-      "proposal_no": 2128,
-      "seq": 27652,
-      "shares_voted": 18262.068,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
-      "vote_description": "To take steps to reduce the voting power of UPS class A stock from 10 votes per share to one vote per share.",
       "vote_source": "SECURITY HOLDER"
     },
     {
@@ -1854,12 +1915,36 @@
       "meeting_date": "2026-05-07",
       "mgmt_rec": "AGAINST",
       "mgmt_rec_raw": "AGAINST",
+      "mixed_recommendation": true,
       "other_categories": [
         "CAPITAL STRUCTURE"
       ],
       "proposal_no": 2128,
       "seq": 2286,
       "shares_voted": 6861418.655,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
+      "vote_description": "To take steps to reduce the voting power of UPS class A stock from 10 votes per share to one vote per share.",
+      "vote_source": "SECURITY HOLDER"
+    },
+    {
+      "categories_all": "SHAREHOLDER RIGHTS AND DEFENSES",
+      "cusip": "911312106",
+      "how_voted": "FOR",
+      "how_voted_raw": "FOR",
+      "isin": null,
+      "issuer_name": "UNITED PARCEL SERVICE, INC.",
+      "lot_index": 7,
+      "lots_in_proposal": 7,
+      "meeting_date": "2026-05-07",
+      "mgmt_rec": "AGAINST",
+      "mgmt_rec_raw": "AGAINST",
+      "mixed_recommendation": true,
+      "other_categories": [
+        "CAPITAL STRUCTURE"
+      ],
+      "proposal_no": 2128,
+      "seq": 27652,
+      "shares_voted": 18262.068,
       "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "To take steps to reduce the voting power of UPS class A stock from 10 votes per share to one vote per share.",
       "vote_source": "SECURITY HOLDER"
@@ -1876,6 +1961,7 @@
       "meeting_date": "2026-05-07",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -1898,6 +1984,7 @@
       "meeting_date": "2026-05-07",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -1920,6 +2007,7 @@
       "meeting_date": "2026-05-07",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -1942,6 +2030,7 @@
       "meeting_date": "2026-05-07",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -1964,6 +2053,7 @@
       "meeting_date": "2026-05-07",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -1986,6 +2076,7 @@
       "meeting_date": "2026-05-07",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -2008,6 +2099,7 @@
       "meeting_date": "2026-05-08",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -2030,6 +2122,7 @@
       "meeting_date": "2026-05-08",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -2052,6 +2145,7 @@
       "meeting_date": "2026-05-08",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -2074,6 +2168,7 @@
       "meeting_date": "2026-05-08",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -2096,6 +2191,7 @@
       "meeting_date": "2026-05-08",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -2118,6 +2214,7 @@
       "meeting_date": "2026-05-08",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -2140,6 +2237,7 @@
       "meeting_date": "2026-05-08",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -2162,6 +2260,7 @@
       "meeting_date": "2026-05-08",
       "mgmt_rec": "AGAINST",
       "mgmt_rec_raw": "AGAINST",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -2184,6 +2283,7 @@
       "meeting_date": "2026-05-08",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -2206,6 +2306,7 @@
       "meeting_date": "2026-05-08",
       "mgmt_rec": "AGAINST",
       "mgmt_rec_raw": "AGAINST",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -2228,6 +2329,7 @@
       "meeting_date": "2026-05-11",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -2250,6 +2352,7 @@
       "meeting_date": "2026-05-11",
       "mgmt_rec": "AGAINST",
       "mgmt_rec_raw": "AGAINST",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -2272,6 +2375,7 @@
       "meeting_date": "2026-05-12",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -2294,6 +2398,7 @@
       "meeting_date": "2026-05-12",
       "mgmt_rec": "AGAINST",
       "mgmt_rec_raw": "AGAINST",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -2316,6 +2421,7 @@
       "meeting_date": "2026-05-14",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -2338,6 +2444,7 @@
       "meeting_date": "2026-05-14",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -2346,50 +2453,6 @@
       "shares_voted": 104397.84,
       "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Shareholder right to act by written consent",
-      "vote_source": "SECURITY HOLDER"
-    },
-    {
-      "categories_all": "SHAREHOLDER RIGHTS AND DEFENSES",
-      "cusip": "126650100",
-      "how_voted": "AGAINST",
-      "how_voted_raw": "AGAINST",
-      "isin": null,
-      "issuer_name": "CVS Health Corporation",
-      "lot_index": 2,
-      "lots_in_proposal": 7,
-      "meeting_date": "2026-05-14",
-      "mgmt_rec": "FOR",
-      "mgmt_rec_raw": "FOR",
-      "other_categories": [
-        "CORPORATE GOVERNANCE"
-      ],
-      "proposal_no": 2746,
-      "seq": 7264,
-      "shares_voted": 35122.63,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
-      "vote_description": "Stockholder Proposal for Reducing the Threshold for Our Stockholder Right to Act By Written Consent.",
-      "vote_source": "SECURITY HOLDER"
-    },
-    {
-      "categories_all": "SHAREHOLDER RIGHTS AND DEFENSES",
-      "cusip": "126650100",
-      "how_voted": "AGAINST",
-      "how_voted_raw": "AGAINST",
-      "isin": null,
-      "issuer_name": "CVS Health Corporation",
-      "lot_index": 3,
-      "lots_in_proposal": 7,
-      "meeting_date": "2026-05-14",
-      "mgmt_rec": "FOR",
-      "mgmt_rec_raw": "FOR",
-      "other_categories": [
-        "CORPORATE GOVERNANCE"
-      ],
-      "proposal_no": 2746,
-      "seq": 11458,
-      "shares_voted": 18692.38,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
-      "vote_description": "Stockholder Proposal for Reducing the Threshold for Our Stockholder Right to Act By Written Consent.",
       "vote_source": "SECURITY HOLDER"
     },
     {
@@ -2404,6 +2467,7 @@
       "meeting_date": "2026-05-14",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -2426,6 +2490,7 @@
       "meeting_date": "2026-05-14",
       "mgmt_rec": "AGAINST",
       "mgmt_rec_raw": "AGAINST",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -2438,24 +2503,48 @@
     },
     {
       "categories_all": "SHAREHOLDER RIGHTS AND DEFENSES",
-      "cusip": "345370860",
-      "how_voted": "FOR",
-      "how_voted_raw": "FOR",
+      "cusip": "126650100",
+      "how_voted": "AGAINST",
+      "how_voted_raw": "AGAINST",
       "isin": null,
-      "issuer_name": "FORD MOTOR COMPANY",
-      "lot_index": 7,
+      "issuer_name": "CVS Health Corporation",
+      "lot_index": 2,
       "lots_in_proposal": 7,
       "meeting_date": "2026-05-14",
-      "mgmt_rec": "AGAINST",
-      "mgmt_rec_raw": "AGAINST",
+      "mgmt_rec": "FOR",
+      "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
-        "CAPITAL STRUCTURE"
+        "CORPORATE GOVERNANCE"
       ],
-      "proposal_no": 2776,
-      "seq": 28298,
-      "shares_voted": 91763.3225,
+      "proposal_no": 2746,
+      "seq": 7264,
+      "shares_voted": 35122.63,
       "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
-      "vote_description": "A shareholder proposal relating to a request that the Board take steps to implement one vote per share for all outstanding shares.",
+      "vote_description": "Stockholder Proposal for Reducing the Threshold for Our Stockholder Right to Act By Written Consent.",
+      "vote_source": "SECURITY HOLDER"
+    },
+    {
+      "categories_all": "SHAREHOLDER RIGHTS AND DEFENSES",
+      "cusip": "126650100",
+      "how_voted": "AGAINST",
+      "how_voted_raw": "AGAINST",
+      "isin": null,
+      "issuer_name": "CVS Health Corporation",
+      "lot_index": 3,
+      "lots_in_proposal": 7,
+      "meeting_date": "2026-05-14",
+      "mgmt_rec": "FOR",
+      "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
+      "other_categories": [
+        "CORPORATE GOVERNANCE"
+      ],
+      "proposal_no": 2746,
+      "seq": 11458,
+      "shares_voted": 18692.38,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
+      "vote_description": "Stockholder Proposal for Reducing the Threshold for Our Stockholder Right to Act By Written Consent.",
       "vote_source": "SECURITY HOLDER"
     },
     {
@@ -2470,12 +2559,36 @@
       "meeting_date": "2026-05-14",
       "mgmt_rec": "AGAINST",
       "mgmt_rec_raw": "AGAINST",
+      "mixed_recommendation": true,
       "other_categories": [
         "CAPITAL STRUCTURE"
       ],
       "proposal_no": 2776,
       "seq": 2983,
       "shares_voted": 36419761.54038,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
+      "vote_description": "A shareholder proposal relating to a request that the Board take steps to implement one vote per share for all outstanding shares.",
+      "vote_source": "SECURITY HOLDER"
+    },
+    {
+      "categories_all": "SHAREHOLDER RIGHTS AND DEFENSES",
+      "cusip": "345370860",
+      "how_voted": "FOR",
+      "how_voted_raw": "FOR",
+      "isin": null,
+      "issuer_name": "FORD MOTOR COMPANY",
+      "lot_index": 7,
+      "lots_in_proposal": 7,
+      "meeting_date": "2026-05-14",
+      "mgmt_rec": "AGAINST",
+      "mgmt_rec_raw": "AGAINST",
+      "mixed_recommendation": true,
+      "other_categories": [
+        "CAPITAL STRUCTURE"
+      ],
+      "proposal_no": 2776,
+      "seq": 28298,
+      "shares_voted": 91763.3225,
       "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "A shareholder proposal relating to a request that the Board take steps to implement one vote per share for all outstanding shares.",
       "vote_source": "SECURITY HOLDER"
@@ -2492,6 +2605,7 @@
       "meeting_date": "2026-05-14",
       "mgmt_rec": "NONE",
       "mgmt_rec_raw": "NONE",
+      "mixed_recommendation": false,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -2514,6 +2628,7 @@
       "meeting_date": "2026-05-14",
       "mgmt_rec": "NONE",
       "mgmt_rec_raw": "NONE",
+      "mixed_recommendation": false,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -2536,6 +2651,7 @@
       "meeting_date": "2026-05-19",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -2558,6 +2674,7 @@
       "meeting_date": "2026-05-19",
       "mgmt_rec": "AGAINST",
       "mgmt_rec_raw": "AGAINST",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -2580,6 +2697,7 @@
       "meeting_date": "2026-05-19",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -2602,6 +2720,7 @@
       "meeting_date": "2026-05-19",
       "mgmt_rec": "AGAINST",
       "mgmt_rec_raw": "AGAINST",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -2624,6 +2743,7 @@
       "meeting_date": "2026-05-20",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -2646,6 +2766,7 @@
       "meeting_date": "2026-05-20",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -2668,6 +2789,7 @@
       "meeting_date": "2026-05-20",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -2690,6 +2812,7 @@
       "meeting_date": "2026-05-20",
       "mgmt_rec": "AGAINST",
       "mgmt_rec_raw": "AGAINST",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -2712,6 +2835,7 @@
       "meeting_date": "2026-05-20",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -2734,6 +2858,7 @@
       "meeting_date": "2026-05-20",
       "mgmt_rec": "AGAINST",
       "mgmt_rec_raw": "AGAINST",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -2756,6 +2881,7 @@
       "meeting_date": "2026-05-20",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -2778,6 +2904,7 @@
       "meeting_date": "2026-05-20",
       "mgmt_rec": "AGAINST",
       "mgmt_rec_raw": "AGAINST",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -2800,6 +2927,7 @@
       "meeting_date": "2026-05-20",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -2822,6 +2950,7 @@
       "meeting_date": "2026-05-20",
       "mgmt_rec": "AGAINST",
       "mgmt_rec_raw": "AGAINST",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -2844,6 +2973,7 @@
       "meeting_date": "2026-05-21",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -2866,6 +2996,7 @@
       "meeting_date": "2026-05-21",
       "mgmt_rec": "AGAINST",
       "mgmt_rec_raw": "AGAINST",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -2888,6 +3019,7 @@
       "meeting_date": "2026-05-21",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -2910,6 +3042,7 @@
       "meeting_date": "2026-05-21",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -2932,6 +3065,7 @@
       "meeting_date": "2026-05-21",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -2954,6 +3088,7 @@
       "meeting_date": "2026-05-21",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -2976,6 +3111,7 @@
       "meeting_date": "2026-05-21",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE",
         "OTHER SOCIAL ISSUES"
@@ -2999,6 +3135,7 @@
       "meeting_date": "2026-05-21",
       "mgmt_rec": "AGAINST",
       "mgmt_rec_raw": "AGAINST",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE",
         "OTHER SOCIAL ISSUES"
@@ -3015,28 +3152,6 @@
       "cusip": "808513105",
       "how_voted": "FOR",
       "how_voted_raw": "FOR",
-      "isin": null,
-      "issuer_name": "THE CHARLES SCHWAB CORPORATION",
-      "lot_index": 7,
-      "lots_in_proposal": 7,
-      "meeting_date": "2026-05-21",
-      "mgmt_rec": "FOR",
-      "mgmt_rec_raw": "FOR",
-      "other_categories": [
-        "CORPORATE GOVERNANCE"
-      ],
-      "proposal_no": 3591,
-      "seq": 29113,
-      "shares_voted": 42150.11034,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
-      "vote_description": "Approval of Amendments to the Certificate of Incorporation and Bylaws to declassify the Board of Directors",
-      "vote_source": "ISSUER"
-    },
-    {
-      "categories_all": "SHAREHOLDER RIGHTS AND DEFENSES",
-      "cusip": "808513105",
-      "how_voted": "FOR",
-      "how_voted_raw": "FOR",
       "isin": "US8085131055",
       "issuer_name": "The Charles Schwab Corporation",
       "lot_index": 1,
@@ -3044,6 +3159,7 @@
       "meeting_date": "2026-05-21",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -3066,6 +3182,7 @@
       "meeting_date": "2026-05-21",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -3088,12 +3205,36 @@
       "meeting_date": "2026-05-21",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
       "proposal_no": 3591,
       "seq": 12303,
       "shares_voted": 25540.77,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
+      "vote_description": "Approval of Amendments to the Certificate of Incorporation and Bylaws to declassify the Board of Directors",
+      "vote_source": "ISSUER"
+    },
+    {
+      "categories_all": "SHAREHOLDER RIGHTS AND DEFENSES",
+      "cusip": "808513105",
+      "how_voted": "FOR",
+      "how_voted_raw": "FOR",
+      "isin": null,
+      "issuer_name": "THE CHARLES SCHWAB CORPORATION",
+      "lot_index": 7,
+      "lots_in_proposal": 7,
+      "meeting_date": "2026-05-21",
+      "mgmt_rec": "FOR",
+      "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
+      "other_categories": [
+        "CORPORATE GOVERNANCE"
+      ],
+      "proposal_no": 3591,
+      "seq": 29113,
+      "shares_voted": 42150.11034,
       "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "Approval of Amendments to the Certificate of Incorporation and Bylaws to declassify the Board of Directors",
       "vote_source": "ISSUER"
@@ -3110,6 +3251,7 @@
       "meeting_date": "2026-05-22",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -3132,6 +3274,7 @@
       "meeting_date": "2026-05-22",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -3154,6 +3297,7 @@
       "meeting_date": "2026-05-28",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -3176,6 +3320,7 @@
       "meeting_date": "2026-05-28",
       "mgmt_rec": "AGAINST",
       "mgmt_rec_raw": "AGAINST",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -3198,6 +3343,7 @@
       "meeting_date": "2026-05-28",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [],
       "proposal_no": 5534,
       "seq": 8314,
@@ -3218,34 +3364,13 @@
       "meeting_date": "2026-05-28",
       "mgmt_rec": "AGAINST",
       "mgmt_rec_raw": "AGAINST",
+      "mixed_recommendation": true,
       "other_categories": [],
       "proposal_no": 5534,
       "seq": 12508,
       "shares_voted": 3361.93,
       "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "To vote on a shareholder proposal asking the Board to take the steps necessary to reduce the minimum ownership percentage required to call a special shareholders meeting from 25% to 10%.",
-      "vote_source": "SECURITY HOLDER"
-    },
-    {
-      "categories_all": "SHAREHOLDER RIGHTS AND DEFENSES",
-      "cusip": "79466L302",
-      "how_voted": "AGAINST",
-      "how_voted_raw": "AGAINST",
-      "isin": null,
-      "issuer_name": "SALESFORCE, INC.",
-      "lot_index": 7,
-      "lots_in_proposal": 7,
-      "meeting_date": "2026-05-28",
-      "mgmt_rec": "FOR",
-      "mgmt_rec_raw": "FOR",
-      "other_categories": [
-        "CORPORATE GOVERNANCE"
-      ],
-      "proposal_no": 3828,
-      "seq": 29350,
-      "shares_voted": 13647.66012,
-      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
-      "vote_description": "A stockholder proposal requesting the adoption of cumulative voting for director elections, if properly presented at the meeting.",
       "vote_source": "SECURITY HOLDER"
     },
     {
@@ -3260,6 +3385,7 @@
       "meeting_date": "2026-05-28",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -3282,6 +3408,7 @@
       "meeting_date": "2026-05-28",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -3304,12 +3431,36 @@
       "meeting_date": "2026-05-28",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
       "proposal_no": 3828,
       "seq": 12540,
       "shares_voted": 7728.19,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
+      "vote_description": "A stockholder proposal requesting the adoption of cumulative voting for director elections, if properly presented at the meeting.",
+      "vote_source": "SECURITY HOLDER"
+    },
+    {
+      "categories_all": "SHAREHOLDER RIGHTS AND DEFENSES",
+      "cusip": "79466L302",
+      "how_voted": "AGAINST",
+      "how_voted_raw": "AGAINST",
+      "isin": null,
+      "issuer_name": "SALESFORCE, INC.",
+      "lot_index": 7,
+      "lots_in_proposal": 7,
+      "meeting_date": "2026-05-28",
+      "mgmt_rec": "FOR",
+      "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
+      "other_categories": [
+        "CORPORATE GOVERNANCE"
+      ],
+      "proposal_no": 3828,
+      "seq": 29350,
+      "shares_voted": 13647.66012,
       "source_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml",
       "vote_description": "A stockholder proposal requesting the adoption of cumulative voting for director elections, if properly presented at the meeting.",
       "vote_source": "SECURITY HOLDER"
@@ -3326,6 +3477,7 @@
       "meeting_date": "2026-06-02",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": false,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -3348,6 +3500,7 @@
       "meeting_date": "2026-06-02",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": false,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -3370,6 +3523,7 @@
       "meeting_date": "2026-06-04",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -3392,6 +3546,7 @@
       "meeting_date": "2026-06-04",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -3414,6 +3569,7 @@
       "meeting_date": "2026-06-04",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -3436,6 +3592,7 @@
       "meeting_date": "2026-06-09",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -3458,6 +3615,7 @@
       "meeting_date": "2026-06-10",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -3480,6 +3638,7 @@
       "meeting_date": "2026-06-10",
       "mgmt_rec": "AGAINST",
       "mgmt_rec_raw": "AGAINST",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -3502,6 +3661,7 @@
       "meeting_date": "2026-06-16",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -3524,6 +3684,7 @@
       "meeting_date": "2026-06-16",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -3546,6 +3707,7 @@
       "meeting_date": "2026-06-17",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -3568,6 +3730,7 @@
       "meeting_date": "2026-06-17",
       "mgmt_rec": "AGAINST",
       "mgmt_rec_raw": "AGAINST",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -3590,6 +3753,7 @@
       "meeting_date": "2026-06-18",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -3612,6 +3776,7 @@
       "meeting_date": "2026-06-18",
       "mgmt_rec": "AGAINST",
       "mgmt_rec_raw": "AGAINST",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -3634,6 +3799,7 @@
       "meeting_date": "2026-06-18",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -3656,6 +3822,7 @@
       "meeting_date": "2026-06-18",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],
@@ -3678,6 +3845,7 @@
       "meeting_date": "2026-06-18",
       "mgmt_rec": "FOR",
       "mgmt_rec_raw": "FOR",
+      "mixed_recommendation": true,
       "other_categories": [
         "CORPORATE GOVERNANCE"
       ],

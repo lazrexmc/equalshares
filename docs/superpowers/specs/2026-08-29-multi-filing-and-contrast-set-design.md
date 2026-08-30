@@ -212,3 +212,22 @@ new field; G8's forbidden keys unchanged. `verify_claims` C3 is unaffected (it u
 **Built 2026-08-30.** RapidForge's review of the data claims added one requirement, applied: one key
 function, every count derived from it, and the counts re-derived before publication (Lesson 9).
 Engine run `e3b050bc2353357b`; rendered under the production CSP via serve_local.py in Playwright with zero console messages: DEI drill-down with the elsewhere filter (21 of 23), the verdict in the Mgmt rec header, lot notes naming the other categories, the table fitting its container.
+
+## 13. Part 1.2 - round three findings (2026-08-30), bounded, before Part 2
+
+Five rendered reads of the Part 1.1 page (viewports 914 to 1920 px). Dispositions in
+`AUDIT_LOG.md` (2026-08-30, round three). The changes: the headline table fits or says it
+scrolls; the recommendation test's example comes from a category with no unparseable votes and
+its link opens exactly those lots (a "one proposal only" filter); one explanation of proposals
+versus lots replaces two footnotes; zero-share lots are split into readable (what the cells
+count) and not; `proposals_without_recommendation`, `extra_category_entries`,
+`issuers_with_multiple_spellings`, per-category `n_proposals_mixed_recommendation` and per-cell
+`for_zero_share_lots` published and recomputed by G7; `site/data/issuers.json` lists every
+spelling as filed (G7 recomputes it, verify_deploy checks it at the origin); lots sort in lot
+order within a proposal regardless of the name's case; thin cells carry no percentage.
+
+Engine run `e3b050bc2353357b`; rendered under the production CSP via serve_local.py in Playwright with zero console messages: the headline table equals its container at 1366 px and shows the worded hint at 929 px (1,021 px in 857); the example link opens all 7 Medtronic lots in lot order; the spellings list loads 299 companies on demand.
+
+**Round four** asks a different question, from RapidForge: the one number a reader would quote
+to someone else, and whether it is the one we would want quoted. Readers who have not seen the
+page, where any exist.

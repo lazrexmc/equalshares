@@ -403,6 +403,19 @@ td.lot { white-space: nowrap; }
 
 .table-scroll { scrollbar-gutter: stable; }
 
+/* Part 1.2 (round three): the category table must fit a laptop width too. Headers
+   wrap, notes drop to their own line, cells tighten. */
+#category-table { font-size: 0.875rem; }
+#category-table th, #category-table td { padding: 0.4rem 0.5rem; }
+#category-table thead th { white-space: normal; vertical-align: bottom; }
+#category-table .th-note { display: block; font-weight: 400; text-transform: none; letter-spacing: 0; font-size: 0.7rem; max-width: 9rem; }
+#category-table .denom { white-space: normal; display: block; }
+#category-table tbody th[scope="row"] { white-space: normal; max-width: 11rem; }
+
+.spellings { columns: 2; font-size: 0.8125rem; padding-left: 1.2rem; }
+.spellings li { break-inside: avoid; margin-bottom: 0.2rem; }
+@media (max-width: 700px) { .spellings { columns: 1; } }
+
 td.empty-note { color: var(--ink-soft); font-style: italic; }
 
 @media (max-width: 700px) {

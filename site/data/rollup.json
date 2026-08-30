@@ -5,6 +5,7 @@
         "ISSUER": {
           "for_lots": 13992,
           "for_pct": 71.0,
+          "for_zero_share_lots": 1085,
           "n_lots": 21845,
           "n_proposals": 7543,
           "n_records": 21846,
@@ -15,6 +16,7 @@
         "SECURITY HOLDER": {
           "for_lots": 0,
           "for_pct": null,
+          "for_zero_share_lots": 0,
           "n_lots": 0,
           "n_proposals": 0,
           "n_records": 0,
@@ -27,6 +29,7 @@
       "n": 21846,
       "n_lots": 21845,
       "n_proposals": 7543,
+      "n_proposals_mixed_recommendation": 3467,
       "n_proposals_shared": 23,
       "n_zero_share_lots": 2144,
       "shares_voted_total": 21182596584.5275,
@@ -45,6 +48,7 @@
         "ISSUER": {
           "for_lots": 1186,
           "for_pct": 61.5,
+          "for_zero_share_lots": 107,
           "n_lots": 2142,
           "n_proposals": 378,
           "n_records": 2142,
@@ -55,6 +59,7 @@
         "SECURITY HOLDER": {
           "for_lots": 0,
           "for_pct": null,
+          "for_zero_share_lots": 0,
           "n_lots": 0,
           "n_proposals": 0,
           "n_records": 0,
@@ -67,6 +72,7 @@
       "n": 2142,
       "n_lots": 2142,
       "n_proposals": 378,
+      "n_proposals_mixed_recommendation": 328,
       "n_proposals_shared": 3,
       "n_zero_share_lots": 215,
       "shares_voted_total": 1955390478.1927,
@@ -85,6 +91,7 @@
         "ISSUER": {
           "for_lots": 881,
           "for_pct": 52.8,
+          "for_zero_share_lots": 135,
           "n_lots": 1897,
           "n_proposals": 421,
           "n_records": 1897,
@@ -95,6 +102,7 @@
         "SECURITY HOLDER": {
           "for_lots": 4,
           "for_pct": 17.4,
+          "for_zero_share_lots": 1,
           "n_lots": 24,
           "n_proposals": 11,
           "n_records": 24,
@@ -107,6 +115,7 @@
       "n": 1921,
       "n_lots": 1921,
       "n_proposals": 432,
+      "n_proposals_mixed_recommendation": 411,
       "n_proposals_shared": 309,
       "n_zero_share_lots": 231,
       "shares_voted_total": 857182284.9518,
@@ -125,6 +134,7 @@
         "ISSUER": {
           "for_lots": 364,
           "for_pct": 62.7,
+          "for_zero_share_lots": 39,
           "n_lots": 659,
           "n_proposals": 179,
           "n_records": 659,
@@ -135,6 +145,7 @@
         "SECURITY HOLDER": {
           "for_lots": 189,
           "for_pct": 30.8,
+          "for_zero_share_lots": 25,
           "n_lots": 671,
           "n_proposals": 142,
           "n_records": 671,
@@ -147,6 +158,7 @@
       "n": 1330,
       "n_lots": 1330,
       "n_proposals": 321,
+      "n_proposals_mixed_recommendation": 260,
       "n_proposals_shared": 149,
       "n_zero_share_lots": 135,
       "shares_voted_total": 1531698097.0095,
@@ -165,6 +177,7 @@
         "ISSUER": {
           "for_lots": 1165,
           "for_pct": 94.2,
+          "for_zero_share_lots": 0,
           "n_lots": 1328,
           "n_proposals": 356,
           "n_records": 1328,
@@ -175,6 +188,7 @@
         "SECURITY HOLDER": {
           "for_lots": 0,
           "for_pct": null,
+          "for_zero_share_lots": 0,
           "n_lots": 0,
           "n_proposals": 0,
           "n_records": 0,
@@ -187,6 +201,7 @@
       "n": 1328,
       "n_lots": 1328,
       "n_proposals": 356,
+      "n_proposals_mixed_recommendation": 300,
       "n_proposals_shared": 286,
       "n_zero_share_lots": 12,
       "shares_voted_total": 4034482407.2285,
@@ -205,6 +220,7 @@
         "ISSUER": {
           "for_lots": 266,
           "for_pct": 75.8,
+          "for_zero_share_lots": 19,
           "n_lots": 390,
           "n_proposals": 99,
           "n_records": 390,
@@ -215,6 +231,7 @@
         "SECURITY HOLDER": {
           "for_lots": 7,
           "for_pct": 41.2,
+          "for_zero_share_lots": 1,
           "n_lots": 20,
           "n_proposals": 4,
           "n_records": 20,
@@ -227,6 +244,7 @@
       "n": 410,
       "n_lots": 410,
       "n_proposals": 103,
+      "n_proposals_mixed_recommendation": 79,
       "n_proposals_shared": 38,
       "n_zero_share_lots": 42,
       "shares_voted_total": 284844002.7937,
@@ -245,6 +263,7 @@
         "ISSUER": {
           "for_lots": 0,
           "for_pct": 0.0,
+          "for_zero_share_lots": 0,
           "n_lots": 1,
           "n_proposals": 1,
           "n_records": 1,
@@ -255,6 +274,7 @@
         "SECURITY HOLDER": {
           "for_lots": 63,
           "for_pct": 24.8,
+          "for_zero_share_lots": 0,
           "n_lots": 265,
           "n_proposals": 55,
           "n_records": 265,
@@ -267,6 +287,7 @@
       "n": 266,
       "n_lots": 266,
       "n_proposals": 56,
+      "n_proposals_mixed_recommendation": 49,
       "n_proposals_shared": 24,
       "n_zero_share_lots": 11,
       "shares_voted_total": 593373683.7791,
@@ -285,6 +306,7 @@
         "ISSUER": {
           "for_lots": 5,
           "for_pct": 45.5,
+          "for_zero_share_lots": 0,
           "n_lots": 11,
           "n_proposals": 6,
           "n_records": 11,
@@ -295,6 +317,7 @@
         "SECURITY HOLDER": {
           "for_lots": 62,
           "for_pct": 26.4,
+          "for_zero_share_lots": 1,
           "n_lots": 253,
           "n_proposals": 64,
           "n_records": 253,
@@ -307,6 +330,7 @@
       "n": 264,
       "n_lots": 264,
       "n_proposals": 70,
+      "n_proposals_mixed_recommendation": 65,
       "n_proposals_shared": 45,
       "n_zero_share_lots": 18,
       "shares_voted_total": 339524767.7517,
@@ -325,6 +349,7 @@
         "ISSUER": {
           "for_lots": 56,
           "for_pct": 94.9,
+          "for_zero_share_lots": 0,
           "n_lots": 59,
           "n_proposals": 29,
           "n_records": 59,
@@ -335,6 +360,7 @@
         "SECURITY HOLDER": {
           "for_lots": 39,
           "for_pct": 35.8,
+          "for_zero_share_lots": 0,
           "n_lots": 109,
           "n_proposals": 53,
           "n_records": 109,
@@ -347,6 +373,7 @@
       "n": 168,
       "n_lots": 168,
       "n_proposals": 82,
+      "n_proposals_mixed_recommendation": 75,
       "n_proposals_shared": 78,
       "n_zero_share_lots": 0,
       "shares_voted_total": 153499238.0066,
@@ -365,6 +392,7 @@
         "ISSUER": {
           "for_lots": 62,
           "for_pct": 69.7,
+          "for_zero_share_lots": 12,
           "n_lots": 119,
           "n_proposals": 38,
           "n_records": 119,
@@ -375,6 +403,7 @@
         "SECURITY HOLDER": {
           "for_lots": 1,
           "for_pct": 16.7,
+          "for_zero_share_lots": 0,
           "n_lots": 6,
           "n_proposals": 1,
           "n_records": 6,
@@ -387,6 +416,7 @@
       "n": 125,
       "n_lots": 125,
       "n_proposals": 39,
+      "n_proposals_mixed_recommendation": 26,
       "n_proposals_shared": 17,
       "n_zero_share_lots": 30,
       "shares_voted_total": 164913362.0296,
@@ -405,6 +435,7 @@
         "ISSUER": {
           "for_lots": 0,
           "for_pct": null,
+          "for_zero_share_lots": 0,
           "n_lots": 0,
           "n_proposals": 0,
           "n_records": 0,
@@ -415,6 +446,7 @@
         "SECURITY HOLDER": {
           "for_lots": 15,
           "for_pct": 23.1,
+          "for_zero_share_lots": 0,
           "n_lots": 68,
           "n_proposals": 25,
           "n_records": 68,
@@ -427,6 +459,7 @@
       "n": 68,
       "n_lots": 68,
       "n_proposals": 25,
+      "n_proposals_mixed_recommendation": 25,
       "n_proposals_shared": 23,
       "n_zero_share_lots": 3,
       "shares_voted_total": 207366909.6277,
@@ -445,6 +478,7 @@
         "ISSUER": {
           "for_lots": 0,
           "for_pct": null,
+          "for_zero_share_lots": 0,
           "n_lots": 0,
           "n_proposals": 0,
           "n_records": 0,
@@ -455,6 +489,7 @@
         "SECURITY HOLDER": {
           "for_lots": 3,
           "for_pct": 15.8,
+          "for_zero_share_lots": 0,
           "n_lots": 23,
           "n_proposals": 11,
           "n_records": 23,
@@ -467,6 +502,7 @@
       "n": 23,
       "n_lots": 23,
       "n_proposals": 11,
+      "n_proposals_mixed_recommendation": 10,
       "n_proposals_shared": 10,
       "n_zero_share_lots": 4,
       "shares_voted_total": 98801838.1694,
