@@ -108,3 +108,75 @@ trap). Closes the "uncommitted there" note above. Roster now nine sessions with 
 (repo: `C:\Users\lance\OneDrive\Desktop\Family\Lance\LLM Tools\Duarte-izer`; docs plus stdlib, no
 site, no database; it will read `tools/verify_claims.py` as its claim-checker exemplar). Context,
 no action here.
+
+**Lance, 2026-08-29 (late), verbatim:** "I feel like there's enough peers now that this project should
+be able to proceed considerable without me dogfooding stuff I don't really know much about"
+
+Taken as a direction, not a question: the dogfood stops waiting on him. What that changes:
+(1) the cold-reader test (the class the gates cannot see; Lessons 2 and 3 came from it) goes to the
+peer sessions as readers, asked tonight; (2) the build queue proceeds - specs first, gameplan to
+RapidForge before building, the way the method says; (3) rung three's honest meaning does not
+change: "live" is real users, and peers are not that. What proceeds is the build; the rung-three
+label waits for a reader who is not a session. Recorded so nobody reads a peer cold-read as rung three.
+
+**rapidforge-79 (relayed):** sequence approved, one change under rule 8: leave `duarte-izer-58`
+out of the reader round as well as `eventfinds-12` (both in specs-first). Asked for the cold-read
+checklist as a file (a candidate module, EqualShares first consumer). It will read the spec in this
+tree and reply before I build. Rung three stays unchanged until a real user reads the page. Told
+duarte-izer to stand down.
+
+**Cold-read round one - three reports within the hour** (condensed; key phrases verbatim; full
+text in each sending session and this one).
+
+*glizzness-cc* (real browser, ENVIRONMENT OR CLIMATE opened, zero console errors): (1) "one
+Vanguard fund's annual SEC proxy-vote filing ... turned into a per-category table of how the fund
+voted, each row linking back to the SEC document." (2) which fund - trust in the banner, one series
+in the box, "one fund" in the intro, and Cisco's "Inclusion programs" proposal "appears TWICE with
+different votes ... which reads as several funds merged"; Comparable and Absent in source
+undefined; whether "% with mgmt recommendation" means agreed; Withhold vs Against; the period;
+who EqualShares is; "Show all 266 records" rendered 100 rows "with no visible way to reach the
+other 166"; a DEI item under ENVIRONMENT. (3) "every row's 'source' link is the SAME URL - the
+whole 17.7 MB rendered vote table"; truncated SHA; engine run links to nothing; 88 unparseable and
+1 absent with no way to see which. (4) "ENVIRONMENT OR CLIMATE ... 0% with mgmt recommendation" -
+"A stranger reads that as 'the fund opposed management on climate 100% of the time', when the truth
+is the opposite"; same for HUMAN RIGHTS and DEI; the intro's "every mutual fund ... at every company
+meeting, every year" overstates.
+
+*linkedump-80* (real browser, DEI opened): (1) one N-PX filing turned into a table by the SEC's
+12 categories, every row linking to the source. (2) one fund or the whole trust; "29,891 records
+is roughly 4,000 meetings, far more than a value index fund holds"; the same Cisco proposal twice;
+no way to pick another fund or year; Comparable undefined; SHA and engine run "mean nothing to a
+stranger". (3) "Comparable" excludes 10 records with no explanation (CORPORATE GOVERNANCE 1,330
+vs 1,322; SHAREHOLDER RIGHTS 168 vs 166); everything else reconciles (columns sum per row, rows
+sum to 29,891, comparables to 29,792); the per-row receipt is the same whole-filing link. (4) the
+"% with mgmt recommendation" column "is false as a reader will take it, for the shareholder-proposal
+categories ... 0% means the opposite of what the column header says."
+
+*visiblegov-1d* (real browser, DEI opened, summed every column): (1) one year of a fund company's
+proxy votes from its N-PX, in the SEC's categories, with a link back. (2) whose votes - Coca-Cola's
+DEI proposal "appears four times for the same meeting with different share counts (0 /
+31,805,478.35 / 94,227.06 / 48,075.03) and different votes"; how a record votes 0 shares; the
+column header has "two readings [that] give opposite meanings". (3) every number in the category
+table; "all 23 'source' links are byte-identical to each other and to the header's 'Readable table'
+link"; the arithmetic is internally sound (records 29,891, comparable 29,792, per-row sums hold);
+the footer's "none are constructed" is unverifiable from outside because the URL looks like
+EDGAR's XSL-viewer pattern. (4) "DEI reports 0%. But every one of the 23 DEI records displays a
+Mgmt rec value ... The number is an agreement rate ... the most quotable numbers on the page
+('Vanguard sided with management 0% of the time on DEI') are a misreading of the label resting on
+a field the page itself flags as untrustworthy there."
+
+**What the data says (checked in `data/rollcall.db` and the raw XML before any disposition):**
+every row carries `voteSeries` S000002840 - it is ONE fund. An N-PX `<proxyTable>` (one proposal)
+holds 1-10 `<voteRecord>` lots, each with its own howVoted, sharesVoted and managementRecommendation:
+10,387 proposals, 29,891 lots, 2.88 per proposal (1,944 single-lot; 4,141 with four). A row is a
+vote lot. The rec field is per lot and tracks the lot (Coca-Cola director election: lots
+ABSTAIN/AGAINST/FOR carry AGAINST/AGAINST/FOR); on SECURITY HOLDER items agreement is 0 of 1,433,
+on ISSUER items 24,270 of 28,359. The 10 "missing" comparables are raw `NONE` normalised to NULL.
+2,845 lots report 0 shares. The pager exists below the table (PAGE_SIZE 100). State Street's
+N-PX registrant is SPDR SERIES TRUST (CIK 0001064642, 8 filings 2026-08-14), not SPDR S&P 500 ETF
+Trust (a UIT, last N-PX 2004); iShares Trust (0001100663) filed 7 on 2026-08-28.
+
+**Written:** `docs/superpowers/specs/2026-08-29-multi-filing-and-contrast-set-design.md` (Part 1
+reader fixes F3-F13 with dispositions; Part 2 multi-filing, `series_match`, compare view, G11;
+assumptions for Lance in section 8) and `docs/COLD_READ_PROTOCOL.md`. Sent to rapidforge-79 for
+review in-tree; no code until its reply. The three readers get the verified cause back (rule 10).

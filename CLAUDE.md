@@ -56,9 +56,10 @@ punctuation, pointers, RESUME date, publication committed) and
   deposit gate; the local file points at them and holds only what was earned
   here (standard section 3: "EqualShares (no local delta - allowed for a build
   the registry ran)").
-- **No `docs/superpowers/specs/`.** The build's design record is the registry's
-  `F:/RapidForge/docs/DRYRUN_001_equalshares.md` and
-  `F:/RapidForge/docs/INTERRUPTIONS.md`; pointed at, not copied.
+- **Specs.** Build 001's design record is the registry's
+  `F:/RapidForge/docs/DRYRUN_001_equalshares.md` and `F:/RapidForge/docs/INTERRUPTIONS.md`,
+  pointed at, not copied. From 2026-08-29 this repo's own specs live under
+  `docs/superpowers/specs/` as the standard asks.
 - **Instruments** - a claim checker and a deploy verifier are present. No RLS
   probe: nothing runs against a database in production (the Supabase draft is
   unapplied by the owner's word, 2026-08-29). No PII guard: the repo has never

@@ -19,18 +19,22 @@
   `F:/RapidForge/docs/PROJECT_STANDARD.md` and declares deviations; `CHATLOG.md`,
   `PLAYBOOK_DELTA.md`, `AUDIT_LOG.md`, `REBUILD.md`, `tools/verify_claims.py`,
   `tools/verify_deploy.py` added. Measure: `python F:/RapidForge/tools/verify_standard.py`.
-- **Cold-read order:** `CLAUDE.md` -> this block -> `README.md` -> `PLAYBOOK_DELTA.md`.
+- **Cold-read order:** `CLAUDE.md` -> this block -> `README.md` -> `PLAYBOOK_DELTA.md` -> the spec above.
 - **Expected failures: none.** Any instrument FAIL is real from here. (`checks.py` G3 needs the
   network; `--skip-outage` marks it SKIP, which is not a pass.)
 
 ## WAITING ON LANCE
 
-- The dogfood report (rung three). Nothing else in this repo needs his hands.
+- Nothing. Section 8 of the spec lists four assumptions he can override; the build does not wait on them.
 
 ## NOW
 
-- [ ] **Dogfood** (rung three): Lance is using the page and reporting. Two findings so far, both
-      fixed and deposited.
+- [ ] **Spec review by RapidForge**, then build: `docs/superpowers/specs/2026-08-29-multi-filing-and-contrast-set-design.md`.
+      Part 1 = reader fixes F3-F13 (the concordance headline goes; rows are vote lots; NONE is a
+      value; visible find-it-by; definitions). Part 2 = multi-filing, `series_match`, compare view, G11.
+- [x] ~~**Dogfood** (rung three)~~ - redirected by Lance 2026-08-29 ("proceed considerable without me
+      dogfooding"). Cold-read round one done by three peers (`docs/COLD_READ_PROTOCOL.md`); findings
+      F3-F13 dispositioned in the spec. Rung three still means real users; unchanged.
 - [x] ~~**Cloudflare Pages connect**~~ - DONE 2026-08-29. LIVE at https://equalshares.pages.dev/
       Root `site`, output empty (the pairing `deploy-runbook` trap 6.1 warns about - Lance checked
       the wizard against the runbook before saving). Verified at the ORIGIN with curl, then in a
