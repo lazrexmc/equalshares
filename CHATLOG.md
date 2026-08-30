@@ -263,3 +263,11 @@ message is unknown. This entry was written at 2026-08-30 00:11 CDT by that clock
   opened, filter "split proposals" -> 257 of 266 records match.
 - Documentation: README decision 7; AUDIT_LOG round-one entry with verdicts; PLAYBOOK_DELTA
   Lessons 6 and 7; spec section 11; TODO RESUME re-dated.
+
+**Shipped, 2026-08-30 00:13 CDT (clock):** Part 1 committed `f30eb0c` (git: 2026-08-30 00:12:08 -0500), pushed;
+`tools/verify_deploy.py` at 00:13 CDT: every marker DEPLOYED, both JSON content-types, three
+headers. A follow-up `75c2c4a` untracked and ignored `.playwright-mcp/` snapshot files that
+`git add -A` had swept in. Round two requested from glizzness-cc, linkedump-80, visiblegov-1d,
+inoculated-by-the-phoenix-90 and league-73 (EventFinds and Duarte-izer excluded per RapidForge),
+each with the four questions and "report the confusion, not the cause". Ship report and the
+Lesson 7 tool trap sent to rapidforge-79. Part 2 waits on round two being dispositioned.
