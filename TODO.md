@@ -32,7 +32,12 @@
 
 ## WAITING ON LANCE
 
-- Nothing. Section 8 of the spec lists four assumptions he can override; the build does not wait on them.
+- **Round four, thirty seconds, one sentence and nothing else:** open https://equalshares.pages.dev/
+  and *name the single number here you would repeat to someone else.* (RapidForge's question; the
+  readers who found the confusions are spent, and you are the one person who will ever actually
+  repeat a number from this page. Also in RapidForge's morning handoff, worded the same, so you meet
+  it once.)
+- Section 8 of the spec lists four assumptions you can override; the build does not wait on them.
 
 ## NOW
 
@@ -49,8 +54,8 @@
       three) and BUILT as Part 1.2 on 2026-08-30: the headline table fits or says it scrolls; a clean
       example for the recommendation test; every gap a reader found between two numbers now has both
       numbers named.
-- [ ] **Round four**, different question (RapidForge): which one number would you quote, and is it
-      the one we want quoted. Readers who have not seen the page. Then Part 2.
+- [ ] **Round four** is Lance's (WAITING ON LANCE above); held there on RapidForge's call, exclusions kept.
+- [ ] **Part 2 - multi-filing** (spec section 5): IN PROGRESS from 2026-08-30.
 - [ ] **Part 2 - multi-filing**: `series_match` per source, three Big Three sources (iShares Trust
       0001100663, SPDR SERIES TRUST 0001064642, Vanguard 500 Index series), `site/data/index.json`
       + per-filing dirs + `compare.json`, gate G11 index-coverage, picker and compare view.

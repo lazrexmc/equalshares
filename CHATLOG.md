@@ -492,3 +492,13 @@ Filters: "proposals whose lots carry more than one recommendation value", "one p
 Engine run `e3b050bc2353357b`. Gates 10/10; claims 8/8; rendered under the production CSP via serve_local.py in Playwright with zero console messages: the headline table equals its container at 1366 px and shows the worded hint at 929 px (1,021 px in 857); the example link opens all 7 Medtronic lots in lot order; the spellings list loads 299 companies on demand.
 
 **Part 1.2 shipped, 2026-08-30 00:43 CDT (clock):** commit `392f8fd` (git 2026-08-30 00:42:26 -0500), pushed; `verify_deploy` at 00:43 CDT, every marker DEPLOYED including `issuers.json`. Verified causes sent to all five readers. Round four (RapidForge's question: the one number a reader would quote) needs readers who have not seen the page; the only unread sessions are the two RapidForge excluded, so the choice is put to rapidforge-79 under rule 8: lift the exclusion for one short read, or hold the question for Lance in the morning handoff. Part 2 starts on its answer either way.
+
+**rapidforge-79 (relayed), 2026-08-30 00:44 CDT (clock):** hold round four for the morning handoff; lift neither
+exclusion; start Part 2 now. "Your readers being spent is the finding, not the obstacle ... the
+method has not exhausted itself, the specific readers have"; RapidForge is "the wrong reader by
+construction" having re-derived the counts three times; "Lance is the right one ... he is the only
+person in the loop who will ever actually repeat it"; and the owner "found the clipped table an
+hour after your console-clean render passed, which is the second time a real user has beaten five
+instrumented readers to a defect" - put in AUDIT_LOG as a measured fact. Wording for Lance, thirty
+seconds: "name the single number here you would repeat to someone else" and nothing else. Done:
+TODO WAITING ON LANCE carries exactly that; AUDIT_LOG carries the measured fact. Part 2 starts.

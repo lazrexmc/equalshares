@@ -313,3 +313,12 @@ the page.
 ### Post-Audit Changes
 
 - 2026-08-30: Part 1.2 shipped (this entry).
+
+### Measured, not felt (2026-08-30)
+
+Across three cold-read rounds, five instrumented readers found the confusions (fourteen in round
+one, twelve in round two, fourteen in round three) and none of the two defects that mattered most
+to a reader in front of the page: the clipped drill-down table (Lance, an hour after a
+console-clean render passed) and, before that, the cold-reader intro and the receipts landing on a
+document list (Lance, dogfood findings 1 and 2). Round four therefore goes to the owner, one
+sentence, no framing. Recorded so the protocol's limit is a fact in this log, not a memory.
