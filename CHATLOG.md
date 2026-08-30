@@ -180,3 +180,25 @@ Trust (a UIT, last N-PX 2004); iShares Trust (0001100663) filed 7 on 2026-08-28.
 reader fixes F3-F13 with dispositions; Part 2 multi-filing, `series_match`, compare view, G11;
 assumptions for Lance in section 8) and `docs/COLD_READ_PROTOCOL.md`. Sent to rapidforge-79 for
 review in-tree; no code until its reply. The three readers get the verified cause back (rule 10).
+
+*inoculated-by-the-phoenix-90* (Playwright render plus the 18.5 MB submission downloaded and
+counted): (1) "a readable rendering of one Vanguard fund's SEC Form N-PX (Vanguard Morningstar
+Value Index Fund, the single series in accession 0001104659-26-102001)". (2) what a "record" is:
+"the filing's proxytable.xml has 21,474 proposals (proxyTable elements) and 29,890 vote lines
+(voteRecord elements)"; Medtronic's auditor ratification "appears five times with FOR, FOR, AGAINST,
+ABSTAIN, FOR, and nothing on the page says why one fund cast five different votes on one item";
+"comparable" undefined; the trust name on the filer line. (3) "29,891 vote records: I count 29,890
+voteRecord elements in the linked submission and cannot find the 29,891st"; which 88 are
+unparseable; the identical per-row receipt. (4) the "with mgmt" column: "managementRecommendation
+varies within a single proposal ... a board cannot recommend both on its own auditor ... the field
+moves with the fund's own vote ... The footnote limits its caveat to shareholder-proposed items; the
+Medtronic example is an ISSUER item."
+
+**Verified in the raw:** 21,474 `<proxyTable>`, 29,890 `<voteRecord>`, exactly one block with zero
+lots (STERIS plc, "Elect Director Richard M. Steeves *Withdrawn Resolution*") which the extractor
+emits as the one absent row: 29,890 + 1 = 29,891. Phoenix's count is right and the page's count is
+right; the page never said a zero-lot block counts as a row. Medtronic: seven lots across blocks,
+recs track the lots. **Correction to the paragraph above:** "10,387 proposals" was a grouping that
+omitted CUSIP; grouping by (issuer, CUSIP, meeting, description, source) gives 10,523 distinct
+proposals spanning 1-5 blocks each (5,700 span two; 21,150 of the blocks carry no otherManager
+tag, so the repetition is not per manager). Spec F3 and F4 amended; F14 added (which 88, which 1).
