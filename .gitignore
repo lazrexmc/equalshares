@@ -6,3 +6,6 @@ __pycache__/
 .venv/
 .env
 .env.*
+
+# Playwright MCP snapshots - tool output, never the project
+/.playwright-mcp/
