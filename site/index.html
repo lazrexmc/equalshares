@@ -18,6 +18,11 @@
     almost nobody can read it. This page is one such filing made readable: one fund, one proxy
     year, every vote lot, grouped by the SEC's own categories, with a receipt to the filing for
     every row.</p>
+  <p id="picker-line" class="picker-line" hidden>
+    <label for="filing-picker">Filing</label>
+    <select id="filing-picker"></select>
+    <span id="picker-note" class="def-note"></span>
+  </p>
   <p id="filer-line" class="filer-line" hidden></p>
   <p id="subject-line" class="freshness" hidden></p>
   <p id="freshness-line" class="freshness" hidden></p>
@@ -151,6 +156,9 @@
       </table>
     </div>
     <p class="hint">Select a category row to see every vote lot behind its numbers.</p>
+    <p id="rule-note" class="footnote">Proposals are counted by this page's rule (case, spacing and trailing
+      punctuation ignored); the engine run in "Where these numbers come from" changes whenever that
+      rule or any other part of the computation changes.</p>
     <div class="footnotes">
       <p id="note-proposals" class="footnote"></p>
       <p id="note-mgmt" class="footnote">"% FOR" is the fund's own vote, split by who proposed the
@@ -163,6 +171,22 @@
         across categories would mostly measure director elections.</p>
       <p id="note-multicat" class="footnote" hidden></p>
     </div>
+  </section>
+
+  <section id="compare" aria-labelledby="compare-heading" hidden>
+    <h2 id="compare-heading">The same category across filings</h2>
+    <p id="compare-note" class="footnote"></p>
+    <p id="scroll-hint-compare" class="scroll-hint" hidden>This table is wider than your screen: scroll it sideways to reach every filing.</p>
+    <div class="table-scroll">
+      <table id="compare-table">
+        <thead><tr id="compare-head"></tr></thead>
+        <tbody id="compare-tbody"></tbody>
+      </table>
+    </div>
+    <p class="footnote">Each cell is that filing's own number for that category, copied from its
+      own table: "% FOR" on shareholder items and on management items, with the counts, or the
+      counts alone when too few lots voted shares. Nothing is added across filings or across
+      categories. Select a cell to open that filing at that category.</p>
   </section>
 
   <section id="category-detail" aria-labelledby="detail-heading" hidden>

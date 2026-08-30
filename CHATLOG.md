@@ -502,3 +502,16 @@ hour after your console-clean render passed, which is the second time a real use
 instrumented readers to a defect" - put in AUDIT_LOG as a measured fact. Wording for Lance, thirty
 seconds: "name the single number here you would repeat to someone else" and nothing else. Done:
 TODO WAITING ON LANCE carries exactly that; AUDIT_LOG carries the measured fact. Part 2 starts.
+
+**Part 2 built, 2026-08-30 00:58 CDT (clock).** Three sources pinned by series id (`pipeline/sources.py`):
+Vanguard 500 Index Fund S000002839 (found 12 index pages into 108 per-series filings), iShares
+Core S&P 500 ETF S000004310 (one of 29 series in a 180 MB filing; the first fetch 404ed on a
+lowercased filename, fixed), State Street(R) SPDR(R) Portfolio S&P 500(R) ETF S000006983 (one of
+45 series, 106 MB; my guessed name did not exist, the id does). `enumerate_index_html` returns
+every series row; `select_by_series` walks newest-first and FAILS on no match; extraction is
+scoped to the pinned series (skipped 189,355 and 93,715 blocks of other series); the export
+writes `index.json`, `filings/<acc>/`, `compare.json`; gates G7 (1,011 checks over four filings),
+G8 (every artifact, plus a cross-filing aggregate-key ban), new G11 index-coverage; eleven gates
+pass. Site: filing picker, `#filing=..&category=..` routing, compare section; rendered under the production CSP via serve_local.py in Playwright with zero console messages: four filings in the picker, a 12-category compare table, and a compare cell that switched to the SPDR filing and opened its director elections by hash. Engine
+run `f97e5b26827a3e1d`. README: sources, layout, G11 row, deferred finding 2 closed. Lesson 10 in the
+delta. verify_claims C2/C3 now find the README's filing through the index.

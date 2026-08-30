@@ -3,10 +3,15 @@
 
 Reads data/rollcall.db and writes exactly the artifacts the site renders:
 
-    site/data/meta.json              filer + filing + engine-run provenance + totals + the
-                                     managementRecommendation semantics check
-    site/data/rollup.json            per-category rollup (NO blended cross-category number)
-    site/data/category/<slug>.json   per-category records (one row = one vote lot), with receipts
+    site/data/index.json                        every filing in the store (Part 2), ordered by
+                                                filer name then series name - never by recency
+    site/data/filings/<accession>/meta.json     filer + filing + engine-run provenance + totals +
+                                                the managementRecommendation semantics check
+    site/data/filings/<accession>/rollup.json   per-category rollup (NO blended cross-category number)
+    site/data/filings/<accession>/issuers.json  every company spelling as filed
+    site/data/filings/<accession>/category/<slug>.json   per-category records (one row = one lot)
+    site/data/compare.json                      the same category across filings, cell by cell;
+                                                no number aggregates across filings or categories
 
 Vocabulary (cold-read round one, 2026-08-29 - four strangers could not tell what a row was):
   * A RECORD is one row: one <voteRecord> lot of one <proxyTable> block, or the single row a
@@ -51,7 +56,7 @@ PIPELINE_DIR = Path(__file__).resolve().parent
 ROOT = PIPELINE_DIR.parent
 DB_PATH = ROOT / "data" / "rollcall.db"
 SITE_DATA = ROOT / "site" / "data"
-CATEGORY_DIR = SITE_DATA / "category"
+FILINGS_DIR = SITE_DATA / "filings"
 
 UNCATEGORIZED = "UNCATEGORIZED"
 VOTE_ENUM = ("FOR", "AGAINST", "ABSTAIN", "WITHHOLD")
@@ -254,60 +259,8 @@ def mgmt_rec_semantics(rows, thin_n, clean_categories):
     }
 
 
-def main():
-    log("EqualShares export_site - data/rollcall.db -> site/data JSON artifacts")
-    thin_n = load_config()
-    log(f"thin_n = {thin_n} (CONFIG, pipeline/sources.py)")
-    if not DB_PATH.exists():
-        die(f"database not found: {DB_PATH} - run the ingest + extract first")
-
-    con = sqlite3.connect(str(DB_PATH))
-    con.row_factory = sqlite3.Row
-
-    filings = con.execute(
-        "SELECT * FROM filings ORDER BY (filed_at IS NULL), filed_at DESC, accession DESC"
-    ).fetchall()
-    if not filings:
-        die("filings table is empty - nothing to export")
-    filing = filings[0]
-    if len(filings) > 1:
-        log(f"note: {len(filings)} filings in DB; exporting the most recent: {filing['accession']}")
-    acc = filing["accession"]
-
-    filer = con.execute(
-        "SELECT cik, name FROM filers WHERE cik = ?", (filing["cik"],)
-    ).fetchone()
-    if filer is None:
-        die(f"filings.cik {filing['cik']!r} has no filers row - referential integrity broken")
-
-    run_ids = [
-        r[0]
-        for r in con.execute(
-            "SELECT DISTINCT engine_run_id FROM vote_records WHERE accession = ? "
-            "ORDER BY engine_run_id",
-            (acc,),
-        ).fetchall()
-    ]
-    if len(run_ids) == 0:
-        die(
-            f"no vote_records for {acc} - refusing to export an empty site "
-            "(failure is not emptiness; run extract.py, and if it found zero records "
-            "that is trap 6.8, not a quiet filer)"
-        )
-    if len(run_ids) > 1:
-        die(
-            f"vote_records for {acc} carry {len(run_ids)} distinct engine_run_ids "
-            f"{run_ids} - mixed provenance; re-run extract.py before exporting"
-        )
-    engine = con.execute(
-        "SELECT engine_run_id, engine_version, code_fingerprint, config_hash, git_commit "
-        "FROM engine_runs WHERE engine_run_id = ?",
-        (run_ids[0],),
-    ).fetchone()
-    if engine is None:
-        die(f"engine_run_id {run_ids[0]} has no engine_runs manifest row (orphan provenance)")
-
-    rows = con.execute(
+def load_rows(con, acc):
+    return con.execute(
         """
         SELECT seq, issuer_name, cusip, isin, meeting_date, category_type,
                vote_description, shares_voted, how_voted, how_voted_raw,
@@ -319,23 +272,57 @@ def main():
         """,
         (acc,),
     ).fetchall()
-    con.close()
-    log(f"loaded {len(rows)} vote_records for {acc}")
+
+
+def export_filing(con, filing, thin_n, expected_run):
+    """One filing -> its directory under site/data/filings/. Returns the index row and the
+    per-category cells the compare view needs. Every rule of the single-filing exporter holds
+    per filing; nothing here reaches across filings."""
+    acc = filing["accession"]
+    out_dir = FILINGS_DIR / acc
+    category_dir = out_dir / "category"
+
+    filer = con.execute(
+        "SELECT cik, name FROM filers WHERE cik = ?", (filing["cik"],)
+    ).fetchone()
+    if filer is None:
+        die(f"filings.cik {filing['cik']!r} has no filers row - referential integrity broken")
+
+    run_ids = [r[0] for r in con.execute(
+        "SELECT DISTINCT engine_run_id FROM vote_records WHERE accession = ? ORDER BY engine_run_id",
+        (acc,)).fetchall()]
+    if len(run_ids) == 0:
+        die(f"no vote_records for {acc} - refusing to export an empty filing "
+            "(failure is not emptiness; run extract.py, and if it found zero records "
+            "that is trap 6.8, not a quiet filer)")
+    if len(run_ids) > 1:
+        die(f"vote_records for {acc} carry {len(run_ids)} distinct engine_run_ids {run_ids} - "
+            "mixed provenance; re-run extract.py before exporting")
+    if run_ids[0] != expected_run:
+        die(f"filing {acc} was extracted by engine run {run_ids[0]} but another filing by "
+            f"{expected_run} - one site, one engine run; re-run extract.py over every filing")
+    engine = con.execute(
+        "SELECT engine_run_id, engine_version, code_fingerprint, config_hash, git_commit "
+        "FROM engine_runs WHERE engine_run_id = ?", (run_ids[0],)).fetchone()
+    if engine is None:
+        die(f"engine_run_id {run_ids[0]} has no engine_runs manifest row (orphan provenance)")
+
+    rows = load_rows(con, acc)
+    log(f"filing {acc}: {len(rows)} vote_records")
 
     # -- validate before publishing: never emit guessed or malformed rows -----
     for r in rows:
         if r["how_voted"] is not None and r["how_voted"] not in VOTE_ENUM:
-            die(f"vote_records seq {r['seq']}: how_voted={r['how_voted']!r} is outside "
-                f"{VOTE_ENUM} - extractor contract broken; fix extract.py, do not export")
+            die(f"{acc} seq {r['seq']}: how_voted={r['how_voted']!r} is outside {VOTE_ENUM} - "
+                "extractor contract broken; fix extract.py, do not export")
         if r["mgmt_rec"] is not None and r["mgmt_rec"] not in REC_ENUM:
-            die(f"vote_records seq {r['seq']}: mgmt_rec={r['mgmt_rec']!r} is outside "
-                f"{REC_ENUM} - extractor contract broken; fix extract.py, do not export")
+            die(f"{acc} seq {r['seq']}: mgmt_rec={r['mgmt_rec']!r} is outside {REC_ENUM} - "
+                "extractor contract broken; fix extract.py, do not export")
         if r["proposal_no"] is None or r["lot_index"] is None or r["lots_in_proposal"] is None:
-            die(f"vote_records seq {r['seq']}: proposal grouping is NULL - the store predates "
-                "proposal grouping; re-run extract.py before exporting")
+            die(f"{acc} seq {r['seq']}: proposal grouping is NULL - re-run extract.py")
         su = r["source_url"]
         if not isinstance(su, str) or su.strip() == "":
-            die(f"vote_records seq {r['seq']}: empty source_url - receipts are mandatory")
+            die(f"{acc} seq {r['seq']}: empty source_url - receipts are mandatory")
     series_ids = sorted({r["vote_series"] for r in rows if r["vote_series"]})
     if len(series_ids) != 1:
         die(f"filing {acc} carries {len(series_ids)} distinct voteSeries values {series_ids}; "
@@ -345,10 +332,6 @@ def main():
     by_cat = {}
     for r in rows:
         by_cat.setdefault(bucket(r["category_type"]), []).append(r)
-
-    # Round two, R2: 198 proposals have lots in more than one category, so a category list
-    # shows "2 of 3" without "1 of 3". Each record publishes the OTHER categories its sibling
-    # lots fall in, and each category counts the proposals it shares.
     cats_of_proposal = {}
     for r in rows:
         cats_of_proposal.setdefault(r["proposal_no"], set()).add(bucket(r["category_type"]))
@@ -376,38 +359,34 @@ def main():
             if sv is not None:
                 shares_sum += sv
                 any_shares = True
-        # Tri-valued honesty: 'unparseable' (raw kept, normalisation failed) and 'absent in
-        # source' (no how-voted at all) are DIFFERENT states. enum + UNPARSEABLE + ABSENT == n.
         votes["UNPARSEABLE"] = sum(
             1 for r in rs if r["how_voted_raw"] is not None and r["how_voted"] is None)
         votes["ABSENT"] = sum(1 for r in rs if r["how_voted_raw"] is None)
 
         by_source = {}
         for key in SOURCE_KEYS:
-            by_source[key] = source_cell([r for r in rs if source_bucket(r["vote_source"]) == key],
-                                         thin_n)
+            by_source[key] = source_cell(
+                [r for r in rs if source_bucket(r["vote_source"]) == key], thin_n)
         for key in ("OTHER", "ABSENT"):
             sub = [r for r in rs if source_bucket(r["vote_source"]) == key]
             if sub:
                 by_source[key] = source_cell(sub, thin_n)
 
         props_here = {r["proposal_no"] for r in rs}
-        categories.append(
-            {
-                "category": name,
-                "slug": slug,
-                "n": n,
-                "n_lots": sum(1 for r in rs if (r["lot_index"] or 0) >= 1),
-                "n_proposals": len(props_here),
-                "n_proposals_shared": sum(1 for pn in props_here if len(cats_of_proposal[pn]) > 1),
-                "n_proposals_mixed_recommendation": sum(1 for pn in props_here if pn in mixed_set),
-                "n_zero_share_lots": sum(1 for r in rs if (r["lot_index"] or 0) >= 1
-                                         and r["shares_voted"] == 0),
-                "votes": votes,
-                "shares_voted_total": round(shares_sum, 4) if any_shares else None,
-                "by_source": by_source,
-            }
-        )
+        categories.append({
+            "category": name,
+            "slug": slug,
+            "n": n,
+            "n_lots": sum(1 for r in rs if (r["lot_index"] or 0) >= 1),
+            "n_proposals": len(props_here),
+            "n_proposals_shared": sum(1 for pn in props_here if len(cats_of_proposal[pn]) > 1),
+            "n_proposals_mixed_recommendation": sum(1 for pn in props_here if pn in mixed_set),
+            "n_zero_share_lots": sum(1 for r in rs if (r["lot_index"] or 0) >= 1
+                                     and r["shares_voted"] == 0),
+            "votes": votes,
+            "shares_voted_total": round(shares_sum, 4) if any_shares else None,
+            "by_source": by_source,
+        })
     categories.sort(key=lambda c: (-c["n"], c["category"]))
 
     issuer_names = {}
@@ -428,7 +407,6 @@ def main():
         "proposals": len({r["proposal_no"] for r in rows}),
         "proposals_in_multiple_categories": sum(
             1 for pn, cs in cats_of_proposal.items() if len(cs) > 1),
-        # Round three (Phoenix): 495 proposals add 510 entries; both named.
         "extra_category_entries": sum(len(cs) - 1 for cs in cats_of_proposal.values()),
         "issuers": len({r["cusip"] for r in rows if r["cusip"]}),
         "issuer_name_spellings": len({r["issuer_name"] for r in rows if r["issuer_name"]}),
@@ -436,24 +414,18 @@ def main():
             1 for cusip, names in issuer_names.items() if len(names) > 1),
         "categories": len(categories),
         "unparseable_how_voted": sum(
-            1 for r in rows if r["how_voted_raw"] is not None and r["how_voted"] is None
-        ),
+            1 for r in rows if r["how_voted_raw"] is not None and r["how_voted"] is None),
         "absent_how_voted": sum(1 for r in rows if r["how_voted_raw"] is None),
         "zero_share_lots": sum(
             1 for r in rows if (r["lot_index"] or 0) >= 1 and r["shares_voted"] == 0),
-        # Round three (LinkedUmp): the cells count readable zero-share lots; 9 have no
-        # readable vote. Both halves named so the 2,845 reconciles from the table.
         "zero_share_lots_readable": sum(
             1 for r in rows if (r["lot_index"] or 0) >= 1 and r["shares_voted"] == 0
             and r["how_voted"] in VOTE_ENUM),
         "zero_share_lots_unreadable": sum(
             1 for r in rows if (r["lot_index"] or 0) >= 1 and r["shares_voted"] == 0
             and r["how_voted"] not in VOTE_ENUM),
-        # Records the filer tagged with MORE than one category. Each is grouped under its FIRST
-        # category only (no double counting; sum(n)==records stays exact).
         "multi_category_records": sum(
-            1 for r in rows if (r["categories_all"] or "").find("|") != -1
-        ),
+            1 for r in rows if (r["categories_all"] or "").find("|") != -1),
     }
     if sum(c["n"] for c in categories) != totals["records"]:
         die("internal invariant broken: sum(category n) != totals.records")
@@ -461,21 +433,12 @@ def main():
         die("internal invariant broken: lots + zero-lot rows != records")
 
     try:
-        filing_obj = {
-            k: filing[k]
-            for k in (
-                "accession", "form", "filed_at", "period_of_report", "series_name",
-                "vote_doc_view_url", "vote_doc_name", "vote_doc_type", "vote_doc_url",
-                "index_url", "raw_sha256", "raw_bytes", "fetched_at",
-            )
-        }
-        engine_obj = {
-            k: engine[k]
-            for k in (
-                "engine_run_id", "engine_version", "code_fingerprint",
-                "config_hash", "git_commit",
-            )
-        }
+        filing_obj = {k: filing[k] for k in (
+            "accession", "form", "filed_at", "period_of_report", "series_name",
+            "vote_doc_view_url", "vote_doc_name", "vote_doc_type", "vote_doc_url",
+            "index_url", "raw_sha256", "raw_bytes", "fetched_at")}
+        engine_obj = {k: engine[k] for k in (
+            "engine_run_id", "engine_version", "code_fingerprint", "config_hash", "git_commit")}
     except (IndexError, KeyError) as e:
         die(f"DB schema is missing an expected column: {e!r}")
     filing_obj["series_id"] = series_ids[0]
@@ -487,13 +450,9 @@ def main():
         "engine_run": engine_obj,
         "totals": totals,
         "thin_n": thin_n,
-        # The typed constants that shape the page, published so the "computed" claim can name
-        # its exceptions (round two, R6). One remains.
         "config": {"thin_n": thin_n},
         "mgmt_rec_semantics": mgmt_rec_semantics(rows, thin_n, clean_categories),
     }
-    # Round three: readers wanted the 622 spellings as a list. One file, every CUSIP, every
-    # spelling as filed with its lot count. LOCKSTEP: checks.py G7 recomputes it.
     issuers = [
         {"cusip": cusip,
          "spellings": [{"name": n, "lots": k} for n, k in sorted(names.items())],
@@ -502,31 +461,14 @@ def main():
     ]
 
     # -- write -----------------------------------------------------------------
-    SITE_DATA.mkdir(parents=True, exist_ok=True)
-    CATEGORY_DIR.mkdir(parents=True, exist_ok=True)
-    stale = sorted(CATEGORY_DIR.glob("*.json"))
-    for p in stale:
-        p.unlink()
-    if stale:
-        log(f"removed {len(stale)} stale category file(s) before writing")
-
-    b = dump_json(SITE_DATA / "meta.json", meta)
-    sem = meta["mgmt_rec_semantics"]
-    log(
-        f"wrote site/data/meta.json  ({b} bytes; records={totals['records']}, "
-        f"lots={totals['lots']}, proposals={totals['proposals']}, "
-        f"categories={totals['categories']}, unparseable_how_voted={totals['unparseable_how_voted']}; "
-        f"mgmt_rec_semantics mixed={sem['proposals_with_mixed_recommendation']} "
-        f"agreement={sem['agreement']} -> {sem['verdict']})"
-    )
-    b = dump_json(SITE_DATA / "issuers.json", {"issuers": issuers})
-    log(f"wrote site/data/issuers.json  ({b} bytes; {len(issuers)} CUSIPs, "
-        f"{totals['issuers_with_multiple_spellings']} with more than one spelling)")
-    b = dump_json(SITE_DATA / "rollup.json", {"categories": categories})
-    log(
-        f"wrote site/data/rollup.json  ({b} bytes; {len(categories)} categories "
-        "sorted n desc; NO blended top-level number)"
-    )
+    out_dir.mkdir(parents=True, exist_ok=True)
+    category_dir.mkdir(parents=True, exist_ok=True)
+    stale = sorted(category_dir.glob("*.json"))
+    for sp in stale:
+        sp.unlink()
+    dump_json(out_dir / "meta.json", meta)
+    dump_json(out_dir / "issuers.json", {"issuers": issuers})
+    dump_json(out_dir / "rollup.json", {"categories": categories})
     for c in categories:
         recs = sorted(by_cat[c["category"]], key=record_sort_key)
         payload = {
@@ -559,13 +501,133 @@ def main():
                 for r in recs
             ],
         }
-        b = dump_json(CATEGORY_DIR / f"{c['slug']}.json", payload)
-        log(f"wrote site/data/category/{c['slug']}.json  ({b} bytes; n={c['n']})")
+        dump_json(category_dir / f"{c['slug']}.json", payload)
+    sem = meta["mgmt_rec_semantics"]
+    log(f"  wrote filings/{acc}/: {len(categories)} categories; records={totals['records']} "
+        f"lots={totals['lots']} proposals={totals['proposals']}; semantics "
+        f"mixed={sem['proposals_with_mixed_recommendation']} -> {sem['verdict']}")
 
-    log(
-        f"export complete: filing {acc} ({filing['form']}, period "
-        f"{filing['period_of_report']}), engine_run {engine['engine_run_id']}"
-    )
+    index_row = {
+        "accession": acc,
+        "cik": filer["cik"],
+        "filer_name": filer["name"],
+        "series_name": filing["series_name"],
+        "series_id": series_ids[0],
+        "form": filing["form"],
+        "period_of_report": filing["period_of_report"],
+        "filed_at": filing["filed_at"],
+        "engine_run_id": engine["engine_run_id"],
+        "dir": f"filings/{acc}",
+        "records": totals["records"],
+        "lots": totals["lots"],
+        "proposals": totals["proposals"],
+        "issuers": totals["issuers"],
+        "mgmt_rec_verdict": sem["verdict"],
+    }
+    # compare cells: per category, exactly what the rollup holds, keyed for the compare view
+    cells = {c["category"]: {
+        "accession": acc,
+        "slug": c["slug"],
+        "n": c["n"], "n_lots": c["n_lots"], "n_proposals": c["n_proposals"],
+        "n_zero_share_lots": c["n_zero_share_lots"],
+        "votes": c["votes"],
+        "by_source": c["by_source"],
+    } for c in categories}
+    return index_row, cells
+
+
+def main():
+    log("EqualShares export_site - data/rollcall.db -> site/data JSON artifacts (multi-filing)")
+    thin_n = load_config()
+    log(f"thin_n = {thin_n} (CONFIG, pipeline/sources.py)")
+    if not DB_PATH.exists():
+        die(f"database not found: {DB_PATH} - run the ingest + extract first")
+
+    con = sqlite3.connect(str(DB_PATH))
+    con.row_factory = sqlite3.Row
+    filings = con.execute("SELECT * FROM filings").fetchall()
+    if not filings:
+        die("filings table is empty - nothing to export")
+    filer_name = {r["cik"]: r["name"] for r in con.execute("SELECT cik, name FROM filers")}
+    # Order by identity, never by recency (spec section 5): filer name, series name, accession.
+    filings = sorted(filings, key=lambda f: (
+        (filer_name.get(f["cik"]) or "").upper(), (f["series_name"] or "").upper(), f["accession"]))
+
+    runs = [r[0] for r in con.execute(
+        "SELECT DISTINCT engine_run_id FROM vote_records ORDER BY engine_run_id")]
+    if len(runs) != 1:
+        die(f"the store carries {len(runs)} engine runs {runs}; one site, one engine run - "
+            "re-run extract.py over every filing before exporting")
+    expected_run = runs[0]
+
+    FILINGS_DIR.mkdir(parents=True, exist_ok=True)
+    # Retire the single-filing layout and any filing directory no longer in the store: a stale
+    # directory would deploy as a ghost filing (G11 asks git, then checks here).
+    for stale in ("meta.json", "rollup.json", "issuers.json"):
+        sp = SITE_DATA / stale
+        if sp.exists():
+            sp.unlink()
+            log(f"removed single-filing artifact site/data/{stale}")
+    old_cat = SITE_DATA / "category"
+    if old_cat.exists():
+        for sp in old_cat.glob("*.json"):
+            sp.unlink()
+        old_cat.rmdir()
+        log("removed single-filing site/data/category/")
+    wanted = {f["accession"] for f in filings}
+    for d in FILINGS_DIR.iterdir():
+        if d.is_dir() and d.name not in wanted:
+            for sp in sorted(d.rglob("*")):
+                if sp.is_file():
+                    sp.unlink()
+            for sp in sorted(d.rglob("*"), reverse=True):
+                if sp.is_dir():
+                    sp.rmdir()
+            d.rmdir()
+            log(f"removed stale filing directory filings/{d.name}")
+
+    index_rows = []
+    cells_by_filing = {}
+    for filing in filings:
+        row, cells = export_filing(con, filing, thin_n, expected_run)
+        index_rows.append(row)
+        cells_by_filing[row["accession"]] = cells
+    con.close()
+
+    # compare.json: the same category across filings. Categories ordered by the sum of their
+    # record counts (an ORDERING key only, never published); filings in index order. No cell
+    # aggregates across filings; no cell aggregates across categories.
+    all_cats = {}
+    for acc, cells in cells_by_filing.items():
+        for name, cell in cells.items():
+            all_cats.setdefault(name, {"slug": cell["slug"], "order": 0, "filings": []})
+            all_cats[name]["order"] += cell["n"]
+    compare = []
+    for name, info in sorted(all_cats.items(), key=lambda kv: (-kv[1]["order"], kv[0])):
+        per_filing = []
+        for row in index_rows:
+            cell = cells_by_filing[row["accession"]].get(name)
+            per_filing.append(cell if cell is not None else {
+                "accession": row["accession"], "slug": info["slug"], "absent": True})
+        compare.append({"category": name, "slug": info["slug"], "filings": per_filing})
+
+    generated = datetime.now(timezone.utc).isoformat(timespec="seconds")
+    b = dump_json(SITE_DATA / "index.json", {
+        "generated_at": generated,
+        "engine_run_id": expected_run,
+        "thin_n": thin_n,
+        "filings": index_rows,
+    })
+    log(f"wrote site/data/index.json  ({b} bytes; {len(index_rows)} filing(s), ordered by filer "
+        "then series)")
+    b = dump_json(SITE_DATA / "compare.json", {
+        "generated_at": generated,
+        "engine_run_id": expected_run,
+        "categories": compare,
+    })
+    log(f"wrote site/data/compare.json  ({b} bytes; {len(compare)} categories x "
+        f"{len(index_rows)} filings; no cross-filing number)")
+    log(f"export complete: {len(index_rows)} filing(s), engine_run {expected_run}")
 
 
 if __name__ == "__main__":

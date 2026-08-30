@@ -1,12 +1,19 @@
 # EqualShares - The Roll Call (slice v0)
 
-How one fund family actually voted, per category, with receipts. One filer, one
-N-PX filing, published as a static page. **The first build run THROUGH
-RapidForge** (F:/RapidForge) - its modules decided this shape; this repo is the
-test of them.
+How funds actually voted, per category, with receipts: one page per fund series
+from its Form N-PX filing, and the same category side by side across funds.
+Published as a static site. **The first build run THROUGH RapidForge**
+(F:/RapidForge) - its modules decided this shape; this repo is the test of them.
 
-- Filer: VANGUARD INDEX FUNDS, CIK 0000036405
-- Filing: accession 0001104659-26-102001, period 2026-06-30, filed 2026-08-27
+- First filing (Build 001): VANGUARD INDEX FUNDS, CIK 0000036405, accession
+  0001104659-26-102001, period 2026-06-30, filed 2026-08-27 (series Vanguard
+  Morningstar Value Index Fund). The README's counted claims below are about it.
+- Part 2 (2026-08-30): the Big Three through their S&P 500 index funds, each
+  pinned to ONE fund series by the series id EDGAR's filing index page carries
+  (`pipeline/sources.py`): Vanguard 500 Index Fund (S000002839), iShares Core
+  S&P 500 ETF (S000004310, one of 29 series in a 180 MB filing), State
+  Street(R) SPDR(R) Portfolio S&P 500(R) ETF (S000006983, one of 45 series).
+  Extraction is scoped to the pinned series; the raw file keeps every series.
 - Stack: Python 3.14 stdlib only (pipeline) + vanilla JS (site). No frameworks,
   no bundler, no dependency that expires.
 
@@ -51,7 +58,7 @@ test of them.
 
     python pipeline/run_ingest.py       # 1. fetch from EDGAR, store raw (SQLite: data/rollcall.db)
     python pipeline/extract.py          # 2. parse raw -> vote_records, provenance-stamped
-    python pipeline/export_site.py      # 3. write site/data/*.json
+    python pipeline/export_site.py      # 3. write site/data/index.json, compare.json, filings/<accession>/*
     python pipeline/checks.py           # 4. acceptance gates - must pass before publishing
     python pipeline/serve_local.py      # 5. view at http://127.0.0.1:8765
 
@@ -67,7 +74,7 @@ keep it out of git.
 
 ## Acceptance gates (`pipeline/checks.py`)
 
-Ten gates, exit 0 only on all-pass. These are the REAL gate names - this table
+Eleven gates, exit 0 only on all-pass. These are the REAL gate names - this table
 is a summary; checks.py's own output is the authority.
 
 | Gate | Proves |
@@ -82,6 +89,7 @@ is a summary; checks.py's own output is the authority.
 | G8 anti-blend | `rollup.json` carries NO top-level blended number; concordance is per-category only. |
 | G9 listing-coverage | The NEWEST source-listed filing is actually ingested and extracted - a terminal retirement of the current filing can never read as a quiet day. |
 | G10 publication-committed | `site/data` is not gitignored (the critical review finding: an unanchored `data/` pattern silently ignored the whole publication while CI regenerated it before every check). |
+| G11 index-coverage | Every filing in the store has an `index.json` row and a `filings/<accession>/` directory, every row has a directory, and no directory lacks a row (the registry's `catalogue_drift` shape); the retired single-filing layout is gone. |
 
 **Checked in the browser, not by checks.py:** the failure-is-not-emptiness
 rendering (a failed fetch shows an error box, never an empty table) is
@@ -110,13 +118,26 @@ silence for coverage:
    module's own trigger applies: build the shadow mode when the extractor is
    actually rewritten. Until then, the raw store + UPSERT means any bad
    re-parse is recoverable by re-running the previous extractor version.
-2. **`max_filings: 1` over a multi-series trust is an unstable pointer.**
-   VANGUARD INDEX FUNDS files one N-PX per fund series (over a hundred in the
-   window DRYRUN_001 Part 2 observed; that count is not derived here), so "the most recent filing" changes fund whenever any series
-   files. The page always SAYS which series it shows (header + provenance
-   box), so it is honest - but a slice reader refreshing across a filing day
-   may see a different fund. Fix lands with multi-filing support, not with a
-   pin hack.
+2. ~~**`max_filings: 1` over a multi-series trust is an unstable pointer.**~~
+   CLOSED 2026-08-30 (Part 2): every source is pinned to one fund series by
+   its EDGAR series id (`series_id` in `pipeline/sources.py`), the adapter
+   walks the registrant's N-PX filings newest-first reading each index page's
+   series rows, and a source with no match FAILS rather than fall back to the
+   newest filing. The page lists every filing by fund company then fund name,
+   never by date, and the address bar carries the choice.
+
+## Publication layout (Part 2, 2026-08-30)
+
+    site/data/index.json                      every filing, ordered by filer name then series name
+    site/data/filings/<accession>/meta.json   provenance, totals, the recommendation test
+    site/data/filings/<accession>/rollup.json per-category rollup (no blended number)
+    site/data/filings/<accession>/issuers.json every company spelling as filed
+    site/data/filings/<accession>/category/<slug>.json   one row per vote lot, with receipts
+    site/data/compare.json                    the same category across filings, cell by cell
+
+`compare.json` copies each filing's own per-category cells; nothing aggregates
+across filings or categories (gate G8 walks every artifact for such keys). One
+engine run across the site: a filing extracted by an older run fails the export.
 
 ## Owner decision - where the data lives: CLOSED, stay static (2026-08-29)
 

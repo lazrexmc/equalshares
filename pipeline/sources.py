@@ -28,6 +28,21 @@ DEFAULT_BASE_URL_ARCHIVES = "https://www.sec.gov"
 
 # One dict per source, never a branch in code. id is "type:name" and is stable
 # forever. enabled: False pauses a source without deleting it.
+# Part 2 (spec section 5, 2026-08-30): one registrant files one N-PX per fund
+# series (VANGUARD INDEX FUNDS: 108 in one window) or MANY series in one N-PX
+# (iShares Trust 29, SPDR SERIES TRUST 45), so "the newest filing" is an
+# unstable pointer (README deferred finding 2). series_id pins a source to ONE
+# series by the id EDGAR's filing index page carries (S000...; names change
+# year to year, ids do not); the adapter walks the registrant's N-PX filings
+# newest-first, reads each index page's series rows, and keeps the first
+# max_filings that carry the id (series_match, a name fragment, is the
+# fallback when no id is given). Extraction is scoped to that series; the raw
+# file keeps every series. No match = the source FAILS. It never falls back
+# to "newest". The Big Three, each through its S&P 500 index fund, so the
+# compare view compares like with like. Registrants verified on EDGAR
+# 2026-08-29/30 (iShares Trust 7 N-PX filed 2026-08-28, 180 MB for 29 series;
+# SPDR SERIES TRUST 8 filed 2026-08-14; SPDR S&P 500 ETF Trust is a UIT whose
+# last N-PX is 2004 and is NOT the State Street source).
 SOURCES = [
     {
         "id": "npx:vanguard-index-funds",
@@ -37,7 +52,33 @@ SOURCES = [
         "name": "VANGUARD INDEX FUNDS",
         "registrant_type": "RMIC",
         "form": "N-PX",
-        "max_filings": 1,                  # slice v0: the single most recent N-PX only
+        "max_filings": 1,
+        "series_id": "S000002839",          # Vanguard 500 Index Fund
+        "series_match": "Vanguard 500 Index Fund",
+    },
+    {
+        "id": "npx:ishares-trust",
+        "type": "edgar-npx",
+        "enabled": True,
+        "cik": "0001100663",              # iSHARES TRUST (BlackRock)
+        "name": "iSHARES TRUST",
+        "registrant_type": "RMIC",
+        "form": "N-PX",
+        "max_filings": 1,
+        "series_id": "S000004310",          # iShares Core S&P 500 ETF; 29 series in one N-PX
+        "series_match": "iShares Core S&P 500 ETF",
+    },
+    {
+        "id": "npx:spdr-series-trust",
+        "type": "edgar-npx",
+        "enabled": True,
+        "cik": "0001064642",              # SPDR SERIES TRUST (State Street)
+        "name": "SPDR SERIES TRUST",
+        "registrant_type": "RMIC",
+        "form": "N-PX",
+        "max_filings": 1,
+        "series_id": "S000006983",          # State Street(R) SPDR(R) Portfolio S&P 500(R) ETF; 45 series in one N-PX
+        "series_match": "Portfolio S&P 500",
     },
 ]
 

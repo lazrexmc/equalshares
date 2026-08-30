@@ -19,11 +19,19 @@
 import { fetchJson, FetchError, DataShapeError } from './data.js';
 import { receiptUrl, filingIndexUrl, filingVoteDocUrl, filingVoteTableUrl } from './receipts.js';
 
+// Part 2: every filing lives under /data/filings/<accession>/; index.json lists them and
+// compare.json puts the same category side by side. PATHS resolve against the filing shown.
+const INDEX_PATH = '/data/index.json';
+const COMPARE_PATH = '/data/compare.json';
+let currentDir = null;           // e.g. "filings/0001104659-26-102001"
 const PATHS = {
-  meta: '/data/meta.json',
-  rollup: '/data/rollup.json',
-  category: (slug) => '/data/category/' + encodeURIComponent(slug) + '.json',
+  get meta() { return '/data/' + currentDir + '/meta.json'; },
+  get rollup() { return '/data/' + currentDir + '/rollup.json'; },
+  get issuers() { return '/data/' + currentDir + '/issuers.json'; },
+  category: (slug) => '/data/' + currentDir + '/category/' + encodeURIComponent(slug) + '.json',
 };
+let filingIndex = null;          // parsed index.json
+let pendingCategory = null;      // slug to open once the filing renders (from #filing=..&category=..)
 
 const PAGE_SIZE = 100;
 const ABSENT = '-';
@@ -562,8 +570,9 @@ async function openCategory(cat, initialFilter) {
   const path = PATHS.category(cat.slug);
   let data;
   try {
-    if (categoryCache.has(cat.slug)) {
-      data = categoryCache.get(cat.slug);
+    const cacheKey = currentDir + '/' + cat.slug;
+    if (categoryCache.has(cacheKey)) {
+      data = categoryCache.get(cacheKey);
     } else {
       data = await fetchJson(path);
       if (!data || !Array.isArray(data.records)) {
@@ -581,7 +590,7 @@ async function openCategory(cat, initialFilter) {
           ', records=' + fmtInt(data.records.length) + ', rollup n=' +
           fmtInt(cat.n) + ' - mixed export versions; re-run export_site.py.');
       }
-      categoryCache.set(cat.slug, data); // cache successes only
+      categoryCache.set(cacheKey, data); // cache successes only
     }
   } catch (err) {
     if (seq !== openSeq) return;
@@ -785,6 +794,7 @@ function renderDetailPage() {
 function updateScrollHint() {
   for (const [scSel, hintId] of [
     ['#categories .table-scroll', 'scroll-hint-cats'],
+    ['#compare .table-scroll', 'scroll-hint-compare'],
     ['#detail-body .table-scroll', 'scroll-hint'],
   ]) {
     const sc = document.querySelector(scSel);
@@ -797,16 +807,21 @@ function updateScrollHint() {
 // The spellings list (round three: "622 different spellings - I wanted to see
 // them"). Loaded on demand from issuers.json, rendered as text only.
 let spellingsLoaded = false;
+let spellingsWired = false;
 function wireSpellings() {
   const det = $('spellings-details');
   if (!det) return;
   show(det);
+  spellingsLoaded = false;
+  det.open = false;
+  if (spellingsWired) return;
+  spellingsWired = true;
   det.addEventListener('toggle', async () => {
     if (!det.open || spellingsLoaded) return;
     const status = $('spellings-status');
     status.textContent = 'Loading /data/issuers.json ...';
     try {
-      const data = await fetchJson('/data/issuers.json');
+      const data = await fetchJson(PATHS.issuers);
       const list = $('spellings-list');
       clear(list);
       const multi = (data.issuers || []).filter((i) => Array.isArray(i.spellings) && i.spellings.length > 1);
@@ -862,10 +877,50 @@ function wirePagers() {
   window.addEventListener('resize', updateScrollHint);
 }
 
-// ---------- boot ----------
+// ---------- filings: index, picker, hash ----------
 
-async function main() {
-  wirePagers();
+function parseHash() {
+  const out = {};
+  const h = (location.hash || '').replace(/^#/, '');
+  for (const part of h.split('&')) {
+    const [k, v] = part.split('=');
+    if (k) out[decodeURIComponent(k)] = v === undefined ? '' : decodeURIComponent(v);
+  }
+  return out;
+}
+
+function filingLabel(row) {
+  return textOr(row.series_name, row.accession) + ' (' + textOr(row.filer_name, ABSENT) +
+    ', proxy year ending ' + textOr(row.period_of_report, ABSENT) + ')';
+}
+
+function renderPicker(index, selectedAcc) {
+  const sel = $('filing-picker');
+  clear(sel);
+  for (const row of index.filings) {
+    const opt = el('option', null, filingLabel(row));
+    opt.value = row.accession;
+    if (row.accession === selectedAcc) opt.selected = true;
+    sel.appendChild(opt);
+  }
+  $('picker-note').textContent = fmtInt(index.filings.length) + ' filing' +
+    (index.filings.length === 1 ? '' : 's') + ' in this publication, listed by fund company then ' +
+    'fund name, never by date. The address bar carries the choice (#filing=accession).';
+  show($('picker-line'));
+  if (!sel.dataset.wired) {
+    sel.dataset.wired = '1';
+    sel.addEventListener('change', () => {
+      location.hash = 'filing=' + encodeURIComponent(sel.value);
+    });
+  }
+}
+
+async function loadFiling(row) {
+  currentDir = row.dir;
+  categoryCache.clear();
+  detailState = null;
+  hide($('category-detail'));
+  hide($('error-box'));
 
   let meta;
   let rollup;
@@ -878,13 +933,17 @@ async function main() {
     renderFatal(err);
     return;
   }
-
   try {
     if (!meta || typeof meta !== 'object' || !meta.filer || !meta.filing) {
       throw new DataShapeError(
         PATHS.meta + ' is missing required fields (filer, filing) - the ' +
         'export step did not produce a usable meta.json.'
       );
+    }
+    if (meta.filing.accession !== row.accession) {
+      throw new DataShapeError(
+        PATHS.meta + ' belongs to filing ' + meta.filing.accession + ', not ' + row.accession +
+        ' - index.json and the filing directory disagree; re-run export_site.py.');
     }
     thinN = typeof meta.thin_n === 'number' ? meta.thin_n : null;
     const tt = meta.totals || {};
@@ -896,6 +955,112 @@ async function main() {
     renderHeader(meta);
     renderRollup(rollup);      // before provenance: the semantics line links into a category
     renderProvenance(meta);
+    updateScrollHint();
+    if (pendingCategory) {
+      const cat = rollupBySlug.get(pendingCategory);
+      pendingCategory = null;
+      if (cat) openCategory(cat);
+    }
+  } catch (err) {
+    renderFatal(err);
+  }
+}
+
+// ---------- compare: the same category across filings ----------
+
+function compareCell(cell, key) {
+  const c = cell && cell.by_source ? cell.by_source[key] : null;
+  if (!c || typeof c !== 'object') return ABSENT;
+  const counts = fmtInt(c.for_lots) + ' of ' + fmtInt(c.n_voted);
+  if (c.for_pct === null || c.for_pct === undefined) return '- (' + counts + ')';
+  if (c.thin) return counts + ' ' + thinLabelText();
+  return c.for_pct + '% (' + counts + ')';
+}
+
+function renderCompare(compare, index) {
+  const sec = $('compare');
+  const note = $('compare-note');
+  const rows = index.filings;
+  if (rows.length < 2) {
+    note.textContent = 'Comparison needs at least two filings; this publication holds ' +
+      fmtInt(rows.length) + '. The category table above is the whole of it.';
+    show(sec);
+    hide($('compare-table').parentElement);
+    return;
+  }
+  const cats = compare && Array.isArray(compare.categories) ? compare.categories : null;
+  if (!cats) {
+    throw new DataShapeError(COMPARE_PATH + ' has no categories array - the export step did not produce a usable compare.json.');
+  }
+  note.textContent = 'How each fund voted on the same kind of item, one filing per column. ' +
+    'Each cell reads "% FOR (FOR lots of lots that voted shares)" on shareholder items over ' +
+    'management items. "-" means no lot in that cell voted shares; "not filed" means the filing ' +
+    'has no records in that category.';
+  const head = $('compare-head');
+  clear(head);
+  head.appendChild(el('th', null, 'Category (as filed)'));
+  for (const r of rows) {
+    const th = el('th');
+    th.appendChild(el('span', null, textOr(r.series_name, r.accession)));
+    th.appendChild(el('span', 'th-note', textOr(r.filer_name, ABSENT) + ', proxy year ending ' + textOr(r.period_of_report, ABSENT)));
+    head.appendChild(th);
+  }
+  const tbody = $('compare-tbody');
+  clear(tbody);
+  for (const c of cats) {
+    const tr = el('tr');
+    const th = el('th', null, c.category);
+    th.setAttribute('scope', 'row');
+    tr.appendChild(th);
+    for (const cell of c.filings || []) {
+      const td = el('td', 'compare-cell');
+      if (cell.absent) {
+        td.appendChild(el('span', 'absent', 'not filed'));
+      } else {
+        const a = el('a');
+        a.href = '#filing=' + encodeURIComponent(cell.accession) + '&category=' + encodeURIComponent(c.slug);
+        a.appendChild(el('span', 'compare-line', 'shareholder items: ' + compareCell(cell, 'SECURITY HOLDER')));
+        a.appendChild(el('span', 'compare-line', 'management items: ' + compareCell(cell, 'ISSUER')));
+        a.appendChild(el('span', 'finder', fmtInt(cell.n_lots) + ' lots in ' + fmtInt(cell.n_proposals) + ' proposals'));
+        td.appendChild(a);
+      }
+      tr.appendChild(td);
+    }
+    tbody.appendChild(tr);
+  }
+  show($('compare-table').parentElement);
+  show(sec);
+}
+
+// ---------- boot ----------
+
+async function route() {
+  if (!filingIndex) return;
+  const h = parseHash();
+  let row = filingIndex.filings.find((r) => r.accession === h.filing);
+  if (!row) row = filingIndex.filings[0];
+  pendingCategory = h.category || null;
+  renderPicker(filingIndex, row.accession);
+  await loadFiling(row);
+}
+
+async function main() {
+  wirePagers();
+  window.addEventListener('hashchange', route);
+
+  let compare;
+  try {
+    [filingIndex, compare] = await Promise.all([fetchJson(INDEX_PATH), fetchJson(COMPARE_PATH)]);
+    if (!filingIndex || !Array.isArray(filingIndex.filings) || filingIndex.filings.length === 0) {
+      throw new DataShapeError(INDEX_PATH + ' lists no filings - the export step did not produce a usable index.json.');
+    }
+  } catch (err) {
+    renderFatal(err);
+    return;
+  }
+  try {
+    await route();
+    renderCompare(compare, filingIndex);
     updateScrollHint();
   } catch (err) {
     renderFatal(err);

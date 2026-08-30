@@ -51,7 +51,7 @@ PIPELINE_DIR = Path(__file__).resolve().parent
 ROOT = PIPELINE_DIR.parent
 DB_PATH = ROOT / "data" / "rollcall.db"
 SITE_DATA = ROOT / "site" / "data"
-CATEGORY_DIR = SITE_DATA / "category"
+FILINGS_DIR = SITE_DATA / "filings"
 EXTRACT = PIPELINE_DIR / "extract.py"
 RUN_INGEST = PIPELINE_DIR / "run_ingest.py"
 PY = sys.executable
@@ -522,14 +522,15 @@ def g6_provenance():
 
 
 # ---------------------------------------------------------------- G7 --------
-def g7_export_consistency():
+def g7_filing_consistency(base):
     """Every published number recomputes from the DB: category counts, the
     vote distribution, the by_source cells (numerator AND denominator), the
     proposal/lot grouping per record, the totals (records, lots and proposals
     held apart - RapidForge review note 3), and the managementRecommendation
     semantics block. LOCKSTEP with export_site.py."""
-    meta_path = SITE_DATA / "meta.json"
-    rollup_path = SITE_DATA / "rollup.json"
+    meta_path = base / "meta.json"
+    rollup_path = base / "rollup.json"
+    category_dir = base / "category"
     for p in (meta_path, rollup_path):
         if not p.exists():
             raise GateError(f"missing artifact: {p} - run export_site.py first")
@@ -665,7 +666,7 @@ def g7_export_consistency():
                 f"{want['for_lots']}/{want['n_voted']} FOR" if same
                 else f"stated={cell} recomputed={want}")
 
-        fpath = CATEGORY_DIR / f"{slug}.json"
+        fpath = category_dir / f"{slug}.json"
         if not fpath.exists():
             chk(False, f"category file for {name!r}", f"missing {fpath}")
             continue
@@ -713,7 +714,7 @@ def g7_export_consistency():
             chk(bad_mixed == 0, f"mixed_recommendation flag in {slug}.json",
                 f"{bad_mixed} records disagree with the DB")
 
-    on_disk = {p.name for p in CATEGORY_DIR.glob("*.json")} if CATEGORY_DIR.exists() else set()
+    on_disk = {p.name for p in category_dir.glob("*.json")} if category_dir.exists() else set()
     stale = sorted(on_disk - expected_files)
     chk(not stale, "no stale category files on disk", f"stale={stale}")
 
@@ -807,9 +808,9 @@ def g7_export_consistency():
     else:
         chk(ex is None, "no example when no proposal is mixed", f"{ex!r}")
 
-    ipath = SITE_DATA / "issuers.json"
+    ipath = base / "issuers.json"
     if not ipath.exists():
-        chk(False, "site/data/issuers.json exists", "missing")
+        chk(False, f"{base.name}/issuers.json exists", "missing")
     else:
         pub = load_json(ipath).get("issuers")
         want_iss = [
@@ -829,35 +830,125 @@ def g7_export_consistency():
     )
 
 
+
+
+def g7_export_consistency():
+    """Part 2: every filing directory recomputes from the DB (the Part 1 checks, per filing);
+    index.json rows recompute; compare.json cells equal each filing's own rollup cells (a cell
+    is copied, never re-derived across filings). LOCKSTEP with export_site.py."""
+    index_path = SITE_DATA / "index.json"
+    compare_path = SITE_DATA / "compare.json"
+    for pth in (index_path, compare_path):
+        if not pth.exists():
+            raise GateError(f"missing artifact: {pth} - run export_site.py first")
+    index = load_json(index_path)
+    compare = load_json(compare_path)
+    rows = index.get("filings")
+    if not isinstance(rows, list) or not rows:
+        return False, "index.json has no filings list"
+
+    total_checks = 0
+    failed_filings = []
+    for row in rows:
+        base = SITE_DATA / row.get("dir", "")
+        log(f"  -- filing {row.get('accession')} ({row.get('series_name')}) --")
+        ok, msg = g7_filing_consistency(base)
+        m = re.search(r"(\d+) consistency checks", msg)
+        total_checks += int(m.group(1)) if m else 0
+        if not ok:
+            failed_filings.append(row.get("accession"))
+
+    checks = []
+
+    def chk(ok_, label, detail):
+        checks.append(bool(ok_))
+        log(f"  [{'ok' if ok_ else 'FAIL'}] {label}: {detail}")
+
+    con = dbcon()
+    filers = {r["cik"]: r["name"] for r in con.execute("SELECT cik, name FROM filers")}
+    db_filings = {r["accession"]: r for r in con.execute("SELECT * FROM filings")}
+    for row in rows:
+        acc = row.get("accession")
+        f = db_filings.get(acc)
+        chk(f is not None, f"index row {acc} exists in DB", "")
+        if f is None:
+            continue
+        meta = load_json(SITE_DATA / row["dir"] / "meta.json")
+        t = meta.get("totals") or {}
+        sem = meta.get("mgmt_rec_semantics") or {}
+        want = {
+            "cik": f["cik"], "filer_name": filers.get(f["cik"]), "series_name": f["series_name"],
+            "series_id": meta.get("filing", {}).get("series_id"), "form": f["form"],
+            "period_of_report": f["period_of_report"], "filed_at": f["filed_at"],
+            "engine_run_id": meta.get("engine_run", {}).get("engine_run_id"),
+            "dir": f"filings/{acc}", "records": t.get("records"), "lots": t.get("lots"),
+            "proposals": t.get("proposals"), "issuers": t.get("issuers"),
+            "mgmt_rec_verdict": sem.get("verdict"),
+        }
+        bad = {k: (row.get(k), v) for k, v in want.items() if row.get(k) != v}
+        chk(not bad, f"index row {acc} recomputes", f"mismatch={bad}" if bad else "all fields")
+    expected_order = sorted(rows, key=lambda r: ((r.get("filer_name") or "").upper(),
+                                                 (r.get("series_name") or "").upper(),
+                                                 r.get("accession") or ""))
+    chk([r["accession"] for r in rows] == [r["accession"] for r in expected_order],
+        "index ordered by filer name then series name, never recency",
+        [r["accession"] for r in rows])
+    runs = {r.get("engine_run_id") for r in rows}
+    chk(len(runs) == 1 and index.get("engine_run_id") in runs, "one engine run across the site",
+        f"{sorted(runs)} index={index.get('engine_run_id')}")
+    con.close()
+
+    # compare.json: each cell equals the filing's own rollup entry for that category
+    rollups = {row["accession"]: {c["category"]: c for c in
+                                  load_json(SITE_DATA / row["dir"] / "rollup.json")["categories"]}
+               for row in rows}
+    cats = compare.get("categories") or []
+    union = set()
+    for acc, rc in rollups.items():
+        union |= set(rc)
+    chk({c.get("category") for c in cats} == union, "compare.json covers exactly the union of categories",
+        f"{len(cats)} categories")
+    bad_cells = 0
+    for c in cats:
+        cells = c.get("filings") or []
+        chk([x.get("accession") for x in cells] == [r["accession"] for r in rows],
+            f"compare cells in index order for {c.get('category')!r}", "")
+        for x in cells:
+            src = rollups.get(x.get("accession"), {}).get(c.get("category"))
+            if src is None:
+                if x.get("absent") is not True:
+                    bad_cells += 1
+                continue
+            for k in ("n", "n_lots", "n_proposals", "n_zero_share_lots", "votes", "by_source", "slug"):
+                if x.get(k) != src.get(k):
+                    bad_cells += 1
+                    break
+    chk(bad_cells == 0, "every compare cell equals its filing's rollup entry", f"{bad_cells} differ")
+
+    failed = checks.count(False) + len(failed_filings)
+    total = total_checks + len(checks)
+    return failed == 0, (
+        f"all {total} consistency checks passed across {len(rows)} filing(s)"
+        if failed == 0
+        else f"{failed} failure(s) across {len(rows)} filing(s): filings failing={failed_filings}")
+
+
 # ---------------------------------------------------------------- G8 --------
 def g8_anti_blend():
-    """No blended cross-category number, no recommendation-derived headline.
-    Walks every published artifact for forbidden key names, holds rollup.json
-    to exactly one top-level key, holds every category to exactly the contract
-    keys (a category-level percentage would blend proposers), and requires the
-    semantics block to say why no concordance headline exists."""
-    rollup_path = SITE_DATA / "rollup.json"
-    meta_path = SITE_DATA / "meta.json"
-    for p in (rollup_path, meta_path):
-        if not p.exists():
-            raise GateError(f"missing artifact: {p} - run export_site.py first")
-    rollup = load_json(rollup_path)
-    meta = load_json(meta_path)
+    """No blended cross-category number, no recommendation-derived headline, and - Part 2 - no
+    number that aggregates ACROSS filings. Walks every artifact under site/data for forbidden
+    key names; holds each filing's rollup to one top-level key and its categories to the
+    contract keys; requires each filing's semantics block; holds compare.json to copied cells."""
+    index_path = SITE_DATA / "index.json"
+    if not index_path.exists():
+        raise GateError(f"missing artifact: {index_path} - run export_site.py first")
+    index = load_json(index_path)
+    rows = index.get("filings") or []
     ok = True
-    top = sorted(rollup.keys())
-    log(f"  top-level keys: {top}")
-    if set(top) != {"categories"}:
-        ok = False
-        log(f"  [FAIL] unexpected top-level key(s): {[k for k in top if k != 'categories']} "
-            "- a blended cross-category number has no home here")
-    else:
-        log("  [ok] only top-level key is 'categories' - no blended number anywhere")
 
-    artifacts = {"rollup.json": rollup, "meta.json": meta}
-    if (SITE_DATA / "issuers.json").exists():
-        artifacts["issuers.json"] = load_json(SITE_DATA / "issuers.json")
-    for p in (sorted(CATEGORY_DIR.glob("*.json")) if CATEGORY_DIR.exists() else []):
-        artifacts[f"category/{p.name}"] = load_json(p)
+    artifacts = {}
+    for pth in sorted(SITE_DATA.rglob("*.json")):
+        artifacts[pth.relative_to(SITE_DATA).as_posix()] = load_json(pth)
     hits = []
     for name, obj in artifacts.items():
         for path in walk_keys(obj):
@@ -870,33 +961,117 @@ def g8_anti_blend():
         for h in hits[:10]:
             log(f"  [FAIL] {h}")
 
-    cats = rollup.get("categories") or []
-    bad_cat = [c.get("category") for c in cats
-               if not isinstance(c, dict) or set(c.keys()) != CATEGORY_KEYS]
-    bad_cell = [c.get("category") for c in cats if isinstance(c, dict) and any(
-        not isinstance(cell, dict) or set(cell) != CELL_KEYS
-        for cell in (c.get("by_source") or {}).values())]
-    log(f"  categories with exactly the contract keys: {len(cats) - len(bad_cat)} of {len(cats)}")
-    if not cats or bad_cat or bad_cell:
-        ok = False
-        log(f"  [FAIL] categories off-contract: {bad_cat}; cells off-contract: {bad_cell}")
+    for row in rows:
+        base = SITE_DATA / row["dir"]
+        rollup = load_json(base / "rollup.json")
+        meta = load_json(base / "meta.json")
+        top = sorted(rollup.keys())
+        if set(top) != {"categories"}:
+            ok = False
+            log(f"  [FAIL] {row['accession']}: unexpected top-level key(s) in rollup.json: "
+                f"{[k for k in top if k != 'categories']}")
+        cats = rollup.get("categories") or []
+        bad_cat = [c.get("category") for c in cats
+                   if not isinstance(c, dict) or set(c.keys()) != CATEGORY_KEYS]
+        bad_cell = [c.get("category") for c in cats if isinstance(c, dict) and any(
+            not isinstance(cell, dict) or set(cell) != CELL_KEYS
+            for cell in (c.get("by_source") or {}).values())]
+        if not cats or bad_cat or bad_cell:
+            ok = False
+            log(f"  [FAIL] {row['accession']}: categories off-contract: {bad_cat}; cells: {bad_cell}")
+        sem = meta.get("mgmt_rec_semantics") or {}
+        verdict = sem.get("verdict")
+        log(f"  {row['accession']}: {len(cats)} categories on contract; mgmt_rec_semantics "
+            f"mixed={sem.get('proposals_with_mixed_recommendation')} -> {verdict!r}, "
+            f"headline_allowed={sem.get('headline_allowed')!r}")
+        if verdict not in VERDICTS:
+            ok = False
+            log(f"  [FAIL] {row['accession']}: meta.mgmt_rec_semantics.verdict missing or unknown")
+        if sem.get("headline_allowed") is not (verdict == "board-view"):
+            ok = False
+            log(f"  [FAIL] {row['accession']}: headline_allowed must be true only for board-view")
 
-    sem = meta.get("mgmt_rec_semantics") or {}
-    verdict = sem.get("verdict")
-    log(f"  mgmt_rec_semantics: mixed={sem.get('proposals_with_mixed_recommendation')} "
-        f"agreement={sem.get('agreement')} -> {verdict!r}, "
-        f"headline_allowed={sem.get('headline_allowed')!r}")
-    if verdict not in VERDICTS:
+    # cross-filing artifacts: index.json and compare.json carry per-filing values only
+    compare = artifacts.get("compare.json") or {}
+    if set(compare.keys()) != {"generated_at", "engine_run_id", "categories"}:
         ok = False
-        log("  [FAIL] meta.mgmt_rec_semantics.verdict missing or unknown")
-    if sem.get("headline_allowed") is not (verdict == "board-view"):
+        log(f"  [FAIL] compare.json top-level keys: {sorted(compare.keys())}")
+    cross = re.compile(r"total|overall|combined|average|mean|sum|all_filings", re.I)
+    cross_hits = [pth for name in ("index.json", "compare.json")
+                  for pth in walk_keys(artifacts.get(name) or {}) if cross.search(pth.rsplit(".", 1)[-1])]
+    log(f"  cross-filing artifacts carry no aggregate key ({cross.pattern}): {len(cross_hits)} hit(s)")
+    if cross_hits:
         ok = False
-        log("  [FAIL] headline_allowed must be true only for a board-view verdict")
+        for h in cross_hits[:10]:
+            log(f"  [FAIL] {h}")
+    allowed_cell = {"accession", "slug", "n", "n_lots", "n_proposals", "n_zero_share_lots",
+                    "votes", "by_source"}
+    bad = 0
+    for c in compare.get("categories") or []:
+        for cell in c.get("filings") or []:
+            keys = set(cell.keys())
+            if keys != allowed_cell and keys != {"accession", "slug", "absent"}:
+                bad += 1
+    if bad:
+        ok = False
+        log(f"  [FAIL] {bad} compare cell(s) carry keys outside the copied-cell contract")
     return ok, (
-        "per-category only; no forbidden key anywhere; semantics block present"
+        "per-category, per-filing only; no forbidden or aggregate key anywhere; semantics per filing"
         if ok
         else "anti-blend rule violated"
     )
+
+
+def g11_index_coverage():
+    """Part 2 (spec section 5): everything in the store has an index row and a directory, every
+    index row has a directory, and no directory lacks a row - the same shape as the registry's
+    catalogue_drift (everything on disk has a row, every row has a thing on disk; RapidForge
+    review note 4). A stale directory would deploy as a ghost filing under a green run; the
+    retired single-filing layout must be gone."""
+    index_path = SITE_DATA / "index.json"
+    if not index_path.exists():
+        raise GateError(f"missing artifact: {index_path} - run export_site.py first")
+    rows = load_json(index_path).get("filings") or []
+    con = dbcon()
+    db_accs = {r["accession"] for r in con.execute("SELECT accession FROM filings")}
+    con.close()
+    idx_accs = [r.get("accession") for r in rows]
+    on_disk = {d.name for d in FILINGS_DIR.iterdir() if d.is_dir()} if FILINGS_DIR.exists() else set()
+    ok = True
+    log(f"  store={len(db_accs)} index={len(idx_accs)} directories={len(on_disk)}")
+    if set(idx_accs) != db_accs:
+        ok = False
+        log(f"  [FAIL] index rows != store filings: missing={sorted(db_accs - set(idx_accs))} "
+            f"extra={sorted(set(idx_accs) - db_accs)}")
+    if len(idx_accs) != len(set(idx_accs)):
+        ok = False
+        log("  [FAIL] duplicate accession in index.json")
+    if on_disk != set(idx_accs):
+        ok = False
+        log(f"  [FAIL] directories != index rows: no-row={sorted(on_disk - set(idx_accs))} "
+            f"no-dir={sorted(set(idx_accs) - on_disk)}")
+    for row in rows:
+        base = SITE_DATA / (row.get("dir") or "")
+        needed = ["meta.json", "rollup.json", "issuers.json"]
+        missing = [n for n in needed if not (base / n).exists()]
+        cat_dir = base / "category"
+        n_cat = len(list(cat_dir.glob("*.json"))) if cat_dir.exists() else 0
+        if missing or n_cat == 0 or row.get("dir") != f"filings/{row.get('accession')}":
+            ok = False
+            log(f"  [FAIL] {row.get('accession')}: dir={row.get('dir')} missing={missing} categories={n_cat}")
+        else:
+            meta = load_json(base / "meta.json")
+            if meta.get("filing", {}).get("accession") != row.get("accession"):
+                ok = False
+                log(f"  [FAIL] {row.get('accession')}: meta.json belongs to another filing")
+    stale = [n for n in ("meta.json", "rollup.json", "issuers.json", "category")
+             if (SITE_DATA / n).exists()]
+    if stale:
+        ok = False
+        log(f"  [FAIL] retired single-filing artifacts still on disk: {stale}")
+    return ok, (
+        f"{len(rows)} filing(s): store, index and directories agree; no ghost directory"
+        if ok else "index coverage violated")
 
 
 # ---------------------------------------------------------------- main ------
@@ -993,6 +1168,7 @@ def main():
         ("G8", "anti-blend", g8_anti_blend),
         ("G9", "listing-coverage", g9_listing_coverage),
         ("G10", "publication-committed", g10_publication_committed),
+        ("G11", "index-coverage", g11_index_coverage),
     ]
 
     results = []

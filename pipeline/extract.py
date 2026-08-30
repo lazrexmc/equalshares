@@ -239,7 +239,7 @@ def normalize_meeting_date(raw):
 
 # ---------------------------------------------------------------- parsing
 
-def parse_filing(raw_path, stats):
+def parse_filing(raw_path, stats, series_id=None):
     """One raw vote-document XML file -> (rows, localname histogram).
 
     iterparse keeps memory bounded (the verified target holds 21,474 records in
@@ -255,6 +255,15 @@ def parse_filing(raw_path, stats):
         if ln != "proxyTable":
             continue
 
+        # Part 2: a multi-series filing (iShares Trust: 29 series, 180 MB) is
+        # scoped to the pinned series at extraction; the raw file keeps every
+        # series. A block with no voteSeries is kept only when no pin is set.
+        if series_id is not None:
+            vs = direct_child_text(elem, "voteSeries")
+            if (vs or "").strip().upper() != series_id.strip().upper():
+                stats["skipped_other_series"] += 1
+                elem.clear()
+                continue
         base = {
             "issuer_name": direct_child_text(elem, "issuerName"),
             "cusip": direct_child_text(elem, "cusip"),
@@ -442,8 +451,11 @@ def main():
             continue
 
         stats = Counter()
+        series_id = filing["series_id"] if "series_id" in filing.keys() else None
+        if series_id:
+            log(f"  scoped to series {series_id} ({filing['series_name'] or 'unnamed'})")
         try:
-            rows, histogram = parse_filing(raw_path, stats)
+            rows, histogram = parse_filing(raw_path, stats, series_id)
         except ET.ParseError as e:
             log(f"ERROR: XML parse failure for {accession}: {e}")
             filing_failures.append((accession, f"XML parse failure: {e}"))
@@ -485,7 +497,9 @@ def main():
 
         cats = Counter(
             (r["category_type"] or "(no category)") for r in db_rows)
-        log(f"  parsed blocks:  {stats['parsed_records']}")
+        log(f"  parsed blocks:  {stats['parsed_records']}"
+            + (f" (skipped {stats['skipped_other_series']} blocks of other series)"
+               if stats["skipped_other_series"] else ""))
         log(f"  emitted rows:   {len(db_rows)} "
             f"({sum(1 for r in db_rows if r['lot_index'] >= 1)} lots + "
             f"{sum(1 for r in db_rows if r['lot_index'] == 0)} zero-lot rows)")

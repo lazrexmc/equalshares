@@ -41,13 +41,31 @@ MARKERS = [
     ("site/js/data.js", "/js/data.js"),
     ("site/js/receipts.js", "/js/receipts.js"),
     ("site/css/site.css", "/css/site.css"),
-    ("site/data/meta.json", "/data/meta.json"),
-    ("site/data/rollup.json", "/data/rollup.json"),
-    ("site/data/issuers.json", "/data/issuers.json"),
+    ("site/data/index.json", "/data/index.json"),
+    ("site/data/compare.json", "/data/compare.json"),
     ("site/_headers", None),          # not served; listed so a reader sees it is deliberately skipped
 ]
 HEADER_MARKERS = ["content-security-policy", "x-content-type-options", "referrer-policy"]
-JSON_MARKERS = ["/data/meta.json", "/data/rollup.json", "/data/issuers.json"]   # must come back as application/json
+JSON_MARKERS = ["/data/index.json", "/data/compare.json"]
+
+
+def _filing_markers():
+    """Part 2: one meta.json and one rollup.json per filing listed in the local index.json,
+    so a deploy that dropped a filing directory reads MISSING, not green."""
+    idx = ROOT / "site" / "data" / "index.json"
+    if not idx.exists():
+        return []
+    out = []
+    for row in json.loads(idx.read_text(encoding="utf-8")).get("filings", []):
+        d = row.get("dir")
+        if d:
+            out.append((f"site/data/{d}/meta.json", f"/data/{d}/meta.json"))
+            out.append((f"site/data/{d}/rollup.json", f"/data/{d}/rollup.json"))
+    return out
+
+
+MARKERS += _filing_markers()
+JSON_MARKERS += [path for _, path in _filing_markers()]   # must come back as application/json
 USER_AGENT = "equalshares-verify-deploy/1.0"
 
 # Cloudflare Web Analytics injects exactly this tag into HTML at the edge (a zone setting, not a

@@ -1,0 +1,96 @@
+{
+  "config": {
+    "thin_n": 5
+  },
+  "engine_run": {
+    "code_fingerprint": "f3b209a2ed3a9ec9f5922dd897342500f616c6486ea35dec6d224fbb483f9818",
+    "config_hash": "10c3dfefb138a8124be76188fb562f1bc73c9cdcc8cbaf1e97485d7e1651eb06",
+    "engine_run_id": "f97e5b26827a3e1d",
+    "engine_version": "0.1+f97e5b26",
+    "git_commit": "0adf01cf60f7a777746b3645bf9e51550ebe6792"
+  },
+  "filer": {
+    "cik": "0001064642",
+    "name": "SPDR SERIES TRUST"
+  },
+  "filing": {
+    "accession": "0001193125-26-351549",
+    "fetched_at": "2026-08-30T05:52:33+00:00",
+    "filed_at": "2026-08-14",
+    "form": "N-PX",
+    "index_url": "https://www.sec.gov/Archives/edgar/data/1064642/000119312526351549/0001193125-26-351549-index.html",
+    "period_of_report": "2026-06-30",
+    "raw_bytes": 105815925,
+    "raw_sha256": "e3315db7c80ab8fddd0e0cb59ea49614e4d7f22616f29befe4a9ef4c6b4c474e",
+    "series_id": "S000006983",
+    "series_name": "State Street(R) SPDR(R) Portfolio S&P 500(R) ETF",
+    "vote_doc_name": "proxyvote.xml",
+    "vote_doc_type": "PROXY VOTING RECORD",
+    "vote_doc_url": "https://www.sec.gov/Archives/edgar/data/1064642/000119312526351549/proxyvote.xml",
+    "vote_doc_view_url": "https://www.sec.gov/Archives/edgar/data/1064642/000119312526351549/xslNPX-INFO-TABLE_X01/proxyvote.xml"
+  },
+  "generated_at": "2026-08-30T05:55:07+00:00",
+  "mgmt_rec_semantics": {
+    "agreeing": 1,
+    "agreement": "1/550",
+    "agreement_pct": 0.2,
+    "crosstab_management_lots": {
+      "ABSTAIN/AGAINST": 37,
+      "ABSTAIN/NONE": 1,
+      "AGAINST/AGAINST": 2234,
+      "FOR/FOR": 5839,
+      "FOR/NONE": 1,
+      "WITHHOLD/AGAINST": 209
+    },
+    "crosstab_shareholder_lots": {
+      "ABSTAIN/NONE": 4,
+      "AGAINST/FOR": 307,
+      "AGAINST/NONE": 2,
+      "FOR/AGAINST": 242,
+      "FOR/FOR": 1,
+      "FOR/NONE": 3
+    },
+    "example_category_rule": "a category with no unparseable votes, all lots in one category, then the most lots, then the lowest proposal number",
+    "example_mixed_proposal": {
+      "category_slug": "director-elections",
+      "issuer_name": "Pfizer Inc.",
+      "lots": 3,
+      "meeting_date": "2026-04-23",
+      "proposal_no": 1623,
+      "recommendations": [
+        "AGAINST",
+        "FOR"
+      ],
+      "vote_description": "Election of Directors: Shantanu Narayen"
+    },
+    "field": "managementRecommendation",
+    "headline_allowed": false,
+    "lots_with_recommendation": 8890,
+    "proposals_with_mixed_recommendation": 2693,
+    "proposals_with_recommendation": 6187,
+    "proposals_without_recommendation": 5,
+    "shareholder_lots": 559,
+    "shareholder_lots_with_recommendation": 550,
+    "test": "a board recommends once per item; proposals whose lots carry more than one recommendation value are counted, and the count must stay below thin_n",
+    "verdict": "not-board-view"
+  },
+  "thin_n": 5,
+  "totals": {
+    "absent_how_voted": 0,
+    "categories": 12,
+    "extra_category_entries": 1,
+    "issuer_name_spellings": 471,
+    "issuers": 470,
+    "issuers_with_multiple_spellings": 1,
+    "lots": 8901,
+    "multi_category_records": 95,
+    "proposals": 6192,
+    "proposals_in_multiple_categories": 1,
+    "records": 8901,
+    "unparseable_how_voted": 21,
+    "zero_lot_rows": 0,
+    "zero_share_lots": 0,
+    "zero_share_lots_readable": 0,
+    "zero_share_lots_unreadable": 0
+  }
+}

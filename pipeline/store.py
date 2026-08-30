@@ -33,6 +33,7 @@ SCHEMA = [
         period_of_report TEXT,
         filed_at TEXT,
         series_name TEXT,
+        series_id TEXT,
         primary_doc TEXT,
         vote_doc_name TEXT,
         vote_doc_type TEXT,
@@ -130,6 +131,10 @@ def init_schema(conn):
                 "lots_in_proposal INTEGER"):
         if col.split()[0] not in have:
             conn.execute(f"ALTER TABLE vote_records ADD COLUMN {col}")
+    # Part 2 (2026-08-30): the pinned series of a multi-series filing.
+    have_f = {row[1] for row in conn.execute("PRAGMA table_info(filings)")}
+    if "series_id" not in have_f:
+        conn.execute("ALTER TABLE filings ADD COLUMN series_id TEXT")
     conn.commit()
 
 
@@ -151,10 +156,10 @@ def upsert_filing(conn, f):
     (raw_path/raw_sha256/raw_bytes/fetched_at move with the new raw file)."""
     conn.execute(
         """INSERT INTO filings(accession, cik, form, period_of_report, filed_at,
-             series_name, primary_doc, vote_doc_name, vote_doc_type, vote_doc_url,
+             series_name, series_id, primary_doc, vote_doc_name, vote_doc_type, vote_doc_url,
              vote_doc_view_url, index_url, raw_path, raw_sha256, raw_bytes, fetched_at)
            VALUES(:accession, :cik, :form, :period_of_report, :filed_at,
-             :series_name, :primary_doc, :vote_doc_name, :vote_doc_type, :vote_doc_url,
+             :series_name, :series_id, :primary_doc, :vote_doc_name, :vote_doc_type, :vote_doc_url,
              :vote_doc_view_url, :index_url, :raw_path, :raw_sha256, :raw_bytes, :fetched_at)
            ON CONFLICT(accession) DO UPDATE SET
              cik = excluded.cik,
@@ -162,6 +167,7 @@ def upsert_filing(conn, f):
              period_of_report = excluded.period_of_report,
              filed_at = excluded.filed_at,
              series_name = excluded.series_name,
+             series_id = excluded.series_id,
              primary_doc = excluded.primary_doc,
              vote_doc_name = excluded.vote_doc_name,
              vote_doc_type = excluded.vote_doc_type,
@@ -173,6 +179,13 @@ def upsert_filing(conn, f):
              raw_bytes = excluded.raw_bytes,
              fetched_at = excluded.fetched_at""",
         f)
+
+
+def update_filing_series(conn, accession, series_id, series_name):
+    """Part 2: record the pinned series on an already-ingested filing."""
+    conn.execute(
+        "UPDATE filings SET series_id = ?, series_name = COALESCE(?, series_name) "
+        "WHERE accession = ?", (series_id, series_name, accession))
 
 
 def update_filing_links(conn, accession, vote_doc_view_url, series_name):

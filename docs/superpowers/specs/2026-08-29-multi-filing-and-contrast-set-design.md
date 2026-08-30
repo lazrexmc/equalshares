@@ -231,3 +231,31 @@ Engine run `e3b050bc2353357b`; rendered under the production CSP via serve_local
 **Round four** asks a different question, from RapidForge: the one number a reader would quote
 to someone else, and whether it is the one we would want quoted. Readers who have not seen the
 page, where any exist.
+
+## 14. Part 2 - built 2026-08-30
+
+Built as section 5 with two changes the data forced:
+
+1. **Multi-series filings.** Vanguard files one N-PX per series; iShares Trust files 29 series
+   in one N-PX (180 MB) and SPDR SERIES TRUST 45 in one (106 MB). `enumerate_index_html` now
+   returns every series row; the pin is the series **id** (`series_id` in SOURCES; names change
+   year to year, ids do not; `series_match` is the name-fragment fallback); `filings.series_id` is
+   stored; extraction is scoped to the pinned series (the raw file keeps every series); the export
+   unit is (filing, series). SPDR's S&P 500 fund is "State Street(R) SPDR(R) Portfolio S&P 500(R)
+   ETF" (S000006983), not findable by the name I had guessed.
+2. **Case-sensitive EDGAR paths.** iShares lists `BRDWLB_0001100663_2026.xml`; the adapter's
+   lowercased document key produced a 404. Original-case names are used for URLs now.
+
+Layout as designed: `index.json` (ordered by filer then series, never recency), `filings/<acc>/`
+in the Part 1.2 shape, `compare.json` with copied per-category cells. Gates: G7 per filing plus
+index and compare recomputation (1,011 checks over four filings), G8 over every artifact including
+a cross-filing aggregate-key ban, G11 index-coverage. `verify_deploy` derives per-filing markers
+from the local index; `verify_claims` finds the README's filing through the index. The site: a
+filing picker in the header, `#filing=<accession>&category=<slug>` routing, and the compare
+section (categories as rows, filings as columns, each cell that filing's own numbers). The old
+Morningstar Value Index filing stays in the store and the index, as section 8 assumed.
+
+Engine run `f97e5b26827a3e1d`; rendered under the production CSP via serve_local.py in Playwright with zero console messages: four filings in the picker, a 12-category compare table, and a compare cell that switched to the SPDR filing and opened its director elections by hash. First cross-fund read, director elections, % FOR of lots that
+voted shares on management items: iShares Core S&P 500 80% (4,794 of 5,995), SPDR Portfolio S&P
+500 73.3% (4,514 of 6,159), Vanguard 500 74% (19,994 of 27,004), Vanguard Morningstar Value 71%
+(13,992 of 19,701). Every number is that filing's own; the reader compares.

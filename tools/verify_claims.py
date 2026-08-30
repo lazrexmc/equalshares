@@ -61,9 +61,22 @@ def c1_gates():
     return True, f"{len(real)} gates, ids and names agree"
 
 
-def c2_filing():
-    meta = json.loads(read("site/data/meta.json"))
+def readme_filing():
+    """Part 2: the README names one accession; its meta.json lives under filings/<acc>/."""
     readme = read("README.md")
+    m = re.search(r"accession\s+(\d{10}-\d{2}-\d{6})", readme)
+    if not m:
+        raise ValueError("README names no accession")
+    idx = json.loads(read("site/data/index.json"))
+    row = next((r for r in idx.get("filings", []) if r.get("accession") == m.group(1)), None)
+    if row is None:
+        raise ValueError(f"README accession {m.group(1)} is not in site/data/index.json")
+    return row, readme
+
+
+def c2_filing():
+    row, readme = readme_filing()
+    meta = json.loads(read(f"site/data/{row['dir']}/meta.json"))
     want = {
         "CIK": meta["filer"]["cik"], "accession": meta["filing"]["accession"],
         "period": meta["filing"]["period_of_report"], "filed": meta["filing"]["filed_at"],
@@ -75,8 +88,9 @@ def c2_filing():
 
 
 def c3_director_share():
-    rollup = json.loads(read("site/data/rollup.json"))
-    meta = json.loads(read("site/data/meta.json"))
+    row, _ = readme_filing()
+    rollup = json.loads(read(f"site/data/{row['dir']}/rollup.json"))
+    meta = json.loads(read(f"site/data/{row['dir']}/meta.json"))
     de = next((c for c in rollup["categories"] if c["slug"] == "director-elections"), None)
     if de is None:
         return False, "rollup.json has no director-elections category"
@@ -159,9 +173,9 @@ def c8_committed():
     files = [l for l in tracked.stdout.splitlines() if l.strip()]
     if not files:
         return False, "git tracks nothing under site/data"
-    ign = subprocess.run(["git", "check-ignore", "-q", "site/data/meta.json"], cwd=ROOT)
+    ign = subprocess.run(["git", "check-ignore", "-q", "site/data/index.json"], cwd=ROOT)
     if ign.returncode == 0:
-        return False, "site/data/meta.json is gitignored (the G10 defect)"
+        return False, "site/data/index.json is gitignored (the G10 defect)"
     return True, f"{len(files)} publication files tracked, not ignored"
 
 

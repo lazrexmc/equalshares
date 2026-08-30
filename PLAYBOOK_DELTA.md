@@ -122,3 +122,16 @@ numbers, two keys, one paragraph. The fix was structural: the key rule lives in 
 counts were re-derived under it (8,906 / 495 / 4,594). Rule: **when a definition changes, every
 number that depends on it is re-derived before any of them is said aloud, and the rule is stated
 beside the count.** Same class as the "% with mgmt" headline: a true number under a wrong label.
+
+## Lesson 10 - "One filing per fund" was one filer's habit, not the form's rule (2026-08-30)
+
+The design pinned a source to a series by name and assumed one series per N-PX, because the
+first filer (Vanguard) files that way. The next two registrants file 29 and 45 series in one N-PX
+apiece, the first series row on the index page was the only one read, and the name I had guessed
+for State Street's fund does not exist ("State Street(R) SPDR(R) Portfolio S&P 500(R) ETF" does).
+Three fixes, all structural: read every series row; pin by the series **id** the SEC assigns (names
+change, ids do not); scope extraction to the pinned series and make the export unit (filing,
+series). Rule: **a shape observed on one source is a hypothesis about the next; the identity you
+pin to must be the one the source itself keeps stable.** Sibling trap, same night: EDGAR paths
+are case-sensitive and a document name lowercased for matching cannot be reused for fetching
+(iShares' `BRDWLB_...xml` 404ed until the original case was kept).

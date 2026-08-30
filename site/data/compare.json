@@ -1,0 +1,1963 @@
+{
+  "categories": [
+    {
+      "category": "DIRECTOR ELECTIONS",
+      "filings": [
+        {
+          "accession": "0001438934-26-002275",
+          "by_source": {
+            "ISSUER": {
+              "for_lots": 4794,
+              "for_pct": 80.0,
+              "for_zero_share_lots": 0,
+              "n_lots": 5995,
+              "n_proposals": 4837,
+              "n_records": 6034,
+              "n_voted": 5995,
+              "thin": false,
+              "zero_share_lots": 0
+            },
+            "SECURITY HOLDER": {
+              "for_lots": 1,
+              "for_pct": 50.0,
+              "for_zero_share_lots": 0,
+              "n_lots": 2,
+              "n_proposals": 1,
+              "n_records": 2,
+              "n_voted": 2,
+              "thin": true,
+              "zero_share_lots": 0
+            }
+          },
+          "n": 6036,
+          "n_lots": 5997,
+          "n_proposals": 4838,
+          "n_zero_share_lots": 0,
+          "slug": "director-elections",
+          "votes": {
+            "ABSENT": 39,
+            "ABSTAIN": 133,
+            "AGAINST": 1029,
+            "FOR": 4795,
+            "UNPARSEABLE": 0,
+            "WITHHOLD": 40
+          }
+        },
+        {
+          "accession": "0001193125-26-351549",
+          "by_source": {
+            "ISSUER": {
+              "for_lots": 4514,
+              "for_pct": 73.3,
+              "for_zero_share_lots": 0,
+              "n_lots": 6159,
+              "n_proposals": 4526,
+              "n_records": 6159,
+              "n_voted": 6159,
+              "thin": false,
+              "zero_share_lots": 0
+            },
+            "SECURITY HOLDER": {
+              "for_lots": 0,
+              "for_pct": null,
+              "for_zero_share_lots": 0,
+              "n_lots": 0,
+              "n_proposals": 0,
+              "n_records": 0,
+              "n_voted": 0,
+              "thin": true,
+              "zero_share_lots": 0
+            }
+          },
+          "n": 6159,
+          "n_lots": 6159,
+          "n_proposals": 4526,
+          "n_zero_share_lots": 0,
+          "slug": "director-elections",
+          "votes": {
+            "ABSENT": 0,
+            "ABSTAIN": 36,
+            "AGAINST": 1400,
+            "FOR": 4514,
+            "UNPARSEABLE": 0,
+            "WITHHOLD": 209
+          }
+        },
+        {
+          "accession": "0001104659-26-101970",
+          "by_source": {
+            "ISSUER": {
+              "for_lots": 19994,
+              "for_pct": 74.0,
+              "for_zero_share_lots": 6,
+              "n_lots": 28765,
+              "n_proposals": 10248,
+              "n_records": 28766,
+              "n_voted": 27004,
+              "thin": false,
+              "zero_share_lots": 1749
+            },
+            "SECURITY HOLDER": {
+              "for_lots": 0,
+              "for_pct": null,
+              "for_zero_share_lots": 0,
+              "n_lots": 0,
+              "n_proposals": 0,
+              "n_records": 0,
+              "n_voted": 0,
+              "thin": true,
+              "zero_share_lots": 0
+            }
+          },
+          "n": 28766,
+          "n_lots": 28765,
+          "n_proposals": 10248,
+          "n_zero_share_lots": 1749,
+          "slug": "director-elections",
+          "votes": {
+            "ABSENT": 1,
+            "ABSTAIN": 3988,
+            "AGAINST": 4643,
+            "FOR": 20000,
+            "UNPARSEABLE": 12,
+            "WITHHOLD": 122
+          }
+        },
+        {
+          "accession": "0001104659-26-102001",
+          "by_source": {
+            "ISSUER": {
+              "for_lots": 13992,
+              "for_pct": 71.0,
+              "for_zero_share_lots": 1085,
+              "n_lots": 21845,
+              "n_proposals": 7543,
+              "n_records": 21846,
+              "n_voted": 19701,
+              "thin": false,
+              "zero_share_lots": 2144
+            },
+            "SECURITY HOLDER": {
+              "for_lots": 0,
+              "for_pct": null,
+              "for_zero_share_lots": 0,
+              "n_lots": 0,
+              "n_proposals": 0,
+              "n_records": 0,
+              "n_voted": 0,
+              "thin": true,
+              "zero_share_lots": 0
+            }
+          },
+          "n": 21846,
+          "n_lots": 21845,
+          "n_proposals": 7543,
+          "n_zero_share_lots": 2144,
+          "slug": "director-elections",
+          "votes": {
+            "ABSENT": 1,
+            "ABSTAIN": 3094,
+            "AGAINST": 3594,
+            "FOR": 15077,
+            "UNPARSEABLE": 0,
+            "WITHHOLD": 80
+          }
+        }
+      ],
+      "slug": "director-elections"
+    },
+    {
+      "category": "AUDIT-RELATED",
+      "filings": [
+        {
+          "accession": "0001438934-26-002275",
+          "by_source": {
+            "ISSUER": {
+              "for_lots": 495,
+              "for_pct": 59.5,
+              "for_zero_share_lots": 0,
+              "n_lots": 832,
+              "n_proposals": 500,
+              "n_records": 837,
+              "n_voted": 832,
+              "thin": false,
+              "zero_share_lots": 0
+            },
+            "SECURITY HOLDER": {
+              "for_lots": 0,
+              "for_pct": null,
+              "for_zero_share_lots": 0,
+              "n_lots": 0,
+              "n_proposals": 0,
+              "n_records": 0,
+              "n_voted": 0,
+              "thin": true,
+              "zero_share_lots": 0
+            }
+          },
+          "n": 837,
+          "n_lots": 832,
+          "n_proposals": 500,
+          "n_zero_share_lots": 0,
+          "slug": "audit-related",
+          "votes": {
+            "ABSENT": 5,
+            "ABSTAIN": 0,
+            "AGAINST": 337,
+            "FOR": 495,
+            "UNPARSEABLE": 0,
+            "WITHHOLD": 0
+          }
+        },
+        {
+          "accession": "0001193125-26-351549",
+          "by_source": {
+            "ISSUER": {
+              "for_lots": 475,
+              "for_pct": 54.3,
+              "for_zero_share_lots": 0,
+              "n_lots": 875,
+              "n_proposals": 475,
+              "n_records": 875,
+              "n_voted": 875,
+              "thin": false,
+              "zero_share_lots": 0
+            },
+            "SECURITY HOLDER": {
+              "for_lots": 0,
+              "for_pct": null,
+              "for_zero_share_lots": 0,
+              "n_lots": 0,
+              "n_proposals": 0,
+              "n_records": 0,
+              "n_voted": 0,
+              "thin": true,
+              "zero_share_lots": 0
+            }
+          },
+          "n": 875,
+          "n_lots": 875,
+          "n_proposals": 475,
+          "n_zero_share_lots": 0,
+          "slug": "audit-related",
+          "votes": {
+            "ABSENT": 0,
+            "ABSTAIN": 0,
+            "AGAINST": 400,
+            "FOR": 475,
+            "UNPARSEABLE": 0,
+            "WITHHOLD": 0
+          }
+        },
+        {
+          "accession": "0001104659-26-101970",
+          "by_source": {
+            "ISSUER": {
+              "for_lots": 1808,
+              "for_pct": 65.8,
+              "for_zero_share_lots": 3,
+              "n_lots": 2966,
+              "n_proposals": 563,
+              "n_records": 2966,
+              "n_voted": 2748,
+              "thin": false,
+              "zero_share_lots": 216
+            },
+            "SECURITY HOLDER": {
+              "for_lots": 0,
+              "for_pct": null,
+              "for_zero_share_lots": 0,
+              "n_lots": 0,
+              "n_proposals": 0,
+              "n_records": 0,
+              "n_voted": 0,
+              "thin": true,
+              "zero_share_lots": 0
+            }
+          },
+          "n": 2966,
+          "n_lots": 2966,
+          "n_proposals": 563,
+          "n_zero_share_lots": 216,
+          "slug": "audit-related",
+          "votes": {
+            "ABSENT": 0,
+            "ABSTAIN": 412,
+            "AGAINST": 741,
+            "FOR": 1811,
+            "UNPARSEABLE": 2,
+            "WITHHOLD": 0
+          }
+        },
+        {
+          "accession": "0001104659-26-102001",
+          "by_source": {
+            "ISSUER": {
+              "for_lots": 1186,
+              "for_pct": 61.5,
+              "for_zero_share_lots": 107,
+              "n_lots": 2142,
+              "n_proposals": 378,
+              "n_records": 2142,
+              "n_voted": 1927,
+              "thin": false,
+              "zero_share_lots": 215
+            },
+            "SECURITY HOLDER": {
+              "for_lots": 0,
+              "for_pct": null,
+              "for_zero_share_lots": 0,
+              "n_lots": 0,
+              "n_proposals": 0,
+              "n_records": 0,
+              "n_voted": 0,
+              "thin": true,
+              "zero_share_lots": 0
+            }
+          },
+          "n": 2142,
+          "n_lots": 2142,
+          "n_proposals": 378,
+          "n_zero_share_lots": 215,
+          "slug": "audit-related",
+          "votes": {
+            "ABSENT": 0,
+            "ABSTAIN": 304,
+            "AGAINST": 545,
+            "FOR": 1293,
+            "UNPARSEABLE": 0,
+            "WITHHOLD": 0
+          }
+        }
+      ],
+      "slug": "audit-related"
+    },
+    {
+      "category": "SECTION 14A SAY-ON-PAY VOTES",
+      "filings": [
+        {
+          "accession": "0001438934-26-002275",
+          "by_source": {
+            "ISSUER": {
+              "for_lots": 491,
+              "for_pct": 66.9,
+              "for_zero_share_lots": 0,
+              "n_lots": 752,
+              "n_proposals": 518,
+              "n_records": 759,
+              "n_voted": 734,
+              "thin": false,
+              "zero_share_lots": 0
+            },
+            "SECURITY HOLDER": {
+              "for_lots": 0,
+              "for_pct": null,
+              "for_zero_share_lots": 0,
+              "n_lots": 0,
+              "n_proposals": 0,
+              "n_records": 0,
+              "n_voted": 0,
+              "thin": true,
+              "zero_share_lots": 0
+            }
+          },
+          "n": 759,
+          "n_lots": 752,
+          "n_proposals": 518,
+          "n_zero_share_lots": 0,
+          "slug": "section-14a-say-on-pay-votes",
+          "votes": {
+            "ABSENT": 7,
+            "ABSTAIN": 0,
+            "AGAINST": 243,
+            "FOR": 491,
+            "UNPARSEABLE": 18,
+            "WITHHOLD": 0
+          }
+        },
+        {
+          "accession": "0001193125-26-351549",
+          "by_source": {
+            "ISSUER": {
+              "for_lots": 467,
+              "for_pct": 62.8,
+              "for_zero_share_lots": 0,
+              "n_lots": 765,
+              "n_proposals": 489,
+              "n_records": 765,
+              "n_voted": 744,
+              "thin": false,
+              "zero_share_lots": 0
+            },
+            "SECURITY HOLDER": {
+              "for_lots": 0,
+              "for_pct": null,
+              "for_zero_share_lots": 0,
+              "n_lots": 0,
+              "n_proposals": 0,
+              "n_records": 0,
+              "n_voted": 0,
+              "thin": true,
+              "zero_share_lots": 0
+            }
+          },
+          "n": 765,
+          "n_lots": 765,
+          "n_proposals": 489,
+          "n_zero_share_lots": 0,
+          "slug": "section-14a-say-on-pay-votes",
+          "votes": {
+            "ABSENT": 0,
+            "ABSTAIN": 1,
+            "AGAINST": 276,
+            "FOR": 467,
+            "UNPARSEABLE": 21,
+            "WITHHOLD": 0
+          }
+        },
+        {
+          "accession": "0001104659-26-101970",
+          "by_source": {
+            "ISSUER": {
+              "for_lots": 1893,
+              "for_pct": 92.0,
+              "for_zero_share_lots": 0,
+              "n_lots": 2190,
+              "n_proposals": 554,
+              "n_records": 2190,
+              "n_voted": 2057,
+              "thin": false,
+              "zero_share_lots": 3
+            },
+            "SECURITY HOLDER": {
+              "for_lots": 1,
+              "for_pct": 100.0,
+              "for_zero_share_lots": 0,
+              "n_lots": 1,
+              "n_proposals": 1,
+              "n_records": 1,
+              "n_voted": 1,
+              "thin": true,
+              "zero_share_lots": 0
+            }
+          },
+          "n": 2191,
+          "n_lots": 2191,
+          "n_proposals": 555,
+          "n_zero_share_lots": 7,
+          "slug": "section-14a-say-on-pay-votes",
+          "votes": {
+            "ABSENT": 0,
+            "ABSTAIN": 15,
+            "AGAINST": 152,
+            "FOR": 1894,
+            "UNPARSEABLE": 130,
+            "WITHHOLD": 0
+          }
+        },
+        {
+          "accession": "0001104659-26-102001",
+          "by_source": {
+            "ISSUER": {
+              "for_lots": 1165,
+              "for_pct": 94.2,
+              "for_zero_share_lots": 0,
+              "n_lots": 1328,
+              "n_proposals": 356,
+              "n_records": 1328,
+              "n_voted": 1237,
+              "thin": false,
+              "zero_share_lots": 3
+            },
+            "SECURITY HOLDER": {
+              "for_lots": 0,
+              "for_pct": null,
+              "for_zero_share_lots": 0,
+              "n_lots": 0,
+              "n_proposals": 0,
+              "n_records": 0,
+              "n_voted": 0,
+              "thin": true,
+              "zero_share_lots": 0
+            }
+          },
+          "n": 1328,
+          "n_lots": 1328,
+          "n_proposals": 356,
+          "n_zero_share_lots": 12,
+          "slug": "section-14a-say-on-pay-votes",
+          "votes": {
+            "ABSENT": 0,
+            "ABSTAIN": 11,
+            "AGAINST": 64,
+            "FOR": 1165,
+            "UNPARSEABLE": 88,
+            "WITHHOLD": 0
+          }
+        }
+      ],
+      "slug": "section-14a-say-on-pay-votes"
+    },
+    {
+      "category": "COMPENSATION",
+      "filings": [
+        {
+          "accession": "0001438934-26-002275",
+          "by_source": {
+            "ISSUER": {
+              "for_lots": 158,
+              "for_pct": 78.6,
+              "for_zero_share_lots": 0,
+              "n_lots": 201,
+              "n_proposals": 163,
+              "n_records": 205,
+              "n_voted": 201,
+              "thin": false,
+              "zero_share_lots": 0
+            },
+            "SECURITY HOLDER": {
+              "for_lots": 7,
+              "for_pct": 43.8,
+              "for_zero_share_lots": 0,
+              "n_lots": 16,
+              "n_proposals": 10,
+              "n_records": 17,
+              "n_voted": 16,
+              "thin": false,
+              "zero_share_lots": 0
+            }
+          },
+          "n": 222,
+          "n_lots": 217,
+          "n_proposals": 173,
+          "n_zero_share_lots": 0,
+          "slug": "compensation",
+          "votes": {
+            "ABSENT": 5,
+            "ABSTAIN": 0,
+            "AGAINST": 52,
+            "FOR": 165,
+            "UNPARSEABLE": 0,
+            "WITHHOLD": 0
+          }
+        },
+        {
+          "accession": "0001193125-26-351549",
+          "by_source": {
+            "ISSUER": {
+              "for_lots": 157,
+              "for_pct": 63.6,
+              "for_zero_share_lots": 0,
+              "n_lots": 247,
+              "n_proposals": 157,
+              "n_records": 247,
+              "n_voted": 247,
+              "thin": false,
+              "zero_share_lots": 0
+            },
+            "SECURITY HOLDER": {
+              "for_lots": 10,
+              "for_pct": 47.6,
+              "for_zero_share_lots": 0,
+              "n_lots": 21,
+              "n_proposals": 11,
+              "n_records": 21,
+              "n_voted": 21,
+              "thin": false,
+              "zero_share_lots": 0
+            }
+          },
+          "n": 268,
+          "n_lots": 268,
+          "n_proposals": 168,
+          "n_zero_share_lots": 0,
+          "slug": "compensation",
+          "votes": {
+            "ABSENT": 0,
+            "ABSTAIN": 0,
+            "AGAINST": 101,
+            "FOR": 167,
+            "UNPARSEABLE": 0,
+            "WITHHOLD": 0
+          }
+        },
+        {
+          "accession": "0001104659-26-101970",
+          "by_source": {
+            "ISSUER": {
+              "for_lots": 1163,
+              "for_pct": 53.7,
+              "for_zero_share_lots": 5,
+              "n_lots": 2291,
+              "n_proposals": 586,
+              "n_records": 2291,
+              "n_voted": 2165,
+              "thin": false,
+              "zero_share_lots": 124
+            },
+            "SECURITY HOLDER": {
+              "for_lots": 12,
+              "for_pct": 25.0,
+              "for_zero_share_lots": 0,
+              "n_lots": 48,
+              "n_proposals": 18,
+              "n_records": 48,
+              "n_voted": 48,
+              "thin": false,
+              "zero_share_lots": 0
+            }
+          },
+          "n": 2339,
+          "n_lots": 2339,
+          "n_proposals": 604,
+          "n_zero_share_lots": 124,
+          "slug": "compensation",
+          "votes": {
+            "ABSENT": 0,
+            "ABSTAIN": 536,
+            "AGAINST": 621,
+            "FOR": 1180,
+            "UNPARSEABLE": 2,
+            "WITHHOLD": 0
+          }
+        },
+        {
+          "accession": "0001104659-26-102001",
+          "by_source": {
+            "ISSUER": {
+              "for_lots": 881,
+              "for_pct": 52.8,
+              "for_zero_share_lots": 135,
+              "n_lots": 1897,
+              "n_proposals": 421,
+              "n_records": 1897,
+              "n_voted": 1667,
+              "thin": false,
+              "zero_share_lots": 230
+            },
+            "SECURITY HOLDER": {
+              "for_lots": 4,
+              "for_pct": 17.4,
+              "for_zero_share_lots": 1,
+              "n_lots": 24,
+              "n_proposals": 11,
+              "n_records": 24,
+              "n_voted": 23,
+              "thin": false,
+              "zero_share_lots": 1
+            }
+          },
+          "n": 1921,
+          "n_lots": 1921,
+          "n_proposals": 432,
+          "n_zero_share_lots": 231,
+          "slug": "compensation",
+          "votes": {
+            "ABSENT": 0,
+            "ABSTAIN": 402,
+            "AGAINST": 498,
+            "FOR": 1021,
+            "UNPARSEABLE": 0,
+            "WITHHOLD": 0
+          }
+        }
+      ],
+      "slug": "compensation"
+    },
+    {
+      "category": "CORPORATE GOVERNANCE",
+      "filings": [
+        {
+          "accession": "0001438934-26-002275",
+          "by_source": {
+            "ISSUER": {
+              "for_lots": 84,
+              "for_pct": 83.2,
+              "for_zero_share_lots": 0,
+              "n_lots": 101,
+              "n_proposals": 98,
+              "n_records": 112,
+              "n_voted": 101,
+              "thin": false,
+              "zero_share_lots": 0
+            },
+            "SECURITY HOLDER": {
+              "for_lots": 88,
+              "for_pct": 38.9,
+              "for_zero_share_lots": 0,
+              "n_lots": 226,
+              "n_proposals": 140,
+              "n_records": 230,
+              "n_voted": 226,
+              "thin": false,
+              "zero_share_lots": 0
+            }
+          },
+          "n": 342,
+          "n_lots": 327,
+          "n_proposals": 238,
+          "n_zero_share_lots": 0,
+          "slug": "corporate-governance",
+          "votes": {
+            "ABSENT": 15,
+            "ABSTAIN": 2,
+            "AGAINST": 153,
+            "FOR": 172,
+            "UNPARSEABLE": 0,
+            "WITHHOLD": 0
+          }
+        },
+        {
+          "accession": "0001193125-26-351549",
+          "by_source": {
+            "ISSUER": {
+              "for_lots": 119,
+              "for_pct": 67.2,
+              "for_zero_share_lots": 0,
+              "n_lots": 177,
+              "n_proposals": 124,
+              "n_records": 177,
+              "n_voted": 177,
+              "thin": false,
+              "zero_share_lots": 0
+            },
+            "SECURITY HOLDER": {
+              "for_lots": 143,
+              "for_pct": 48.6,
+              "for_zero_share_lots": 0,
+              "n_lots": 294,
+              "n_proposals": 150,
+              "n_records": 294,
+              "n_voted": 294,
+              "thin": false,
+              "zero_share_lots": 0
+            }
+          },
+          "n": 471,
+          "n_lots": 471,
+          "n_proposals": 274,
+          "n_zero_share_lots": 0,
+          "slug": "corporate-governance",
+          "votes": {
+            "ABSENT": 0,
+            "ABSTAIN": 4,
+            "AGAINST": 205,
+            "FOR": 262,
+            "UNPARSEABLE": 0,
+            "WITHHOLD": 0
+          }
+        },
+        {
+          "accession": "0001104659-26-101970",
+          "by_source": {
+            "ISSUER": {
+              "for_lots": 486,
+              "for_pct": 63.8,
+              "for_zero_share_lots": 0,
+              "n_lots": 832,
+              "n_proposals": 268,
+              "n_records": 832,
+              "n_voted": 762,
+              "thin": false,
+              "zero_share_lots": 70
+            },
+            "SECURITY HOLDER": {
+              "for_lots": 281,
+              "for_pct": 33.3,
+              "for_zero_share_lots": 0,
+              "n_lots": 860,
+              "n_proposals": 220,
+              "n_records": 860,
+              "n_voted": 845,
+              "thin": false,
+              "zero_share_lots": 15
+            }
+          },
+          "n": 1692,
+          "n_lots": 1692,
+          "n_proposals": 488,
+          "n_zero_share_lots": 85,
+          "slug": "corporate-governance",
+          "votes": {
+            "ABSENT": 0,
+            "ABSTAIN": 278,
+            "AGAINST": 647,
+            "FOR": 767,
+            "UNPARSEABLE": 0,
+            "WITHHOLD": 0
+          }
+        },
+        {
+          "accession": "0001104659-26-102001",
+          "by_source": {
+            "ISSUER": {
+              "for_lots": 364,
+              "for_pct": 62.7,
+              "for_zero_share_lots": 39,
+              "n_lots": 659,
+              "n_proposals": 179,
+              "n_records": 659,
+              "n_voted": 581,
+              "thin": false,
+              "zero_share_lots": 78
+            },
+            "SECURITY HOLDER": {
+              "for_lots": 189,
+              "for_pct": 30.8,
+              "for_zero_share_lots": 25,
+              "n_lots": 671,
+              "n_proposals": 142,
+              "n_records": 671,
+              "n_voted": 614,
+              "thin": false,
+              "zero_share_lots": 57
+            }
+          },
+          "n": 1330,
+          "n_lots": 1330,
+          "n_proposals": 321,
+          "n_zero_share_lots": 135,
+          "slug": "corporate-governance",
+          "votes": {
+            "ABSENT": 0,
+            "ABSTAIN": 224,
+            "AGAINST": 489,
+            "FOR": 617,
+            "UNPARSEABLE": 0,
+            "WITHHOLD": 0
+          }
+        }
+      ],
+      "slug": "corporate-governance"
+    },
+    {
+      "category": "CAPITAL STRUCTURE",
+      "filings": [
+        {
+          "accession": "0001438934-26-002275",
+          "by_source": {
+            "ISSUER": {
+              "for_lots": 68,
+              "for_pct": 91.9,
+              "for_zero_share_lots": 0,
+              "n_lots": 74,
+              "n_proposals": 74,
+              "n_records": 80,
+              "n_voted": 74,
+              "thin": false,
+              "zero_share_lots": 0
+            },
+            "SECURITY HOLDER": {
+              "for_lots": 0,
+              "for_pct": null,
+              "for_zero_share_lots": 0,
+              "n_lots": 0,
+              "n_proposals": 0,
+              "n_records": 0,
+              "n_voted": 0,
+              "thin": true,
+              "zero_share_lots": 0
+            }
+          },
+          "n": 80,
+          "n_lots": 74,
+          "n_proposals": 74,
+          "n_zero_share_lots": 0,
+          "slug": "capital-structure",
+          "votes": {
+            "ABSENT": 6,
+            "ABSTAIN": 0,
+            "AGAINST": 6,
+            "FOR": 68,
+            "UNPARSEABLE": 0,
+            "WITHHOLD": 0
+          }
+        },
+        {
+          "accession": "0001193125-26-351549",
+          "by_source": {
+            "ISSUER": {
+              "for_lots": 74,
+              "for_pct": 92.5,
+              "for_zero_share_lots": 0,
+              "n_lots": 80,
+              "n_proposals": 74,
+              "n_records": 80,
+              "n_voted": 80,
+              "thin": false,
+              "zero_share_lots": 0
+            },
+            "SECURITY HOLDER": {
+              "for_lots": 0,
+              "for_pct": null,
+              "for_zero_share_lots": 0,
+              "n_lots": 0,
+              "n_proposals": 0,
+              "n_records": 0,
+              "n_voted": 0,
+              "thin": true,
+              "zero_share_lots": 0
+            }
+          },
+          "n": 80,
+          "n_lots": 80,
+          "n_proposals": 74,
+          "n_zero_share_lots": 0,
+          "slug": "capital-structure",
+          "votes": {
+            "ABSENT": 0,
+            "ABSTAIN": 0,
+            "AGAINST": 6,
+            "FOR": 74,
+            "UNPARSEABLE": 0,
+            "WITHHOLD": 0
+          }
+        },
+        {
+          "accession": "0001104659-26-101970",
+          "by_source": {
+            "ISSUER": {
+              "for_lots": 268,
+              "for_pct": 79.3,
+              "for_zero_share_lots": 0,
+              "n_lots": 354,
+              "n_proposals": 117,
+              "n_records": 354,
+              "n_voted": 338,
+              "thin": false,
+              "zero_share_lots": 16
+            },
+            "SECURITY HOLDER": {
+              "for_lots": 12,
+              "for_pct": 41.4,
+              "for_zero_share_lots": 0,
+              "n_lots": 30,
+              "n_proposals": 7,
+              "n_records": 30,
+              "n_voted": 29,
+              "thin": false,
+              "zero_share_lots": 1
+            }
+          },
+          "n": 384,
+          "n_lots": 384,
+          "n_proposals": 124,
+          "n_zero_share_lots": 17,
+          "slug": "capital-structure",
+          "votes": {
+            "ABSENT": 0,
+            "ABSTAIN": 47,
+            "AGAINST": 57,
+            "FOR": 280,
+            "UNPARSEABLE": 0,
+            "WITHHOLD": 0
+          }
+        },
+        {
+          "accession": "0001104659-26-102001",
+          "by_source": {
+            "ISSUER": {
+              "for_lots": 266,
+              "for_pct": 75.8,
+              "for_zero_share_lots": 19,
+              "n_lots": 390,
+              "n_proposals": 99,
+              "n_records": 390,
+              "n_voted": 351,
+              "thin": false,
+              "zero_share_lots": 39
+            },
+            "SECURITY HOLDER": {
+              "for_lots": 7,
+              "for_pct": 41.2,
+              "for_zero_share_lots": 1,
+              "n_lots": 20,
+              "n_proposals": 4,
+              "n_records": 20,
+              "n_voted": 17,
+              "thin": false,
+              "zero_share_lots": 3
+            }
+          },
+          "n": 410,
+          "n_lots": 410,
+          "n_proposals": 103,
+          "n_zero_share_lots": 42,
+          "slug": "capital-structure",
+          "votes": {
+            "ABSENT": 0,
+            "ABSTAIN": 55,
+            "AGAINST": 62,
+            "FOR": 293,
+            "UNPARSEABLE": 0,
+            "WITHHOLD": 0
+          }
+        }
+      ],
+      "slug": "capital-structure"
+    },
+    {
+      "category": "OTHER SOCIAL ISSUES",
+      "filings": [
+        {
+          "accession": "0001438934-26-002275",
+          "by_source": {
+            "ISSUER": {
+              "for_lots": 3,
+              "for_pct": 50.0,
+              "for_zero_share_lots": 0,
+              "n_lots": 6,
+              "n_proposals": 3,
+              "n_records": 6,
+              "n_voted": 6,
+              "thin": false,
+              "zero_share_lots": 0
+            },
+            "SECURITY HOLDER": {
+              "for_lots": 25,
+              "for_pct": 49.0,
+              "for_zero_share_lots": 0,
+              "n_lots": 51,
+              "n_proposals": 27,
+              "n_records": 52,
+              "n_voted": 51,
+              "thin": false,
+              "zero_share_lots": 0
+            }
+          },
+          "n": 58,
+          "n_lots": 57,
+          "n_proposals": 30,
+          "n_zero_share_lots": 0,
+          "slug": "other-social-issues",
+          "votes": {
+            "ABSENT": 1,
+            "ABSTAIN": 0,
+            "AGAINST": 29,
+            "FOR": 28,
+            "UNPARSEABLE": 0,
+            "WITHHOLD": 0
+          }
+        },
+        {
+          "accession": "0001193125-26-351549",
+          "by_source": {
+            "ISSUER": {
+              "for_lots": 0,
+              "for_pct": null,
+              "for_zero_share_lots": 0,
+              "n_lots": 0,
+              "n_proposals": 0,
+              "n_records": 0,
+              "n_voted": 0,
+              "thin": true,
+              "zero_share_lots": 0
+            },
+            "SECURITY HOLDER": {
+              "for_lots": 32,
+              "for_pct": 38.6,
+              "for_zero_share_lots": 0,
+              "n_lots": 83,
+              "n_proposals": 51,
+              "n_records": 83,
+              "n_voted": 83,
+              "thin": false,
+              "zero_share_lots": 0
+            }
+          },
+          "n": 83,
+          "n_lots": 83,
+          "n_proposals": 51,
+          "n_zero_share_lots": 0,
+          "slug": "other-social-issues",
+          "votes": {
+            "ABSENT": 0,
+            "ABSTAIN": 0,
+            "AGAINST": 51,
+            "FOR": 32,
+            "UNPARSEABLE": 0,
+            "WITHHOLD": 0
+          }
+        },
+        {
+          "accession": "0001104659-26-101970",
+          "by_source": {
+            "ISSUER": {
+              "for_lots": 7,
+              "for_pct": 25.9,
+              "for_zero_share_lots": 0,
+              "n_lots": 27,
+              "n_proposals": 19,
+              "n_records": 27,
+              "n_voted": 27,
+              "thin": false,
+              "zero_share_lots": 0
+            },
+            "SECURITY HOLDER": {
+              "for_lots": 101,
+              "for_pct": 26.1,
+              "for_zero_share_lots": 0,
+              "n_lots": 389,
+              "n_proposals": 111,
+              "n_records": 389,
+              "n_voted": 387,
+              "thin": false,
+              "zero_share_lots": 2
+            }
+          },
+          "n": 416,
+          "n_lots": 416,
+          "n_proposals": 130,
+          "n_zero_share_lots": 2,
+          "slug": "other-social-issues",
+          "votes": {
+            "ABSENT": 0,
+            "ABSTAIN": 74,
+            "AGAINST": 234,
+            "FOR": 108,
+            "UNPARSEABLE": 0,
+            "WITHHOLD": 0
+          }
+        },
+        {
+          "accession": "0001104659-26-102001",
+          "by_source": {
+            "ISSUER": {
+              "for_lots": 5,
+              "for_pct": 45.5,
+              "for_zero_share_lots": 0,
+              "n_lots": 11,
+              "n_proposals": 6,
+              "n_records": 11,
+              "n_voted": 11,
+              "thin": false,
+              "zero_share_lots": 0
+            },
+            "SECURITY HOLDER": {
+              "for_lots": 62,
+              "for_pct": 26.4,
+              "for_zero_share_lots": 1,
+              "n_lots": 253,
+              "n_proposals": 64,
+              "n_records": 253,
+              "n_voted": 235,
+              "thin": false,
+              "zero_share_lots": 18
+            }
+          },
+          "n": 264,
+          "n_lots": 264,
+          "n_proposals": 70,
+          "n_zero_share_lots": 18,
+          "slug": "other-social-issues",
+          "votes": {
+            "ABSENT": 0,
+            "ABSTAIN": 49,
+            "AGAINST": 147,
+            "FOR": 68,
+            "UNPARSEABLE": 0,
+            "WITHHOLD": 0
+          }
+        }
+      ],
+      "slug": "other-social-issues"
+    },
+    {
+      "category": "ENVIRONMENT OR CLIMATE",
+      "filings": [
+        {
+          "accession": "0001438934-26-002275",
+          "by_source": {
+            "ISSUER": {
+              "for_lots": 0,
+              "for_pct": null,
+              "for_zero_share_lots": 0,
+              "n_lots": 0,
+              "n_proposals": 0,
+              "n_records": 0,
+              "n_voted": 0,
+              "thin": true,
+              "zero_share_lots": 0
+            },
+            "SECURITY HOLDER": {
+              "for_lots": 27,
+              "for_pct": 40.3,
+              "for_zero_share_lots": 0,
+              "n_lots": 67,
+              "n_proposals": 39,
+              "n_records": 67,
+              "n_voted": 67,
+              "thin": false,
+              "zero_share_lots": 0
+            }
+          },
+          "n": 67,
+          "n_lots": 67,
+          "n_proposals": 39,
+          "n_zero_share_lots": 0,
+          "slug": "environment-or-climate",
+          "votes": {
+            "ABSENT": 0,
+            "ABSTAIN": 1,
+            "AGAINST": 39,
+            "FOR": 27,
+            "UNPARSEABLE": 0,
+            "WITHHOLD": 0
+          }
+        },
+        {
+          "accession": "0001193125-26-351549",
+          "by_source": {
+            "ISSUER": {
+              "for_lots": 0,
+              "for_pct": null,
+              "for_zero_share_lots": 0,
+              "n_lots": 0,
+              "n_proposals": 0,
+              "n_records": 0,
+              "n_voted": 0,
+              "thin": true,
+              "zero_share_lots": 0
+            },
+            "SECURITY HOLDER": {
+              "for_lots": 28,
+              "for_pct": 32.2,
+              "for_zero_share_lots": 0,
+              "n_lots": 87,
+              "n_proposals": 59,
+              "n_records": 87,
+              "n_voted": 87,
+              "thin": false,
+              "zero_share_lots": 0
+            }
+          },
+          "n": 87,
+          "n_lots": 87,
+          "n_proposals": 59,
+          "n_zero_share_lots": 0,
+          "slug": "environment-or-climate",
+          "votes": {
+            "ABSENT": 0,
+            "ABSTAIN": 0,
+            "AGAINST": 59,
+            "FOR": 28,
+            "UNPARSEABLE": 0,
+            "WITHHOLD": 0
+          }
+        },
+        {
+          "accession": "0001104659-26-101970",
+          "by_source": {
+            "ISSUER": {
+              "for_lots": 0,
+              "for_pct": 0.0,
+              "for_zero_share_lots": 0,
+              "n_lots": 16,
+              "n_proposals": 16,
+              "n_records": 16,
+              "n_voted": 16,
+              "thin": false,
+              "zero_share_lots": 0
+            },
+            "SECURITY HOLDER": {
+              "for_lots": 78,
+              "for_pct": 24.1,
+              "for_zero_share_lots": 0,
+              "n_lots": 324,
+              "n_proposals": 75,
+              "n_records": 324,
+              "n_voted": 323,
+              "thin": false,
+              "zero_share_lots": 1
+            }
+          },
+          "n": 340,
+          "n_lots": 340,
+          "n_proposals": 91,
+          "n_zero_share_lots": 1,
+          "slug": "environment-or-climate",
+          "votes": {
+            "ABSENT": 0,
+            "ABSTAIN": 55,
+            "AGAINST": 207,
+            "FOR": 78,
+            "UNPARSEABLE": 0,
+            "WITHHOLD": 0
+          }
+        },
+        {
+          "accession": "0001104659-26-102001",
+          "by_source": {
+            "ISSUER": {
+              "for_lots": 0,
+              "for_pct": 0.0,
+              "for_zero_share_lots": 0,
+              "n_lots": 1,
+              "n_proposals": 1,
+              "n_records": 1,
+              "n_voted": 1,
+              "thin": true,
+              "zero_share_lots": 0
+            },
+            "SECURITY HOLDER": {
+              "for_lots": 63,
+              "for_pct": 24.8,
+              "for_zero_share_lots": 0,
+              "n_lots": 265,
+              "n_proposals": 55,
+              "n_records": 265,
+              "n_voted": 254,
+              "thin": false,
+              "zero_share_lots": 11
+            }
+          },
+          "n": 266,
+          "n_lots": 266,
+          "n_proposals": 56,
+          "n_zero_share_lots": 11,
+          "slug": "environment-or-climate",
+          "votes": {
+            "ABSENT": 0,
+            "ABSTAIN": 43,
+            "AGAINST": 160,
+            "FOR": 63,
+            "UNPARSEABLE": 0,
+            "WITHHOLD": 0
+          }
+        }
+      ],
+      "slug": "environment-or-climate"
+    },
+    {
+      "category": "SHAREHOLDER RIGHTS AND DEFENSES",
+      "filings": [
+        {
+          "accession": "0001438934-26-002275",
+          "by_source": {
+            "ISSUER": {
+              "for_lots": 46,
+              "for_pct": 74.2,
+              "for_zero_share_lots": 0,
+              "n_lots": 62,
+              "n_proposals": 49,
+              "n_records": 64,
+              "n_voted": 62,
+              "thin": false,
+              "zero_share_lots": 0
+            },
+            "SECURITY HOLDER": {
+              "for_lots": 87,
+              "for_pct": 49.7,
+              "for_zero_share_lots": 0,
+              "n_lots": 175,
+              "n_proposals": 96,
+              "n_records": 178,
+              "n_voted": 175,
+              "thin": false,
+              "zero_share_lots": 0
+            }
+          },
+          "n": 242,
+          "n_lots": 237,
+          "n_proposals": 145,
+          "n_zero_share_lots": 0,
+          "slug": "shareholder-rights-and-defenses",
+          "votes": {
+            "ABSENT": 5,
+            "ABSTAIN": 4,
+            "AGAINST": 100,
+            "FOR": 133,
+            "UNPARSEABLE": 0,
+            "WITHHOLD": 0
+          }
+        },
+        {
+          "accession": "0001193125-26-351549",
+          "by_source": {
+            "ISSUER": {
+              "for_lots": 10,
+              "for_pct": 83.3,
+              "for_zero_share_lots": 0,
+              "n_lots": 12,
+              "n_proposals": 10,
+              "n_records": 12,
+              "n_voted": 12,
+              "thin": false,
+              "zero_share_lots": 0
+            },
+            "SECURITY HOLDER": {
+              "for_lots": 10,
+              "for_pct": 43.5,
+              "for_zero_share_lots": 0,
+              "n_lots": 23,
+              "n_proposals": 16,
+              "n_records": 23,
+              "n_voted": 23,
+              "thin": false,
+              "zero_share_lots": 0
+            }
+          },
+          "n": 35,
+          "n_lots": 35,
+          "n_proposals": 26,
+          "n_zero_share_lots": 0,
+          "slug": "shareholder-rights-and-defenses",
+          "votes": {
+            "ABSENT": 0,
+            "ABSTAIN": 0,
+            "AGAINST": 15,
+            "FOR": 20,
+            "UNPARSEABLE": 0,
+            "WITHHOLD": 0
+          }
+        },
+        {
+          "accession": "0001104659-26-101970",
+          "by_source": {
+            "ISSUER": {
+              "for_lots": 81,
+              "for_pct": 89.0,
+              "for_zero_share_lots": 0,
+              "n_lots": 91,
+              "n_proposals": 46,
+              "n_records": 91,
+              "n_voted": 91,
+              "thin": false,
+              "zero_share_lots": 0
+            },
+            "SECURITY HOLDER": {
+              "for_lots": 63,
+              "for_pct": 39.6,
+              "for_zero_share_lots": 0,
+              "n_lots": 161,
+              "n_proposals": 80,
+              "n_records": 161,
+              "n_voted": 159,
+              "thin": false,
+              "zero_share_lots": 0
+            }
+          },
+          "n": 252,
+          "n_lots": 252,
+          "n_proposals": 126,
+          "n_zero_share_lots": 0,
+          "slug": "shareholder-rights-and-defenses",
+          "votes": {
+            "ABSENT": 0,
+            "ABSTAIN": 6,
+            "AGAINST": 100,
+            "FOR": 144,
+            "UNPARSEABLE": 2,
+            "WITHHOLD": 0
+          }
+        },
+        {
+          "accession": "0001104659-26-102001",
+          "by_source": {
+            "ISSUER": {
+              "for_lots": 56,
+              "for_pct": 94.9,
+              "for_zero_share_lots": 0,
+              "n_lots": 59,
+              "n_proposals": 29,
+              "n_records": 59,
+              "n_voted": 59,
+              "thin": false,
+              "zero_share_lots": 0
+            },
+            "SECURITY HOLDER": {
+              "for_lots": 39,
+              "for_pct": 35.8,
+              "for_zero_share_lots": 0,
+              "n_lots": 109,
+              "n_proposals": 53,
+              "n_records": 109,
+              "n_voted": 109,
+              "thin": false,
+              "zero_share_lots": 0
+            }
+          },
+          "n": 168,
+          "n_lots": 168,
+          "n_proposals": 82,
+          "n_zero_share_lots": 0,
+          "slug": "shareholder-rights-and-defenses",
+          "votes": {
+            "ABSENT": 0,
+            "ABSTAIN": 2,
+            "AGAINST": 71,
+            "FOR": 95,
+            "UNPARSEABLE": 0,
+            "WITHHOLD": 0
+          }
+        }
+      ],
+      "slug": "shareholder-rights-and-defenses"
+    },
+    {
+      "category": "EXTRAORDINARY TRANSACTIONS",
+      "filings": [
+        {
+          "accession": "0001438934-26-002275",
+          "by_source": {
+            "ISSUER": {
+              "for_lots": 20,
+              "for_pct": 83.3,
+              "for_zero_share_lots": 0,
+              "n_lots": 24,
+              "n_proposals": 24,
+              "n_records": 28,
+              "n_voted": 24,
+              "thin": false,
+              "zero_share_lots": 0
+            },
+            "SECURITY HOLDER": {
+              "for_lots": 0,
+              "for_pct": 0.0,
+              "for_zero_share_lots": 0,
+              "n_lots": 1,
+              "n_proposals": 1,
+              "n_records": 1,
+              "n_voted": 1,
+              "thin": true,
+              "zero_share_lots": 0
+            }
+          },
+          "n": 29,
+          "n_lots": 25,
+          "n_proposals": 25,
+          "n_zero_share_lots": 0,
+          "slug": "extraordinary-transactions",
+          "votes": {
+            "ABSENT": 4,
+            "ABSTAIN": 0,
+            "AGAINST": 5,
+            "FOR": 20,
+            "UNPARSEABLE": 0,
+            "WITHHOLD": 0
+          }
+        },
+        {
+          "accession": "0001193125-26-351549",
+          "by_source": {
+            "ISSUER": {
+              "for_lots": 24,
+              "for_pct": 88.9,
+              "for_zero_share_lots": 0,
+              "n_lots": 27,
+              "n_proposals": 24,
+              "n_records": 27,
+              "n_voted": 27,
+              "thin": false,
+              "zero_share_lots": 0
+            },
+            "SECURITY HOLDER": {
+              "for_lots": 0,
+              "for_pct": 0.0,
+              "for_zero_share_lots": 0,
+              "n_lots": 1,
+              "n_proposals": 1,
+              "n_records": 1,
+              "n_voted": 1,
+              "thin": true,
+              "zero_share_lots": 0
+            }
+          },
+          "n": 28,
+          "n_lots": 28,
+          "n_proposals": 25,
+          "n_zero_share_lots": 0,
+          "slug": "extraordinary-transactions",
+          "votes": {
+            "ABSENT": 0,
+            "ABSTAIN": 0,
+            "AGAINST": 4,
+            "FOR": 24,
+            "UNPARSEABLE": 0,
+            "WITHHOLD": 0
+          }
+        },
+        {
+          "accession": "0001104659-26-101970",
+          "by_source": {
+            "ISSUER": {
+              "for_lots": 55,
+              "for_pct": 70.5,
+              "for_zero_share_lots": 2,
+              "n_lots": 84,
+              "n_proposals": 37,
+              "n_records": 84,
+              "n_voted": 78,
+              "thin": false,
+              "zero_share_lots": 6
+            },
+            "SECURITY HOLDER": {
+              "for_lots": 1,
+              "for_pct": 16.7,
+              "for_zero_share_lots": 0,
+              "n_lots": 6,
+              "n_proposals": 1,
+              "n_records": 6,
+              "n_voted": 6,
+              "thin": false,
+              "zero_share_lots": 0
+            }
+          },
+          "n": 90,
+          "n_lots": 90,
+          "n_proposals": 38,
+          "n_zero_share_lots": 6,
+          "slug": "extraordinary-transactions",
+          "votes": {
+            "ABSENT": 0,
+            "ABSTAIN": 14,
+            "AGAINST": 18,
+            "FOR": 58,
+            "UNPARSEABLE": 0,
+            "WITHHOLD": 0
+          }
+        },
+        {
+          "accession": "0001104659-26-102001",
+          "by_source": {
+            "ISSUER": {
+              "for_lots": 62,
+              "for_pct": 69.7,
+              "for_zero_share_lots": 12,
+              "n_lots": 119,
+              "n_proposals": 38,
+              "n_records": 119,
+              "n_voted": 89,
+              "thin": false,
+              "zero_share_lots": 30
+            },
+            "SECURITY HOLDER": {
+              "for_lots": 1,
+              "for_pct": 16.7,
+              "for_zero_share_lots": 0,
+              "n_lots": 6,
+              "n_proposals": 1,
+              "n_records": 6,
+              "n_voted": 6,
+              "thin": false,
+              "zero_share_lots": 0
+            }
+          },
+          "n": 125,
+          "n_lots": 125,
+          "n_proposals": 39,
+          "n_zero_share_lots": 30,
+          "slug": "extraordinary-transactions",
+          "votes": {
+            "ABSENT": 0,
+            "ABSTAIN": 22,
+            "AGAINST": 28,
+            "FOR": 75,
+            "UNPARSEABLE": 0,
+            "WITHHOLD": 0
+          }
+        }
+      ],
+      "slug": "extraordinary-transactions"
+    },
+    {
+      "category": "HUMAN RIGHTS OR HUMAN CAPITAL/WORKFORCE",
+      "filings": [
+        {
+          "accession": "0001438934-26-002275",
+          "by_source": {
+            "ISSUER": {
+              "for_lots": 0,
+              "for_pct": null,
+              "for_zero_share_lots": 0,
+              "n_lots": 0,
+              "n_proposals": 0,
+              "n_records": 0,
+              "n_voted": 0,
+              "thin": true,
+              "zero_share_lots": 0
+            },
+            "SECURITY HOLDER": {
+              "for_lots": 23,
+              "for_pct": 46.9,
+              "for_zero_share_lots": 0,
+              "n_lots": 49,
+              "n_proposals": 27,
+              "n_records": 50,
+              "n_voted": 49,
+              "thin": false,
+              "zero_share_lots": 0
+            }
+          },
+          "n": 50,
+          "n_lots": 49,
+          "n_proposals": 27,
+          "n_zero_share_lots": 0,
+          "slug": "human-rights-or-human-capital-workforce",
+          "votes": {
+            "ABSENT": 1,
+            "ABSTAIN": 0,
+            "AGAINST": 26,
+            "FOR": 23,
+            "UNPARSEABLE": 0,
+            "WITHHOLD": 0
+          }
+        },
+        {
+          "accession": "0001193125-26-351549",
+          "by_source": {
+            "ISSUER": {
+              "for_lots": 0,
+              "for_pct": null,
+              "for_zero_share_lots": 0,
+              "n_lots": 0,
+              "n_proposals": 0,
+              "n_records": 0,
+              "n_voted": 0,
+              "thin": true,
+              "zero_share_lots": 0
+            },
+            "SECURITY HOLDER": {
+              "for_lots": 17,
+              "for_pct": 45.9,
+              "for_zero_share_lots": 0,
+              "n_lots": 37,
+              "n_proposals": 20,
+              "n_records": 37,
+              "n_voted": 37,
+              "thin": false,
+              "zero_share_lots": 0
+            }
+          },
+          "n": 37,
+          "n_lots": 37,
+          "n_proposals": 20,
+          "n_zero_share_lots": 0,
+          "slug": "human-rights-or-human-capital-workforce",
+          "votes": {
+            "ABSENT": 0,
+            "ABSTAIN": 0,
+            "AGAINST": 20,
+            "FOR": 17,
+            "UNPARSEABLE": 0,
+            "WITHHOLD": 0
+          }
+        },
+        {
+          "accession": "0001104659-26-101970",
+          "by_source": {
+            "ISSUER": {
+              "for_lots": 0,
+              "for_pct": 0.0,
+              "for_zero_share_lots": 0,
+              "n_lots": 11,
+              "n_proposals": 11,
+              "n_records": 11,
+              "n_voted": 11,
+              "thin": false,
+              "zero_share_lots": 0
+            },
+            "SECURITY HOLDER": {
+              "for_lots": 18,
+              "for_pct": 23.7,
+              "for_zero_share_lots": 0,
+              "n_lots": 76,
+              "n_proposals": 37,
+              "n_records": 76,
+              "n_voted": 76,
+              "thin": false,
+              "zero_share_lots": 0
+            }
+          },
+          "n": 87,
+          "n_lots": 87,
+          "n_proposals": 48,
+          "n_zero_share_lots": 0,
+          "slug": "human-rights-or-human-capital-workforce",
+          "votes": {
+            "ABSENT": 0,
+            "ABSTAIN": 0,
+            "AGAINST": 69,
+            "FOR": 18,
+            "UNPARSEABLE": 0,
+            "WITHHOLD": 0
+          }
+        },
+        {
+          "accession": "0001104659-26-102001",
+          "by_source": {
+            "ISSUER": {
+              "for_lots": 0,
+              "for_pct": null,
+              "for_zero_share_lots": 0,
+              "n_lots": 0,
+              "n_proposals": 0,
+              "n_records": 0,
+              "n_voted": 0,
+              "thin": true,
+              "zero_share_lots": 0
+            },
+            "SECURITY HOLDER": {
+              "for_lots": 15,
+              "for_pct": 23.1,
+              "for_zero_share_lots": 0,
+              "n_lots": 68,
+              "n_proposals": 25,
+              "n_records": 68,
+              "n_voted": 65,
+              "thin": false,
+              "zero_share_lots": 3
+            }
+          },
+          "n": 68,
+          "n_lots": 68,
+          "n_proposals": 25,
+          "n_zero_share_lots": 3,
+          "slug": "human-rights-or-human-capital-workforce",
+          "votes": {
+            "ABSENT": 0,
+            "ABSTAIN": 0,
+            "AGAINST": 53,
+            "FOR": 15,
+            "UNPARSEABLE": 0,
+            "WITHHOLD": 0
+          }
+        }
+      ],
+      "slug": "human-rights-or-human-capital-workforce"
+    },
+    {
+      "category": "DIVERSITY, EQUITY, AND INCLUSION",
+      "filings": [
+        {
+          "absent": true,
+          "accession": "0001438934-26-002275",
+          "slug": "diversity-equity-and-inclusion"
+        },
+        {
+          "accession": "0001193125-26-351549",
+          "by_source": {
+            "ISSUER": {
+              "for_lots": 0,
+              "for_pct": null,
+              "for_zero_share_lots": 0,
+              "n_lots": 0,
+              "n_proposals": 0,
+              "n_records": 0,
+              "n_voted": 0,
+              "thin": true,
+              "zero_share_lots": 0
+            },
+            "SECURITY HOLDER": {
+              "for_lots": 6,
+              "for_pct": 46.2,
+              "for_zero_share_lots": 0,
+              "n_lots": 13,
+              "n_proposals": 6,
+              "n_records": 13,
+              "n_voted": 13,
+              "thin": false,
+              "zero_share_lots": 0
+            }
+          },
+          "n": 13,
+          "n_lots": 13,
+          "n_proposals": 6,
+          "n_zero_share_lots": 0,
+          "slug": "diversity-equity-and-inclusion",
+          "votes": {
+            "ABSENT": 0,
+            "ABSTAIN": 1,
+            "AGAINST": 6,
+            "FOR": 6,
+            "UNPARSEABLE": 0,
+            "WITHHOLD": 0
+          }
+        },
+        {
+          "accession": "0001104659-26-101970",
+          "by_source": {
+            "ISSUER": {
+              "for_lots": 0,
+              "for_pct": null,
+              "for_zero_share_lots": 0,
+              "n_lots": 0,
+              "n_proposals": 0,
+              "n_records": 0,
+              "n_voted": 0,
+              "thin": true,
+              "zero_share_lots": 0
+            },
+            "SECURITY HOLDER": {
+              "for_lots": 6,
+              "for_pct": 16.7,
+              "for_zero_share_lots": 0,
+              "n_lots": 36,
+              "n_proposals": 16,
+              "n_records": 36,
+              "n_voted": 36,
+              "thin": false,
+              "zero_share_lots": 0
+            }
+          },
+          "n": 36,
+          "n_lots": 36,
+          "n_proposals": 16,
+          "n_zero_share_lots": 0,
+          "slug": "diversity-equity-and-inclusion",
+          "votes": {
+            "ABSENT": 0,
+            "ABSTAIN": 1,
+            "AGAINST": 29,
+            "FOR": 6,
+            "UNPARSEABLE": 0,
+            "WITHHOLD": 0
+          }
+        },
+        {
+          "accession": "0001104659-26-102001",
+          "by_source": {
+            "ISSUER": {
+              "for_lots": 0,
+              "for_pct": null,
+              "for_zero_share_lots": 0,
+              "n_lots": 0,
+              "n_proposals": 0,
+              "n_records": 0,
+              "n_voted": 0,
+              "thin": true,
+              "zero_share_lots": 0
+            },
+            "SECURITY HOLDER": {
+              "for_lots": 3,
+              "for_pct": 15.8,
+              "for_zero_share_lots": 0,
+              "n_lots": 23,
+              "n_proposals": 11,
+              "n_records": 23,
+              "n_voted": 19,
+              "thin": false,
+              "zero_share_lots": 4
+            }
+          },
+          "n": 23,
+          "n_lots": 23,
+          "n_proposals": 11,
+          "n_zero_share_lots": 4,
+          "slug": "diversity-equity-and-inclusion",
+          "votes": {
+            "ABSENT": 0,
+            "ABSTAIN": 0,
+            "AGAINST": 20,
+            "FOR": 3,
+            "UNPARSEABLE": 0,
+            "WITHHOLD": 0
+          }
+        }
+      ],
+      "slug": "diversity-equity-and-inclusion"
+    }
+  ],
+  "engine_run_id": "f97e5b26827a3e1d",
+  "generated_at": "2026-08-30T05:55:09+00:00"
+}

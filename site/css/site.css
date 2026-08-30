@@ -412,6 +412,19 @@ td.lot { white-space: nowrap; }
 #category-table .denom { white-space: normal; display: block; }
 #category-table tbody th[scope="row"] { white-space: normal; max-width: 11rem; }
 
+.picker-line { margin: 0.75rem 0 0.25rem; font-size: 0.9375rem; }
+.picker-line select { font: inherit; font-size: 0.9375rem; padding: 0.3rem 0.5rem; max-width: 100%;
+  border: 1px solid var(--line-strong); border-radius: 4px; background: #fff; color: var(--ink); }
+.picker-line .def-note { display: block; }
+#compare-table { font-size: 0.875rem; }
+#compare-table th, #compare-table td { padding: 0.4rem 0.5rem; vertical-align: top; }
+#compare-table thead th { white-space: normal; }
+#compare-table .th-note { display: block; font-weight: 400; text-transform: none; letter-spacing: 0; font-size: 0.7rem; }
+#compare-table tbody th[scope="row"] { white-space: normal; max-width: 11rem; }
+.compare-cell a { display: block; color: inherit; text-decoration: none; }
+.compare-cell a:hover .compare-line { text-decoration: underline; }
+.compare-line { display: block; white-space: nowrap; }
+
 .spellings { columns: 2; font-size: 0.8125rem; padding-left: 1.2rem; }
 .spellings li { break-inside: avoid; margin-bottom: 0.2rem; }
 @media (max-width: 700px) { .spellings { columns: 1; } }

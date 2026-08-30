@@ -180,8 +180,69 @@ def list_filings(source, base_url_data):
             f"source, wrong form, or a dried-up feed; never a quiet day")
 
     found.sort(key=lambda f: (f["filed_at"] or "", f["accession"]), reverse=True)
+    if source.get("series_id") or source.get("series_match"):
+        # Part 2: selection by series happens in select_by_series (it needs the
+        # filing index pages); hand back the whole newest-first list.
+        return {"entity_name": entity_name, "filings": found}
     max_filings = int(source.get("max_filings", 1))
     return {"entity_name": entity_name, "filings": found[:max_filings]}
+
+
+def select_by_series(source, filings, base_url_archives):
+    """Part 2 (spec section 5): pin a source to ONE fund series by name.
+
+    A registrant files one N-PX per series (VANGUARD INDEX FUNDS: 108 in one
+    window), so "the newest filing" changes fund whenever any series files.
+    Walk the registrant's filings newest-first, read each filing index page for
+    its series name, keep the first max_filings whose series name contains
+    source["series_match"] (case-insensitive, whitespace-collapsed). Returns
+    {"filings": [...selected, newest-first], "pages_read": n}.
+
+    No match after reading every page is an AdapterError: the source FAILS.
+    It never falls back to "newest" - a silent fallback would publish a
+    different fund under a green run (the identity trap at series level).
+    Cost: one polite index-page fetch per filing walked, and the walk stops at
+    the first match.
+    """
+    want = " ".join((source.get("series_match") or "").split()).upper()
+    want_id = (source.get("series_id") or "").strip().upper()
+    max_filings = int(source.get("max_filings", 1))
+    cik_int = int(source["cik"])
+    selected = []
+    pages_read = 0
+    seen = []
+    for filing in filings:
+        accession = filing["accession"]
+        acc_nodash = accession.replace("-", "")
+        dir_url = f"{base_url_archives}/Archives/edgar/data/{cik_int}/{acc_nodash}"
+        index_url = f"{dir_url}/{accession}-index.html"
+        page = enumerate_index_html(dir_url, index_url, base_url_archives)
+        pages_read += 1
+        hit = None
+        for s in page["series"]:
+            sid = (s["id"] or "").upper()
+            sname = " ".join((s["name"] or "").split()).upper()
+            if (want_id and sid == want_id) or (not want_id and want and want in sname):
+                hit = s
+                break
+        seen.extend((s["name"] or "(unnamed)") for s in page["series"])
+        if hit is not None:
+            selected.append({**filing, "series_name": hit["name"], "series_id": hit["id"]})
+            log(f"  {accession}: series {hit['id']} '{hit['name']}' matches "
+                f"{source.get('series_id') or source.get('series_match')} "
+                f"({len(page['series'])} series in this filing)")
+            if len(selected) >= max_filings:
+                break
+        else:
+            log(f"  {accession}: {len(page['series'])} series, none is "
+                f"{source.get('series_id') or source.get('series_match')}")
+    if not selected:
+        raise AdapterError(
+            f"no {source['form']} filing of CIK {source['cik']} carries series "
+            f"{source.get('series_id') or source.get('series_match')} ({pages_read} index pages read; "
+            f"series seen: {sorted(set(seen))[:12]}...) - the source FAILS rather than "
+            f"fall back to the newest filing")
+    return {"filings": selected, "pages_read": pages_read}
 
 
 _TR_RE = re.compile(r"<tr[^>]*>(.*?)</tr>", re.S | re.I)
@@ -206,15 +267,22 @@ def enumerate_index_html(dir_url, index_url, base_url_archives):
     body = _http_get(index_url).decode("utf-8", "replace")
     docs = {}
     series_name = None
+    series = []
     for row in _TR_RE.findall(body):
         cells = [_html.unescape(_TAG_RE.sub("", c)).strip()
                  for c in _TD_RE.findall(row)]
         hrefs = _HREF_RE.findall(row)
         if not cells:
             continue
-        # The series row: ['Series S000002840', '', '<fund name>']
-        if cells[0].startswith("Series ") and len(cells) >= 3 and series_name is None:
-            series_name = cells[2].strip() or None
+        # A series row: ['Series S000002840', '', '<fund name>']. Vanguard files one
+        # series per N-PX; iShares Trust and SPDR SERIES TRUST file 29 and 45 series in
+        # one N-PX (2026-08-30), so EVERY row is kept and the first stays series_name.
+        if cells[0].startswith("Series ") and len(cells) >= 3:
+            sid = cells[0].split(None, 1)[1].strip() if " " in cells[0] else None
+            sname = cells[2].strip() or None
+            series.append({"id": sid, "name": sname})
+            if series_name is None:
+                series_name = sname
             continue
         if not hrefs or len(cells) < 4:
             continue
@@ -223,14 +291,15 @@ def enumerate_index_html(dir_url, index_url, base_url_archives):
             href = f"{base_url_archives}{href}"
         doc_type = cells[3].strip()
         basename = href.rsplit("/", 1)[-1].lower()
-        entry = docs.setdefault(basename, {"type": doc_type, "url": None, "view_url": None})
+        entry = docs.setdefault(basename, {"type": doc_type, "url": None, "view_url": None,
+                                           "name": href.rsplit("/", 1)[-1]})
         if "/xsl" in href.lower():
             entry["view_url"] = href
         else:
             entry["url"] = href
         if doc_type and not entry["type"]:
             entry["type"] = doc_type
-    return {"docs": docs, "series_name": series_name}
+    return {"docs": docs, "series_name": series_name, "series": series}
 
 
 def vote_document_links(source, filing, base_url_archives):
@@ -305,7 +374,9 @@ def fetch_filing(source, filing, base_url_archives):
             continue
         if (low.startswith("proxytable") and low.endswith(".xml")) or \
                 ("proxy voting" in (d["type"] or "").lower()):
-            siblings.append((low, d["type"] or ""))
+            # ORIGINAL case: iShares lists BRDWLB_0001100663_2026.xml and EDGAR 404s the
+            # lowercased path (2026-08-30). The dict key is lowercased for matching only.
+            siblings.append((d.get("name") or low, d["type"] or ""))
             seen.add(low)
     for low in seen:
         d = page["docs"].get(low)

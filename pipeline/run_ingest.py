@@ -145,6 +145,21 @@ def process_source(conn, source, base_url_data, base_url_archives, run_id):
                 f"mismatched identity (set identity_warn_only: True to "
                 f"downgrade after confirming)")
             return False, f"identity mismatch: {msg}"
+    if source.get("series_id") or source.get("series_match"):
+        # Part 2: pin to one series by id (name fragment as the fallback). The expected set (G9) is the
+        # selected filings, and a no-match FAILS the source (never "newest").
+        try:
+            picked = with_retries(
+                f"{sid} series selection {source.get('series_id') or source.get('series_match')}",
+                lambda: adapter.select_by_series(
+                    source, listing["filings"], base_url_archives))
+        except Exception as e:
+            log(f"source {sid}: FAILED series selection: {e}")
+            return False, f"series selection failed: {e}"
+        log(f"source {sid}: series {source.get('series_id') or source.get('series_match')} selected "
+            f"{len(picked['filings'])} of {len(listing['filings'])} listed filing(s) "
+            f"({picked['pages_read']} index page(s) read)")
+        listing["filings"] = picked["filings"]
     log(f"source {sid}: entity '{entity_name}', "
         f"{len(listing['filings'])} filing(s) selected")
     # Persist the expected set - the denominator for listing-coverage (G9).
@@ -170,6 +185,9 @@ def process_source(conn, source, base_url_data, base_url_archives, run_id):
                 links = adapter.vote_document_links(source, filing, base_url_archives)
                 store.update_filing_links(
                     conn, accession, links["vote_doc_view_url"], links["series_name"])
+                if filing.get("series_id"):
+                    store.update_filing_series(
+                        conn, accession, filing["series_id"], filing.get("series_name"))
                 conn.commit()
                 if links["vote_doc_view_url"]:
                     log(f"  {accession}: rendered vote-table link refreshed")
@@ -211,7 +229,11 @@ def process_source(conn, source, base_url_data, base_url_archives, run_id):
             "form": result["form"],
             "period_of_report": result["period_of_report"],
             "filed_at": result["filed_at"],
-            "series_name": result["series_name"],
+            # Part 2: the pinned series (from select_by_series) wins over the index
+            # page's first series row, which is only the first of many in a
+            # multi-series filing.
+            "series_name": filing.get("series_name") or result["series_name"],
+            "series_id": filing.get("series_id"),
             "primary_doc": result["primary_doc"],
             "vote_doc_name": result["vote_doc_name"],
             "vote_doc_type": result["vote_doc_type"],

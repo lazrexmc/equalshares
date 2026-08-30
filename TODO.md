@@ -7,7 +7,7 @@
 
 ## RESUME HERE
 
-**Live state as of 2026-08-30 00:42 CDT (from `date` on this machine). This block outranks every other document in this repo.**
+**Live state as of 2026-08-30 00:58 CDT (from `date` on this machine). This block outranks every other document in this repo.**
 
 - **LIVE at https://equalshares.pages.dev/ - rung two** (built, deployed, verified at the origin).
   Rung three is Lance using it and reporting. Two dogfood findings so far, both fixed (`df0c576`
@@ -55,7 +55,9 @@
       example for the recommendation test; every gap a reader found between two numbers now has both
       numbers named.
 - [ ] **Round four** is Lance's (WAITING ON LANCE above); held there on RapidForge's call, exclusions kept.
-- [ ] **Part 2 - multi-filing** (spec section 5): IN PROGRESS from 2026-08-30.
+- [ ] **Cold-read of the compare view** (a new page shape) once readers exist who have not seen it.
+- [x] ~~**Part 2 - multi-filing**~~ - BUILT 2026-08-30 (spec section 14): four filings pinned by series id,
+      picker + routing + compare view, G11, eleven gates, verified at the origin.
 - [ ] **Part 2 - multi-filing**: `series_match` per source, three Big Three sources (iShares Trust
       0001100663, SPDR SERIES TRUST 0001064642, Vanguard 500 Index series), `site/data/index.json`
       + per-filing dirs + `compare.json`, gate G11 index-coverage, picker and compare view.
@@ -76,11 +78,13 @@
 
 ## BUILD QUEUE
 
-- [ ] **More filers.** The pipeline is one config line per source. Big Three + contrast set
-      (Fidelity, T. Rowe, Capital Group, a large pension) - decision 3. Each is a `SOURCES` entry;
-      the IM *notice* reports enumerate a filer's fund registrants for free (DRYRUN_001 finding 4).
-- [ ] **Multi-filing support** - replaces the `max_filings: 1` unstable pointer (README, deferred
-      review finding 2). A trust files one N-PX per fund series; the page must say which, or show all.
+- [x] ~~**Big Three**~~ - DONE 2026-08-30 (Part 2): Vanguard 500, iShares Core S&P 500, SPDR Portfolio
+      S&P 500, each one `SOURCES` entry pinned by series id.
+- [ ] **Contrast set** (Fidelity, T. Rowe, Capital Group, a large pension) - decision 3; one
+      `SOURCES` entry each once their series ids are read off EDGAR; the IM *notice* reports
+      enumerate a filer's fund registrants for free (DRYRUN_001 finding 4).
+- [x] ~~**Multi-filing support**~~ - DONE 2026-08-30 (Part 2). Pinned by series id; the page lists every
+      filing and compares the same category across them.
 - [ ] **Shadow/promotion path** for the extractor - build it the first time the extractor is
       actually rewritten (extractor-provenance 5.4; deferred review finding 1).
 - [ ] **Concordance by `voteSource`** on the category table - the 85.6% / 0.0% split belongs in the
