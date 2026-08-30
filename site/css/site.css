@@ -1,4 +1,4 @@
-/* site.css — The Roll Call (EqualShares slice v0).
+/* site.css - The Roll Call (EqualShares slice v0).
    No framework, no build step. Dark-on-light, system font stack, generous
    whitespace. Every table lives inside .table-scroll so wide content scrolls
    in its own container and the page body never scrolls horizontally. */
@@ -313,3 +313,82 @@ tbody th[scope="row"] {
 
 /* the cold-reader intro (first dogfood finding, 2026-08-28) */
 .intro { max-width: 46rem; margin: 0.75rem 0 1.25rem; font-size: 1.02rem; line-height: 1.55; color: #2a3442; }
+
+/* ---- Part 1 (2026-08-30): how-to-read block, lot grouping, finders ---- */
+
+.how-to-read {
+  margin: 1.5rem 0;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+}
+
+.how-to-read h2 { margin-top: 0; }
+
+.how-intro { color: var(--ink-soft); }
+
+.definitions {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.35rem 1rem;
+  margin: 0;
+}
+
+.definitions dt { font-weight: 600; }
+.definitions dd { margin: 0; }
+
+.def-note {
+  display: block;
+  color: var(--ink-soft);
+  font-size: 0.8rem;
+}
+
+code.hash {
+  word-break: break-all;
+  font-size: 0.8rem;
+}
+
+.denom {
+  color: var(--ink-soft);
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+.detail-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0.75rem 0;
+}
+
+.detail-controls select {
+  font: inherit;
+  font-size: 0.875rem;
+  padding: 0.3rem 0.5rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 4px;
+  background: #fff;
+  color: var(--ink);
+}
+
+.pager { border-top: 1px solid var(--line-strong); padding-top: 0.5rem; }
+
+tr.proposal-first td { border-top: 2px solid var(--line-strong); }
+
+td.lot { white-space: nowrap; }
+
+.finder {
+  display: block;
+  color: var(--ink-soft);
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+
+td.where { max-width: 22rem; overflow: hidden; text-overflow: ellipsis; }
+
+td.empty-note { color: var(--ink-soft); font-style: italic; }
+
+@media (max-width: 700px) {
+  .definitions { grid-template-columns: 1fr; }
+  .definitions dd { margin-bottom: 0.5rem; }
+}

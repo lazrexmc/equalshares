@@ -1,10 +1,10 @@
-// data.js — the fetch layer for The Roll Call.
+// data.js - the fetch layer for The Roll Call.
 //
 // One property here is load-bearing (static-publication-site module, trap 6.1,
 // found live in VisibleGov): a failed fetch THROWS a typed error. It never
 // resolves to anything a caller could mistake for an empty result. A Postgres
 // timeout once rendered as an honest-looking "no results" page because a fetch
-// primitive fell through to an empty array — this file exists so that can
+// primitive fell through to an empty array - this file exists so that can
 // never happen here.
 //
 // Same-origin static JSON only; there is no API key and no config to blank.
@@ -14,7 +14,7 @@ export class FetchError extends Error {
   constructor(path, status, detail) {
     super('fetch of ' + path + ' failed: ' + detail);
     this.name = 'FetchError';
-    this.path = path;      // the path that failed — callers name it in the error box
+    this.path = path;      // the path that failed - callers name it in the error box
     this.status = status;  // HTTP status, or null when the request never completed
     this.detail = detail;  // human-readable cause
   }
@@ -31,7 +31,7 @@ export class DataShapeError extends Error {
 }
 
 // fetchJson(path) -> parsed JSON, or throws FetchError.
-// cache: 'no-cache' — the browser must revalidate with the server instead of
+// cache: 'no-cache' - the browser must revalidate with the server instead of
 // serving a stale cached copy after a re-export (no caching surprises).
 export async function fetchJson(path) {
   let resp;

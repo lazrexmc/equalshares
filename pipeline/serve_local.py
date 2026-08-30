@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""serve_local.py — view the exported site locally before Pages exists.
+"""serve_local.py - view the exported site locally before Pages exists.
 
 Serves site/ at http://127.0.0.1:8765/ with a correct MIME type for .json
 (Windows registry entries can poison mimetypes into text/plain) and
@@ -87,7 +87,7 @@ def main():
         sys.exit(1)
     meta = SITE / "data" / "meta.json"
     if not meta.exists():
-        log(f"note: {meta} does not exist yet — the page will show its loud error box until export_site.py runs")
+        log(f"note: {meta} does not exist yet - the page will show its loud error box until export_site.py runs")
     global SECURITY_HEADERS
     SECURITY_HEADERS = parse_site_headers()
     log(f"serving {len(SECURITY_HEADERS)} security header(s) from site/_headers "
@@ -96,7 +96,7 @@ def main():
     try:
         httpd = ThreadingHTTPServer((HOST, PORT), handler)
     except OSError as e:
-        log(f"ERROR: cannot bind {HOST}:{PORT} ({e}) — is another serve_local.py already running?")
+        log(f"ERROR: cannot bind {HOST}:{PORT} ({e}) - is another serve_local.py already running?")
         sys.exit(1)
     log(f"serving {SITE}")
     log(f"open  http://{HOST}:{PORT}/   (Ctrl+C to stop)")

@@ -14,8 +14,10 @@ test of them.
 
 1. **Anti-blend.** No blended cross-category concordance number anywhere - not
    in the JSON, not on the page. This filing is ~73% director elections; a
-   blended number measures nothing. Per-category only, flagged `thin` below
-   `n_comparable < 5` (`thin_n`, VisibleGov precedent).
+   blended number measures nothing. Per-category only; inside a category,
+   "% FOR" is split by who proposed the item (`voteSource`) and every cell
+   carries its numerator and denominator, flagged `thin` below `n_voted < 5`
+   (`thin_n`, VisibleGov precedent).
 2. **Tri-valued field state.** extracted (value) / absent-in-source (raw NULL)
    / unparseable (raw kept, normalized NULL). Never invent, never blank a raw.
    Known dirty data: some `howVoted` values are numeric strings ("1.0"/"2.0"/
@@ -30,6 +32,14 @@ test of them.
    site renders a visible error state, never an empty table.
 6. **Re-parse = UPSERT.** `vote_records` upserts on `(accession, seq)`;
    insert-ignore silently discards corrections and fails gate G5.
+7. **A row is a vote lot, and no headline rests on `managementRecommendation`.**
+   (Cold-read round one, 2026-08-29.) An N-PX `<proxyTable>` block holds 1-10
+   `<voteRecord>` lots; a proposal spans 1-5 blocks. Every row is published
+   with `proposal_no` / `lot_index` / `lots_in_proposal`, and totals hold
+   records, lots and proposals apart. `managementRecommendation` is a per-lot
+   field that tracks the lot in this filing (0 of 1,433 shareholder lots
+   agree); `meta.mgmt_rec_semantics` publishes that computed check per filing
+   and gate G8 refuses any recommendation-derived or blended key anywhere.
 
 ## How to run (five commands, from the repo root)
 

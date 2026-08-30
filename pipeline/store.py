@@ -62,6 +62,9 @@ SCHEMA = [
         vote_series TEXT,
         vote_source TEXT,
         categories_all TEXT,
+        proposal_no INTEGER,
+        lot_index INTEGER,
+        lots_in_proposal INTEGER,
         source_url TEXT NOT NULL,
         engine_run_id TEXT NOT NULL,
         extracted_at TEXT NOT NULL,
@@ -118,6 +121,15 @@ def connect(db_path):
 def init_schema(conn):
     for stmt in SCHEMA:
         conn.execute(stmt)
+    conn.commit()
+    # Additive migration (2026-08-29, cold-read round one): a store created
+    # before proposal grouping existed lacks these columns. ADD COLUMN is the
+    # only ALTER SQLite needs here; values are filled by the next extract.
+    have = {row[1] for row in conn.execute("PRAGMA table_info(vote_records)")}
+    for col in ("proposal_no INTEGER", "lot_index INTEGER",
+                "lots_in_proposal INTEGER"):
+        if col.split()[0] not in have:
+            conn.execute(f"ALTER TABLE vote_records ADD COLUMN {col}")
     conn.commit()
 
 
@@ -199,13 +211,13 @@ def upsert_vote_records(conn, rows):
         """INSERT INTO vote_records(accession, seq, issuer_name, cusip, isin,
              meeting_date, category_type, vote_description, shares_voted,
              shares_on_loan, how_voted_raw, how_voted, mgmt_rec_raw, mgmt_rec,
-             vote_series, vote_source, categories_all, source_url, engine_run_id,
-             extracted_at)
+             vote_series, vote_source, categories_all, proposal_no, lot_index,
+             lots_in_proposal, source_url, engine_run_id, extracted_at)
            VALUES(:accession, :seq, :issuer_name, :cusip, :isin,
              :meeting_date, :category_type, :vote_description, :shares_voted,
              :shares_on_loan, :how_voted_raw, :how_voted, :mgmt_rec_raw, :mgmt_rec,
-             :vote_series, :vote_source, :categories_all, :source_url, :engine_run_id,
-             :extracted_at)
+             :vote_series, :vote_source, :categories_all, :proposal_no, :lot_index,
+             :lots_in_proposal, :source_url, :engine_run_id, :extracted_at)
            ON CONFLICT(accession, seq) DO UPDATE SET
              issuer_name = excluded.issuer_name,
              cusip = excluded.cusip,
@@ -222,6 +234,9 @@ def upsert_vote_records(conn, rows):
              vote_series = excluded.vote_series,
              vote_source = excluded.vote_source,
              categories_all = excluded.categories_all,
+             proposal_no = excluded.proposal_no,
+             lot_index = excluded.lot_index,
+             lots_in_proposal = excluded.lots_in_proposal,
              source_url = excluded.source_url,
              engine_run_id = excluded.engine_run_id,
              extracted_at = excluded.extracted_at""",

@@ -220,3 +220,46 @@ this session's standing prompt: process unprocessed peer messages with data veri
 Part 1 only once RapidForge approves the spec; otherwise keep the instruments green and say "no
 change"; if a message states a limit reset time, arm a one-shot at reset + 60 s with the same
 prompt. The standing prompt is summarised in TODO.md RESUME HERE so a fresh session can re-arm it.
+
+## 2026-08-30 (after midnight, CDT) - session `equalshares-80`, Part 1 built
+
+**rapidforge-79 (relayed), 2026-08-30:** spec approved in the order written (Part 1, second read,
+Part 2) with four notes: state the denominator beside every number (1,439 shareholder rows vs
+1,433 with a recommendation); store the semantics check as a fact in `meta.json`, gated; decide
+what the ordinal counts and hold lots / records / proposals apart in G7; note G11's kinship with
+`catalogue_drift`. Deposited at the registry: two traps and the cold-read protocol (a candidate
+module, EqualShares its one consumer). All four applied (spec section 11).
+
+**Lance, 2026-08-30 00:5x CDT, verbatim, relayed by rapidforge-79 to every peer:** "send all peers
+a prompt to update all documentation if they haven't recently" - then "goodnight". This entry
+and the files in this commit are that update.
+
+**Lance, 2026-08-30 about 00:0x CDT (RapidForge's clock read 00:08 CDT right after; its relay first said
+"~01:2x" from context and corrected itself, the rule's own first catch), verbatim, relayed by
+rapidforge-79:** "Claude always seems to get
+confused on time, it flops between UTC, Central, Eastern, etc, it needs to figure out a way to
+tell time, maybe always ask the terminal or ask rapidfordge to ask the terminmal idk, but it's an
+issue for sure". Applied from this entry on: every time written here is copied from `date` on
+this machine with its zone; commit times from `git log --date=iso`; a time without a zone in any
+message is unknown. This entry was written at 2026-08-30 00:11 CDT by that clock.
+
+**Built (Part 1, spec section 4), verified before this was written:**
+- `pipeline/store.py`: three columns (`proposal_no`, `lot_index`, `lots_in_proposal`), additive
+  migration, UPSERT carries them.
+- `pipeline/extract.py`: `NONE` is a kept value of `mgmt_rec` (`CONFIG.mgmt_rec_extra_values`);
+  `assign_proposals()` groups rows across blocks; zero-lot rows carry `lot_index` 0.
+- `pipeline/sources.py`: CONFIG gains `mgmt_rec_extra_values` and `mgmt_rec_board_view_min_pct`
+  (both inside the fingerprint). Engine run rotated to `2e9a5a7bbe8a2d86`; store re-extracted.
+- `pipeline/export_site.py`: rewritten around the vocabulary (record / lot / proposal);
+  `by_source` cells with numerator and denominator; `mgmt_rec_semantics`; totals hold records,
+  lots, zero-lot rows and proposals apart; refuses a filing with more than one series.
+- `pipeline/checks.py`: G7 recomputes every new field (200 checks); G8 walks all 14 artifacts for
+  forbidden key names and requires the semantics block. Rule-15 sweep of the file.
+- `site/`: How-to-read block; split "% FOR" columns; lot grouping and a visible finder per row;
+  field-state filter; full SHA and definitions; pager shown only when needed. Rule-15 sweep of
+  every site file.
+- Results: `checks.py` 10 passed 0 failed 0 skipped; `verify_claims.py` 8/8; rendered under the
+  production CSP via `serve_local.py` in Playwright: zero console messages, ENVIRONMENT OR CLIMATE
+  opened, filter "split proposals" -> 257 of 266 records match.
+- Documentation: README decision 7; AUDIT_LOG round-one entry with verdicts; PLAYBOOK_DELTA
+  Lessons 6 and 7; spec section 11; TODO RESUME re-dated.

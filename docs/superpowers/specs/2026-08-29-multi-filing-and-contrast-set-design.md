@@ -1,6 +1,6 @@
 # Multi-filing and the contrast set - design
 
-**Date:** 2026-08-29 (late, CDT). **Status:** DRAFT for RapidForge review before any code
+**Date:** 2026-08-29 (late, CDT). **Status:** approved by RapidForge 2026-08-30 with four notes (section 11); Part 1 BUILT 2026-08-30; Part 2 next. Originally: DRAFT for RapidForge review before any code
 (the method: specs first, gameplan to the registry, build on its reply). Owner assumptions are in
 section 8 for Lance to override; nothing here needs his hands to build.
 
@@ -172,3 +172,16 @@ Findings from that round are processed the same way: verified in the data, dispo
   A `static-publication-site` trap.
 - **The cold-read protocol** (`docs/COLD_READ_PROTOCOL.md`): five independent strangers against one
   page, four questions, findings verified in the data before disposition.
+
+## 11. Review notes from RapidForge (2026-08-30) and how Part 1 applied them
+
+1. **Denominator beside the number.** Every "% FOR" cell publishes `for_lots` and `n_voted` and
+   the page renders "23.8% (63 of 265)". The semantics line states both 1,439 shareholder lots and
+   the 1,433 with a recommendation.
+2. **Semantics check as a stored fact.** `meta.mgmt_rec_semantics` (agreement `0/1433`, verdict
+   `tracks-lot`, `headline_allowed: false`, threshold from CONFIG so it is in the fingerprint);
+   G7 recomputes it, G8 requires it.
+3. **What the ordinal counts.** `record N of 29,891` counts rows (lots plus zero-lot rows);
+   `totals` carries `records`, `lots`, `zero_lot_rows` and `proposals` separately and G7 asserts
+   `lots + zero_lot_rows == records`.
+4. **G11 and `catalogue_drift`.** Noted for Part 2's gate docstring.

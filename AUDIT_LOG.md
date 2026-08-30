@@ -109,3 +109,67 @@ in the README with their triggers. No Open findings.
   **Accepted Risk** - cosmetic on a single-page site with no deep links; recorded, not fixed.
 - 2026-08-29: the cross-project standard adopted (`CLAUDE.md` Deviations). `tools/verify_claims.py`
   and `tools/verify_deploy.py` added as the re-runnable evidence for the claims above.
+
+## Audit 2026-08-29 - Cold-read round one (four independent readers)
+
+### Scope
+
+The live page at `acbd2bb`, read as strangers by four peer sessions (Glizzness, LinkedUmp,
+VisibleGov, Phoenix), each in a real browser with one category opened, per
+`docs/COLD_READ_PROTOCOL.md`. Reports in `CHATLOG.md`; every finding checked in
+`data/rollcall.db` and the raw XML before a disposition (spec section 2).
+
+### Findings Status From Prior Audits
+
+| Prior Finding | Status | Evidence |
+| --- | --- | --- |
+| 2026-08-28 #5 shadow/promotion path | Accepted Risk (unchanged) | README Known limitations (1) |
+| 2026-08-28 #6 `max_filings: 1` unstable pointer | Accepted Risk, fix designed | spec Part 2, `series_match` |
+
+### Severity-Ranked Findings
+
+#### High
+
+- F3 A row was never defined; the same proposal appears several times with different votes.
+  Cause: an N-PX block holds 1-10 lots, a proposal spans 1-5 blocks; one series throughout.
+  Verdict: **Fixed** (2026-08-30: `proposal_no` / `lot_index` / `lots_in_proposal` per record,
+  lots grouped in the drill-down, totals hold records / lots / proposals apart; G7 recomputes).
+- F4 "% with mgmt recommendation" read backwards on shareholder-proposal categories. Cause: the
+  field is per lot and tracks the lot (0 of 1,433 shareholder lots agree; varies inside ISSUER
+  items too). Verdict: **Fixed** (headline dropped; "% FOR" split by `voteSource` with numerator
+  and denominator; `meta.mgmt_rec_semantics` computed per filing; G8 forbids
+  `with_mgmt|concordance|comparable|blend` keys anywhere).
+- F6 Every row's receipt is the same filing-level URL. Verdict: **Fixed** as far as the source
+  allows (N-PX has no per-row anchor): the row's ordinal, proposal number and search terms are
+  visible beside the link; the How-to-read block says there is one receipt per filing.
+
+#### Medium
+
+- F5 "Comparable" excluded 10 records silently (raw `NONE` normalised to NULL). Verdict:
+  **Fixed** (`NONE` is a kept value; "Comparable" retired).
+- F7 Truncated SHA; unexplained engine run. Verdict: **Fixed** (full hash; definitions inline).
+- F8 Undefined terms. Verdict: **Fixed** (How-to-read block; no numbers in it).
+- F14 "88 unparseable" and "1 absent" with no way to see which. Verdict: **Fixed** (field-state
+  filter in the drill-down: unparseable / absent / zero-share / split).
+
+#### Low
+
+- F9 Intro overstated ("every mutual fund ... every meeting"). Verdict: **Fixed** (reworded).
+- F10 Pager not found. Verdict: **Fixed** (pager hidden when one page, shown top and bottom with
+  a ruled top; status names the page).
+- F11 Category placement looked like the site's choice. Verdict: **Fixed** (labelled as filed).
+- F12 Zero-share lots unexplained. Verdict: **Accepted as filed** with a definition line and a
+  filter; 2,845 lots.
+- F13 The XSL-viewer URL looked constructed. Verdict: **No change needed** (stored at ingest from
+  the filing index page); the footer and provenance box now say where it came from.
+
+### Sign-Off Position
+
+Part 1 of `docs/superpowers/specs/2026-08-29-multi-filing-and-contrast-set-design.md` built
+2026-08-30: ten gates pass (G7 200 checks, G8 over 14 artifacts), `tools/verify_claims.py` passes,
+rendered under the production CSP with zero console messages. Engine run `2e9a5a7bbe8a2d86`.
+Round two of the protocol is requested on the corrected page.
+
+### Post-Audit Changes
+
+- 2026-08-30: Part 1 shipped (this entry). The next entry is round two's report.

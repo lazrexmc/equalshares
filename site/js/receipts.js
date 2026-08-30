@@ -1,8 +1,8 @@
-// receipts.js — the receipts contract (static-publication-site module §5.3).
+// receipts.js - the receipts contract (static-publication-site module §5.3).
 //
 // Every function here returns a URL that was ALREADY STORED with the row or
 // filing at ingest time, verbatim, or null. This module never constructs,
-// completes, reformats, or guesses a URL — a null means "render nothing",
+// completes, reformats, or guesses a URL - a null means "render nothing",
 // and rendering nothing is correct: a guessed receipt would be worse than
 // the ambiguity it replaces.
 
@@ -11,7 +11,7 @@ function storedUrl(value) {
 }
 
 // Per-record receipt: record.source_url is stamped on every vote_record at
-// ingest time (the filing's EDGAR index page — a reader can open it and
+// ingest time (the filing's EDGAR index page - a reader can open it and
 // reach the voting record). Verbatim or null.
 export function receiptUrl(record) {
   if (!record || typeof record !== 'object') return null;

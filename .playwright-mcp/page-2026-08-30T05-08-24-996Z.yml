@@ -1,0 +1,1607 @@
+- generic [ref=e1]:
+  - banner [ref=e2]:
+    - heading "The Roll Call" [level=1] [ref=e3]
+    - paragraph [ref=e4]: Fund proxy votes, per category, with receipts.
+    - paragraph [ref=e5]: "Funds that hold voting shares vote them on your behalf: on directors, executive pay, climate reports, mergers, at the company meetings of every stock they hold. Once a year the SEC requires each fund to file the full list of those votes (Form N-PX). It is public, and almost nobody can read it. This page is one such filing made readable: one fund, one proxy year, every vote lot, grouped by the SEC's own categories, with a receipt to the filing for every row."
+    - paragraph [ref=e6]: "Fund: Vanguard Morningstar Value Index Fund, a series of VANGUARD INDEX FUNDS (CIK 0000036405) | Form N-PX | proxy year ending 2026-06-30"
+    - paragraph [ref=e7]: Filed 2026-08-27 (SEC) | fetched 2026-08-28T18:41:32+00:00 | page generated 2026-08-30T05:02:23+00:00
+  - main [ref=e8]:
+    - region [ref=e9]:
+      - heading "How to read this page" [level=2] [ref=e10]
+      - paragraph [ref=e11]: "Terms first; the numbers below are computed from the filing and every one of them can be opened as a list. Four strangers read an earlier version of this page and could not tell what a row was, so:"
+      - generic [ref=e12]:
+        - term [ref=e13]: Fund
+        - definition [ref=e14]:
+          - text: The fund named in the line above the page is one
+          - emphasis [ref=e15]: series
+          - text: of a larger registrant (the trust that files with the SEC). The filing covers that one series and one proxy year.
+        - term [ref=e16]: Proxy year
+        - definition [ref=e17]: Form N-PX covers votes cast from July 1 to June 30. The period shown is the year's end date.
+        - term [ref=e18]: Proposal
+        - definition [ref=e19]: "One item on one company's ballot: a director election, a pay plan, a shareholder's climate resolution. The fund's vote on it is what a reader usually wants."
+        - term [ref=e20]: Record, or vote lot
+        - definition [ref=e21]:
+          - text: One row of this page. The filing reports a proposal in one or more blocks, and each block holds one or more
+          - emphasis [ref=e22]: lots
+          - text: ": a block of shares voted one way, with its own share count. One fund can vote different lots of the same proposal differently; that is the filing's own structure, shown as filed, and it is why a proposal can appear several times. Each row says which lot of how many it is."
+        - term [ref=e23]: Category
+        - definition [ref=e24]: The SEC's own category, as the fund filed it. This page does not classify anything. A record the fund tagged with several categories is counted under the first one.
+        - term [ref=e25]: Proposed by
+        - definition [ref=e26]:
+          - text: The filing's
+          - code [ref=e27]: voteSource
+          - text: ":"
+          - code [ref=e28]: ISSUER
+          - text: means the company's own management put the item forward;
+          - code [ref=e29]: SECURITY HOLDER
+          - text: means a shareholder did.
+        - term [ref=e30]: How voted
+        - definition [ref=e31]:
+          - text: FOR, AGAINST, ABSTAIN, or WITHHOLD as filed. WITHHOLD is the director-election way of not supporting a nominee where AGAINST is not on the ballot. Anything else the filing put in this field (say-on-pay frequency answers like "ONE YEAR" or "1.0") is shown verbatim and marked
+          - emphasis [ref=e32]: unparseable
+          - text: ; it is never guessed into one of the four.
+        - term [ref=e33]: "% FOR"
+        - definition [ref=e34]: Of the lots with a readable vote in that cell, the share voted FOR, with the count beside it. It is split by who proposed the item because "FOR" means support for management on a management item and support for a shareholder on a shareholder item. It says nothing about what any board wanted.
+        - term [ref=e35]: Mgmt rec (as filed)
+        - definition [ref=e36]:
+          - text: The filing's
+          - code [ref=e37]: managementRecommendation
+          - text: field, reproduced verbatim on each lot. It is a per-lot field, and this page checks whether it behaves like a board's recommendation before resting anything on it; the result of that check is stated in "Where these numbers come from". No headline on this page is computed from it.
+        - term [ref=e38]: Unparseable / absent in source
+        - definition [ref=e39]:
+          - text: "Two different states, never merged:"
+          - emphasis [ref=e40]: unparseable
+          - text: means the filing gave a value this page does not understand (shown raw);
+          - emphasis [ref=e41]: absent in source
+          - text: means the filing gave no value at all, for example a proposal filed with zero lots (a withdrawn resolution).
+        - term [ref=e42]: Zero-share lots
+        - definition [ref=e43]: A lot reported with 0 shares is the fund stating that a voting block held no shares at that meeting. Shown as filed.
+        - term [ref=e44]: Receipts
+        - definition [ref=e45]: "Form N-PX has no per-row anchor, so there is one receipt per filing: EDGAR's rendered vote table, stored at ingest time, never constructed. Each row tells you where to look in it: the row's position in the filing, its proposal number, and the issuer, CUSIP and meeting date to search for."
+        - term [ref=e46]: EqualShares
+        - definition [ref=e47]: An independent project that makes fund proxy votes readable. Not affiliated with any fund, registrant, or the SEC. Every number here is computed from the filing by a fingerprinted run; none are typed.
+    - region [ref=e48]:
+      - heading "Where these numbers come from" [level=2] [ref=e49]
+      - generic [ref=e50]:
+        - term [ref=e51]: Accession
+        - definition [ref=e52]:
+          - code [ref=e53]: 0001104659-26-102001
+          - generic [ref=e54]: the SEC's identifier for this filing
+        - term [ref=e55]: Fund series
+        - definition [ref=e56]:
+          - text: Vanguard Morningstar Value Index Fund (S000002840)
+          - generic [ref=e57]: the one series this filing covers
+        - term [ref=e58]: Vote document
+        - definition [ref=e59]:
+          - link "complete submission, containing proxytable.xml (17.7 MB extracted)" [ref=e60] [cursor=pointer]:
+            - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001.txt
+        - term [ref=e61]: Filing page
+        - definition [ref=e62]:
+          - link "filing index at SEC EDGAR" [ref=e63] [cursor=pointer]:
+            - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001-index.html
+          - generic [ref=e64]: where the receipt URLs below were read from at ingest time
+        - term [ref=e65]: Readable table
+        - definition [ref=e66]:
+          - link "EDGAR's rendered vote table (search it by issuer or CUSIP)" [ref=e67] [cursor=pointer]:
+            - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+          - generic [ref=e68]: the one receipt every row points at
+        - term [ref=e69]: Raw SHA-256
+        - definition [ref=e70]:
+          - code [ref=e71]: 2299061d3fe326e18bd445b902fe4dc429374c441ad1e419329d86e8479e919f
+          - generic [ref=e72]: hash of the extracted vote-document bytes as stored; recompute it over the document to confirm this page read the same bytes
+        - term [ref=e73]: Engine run
+        - definition [ref=e74]:
+          - code [ref=e75]: 2e9a5a7bbe8a2d86
+          - generic [ref=e76]: a fingerprint of the code and configuration that computed every number here; two runs with the same id computed the same way
+        - term [ref=e77]: Totals
+        - definition [ref=e78]:
+          - text: 29,891 records (29,890 vote lots + 1 zero-lot rows) | 10,523 proposals | 12 categories | 88 unparseable how-voted values | 1 absent in source | 2,845 zero-share lots
+          - generic [ref=e79]: "each of these counts is a list: open a category and use \"Show\""
+      - paragraph [ref=e80]: "Check on the filing's managementRecommendation field: on shareholder items it agrees with the fund's own vote in 0/1433 lots (0%); 1,439 shareholder lots in all, 1,433 with a FOR/AGAINST/ABSTAIN/WITHHOLD recommendation. A field carrying the board's view would agree at least 50% of the time, so in this filing the field tracks something else (it varies lot by lot within one proposal). It is shown as filed on each lot, and no headline on this page is computed from it."
+      - paragraph [ref=e81]: Every number on this page is computed from the filing. None are typed.
+    - region [ref=e82]:
+      - heading "Votes by category" [level=2] [ref=e83]
+      - paragraph [ref=e84]: 73% of this filing's records are DIRECTOR ELECTIONS. A single blended number would mostly measure that category, so none is shown.
+      - table [ref=e86]:
+        - rowgroup [ref=e87]:
+          - row [ref=e88]:
+            - columnheader "Category (as filed)" [ref=e89]
+            - columnheader "Proposals" [ref=e90]
+            - columnheader "Lots" [ref=e91]
+            - columnheader "For" [ref=e92]
+            - columnheader "Against" [ref=e93]
+            - columnheader "Abstain" [ref=e94]
+            - columnheader "Withhold" [ref=e95]
+            - columnheader "Unparseable" [ref=e96]
+            - columnheader "Absent in source" [ref=e97]
+            - columnheader "% FOR, management items (FOR of voted lots)" [ref=e98]
+            - columnheader "% FOR, shareholder items (FOR of voted lots)" [ref=e99]
+        - rowgroup [ref=e100]:
+          - button "Show all 21,846 records for DIRECTOR ELECTIONS" [ref=e101] [cursor=pointer]:
+            - rowheader "DIRECTOR ELECTIONS" [ref=e102]
+            - cell "7,998" [ref=e103]
+            - cell "21,845" [ref=e104]
+            - cell "15,077" [ref=e105]
+            - cell "3,594" [ref=e106]
+            - cell "3,094" [ref=e107]
+            - cell "80" [ref=e108]
+            - cell "0" [ref=e109]
+            - cell "1" [ref=e110]
+            - cell "69% (15,077 of 21,845)" [ref=e111]
+            - cell "-" [ref=e112]
+          - button "Show all 2,142 records for AUDIT-RELATED" [ref=e113] [cursor=pointer]:
+            - rowheader "AUDIT-RELATED" [ref=e114]
+            - cell "709" [ref=e115]
+            - cell "2,142" [ref=e116]
+            - cell "1,293" [ref=e117]
+            - cell "545" [ref=e118]
+            - cell "304" [ref=e119]
+            - cell "0" [ref=e120]
+            - cell "0" [ref=e121]
+            - cell "0" [ref=e122]
+            - cell "60.4% (1,293 of 2,142)" [ref=e123]
+            - cell "-" [ref=e124]
+          - button "Show all 1,921 records for COMPENSATION" [ref=e125] [cursor=pointer]:
+            - rowheader "COMPENSATION" [ref=e126]
+            - cell "540" [ref=e127]
+            - cell "1,921" [ref=e128]
+            - cell "1,021" [ref=e129]
+            - cell "498" [ref=e130]
+            - cell "402" [ref=e131]
+            - cell "0" [ref=e132]
+            - cell "0" [ref=e133]
+            - cell "0" [ref=e134]
+            - cell "53.6% (1,016 of 1,897)" [ref=e135]
+            - cell "20.8% (5 of 24)" [ref=e136]
+          - button "Show all 1,330 records for CORPORATE GOVERNANCE" [ref=e137] [cursor=pointer]:
+            - rowheader "CORPORATE GOVERNANCE" [ref=e138]
+            - cell "492" [ref=e139]
+            - cell "1,330" [ref=e140]
+            - cell "617" [ref=e141]
+            - cell "489" [ref=e142]
+            - cell "224" [ref=e143]
+            - cell "0" [ref=e144]
+            - cell "0" [ref=e145]
+            - cell "0" [ref=e146]
+            - cell "61.2% (403 of 659)" [ref=e147]
+            - cell "31.9% (214 of 671)" [ref=e148]
+          - button "Show all 1,328 records for SECTION 14A SAY-ON-PAY VOTES" [ref=e149] [cursor=pointer]:
+            - rowheader "SECTION 14A SAY-ON-PAY VOTES" [ref=e150]
+            - cell "420" [ref=e151]
+            - cell "1,328" [ref=e152]
+            - cell "1,165" [ref=e153]
+            - cell "64" [ref=e154]
+            - cell "11" [ref=e155]
+            - cell "0" [ref=e156]
+            - cell "88" [ref=e157]
+            - cell "0" [ref=e158]
+            - cell "94% (1,165 of 1,240)" [ref=e159]
+            - cell "-" [ref=e160]
+          - button "Show all 410 records for CAPITAL STRUCTURE" [ref=e161] [cursor=pointer]:
+            - rowheader "CAPITAL STRUCTURE" [ref=e162]
+            - cell "172" [ref=e163]
+            - cell "410" [ref=e164]
+            - cell "293" [ref=e165]
+            - cell "62" [ref=e166]
+            - cell "55" [ref=e167]
+            - cell "0" [ref=e168]
+            - cell "0" [ref=e169]
+            - cell "0" [ref=e170]
+            - cell "73.1% (285 of 390)" [ref=e171]
+            - cell "40% (8 of 20)" [ref=e172]
+          - button "Show all 266 records for ENVIRONMENT OR CLIMATE" [active] [ref=e173] [cursor=pointer]:
+            - rowheader "ENVIRONMENT OR CLIMATE" [ref=e174]
+            - cell "97" [ref=e175]
+            - cell "266" [ref=e176]
+            - cell "63" [ref=e177]
+            - cell "160" [ref=e178]
+            - cell "43" [ref=e179]
+            - cell "0" [ref=e180]
+            - cell "0" [ref=e181]
+            - cell "0" [ref=e182]
+            - cell "0% (0 of 1) thin (n<5)" [ref=e183]:
+              - text: 0% (0 of 1)
+              - 'generic "Fewer than 5 voted lots: too few to treat as a headline." [ref=e184]': thin (n<5)
+            - cell "23.8% (63 of 265)" [ref=e185]
+          - button "Show all 264 records for OTHER SOCIAL ISSUES" [ref=e186] [cursor=pointer]:
+            - rowheader "OTHER SOCIAL ISSUES" [ref=e187]
+            - cell "100" [ref=e188]
+            - cell "264" [ref=e189]
+            - cell "68" [ref=e190]
+            - cell "147" [ref=e191]
+            - cell "49" [ref=e192]
+            - cell "0" [ref=e193]
+            - cell "0" [ref=e194]
+            - cell "0" [ref=e195]
+            - cell "45.5% (5 of 11)" [ref=e196]
+            - cell "24.9% (63 of 253)" [ref=e197]
+          - button "Show all 168 records for SHAREHOLDER RIGHTS AND DEFENSES" [ref=e198] [cursor=pointer]:
+            - rowheader "SHAREHOLDER RIGHTS AND DEFENSES" [ref=e199]
+            - cell "86" [ref=e200]
+            - cell "168" [ref=e201]
+            - cell "95" [ref=e202]
+            - cell "71" [ref=e203]
+            - cell "2" [ref=e204]
+            - cell "0" [ref=e205]
+            - cell "0" [ref=e206]
+            - cell "0" [ref=e207]
+            - cell "94.9% (56 of 59)" [ref=e208]
+            - cell "35.8% (39 of 109)" [ref=e209]
+          - button "Show all 125 records for EXTRAORDINARY TRANSACTIONS" [ref=e210] [cursor=pointer]:
+            - rowheader "EXTRAORDINARY TRANSACTIONS" [ref=e211]
+            - cell "52" [ref=e212]
+            - cell "125" [ref=e213]
+            - cell "75" [ref=e214]
+            - cell "28" [ref=e215]
+            - cell "22" [ref=e216]
+            - cell "0" [ref=e217]
+            - cell "0" [ref=e218]
+            - cell "0" [ref=e219]
+            - cell "62.2% (74 of 119)" [ref=e220]
+            - cell "16.7% (1 of 6)" [ref=e221]
+          - button "Show all 68 records for HUMAN RIGHTS OR HUMAN CAPITAL/WORKFORCE" [ref=e222] [cursor=pointer]:
+            - rowheader "HUMAN RIGHTS OR HUMAN CAPITAL/WORKFORCE" [ref=e223]
+            - cell "41" [ref=e224]
+            - cell "68" [ref=e225]
+            - cell "15" [ref=e226]
+            - cell "53" [ref=e227]
+            - cell "0" [ref=e228]
+            - cell "0" [ref=e229]
+            - cell "0" [ref=e230]
+            - cell "0" [ref=e231]
+            - cell "-" [ref=e232]
+            - cell "22.1% (15 of 68)" [ref=e233]
+          - button "Show all 23 records for DIVERSITY, EQUITY, AND INCLUSION" [ref=e234] [cursor=pointer]:
+            - rowheader "DIVERSITY, EQUITY, AND INCLUSION" [ref=e235]
+            - cell "14" [ref=e236]
+            - cell "23" [ref=e237]
+            - cell "3" [ref=e238]
+            - cell "20" [ref=e239]
+            - cell "0" [ref=e240]
+            - cell "0" [ref=e241]
+            - cell "0" [ref=e242]
+            - cell "0" [ref=e243]
+            - cell "-" [ref=e244]
+            - cell "13% (3 of 23)" [ref=e245]
+      - paragraph [ref=e246]: Select a category row to see every vote lot behind its numbers.
+      - generic [ref=e247]:
+        - paragraph [ref=e248]:
+          - text: "\"% FOR\" is the fund's own vote, split by who proposed the item; every cell shows its count. Nothing on this table is derived from the filing's"
+          - code [ref=e249]: managementRecommendation
+          - text: field (see "Mgmt rec" above and the check stated in "Where these numbers come from"). Cells with fewer voted lots than the threshold are marked thin.
+        - paragraph [ref=e250]: 50 of 29,891 records carry more than one category in the filing. Each is counted under its first-listed category only, so category counts sum exactly to the record total and nothing is counted twice.
+    - region [ref=e253]:
+      - 'heading "ENVIRONMENT OR CLIMATE: 266 vote lots in 97 proposals (266 records)" [level=2] [ref=e254]'
+      - generic [ref=e255]:
+        - generic [ref=e256]:
+          - generic [ref=e257]: Show
+          - combobox "Show" [ref=e258]:
+            - option "all lots"
+            - option "unparseable how-voted only"
+            - option "absent in source only"
+            - option "zero-share lots only"
+            - option "split proposals only (more than one lot)" [selected]
+          - generic [ref=e1481]: 257 of 266 records match
+        - navigation "Record pages (top)" [ref=e259]:
+          - button "Previous" [disabled] [ref=e260]
+          - generic [ref=e261]: Page 1 of 3 | records 1 to 100 of 257
+          - button "Next" [ref=e262] [cursor=pointer]
+        - table [ref=e264]:
+          - rowgroup [ref=e265]:
+            - row [ref=e266]:
+              - columnheader "Meeting date" [ref=e267]
+              - columnheader "Issuer" [ref=e268]
+              - columnheader "Proposal" [ref=e269]
+              - columnheader "Proposed by" [ref=e270]
+              - columnheader "Lot" [ref=e271]
+              - columnheader "How voted" [ref=e272]
+              - columnheader "Mgmt rec (as filed)" [ref=e273]
+              - columnheader "Shares voted" [ref=e274]
+              - columnheader "Where to find it" [ref=e275]
+          - rowgroup [ref=e276]:
+            - row [ref=e1482]:
+              - cell "2025-12-16" [ref=e1483]
+              - cell "CISCO SYSTEMS, INC." [ref=e1484]
+              - cell "Stockholder Proposal - Approval to request the Board to conduct an evaluation and issue a report assessing how Cisco's Inclusion programs provide positive financial value to shareholders." [ref=e1485]
+              - cell "SECURITY HOLDER" [ref=e1486]
+              - cell "1 of 4" [ref=e1487]
+              - cell "ABSTAIN" [ref=e1488]
+              - cell "AGAINST" [ref=e1489]
+              - cell "43" [ref=e1490]
+              - 'cell "source record 13,626 of 29,891 | proposal #6,261 | search: CISCO SYSTEMS, INC., CUSIP 17275R102, 2025-12-16" [ref=e1491]':
+                - link "source" [ref=e1492] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e1493]: "record 13,626 of 29,891 | proposal #6,261 | search: CISCO SYSTEMS, INC., CUSIP 17275R102, 2025-12-16"
+            - row [ref=e1494]:
+              - cell "2025-12-16" [ref=e1495]
+              - cell "CISCO SYSTEMS, INC." [ref=e1496]
+              - cell "Stockholder Proposal - Approval to request the Board to conduct an evaluation and issue a report assessing how Cisco's Inclusion programs provide positive financial value to shareholders." [ref=e1497]
+              - cell "SECURITY HOLDER" [ref=e1498]
+              - cell "2 of 4" [ref=e1499]
+              - cell "FOR" [ref=e1500]
+              - cell "AGAINST" [ref=e1501]
+              - cell "29" [ref=e1502]
+              - 'cell "source record 13,627 of 29,891 | proposal #6,261 | search: CISCO SYSTEMS, INC., CUSIP 17275R102, 2025-12-16" [ref=e1503]':
+                - link "source" [ref=e1504] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e1505]: "record 13,627 of 29,891 | proposal #6,261 | search: CISCO SYSTEMS, INC., CUSIP 17275R102, 2025-12-16"
+            - row [ref=e1506]:
+              - cell "2025-12-16" [ref=e1507]
+              - cell "CISCO SYSTEMS, INC." [ref=e1508]
+              - cell "Stockholder Proposal - Approval to request the Board to conduct an evaluation and issue a report assessing how Cisco's Inclusion programs provide positive financial value to shareholders." [ref=e1509]
+              - cell "SECURITY HOLDER" [ref=e1510]
+              - cell "3 of 4" [ref=e1511]
+              - cell "AGAINST" [ref=e1512]
+              - cell "FOR" [ref=e1513]
+              - cell "2,497" [ref=e1514]
+              - 'cell "source record 13,628 of 29,891 | proposal #6,261 | search: CISCO SYSTEMS, INC., CUSIP 17275R102, 2025-12-16" [ref=e1515]':
+                - link "source" [ref=e1516] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e1517]: "record 13,628 of 29,891 | proposal #6,261 | search: CISCO SYSTEMS, INC., CUSIP 17275R102, 2025-12-16"
+            - row [ref=e1518]:
+              - cell "2025-12-16" [ref=e1519]
+              - cell "Cisco Systems, Inc." [ref=e1520]
+              - cell "Stockholder Proposal - Approval to request the Board to conduct an evaluation and issue a report assessing how Cisco's Inclusion programs provide positive financial value to shareholders." [ref=e1521]
+              - cell "SECURITY HOLDER" [ref=e1522]
+              - cell "1 of 3" [ref=e1523]
+              - cell "AGAINST" [ref=e1524]
+              - cell "FOR" [ref=e1525]
+              - cell "31,950,078.31" [ref=e1526]
+              - 'cell "source record 404 of 29,891 | proposal #375 | search: Cisco Systems, Inc., CUSIP 17275R102, 2025-12-16" [ref=e1527]':
+                - link "source" [ref=e1528] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e1529]: "record 404 of 29,891 | proposal #375 | search: Cisco Systems, Inc., CUSIP 17275R102, 2025-12-16"
+            - row [ref=e1530]:
+              - cell "2026-02-05" [ref=e1531]
+              - cell "TYSON FOODS, INC." [ref=e1532]
+              - cell "Shareholder proposal regarding report on environmental and human health impacts from waste lagoons." [ref=e1533]
+              - cell "SECURITY HOLDER" [ref=e1534]
+              - cell "1 of 4" [ref=e1535]
+              - cell "ABSTAIN" [ref=e1536]
+              - cell "AGAINST" [ref=e1537]
+              - cell "1" [ref=e1538]
+              - 'cell "source record 14,070 of 29,891 | proposal #6,409 | search: TYSON FOODS, INC., CUSIP 902494103, 2026-02-05" [ref=e1539]':
+                - link "source" [ref=e1540] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e1541]: "record 14,070 of 29,891 | proposal #6,409 | search: TYSON FOODS, INC., CUSIP 902494103, 2026-02-05"
+            - row [ref=e1542]:
+              - cell "2026-02-05" [ref=e1543]
+              - cell "TYSON FOODS, INC." [ref=e1544]
+              - cell "Shareholder proposal regarding report on environmental and human health impacts from waste lagoons." [ref=e1545]
+              - cell "SECURITY HOLDER" [ref=e1546]
+              - cell "2 of 4" [ref=e1547]
+              - cell "FOR" [ref=e1548]
+              - cell "AGAINST" [ref=e1549]
+              - cell "22" [ref=e1550]
+              - 'cell "source record 14,071 of 29,891 | proposal #6,409 | search: TYSON FOODS, INC., CUSIP 902494103, 2026-02-05" [ref=e1551]':
+                - link "source" [ref=e1552] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e1553]: "record 14,071 of 29,891 | proposal #6,409 | search: TYSON FOODS, INC., CUSIP 902494103, 2026-02-05"
+            - row [ref=e1554]:
+              - cell "2026-02-05" [ref=e1555]
+              - cell "TYSON FOODS, INC." [ref=e1556]
+              - cell "Shareholder proposal regarding report on environmental and human health impacts from waste lagoons." [ref=e1557]
+              - cell "SECURITY HOLDER" [ref=e1558]
+              - cell "3 of 4" [ref=e1559]
+              - cell "AGAINST" [ref=e1560]
+              - cell "FOR" [ref=e1561]
+              - cell "160" [ref=e1562]
+              - 'cell "source record 14,072 of 29,891 | proposal #6,409 | search: TYSON FOODS, INC., CUSIP 902494103, 2026-02-05" [ref=e1563]':
+                - link "source" [ref=e1564] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e1565]: "record 14,072 of 29,891 | proposal #6,409 | search: TYSON FOODS, INC., CUSIP 902494103, 2026-02-05"
+            - row [ref=e1566]:
+              - cell "2026-02-05" [ref=e1567]
+              - cell "TYSON FOODS, INC." [ref=e1568]
+              - cell "Shareholder proposal regarding report on environmental and human health impacts from waste lagoons." [ref=e1569]
+              - cell "SECURITY HOLDER" [ref=e1570]
+              - cell "4 of 4" [ref=e1571]
+              - cell "AGAINST" [ref=e1572]
+              - cell "FOR" [ref=e1573]
+              - cell "0" [ref=e1574]
+              - 'cell "source record 26,024 of 29,891 | proposal #6,409 | search: TYSON FOODS, INC., CUSIP 902494103, 2026-02-05" [ref=e1575]':
+                - link "source" [ref=e1576] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e1577]: "record 26,024 of 29,891 | proposal #6,409 | search: TYSON FOODS, INC., CUSIP 902494103, 2026-02-05"
+            - row [ref=e1578]:
+              - cell "2026-02-05" [ref=e1579]
+              - cell "Tyson Foods, Inc." [ref=e1580]
+              - cell "Shareholder proposal regarding report on environmental and human health impacts from waste lagoons." [ref=e1581]
+              - cell "SECURITY HOLDER" [ref=e1582]
+              - cell "1 of 3" [ref=e1583]
+              - cell "AGAINST" [ref=e1584]
+              - cell "FOR" [ref=e1585]
+              - cell "2,602,708.18" [ref=e1586]
+              - 'cell "source record 564 of 29,891 | proposal #523 | search: Tyson Foods, Inc., CUSIP 902494103, 2026-02-05" [ref=e1587]':
+                - link "source" [ref=e1588] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e1589]: "record 564 of 29,891 | proposal #523 | search: Tyson Foods, Inc., CUSIP 902494103, 2026-02-05"
+            - row [ref=e1590]:
+              - cell "2026-02-05" [ref=e1591]
+              - cell "Tyson Foods, Inc." [ref=e1592]
+              - cell "Shareholder proposal regarding report on environmental and human health impacts from waste lagoons." [ref=e1593]
+              - cell "SECURITY HOLDER" [ref=e1594]
+              - cell "2 of 3" [ref=e1595]
+              - cell "AGAINST" [ref=e1596]
+              - cell "FOR" [ref=e1597]
+              - cell "6,129.26" [ref=e1598]
+              - 'cell "source record 5,020 of 29,891 | proposal #523 | search: Tyson Foods, Inc., CUSIP 902494103, 2026-02-05" [ref=e1599]':
+                - link "source" [ref=e1600] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e1601]: "record 5,020 of 29,891 | proposal #523 | search: Tyson Foods, Inc., CUSIP 902494103, 2026-02-05"
+            - row [ref=e1602]:
+              - cell "2026-02-05" [ref=e1603]
+              - cell "Tyson Foods, Inc." [ref=e1604]
+              - cell "Shareholder proposal regarding report on environmental and human health impacts from waste lagoons." [ref=e1605]
+              - cell "SECURITY HOLDER" [ref=e1606]
+              - cell "3 of 3" [ref=e1607]
+              - cell "FOR" [ref=e1608]
+              - cell "AGAINST" [ref=e1609]
+              - cell "3,509.92" [ref=e1610]
+              - 'cell "source record 9,214 of 29,891 | proposal #523 | search: Tyson Foods, Inc., CUSIP 902494103, 2026-02-05" [ref=e1611]':
+                - link "source" [ref=e1612] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e1613]: "record 9,214 of 29,891 | proposal #523 | search: Tyson Foods, Inc., CUSIP 902494103, 2026-02-05"
+            - row [ref=e1614]:
+              - cell "2026-02-25" [ref=e1615]
+              - cell "DEERE & COMPANY" [ref=e1616]
+              - cell "Shareholder proposal on a report on the return on investment of emission reduction goals" [ref=e1617]
+              - cell "SECURITY HOLDER" [ref=e1618]
+              - cell "1 of 4" [ref=e1619]
+              - cell "ABSTAIN" [ref=e1620]
+              - cell "AGAINST" [ref=e1621]
+              - cell "2" [ref=e1622]
+              - 'cell "source record 14,184 of 29,891 | proposal #6,447 | search: DEERE & COMPANY, CUSIP 244199105, 2026-02-25" [ref=e1623]':
+                - link "source" [ref=e1624] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e1625]: "record 14,184 of 29,891 | proposal #6,447 | search: DEERE & COMPANY, CUSIP 244199105, 2026-02-25"
+            - row [ref=e1626]:
+              - cell "2026-02-25" [ref=e1627]
+              - cell "DEERE & COMPANY" [ref=e1628]
+              - cell "Shareholder proposal on a report on the return on investment of emission reduction goals" [ref=e1629]
+              - cell "SECURITY HOLDER" [ref=e1630]
+              - cell "2 of 4" [ref=e1631]
+              - cell "FOR" [ref=e1632]
+              - cell "AGAINST" [ref=e1633]
+              - cell "2" [ref=e1634]
+              - 'cell "source record 14,185 of 29,891 | proposal #6,447 | search: DEERE & COMPANY, CUSIP 244199105, 2026-02-25" [ref=e1635]':
+                - link "source" [ref=e1636] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e1637]: "record 14,185 of 29,891 | proposal #6,447 | search: DEERE & COMPANY, CUSIP 244199105, 2026-02-25"
+            - row [ref=e1638]:
+              - cell "2026-02-25" [ref=e1639]
+              - cell "DEERE & COMPANY" [ref=e1640]
+              - cell "Shareholder proposal on a report on the return on investment of emission reduction goals" [ref=e1641]
+              - cell "SECURITY HOLDER" [ref=e1642]
+              - cell "3 of 4" [ref=e1643]
+              - cell "AGAINST" [ref=e1644]
+              - cell "FOR" [ref=e1645]
+              - cell "185" [ref=e1646]
+              - 'cell "source record 14,186 of 29,891 | proposal #6,447 | search: DEERE & COMPANY, CUSIP 244199105, 2026-02-25" [ref=e1647]':
+                - link "source" [ref=e1648] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e1649]: "record 14,186 of 29,891 | proposal #6,447 | search: DEERE & COMPANY, CUSIP 244199105, 2026-02-25"
+            - row [ref=e1650]:
+              - cell "2026-02-25" [ref=e1651]
+              - cell "DEERE & COMPANY" [ref=e1652]
+              - cell "Shareholder proposal on a report on the return on investment of emission reduction goals" [ref=e1653]
+              - cell "SECURITY HOLDER" [ref=e1654]
+              - cell "4 of 4" [ref=e1655]
+              - cell "AGAINST" [ref=e1656]
+              - cell "FOR" [ref=e1657]
+              - cell "0" [ref=e1658]
+              - 'cell "source record 26,062 of 29,891 | proposal #6,447 | search: DEERE & COMPANY, CUSIP 244199105, 2026-02-25" [ref=e1659]':
+                - link "source" [ref=e1660] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e1661]: "record 26,062 of 29,891 | proposal #6,447 | search: DEERE & COMPANY, CUSIP 244199105, 2026-02-25"
+            - row [ref=e1662]:
+              - cell "2026-02-25" [ref=e1663]
+              - cell "Deere & Company" [ref=e1664]
+              - cell "Shareholder proposal on a report on the return on investment of emission reduction goals" [ref=e1665]
+              - cell "SECURITY HOLDER" [ref=e1666]
+              - cell "1 of 3" [ref=e1667]
+              - cell "AGAINST" [ref=e1668]
+              - cell "FOR" [ref=e1669]
+              - cell "2,347,329.22" [ref=e1670]
+              - 'cell "source record 605 of 29,891 | proposal #561 | search: Deere & Company, CUSIP 244199105, 2026-02-25" [ref=e1671]':
+                - link "source" [ref=e1672] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e1673]: "record 605 of 29,891 | proposal #561 | search: Deere & Company, CUSIP 244199105, 2026-02-25"
+            - row [ref=e1674]:
+              - cell "2026-02-25" [ref=e1675]
+              - cell "Deere & Company" [ref=e1676]
+              - cell "Shareholder proposal on a report on the return on investment of emission reduction goals" [ref=e1677]
+              - cell "SECURITY HOLDER" [ref=e1678]
+              - cell "2 of 3" [ref=e1679]
+              - cell "AGAINST" [ref=e1680]
+              - cell "FOR" [ref=e1681]
+              - cell "5,622.85" [ref=e1682]
+              - 'cell "source record 5,058 of 29,891 | proposal #561 | search: Deere & Company, CUSIP 244199105, 2026-02-25" [ref=e1683]':
+                - link "source" [ref=e1684] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e1685]: "record 5,058 of 29,891 | proposal #561 | search: Deere & Company, CUSIP 244199105, 2026-02-25"
+            - row [ref=e1686]:
+              - cell "2026-02-25" [ref=e1687]
+              - cell "Deere & Company" [ref=e1688]
+              - cell "Shareholder proposal on a report on the return on investment of emission reduction goals" [ref=e1689]
+              - cell "SECURITY HOLDER" [ref=e1690]
+              - cell "3 of 3" [ref=e1691]
+              - cell "AGAINST" [ref=e1692]
+              - cell "FOR" [ref=e1693]
+              - cell "3,236.69" [ref=e1694]
+              - 'cell "source record 9,252 of 29,891 | proposal #561 | search: Deere & Company, CUSIP 244199105, 2026-02-25" [ref=e1695]':
+                - link "source" [ref=e1696] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e1697]: "record 9,252 of 29,891 | proposal #561 | search: Deere & Company, CUSIP 244199105, 2026-02-25"
+            - row [ref=e1698]:
+              - cell "2026-03-18" [ref=e1699]
+              - cell "THE WALT DISNEY COMPANY" [ref=e1700]
+              - cell "Shareholder proposal, if properly presented at the meeting, requesting a report on the expected and potential return on investment from climate commitments." [ref=e1701]
+              - cell "SECURITY HOLDER" [ref=e1702]
+              - cell "1 of 4" [ref=e1703]
+              - cell "ABSTAIN" [ref=e1704]
+              - cell "AGAINST" [ref=e1705]
+              - cell "1,063" [ref=e1706]
+              - 'cell "source record 14,545 of 29,891 | proposal #6,565 | search: THE WALT DISNEY COMPANY, CUSIP 254687106, 2026-03-18" [ref=e1707]':
+                - link "source" [ref=e1708] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e1709]: "record 14,545 of 29,891 | proposal #6,565 | search: THE WALT DISNEY COMPANY, CUSIP 254687106, 2026-03-18"
+            - row [ref=e1710]:
+              - cell "2026-03-18" [ref=e1711]
+              - cell "THE WALT DISNEY COMPANY" [ref=e1712]
+              - cell "Shareholder proposal, if properly presented at the meeting, requesting a report on the expected and potential return on investment from climate commitments." [ref=e1713]
+              - cell "SECURITY HOLDER" [ref=e1714]
+              - cell "2 of 4" [ref=e1715]
+              - cell "FOR" [ref=e1716]
+              - cell "AGAINST" [ref=e1717]
+              - cell "13" [ref=e1718]
+              - 'cell "source record 14,546 of 29,891 | proposal #6,565 | search: THE WALT DISNEY COMPANY, CUSIP 254687106, 2026-03-18" [ref=e1719]':
+                - link "source" [ref=e1720] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e1721]: "record 14,546 of 29,891 | proposal #6,565 | search: THE WALT DISNEY COMPANY, CUSIP 254687106, 2026-03-18"
+            - row [ref=e1722]:
+              - cell "2026-03-18" [ref=e1723]
+              - cell "THE WALT DISNEY COMPANY" [ref=e1724]
+              - cell "Shareholder proposal, if properly presented at the meeting, requesting a report on the expected and potential return on investment from climate commitments." [ref=e1725]
+              - cell "SECURITY HOLDER" [ref=e1726]
+              - cell "3 of 4" [ref=e1727]
+              - cell "AGAINST" [ref=e1728]
+              - cell "FOR" [ref=e1729]
+              - cell "400" [ref=e1730]
+              - 'cell "source record 14,547 of 29,891 | proposal #6,565 | search: THE WALT DISNEY COMPANY, CUSIP 254687106, 2026-03-18" [ref=e1731]':
+                - link "source" [ref=e1732] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e1733]: "record 14,547 of 29,891 | proposal #6,565 | search: THE WALT DISNEY COMPANY, CUSIP 254687106, 2026-03-18"
+            - row [ref=e1734]:
+              - cell "2026-03-18" [ref=e1735]
+              - cell "THE WALT DISNEY COMPANY" [ref=e1736]
+              - cell "Shareholder proposal, if properly presented at the meeting, requesting a report on the expected and potential return on investment from climate commitments." [ref=e1737]
+              - cell "SECURITY HOLDER" [ref=e1738]
+              - cell "4 of 4" [ref=e1739]
+              - cell "AGAINST" [ref=e1740]
+              - cell "FOR" [ref=e1741]
+              - cell "0" [ref=e1742]
+              - 'cell "source record 26,177 of 29,891 | proposal #6,565 | search: THE WALT DISNEY COMPANY, CUSIP 254687106, 2026-03-18" [ref=e1743]':
+                - link "source" [ref=e1744] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e1745]: "record 26,177 of 29,891 | proposal #6,565 | search: THE WALT DISNEY COMPANY, CUSIP 254687106, 2026-03-18"
+            - row [ref=e1746]:
+              - cell "2026-03-18" [ref=e1747]
+              - cell "The Walt Disney Company" [ref=e1748]
+              - cell "Shareholder proposal, if properly presented at the meeting, requesting a report on the expected and potential return on investment from climate commitments." [ref=e1749]
+              - cell "SECURITY HOLDER" [ref=e1750]
+              - cell "1 of 2" [ref=e1751]
+              - cell "AGAINST" [ref=e1752]
+              - cell "FOR" [ref=e1753]
+              - cell "39,848.43" [ref=e1754]
+              - 'cell "source record 5,173 of 29,891 | proposal #4,618 | search: The Walt Disney Company, CUSIP 254687106, 2026-03-18" [ref=e1755]':
+                - link "source" [ref=e1756] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e1757]: "record 5,173 of 29,891 | proposal #4,618 | search: The Walt Disney Company, CUSIP 254687106, 2026-03-18"
+            - row [ref=e1758]:
+              - cell "2026-03-18" [ref=e1759]
+              - cell "The Walt Disney Company" [ref=e1760]
+              - cell "Shareholder proposal, if properly presented at the meeting, requesting a report on the expected and potential return on investment from climate commitments." [ref=e1761]
+              - cell "SECURITY HOLDER" [ref=e1762]
+              - cell "2 of 2" [ref=e1763]
+              - cell "AGAINST" [ref=e1764]
+              - cell "FOR" [ref=e1765]
+              - cell "22,793.96" [ref=e1766]
+              - 'cell "source record 9,367 of 29,891 | proposal #4,618 | search: The Walt Disney Company, CUSIP 254687106, 2026-03-18" [ref=e1767]':
+                - link "source" [ref=e1768] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e1769]: "record 9,367 of 29,891 | proposal #4,618 | search: The Walt Disney Company, CUSIP 254687106, 2026-03-18"
+            - row [ref=e1770]:
+              - cell "2026-04-28" [ref=e1771]
+              - cell "CONSTELLATION ENERGY CORP" [ref=e1772]
+              - cell "To consider a shareholder proposal (if properly presented) requesting a report assessing the bases for the company's diversity, equity and inclusion initiatives" [ref=e1773]
+              - cell "SECURITY HOLDER" [ref=e1774]
+              - cell "1 of 4" [ref=e1775]
+              - cell "ABSTAIN" [ref=e1776]
+              - cell "AGAINST" [ref=e1777]
+              - cell "18" [ref=e1778]
+              - 'cell "source record 16,142 of 29,891 | proposal #7,093 | search: CONSTELLATION ENERGY CORP, CUSIP 21037T109, 2026-04-28" [ref=e1779]':
+                - link "source" [ref=e1780] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e1781]: "record 16,142 of 29,891 | proposal #7,093 | search: CONSTELLATION ENERGY CORP, CUSIP 21037T109, 2026-04-28"
+            - row [ref=e1782]:
+              - cell "2026-04-28" [ref=e1783]
+              - cell "CONSTELLATION ENERGY CORP" [ref=e1784]
+              - cell "To consider a shareholder proposal (if properly presented) requesting a report assessing the bases for the company's diversity, equity and inclusion initiatives" [ref=e1785]
+              - cell "SECURITY HOLDER" [ref=e1786]
+              - cell "2 of 4" [ref=e1787]
+              - cell "FOR" [ref=e1788]
+              - cell "AGAINST" [ref=e1789]
+              - cell "23" [ref=e1790]
+              - 'cell "source record 16,143 of 29,891 | proposal #7,093 | search: CONSTELLATION ENERGY CORP, CUSIP 21037T109, 2026-04-28" [ref=e1791]':
+                - link "source" [ref=e1792] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e1793]: "record 16,143 of 29,891 | proposal #7,093 | search: CONSTELLATION ENERGY CORP, CUSIP 21037T109, 2026-04-28"
+            - row [ref=e1794]:
+              - cell "2026-04-28" [ref=e1795]
+              - cell "CONSTELLATION ENERGY CORP" [ref=e1796]
+              - cell "To consider a shareholder proposal (if properly presented) requesting a report assessing the bases for the company's diversity, equity and inclusion initiatives" [ref=e1797]
+              - cell "SECURITY HOLDER" [ref=e1798]
+              - cell "3 of 4" [ref=e1799]
+              - cell "AGAINST" [ref=e1800]
+              - cell "FOR" [ref=e1801]
+              - cell "2,204" [ref=e1802]
+              - 'cell "source record 16,144 of 29,891 | proposal #7,093 | search: CONSTELLATION ENERGY CORP, CUSIP 21037T109, 2026-04-28" [ref=e1803]':
+                - link "source" [ref=e1804] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e1805]: "record 16,144 of 29,891 | proposal #7,093 | search: CONSTELLATION ENERGY CORP, CUSIP 21037T109, 2026-04-28"
+            - row [ref=e1806]:
+              - cell "2026-04-28" [ref=e1807]
+              - cell "WELLS FARGO & COMPANY" [ref=e1808]
+              - cell "Shareholder Proposal - Energy Supply Ratio." [ref=e1809]
+              - cell "SECURITY HOLDER" [ref=e1810]
+              - cell "1 of 4" [ref=e1811]
+              - cell "ABSTAIN" [ref=e1812]
+              - cell "AGAINST" [ref=e1813]
+              - cell "223" [ref=e1814]
+              - 'cell "source record 16,536 of 29,891 | proposal #7,224 | search: WELLS FARGO & COMPANY, CUSIP 949746101, 2026-04-28" [ref=e1815]':
+                - link "source" [ref=e1816] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e1817]: "record 16,536 of 29,891 | proposal #7,224 | search: WELLS FARGO & COMPANY, CUSIP 949746101, 2026-04-28"
+            - row [ref=e1818]:
+              - cell "2026-04-28" [ref=e1819]
+              - cell "WELLS FARGO & COMPANY" [ref=e1820]
+              - cell "Shareholder Proposal - Energy Supply Ratio." [ref=e1821]
+              - cell "SECURITY HOLDER" [ref=e1822]
+              - cell "2 of 4" [ref=e1823]
+              - cell "FOR" [ref=e1824]
+              - cell "AGAINST" [ref=e1825]
+              - cell "4,635" [ref=e1826]
+              - 'cell "source record 16,537 of 29,891 | proposal #7,224 | search: WELLS FARGO & COMPANY, CUSIP 949746101, 2026-04-28" [ref=e1827]':
+                - link "source" [ref=e1828] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e1829]: "record 16,537 of 29,891 | proposal #7,224 | search: WELLS FARGO & COMPANY, CUSIP 949746101, 2026-04-28"
+            - row [ref=e1830]:
+              - cell "2026-04-28" [ref=e1831]
+              - cell "WELLS FARGO & COMPANY" [ref=e1832]
+              - cell "Shareholder Proposal - Energy Supply Ratio." [ref=e1833]
+              - cell "SECURITY HOLDER" [ref=e1834]
+              - cell "3 of 4" [ref=e1835]
+              - cell "AGAINST" [ref=e1836]
+              - cell "FOR" [ref=e1837]
+              - cell "17,653" [ref=e1838]
+              - 'cell "source record 16,538 of 29,891 | proposal #7,224 | search: WELLS FARGO & COMPANY, CUSIP 949746101, 2026-04-28" [ref=e1839]':
+                - link "source" [ref=e1840] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e1841]: "record 16,538 of 29,891 | proposal #7,224 | search: WELLS FARGO & COMPANY, CUSIP 949746101, 2026-04-28"
+            - row [ref=e1842]:
+              - cell "2026-04-28" [ref=e1843]
+              - cell "WELLS FARGO & COMPANY" [ref=e1844]
+              - cell "Shareholder Proposal - Energy Supply Ratio." [ref=e1845]
+              - cell "SECURITY HOLDER" [ref=e1846]
+              - cell "4 of 4" [ref=e1847]
+              - cell "AGAINST" [ref=e1848]
+              - cell "FOR" [ref=e1849]
+              - cell "0" [ref=e1850]
+              - 'cell "source record 26,840 of 29,891 | proposal #7,224 | search: WELLS FARGO & COMPANY, CUSIP 949746101, 2026-04-28" [ref=e1851]':
+                - link "source" [ref=e1852] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e1853]: "record 26,840 of 29,891 | proposal #7,224 | search: WELLS FARGO & COMPANY, CUSIP 949746101, 2026-04-28"
+            - row [ref=e1854]:
+              - cell "2026-04-28" [ref=e1855]
+              - cell "WELLS FARGO & COMPANY" [ref=e1856]
+              - cell "Shareholder Proposal - Report on High-Carbon Financing Litigation Risks." [ref=e1857]
+              - cell "SECURITY HOLDER" [ref=e1858]
+              - cell "1 of 4" [ref=e1859]
+              - cell "ABSTAIN" [ref=e1860]
+              - cell "AGAINST" [ref=e1861]
+              - cell "226" [ref=e1862]
+              - 'cell "source record 16,539 of 29,891 | proposal #7,225 | search: WELLS FARGO & COMPANY, CUSIP 949746101, 2026-04-28" [ref=e1863]':
+                - link "source" [ref=e1864] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e1865]: "record 16,539 of 29,891 | proposal #7,225 | search: WELLS FARGO & COMPANY, CUSIP 949746101, 2026-04-28"
+            - row [ref=e1866]:
+              - cell "2026-04-28" [ref=e1867]
+              - cell "WELLS FARGO & COMPANY" [ref=e1868]
+              - cell "Shareholder Proposal - Report on High-Carbon Financing Litigation Risks." [ref=e1869]
+              - cell "SECURITY HOLDER" [ref=e1870]
+              - cell "2 of 4" [ref=e1871]
+              - cell "FOR" [ref=e1872]
+              - cell "AGAINST" [ref=e1873]
+              - cell "2,270" [ref=e1874]
+              - 'cell "source record 16,540 of 29,891 | proposal #7,225 | search: WELLS FARGO & COMPANY, CUSIP 949746101, 2026-04-28" [ref=e1875]':
+                - link "source" [ref=e1876] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e1877]: "record 16,540 of 29,891 | proposal #7,225 | search: WELLS FARGO & COMPANY, CUSIP 949746101, 2026-04-28"
+            - row [ref=e1878]:
+              - cell "2026-04-28" [ref=e1879]
+              - cell "WELLS FARGO & COMPANY" [ref=e1880]
+              - cell "Shareholder Proposal - Report on High-Carbon Financing Litigation Risks." [ref=e1881]
+              - cell "SECURITY HOLDER" [ref=e1882]
+              - cell "3 of 4" [ref=e1883]
+              - cell "AGAINST" [ref=e1884]
+              - cell "FOR" [ref=e1885]
+              - cell "20,016" [ref=e1886]
+              - 'cell "source record 16,541 of 29,891 | proposal #7,225 | search: WELLS FARGO & COMPANY, CUSIP 949746101, 2026-04-28" [ref=e1887]':
+                - link "source" [ref=e1888] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e1889]: "record 16,541 of 29,891 | proposal #7,225 | search: WELLS FARGO & COMPANY, CUSIP 949746101, 2026-04-28"
+            - row [ref=e1890]:
+              - cell "2026-04-28" [ref=e1891]
+              - cell "WELLS FARGO & COMPANY" [ref=e1892]
+              - cell "Shareholder Proposal - Report on High-Carbon Financing Litigation Risks." [ref=e1893]
+              - cell "SECURITY HOLDER" [ref=e1894]
+              - cell "4 of 4" [ref=e1895]
+              - cell "AGAINST" [ref=e1896]
+              - cell "FOR" [ref=e1897]
+              - cell "0" [ref=e1898]
+              - 'cell "source record 26,841 of 29,891 | proposal #7,225 | search: WELLS FARGO & COMPANY, CUSIP 949746101, 2026-04-28" [ref=e1899]':
+                - link "source" [ref=e1900] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e1901]: "record 26,841 of 29,891 | proposal #7,225 | search: WELLS FARGO & COMPANY, CUSIP 949746101, 2026-04-28"
+            - row [ref=e1902]:
+              - cell "2026-04-28" [ref=e1903]
+              - cell "WELLS FARGO & COMPANY" [ref=e1904]
+              - cell "Shareholder Proposal - Board Committee on Indigenous Peoples' Rights." [ref=e1905]
+              - cell "SECURITY HOLDER" [ref=e1906]
+              - cell "1 of 4" [ref=e1907]
+              - cell "ABSTAIN" [ref=e1908]
+              - cell "AGAINST" [ref=e1909]
+              - cell "300" [ref=e1910]
+              - 'cell "source record 16,542 of 29,891 | proposal #7,226 | search: WELLS FARGO & COMPANY, CUSIP 949746101, 2026-04-28" [ref=e1911]':
+                - link "source" [ref=e1912] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e1913]: "record 16,542 of 29,891 | proposal #7,226 | search: WELLS FARGO & COMPANY, CUSIP 949746101, 2026-04-28"
+            - row [ref=e1914]:
+              - cell "2026-04-28" [ref=e1915]
+              - cell "WELLS FARGO & COMPANY" [ref=e1916]
+              - cell "Shareholder Proposal - Board Committee on Indigenous Peoples' Rights." [ref=e1917]
+              - cell "SECURITY HOLDER" [ref=e1918]
+              - cell "2 of 4" [ref=e1919]
+              - cell "FOR" [ref=e1920]
+              - cell "AGAINST" [ref=e1921]
+              - cell "1,282" [ref=e1922]
+              - 'cell "source record 16,543 of 29,891 | proposal #7,226 | search: WELLS FARGO & COMPANY, CUSIP 949746101, 2026-04-28" [ref=e1923]':
+                - link "source" [ref=e1924] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e1925]: "record 16,543 of 29,891 | proposal #7,226 | search: WELLS FARGO & COMPANY, CUSIP 949746101, 2026-04-28"
+            - row [ref=e1926]:
+              - cell "2026-04-28" [ref=e1927]
+              - cell "WELLS FARGO & COMPANY" [ref=e1928]
+              - cell "Shareholder Proposal - Board Committee on Indigenous Peoples' Rights." [ref=e1929]
+              - cell "SECURITY HOLDER" [ref=e1930]
+              - cell "3 of 4" [ref=e1931]
+              - cell "AGAINST" [ref=e1932]
+              - cell "FOR" [ref=e1933]
+              - cell "20,928" [ref=e1934]
+              - 'cell "source record 16,544 of 29,891 | proposal #7,226 | search: WELLS FARGO & COMPANY, CUSIP 949746101, 2026-04-28" [ref=e1935]':
+                - link "source" [ref=e1936] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e1937]: "record 16,544 of 29,891 | proposal #7,226 | search: WELLS FARGO & COMPANY, CUSIP 949746101, 2026-04-28"
+            - row [ref=e1938]:
+              - cell "2026-04-28" [ref=e1939]
+              - cell "WELLS FARGO & COMPANY" [ref=e1940]
+              - cell "Shareholder Proposal - Report on Respecting Vendor Civil Liberties." [ref=e1941]
+              - cell "SECURITY HOLDER" [ref=e1942]
+              - cell "1 of 4" [ref=e1943]
+              - cell "ABSTAIN" [ref=e1944]
+              - cell "AGAINST" [ref=e1945]
+              - cell "216" [ref=e1946]
+              - 'cell "source record 16,545 of 29,891 | proposal #7,227 | search: WELLS FARGO & COMPANY, CUSIP 949746101, 2026-04-28" [ref=e1947]':
+                - link "source" [ref=e1948] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e1949]: "record 16,545 of 29,891 | proposal #7,227 | search: WELLS FARGO & COMPANY, CUSIP 949746101, 2026-04-28"
+            - row [ref=e1950]:
+              - cell "2026-04-28" [ref=e1951]
+              - cell "WELLS FARGO & COMPANY" [ref=e1952]
+              - cell "Shareholder Proposal - Report on Respecting Vendor Civil Liberties." [ref=e1953]
+              - cell "SECURITY HOLDER" [ref=e1954]
+              - cell "2 of 4" [ref=e1955]
+              - cell "FOR" [ref=e1956]
+              - cell "AGAINST" [ref=e1957]
+              - cell "432" [ref=e1958]
+              - 'cell "source record 16,546 of 29,891 | proposal #7,227 | search: WELLS FARGO & COMPANY, CUSIP 949746101, 2026-04-28" [ref=e1959]':
+                - link "source" [ref=e1960] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e1961]: "record 16,546 of 29,891 | proposal #7,227 | search: WELLS FARGO & COMPANY, CUSIP 949746101, 2026-04-28"
+            - row [ref=e1962]:
+              - cell "2026-04-28" [ref=e1963]
+              - cell "WELLS FARGO & COMPANY" [ref=e1964]
+              - cell "Shareholder Proposal - Report on Respecting Vendor Civil Liberties." [ref=e1965]
+              - cell "SECURITY HOLDER" [ref=e1966]
+              - cell "3 of 4" [ref=e1967]
+              - cell "AGAINST" [ref=e1968]
+              - cell "FOR" [ref=e1969]
+              - cell "21,862" [ref=e1970]
+              - 'cell "source record 16,547 of 29,891 | proposal #7,227 | search: WELLS FARGO & COMPANY, CUSIP 949746101, 2026-04-28" [ref=e1971]':
+                - link "source" [ref=e1972] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e1973]: "record 16,547 of 29,891 | proposal #7,227 | search: WELLS FARGO & COMPANY, CUSIP 949746101, 2026-04-28"
+            - row [ref=e1974]:
+              - cell "2026-04-28" [ref=e1975]
+              - cell "Wells Fargo & Company" [ref=e1976]
+              - cell "Shareholder Proposal - Energy Supply Ratio." [ref=e1977]
+              - cell "SECURITY HOLDER" [ref=e1978]
+              - cell "1 of 3" [ref=e1979]
+              - cell "AGAINST" [ref=e1980]
+              - cell "FOR" [ref=e1981]
+              - cell "29,012,563.14" [ref=e1982]
+              - 'cell "source record 1,437 of 29,891 | proposal #1,336 | search: Wells Fargo & Company, CUSIP 949746101, 2026-04-28" [ref=e1983]':
+                - link "source" [ref=e1984] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e1985]: "record 1,437 of 29,891 | proposal #1,336 | search: Wells Fargo & Company, CUSIP 949746101, 2026-04-28"
+            - row [ref=e1986]:
+              - cell "2026-04-28" [ref=e1987]
+              - cell "Wells Fargo & Company" [ref=e1988]
+              - cell "Shareholder Proposal - Energy Supply Ratio." [ref=e1989]
+              - cell "SECURITY HOLDER" [ref=e1990]
+              - cell "2 of 3" [ref=e1991]
+              - cell "AGAINST" [ref=e1992]
+              - cell "FOR" [ref=e1993]
+              - cell "85,952.76" [ref=e1994]
+              - 'cell "source record 5,836 of 29,891 | proposal #1,336 | search: Wells Fargo & Company, CUSIP 949746101, 2026-04-28" [ref=e1995]':
+                - link "source" [ref=e1996] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e1997]: "record 5,836 of 29,891 | proposal #1,336 | search: Wells Fargo & Company, CUSIP 949746101, 2026-04-28"
+            - row [ref=e1998]:
+              - cell "2026-04-28" [ref=e1999]
+              - cell "Wells Fargo & Company" [ref=e2000]
+              - cell "Shareholder Proposal - Energy Supply Ratio." [ref=e2001]
+              - cell "SECURITY HOLDER" [ref=e2002]
+              - cell "3 of 3" [ref=e2003]
+              - cell "FOR" [ref=e2004]
+              - cell "AGAINST" [ref=e2005]
+              - cell "43,853.45" [ref=e2006]
+              - 'cell "source record 10,030 of 29,891 | proposal #1,336 | search: Wells Fargo & Company, CUSIP 949746101, 2026-04-28" [ref=e2007]':
+                - link "source" [ref=e2008] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e2009]: "record 10,030 of 29,891 | proposal #1,336 | search: Wells Fargo & Company, CUSIP 949746101, 2026-04-28"
+            - row [ref=e2010]:
+              - cell "2026-04-28" [ref=e2011]
+              - cell "Wells Fargo & Company" [ref=e2012]
+              - cell "Shareholder Proposal - Report on High-Carbon Financing Litigation Risks." [ref=e2013]
+              - cell "SECURITY HOLDER" [ref=e2014]
+              - cell "1 of 3" [ref=e2015]
+              - cell "AGAINST" [ref=e2016]
+              - cell "FOR" [ref=e2017]
+              - cell "29,012,563.14" [ref=e2018]
+              - 'cell "source record 1,438 of 29,891 | proposal #1,337 | search: Wells Fargo & Company, CUSIP 949746101, 2026-04-28" [ref=e2019]':
+                - link "source" [ref=e2020] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e2021]: "record 1,438 of 29,891 | proposal #1,337 | search: Wells Fargo & Company, CUSIP 949746101, 2026-04-28"
+            - row [ref=e2022]:
+              - cell "2026-04-28" [ref=e2023]
+              - cell "Wells Fargo & Company" [ref=e2024]
+              - cell "Shareholder Proposal - Report on High-Carbon Financing Litigation Risks." [ref=e2025]
+              - cell "SECURITY HOLDER" [ref=e2026]
+              - cell "2 of 3" [ref=e2027]
+              - cell "AGAINST" [ref=e2028]
+              - cell "FOR" [ref=e2029]
+              - cell "85,952.76" [ref=e2030]
+              - 'cell "source record 5,837 of 29,891 | proposal #1,337 | search: Wells Fargo & Company, CUSIP 949746101, 2026-04-28" [ref=e2031]':
+                - link "source" [ref=e2032] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e2033]: "record 5,837 of 29,891 | proposal #1,337 | search: Wells Fargo & Company, CUSIP 949746101, 2026-04-28"
+            - row [ref=e2034]:
+              - cell "2026-04-28" [ref=e2035]
+              - cell "Wells Fargo & Company" [ref=e2036]
+              - cell "Shareholder Proposal - Report on High-Carbon Financing Litigation Risks." [ref=e2037]
+              - cell "SECURITY HOLDER" [ref=e2038]
+              - cell "3 of 3" [ref=e2039]
+              - cell "FOR" [ref=e2040]
+              - cell "AGAINST" [ref=e2041]
+              - cell "43,853.45" [ref=e2042]
+              - 'cell "source record 10,031 of 29,891 | proposal #1,337 | search: Wells Fargo & Company, CUSIP 949746101, 2026-04-28" [ref=e2043]':
+                - link "source" [ref=e2044] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e2045]: "record 10,031 of 29,891 | proposal #1,337 | search: Wells Fargo & Company, CUSIP 949746101, 2026-04-28"
+            - row [ref=e2046]:
+              - cell "2026-04-28" [ref=e2047]
+              - cell "Wells Fargo & Company" [ref=e2048]
+              - cell "Shareholder Proposal - Report on Respecting Vendor Civil Liberties." [ref=e2049]
+              - cell "SECURITY HOLDER" [ref=e2050]
+              - cell "1 of 3" [ref=e2051]
+              - cell "AGAINST" [ref=e2052]
+              - cell "FOR" [ref=e2053]
+              - cell "29,012,563.14" [ref=e2054]
+              - 'cell "source record 1,440 of 29,891 | proposal #1,339 | search: Wells Fargo & Company, CUSIP 949746101, 2026-04-28" [ref=e2055]':
+                - link "source" [ref=e2056] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e2057]: "record 1,440 of 29,891 | proposal #1,339 | search: Wells Fargo & Company, CUSIP 949746101, 2026-04-28"
+            - row [ref=e2058]:
+              - cell "2026-04-29" [ref=e2059]
+              - cell "THE COCA-COLA COMPANY" [ref=e2060]
+              - cell "Vote on a shareowner proposal requesting a sustainability committee by-law amendment" [ref=e2061]
+              - cell "SECURITY HOLDER" [ref=e2062]
+              - cell "1 of 4" [ref=e2063]
+              - cell "ABSTAIN" [ref=e2064]
+              - cell "AGAINST" [ref=e2065]
+              - cell "212" [ref=e2066]
+              - 'cell "source record 16,719 of 29,891 | proposal #7,285 | search: THE COCA-COLA COMPANY, CUSIP 191216100, 2026-04-29" [ref=e2067]':
+                - link "source" [ref=e2068] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e2069]: "record 16,719 of 29,891 | proposal #7,285 | search: THE COCA-COLA COMPANY, CUSIP 191216100, 2026-04-29"
+            - row [ref=e2070]:
+              - cell "2026-04-29" [ref=e2071]
+              - cell "THE COCA-COLA COMPANY" [ref=e2072]
+              - cell "Vote on a shareowner proposal requesting a sustainability committee by-law amendment" [ref=e2073]
+              - cell "SECURITY HOLDER" [ref=e2074]
+              - cell "2 of 4" [ref=e2075]
+              - cell "FOR" [ref=e2076]
+              - cell "AGAINST" [ref=e2077]
+              - cell "244" [ref=e2078]
+              - 'cell "source record 16,720 of 29,891 | proposal #7,285 | search: THE COCA-COLA COMPANY, CUSIP 191216100, 2026-04-29" [ref=e2079]':
+                - link "source" [ref=e2080] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e2081]: "record 16,720 of 29,891 | proposal #7,285 | search: THE COCA-COLA COMPANY, CUSIP 191216100, 2026-04-29"
+            - row [ref=e2082]:
+              - cell "2026-04-29" [ref=e2083]
+              - cell "THE COCA-COLA COMPANY" [ref=e2084]
+              - cell "Vote on a shareowner proposal requesting a sustainability committee by-law amendment" [ref=e2085]
+              - cell "SECURITY HOLDER" [ref=e2086]
+              - cell "3 of 4" [ref=e2087]
+              - cell "AGAINST" [ref=e2088]
+              - cell "FOR" [ref=e2089]
+              - cell "24,222" [ref=e2090]
+              - 'cell "source record 16,721 of 29,891 | proposal #7,285 | search: THE COCA-COLA COMPANY, CUSIP 191216100, 2026-04-29" [ref=e2091]':
+                - link "source" [ref=e2092] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e2093]: "record 16,721 of 29,891 | proposal #7,285 | search: THE COCA-COLA COMPANY, CUSIP 191216100, 2026-04-29"
+            - row [ref=e2094]:
+              - cell "2026-04-29" [ref=e2095]
+              - cell "THE COCA-COLA COMPANY" [ref=e2096]
+              - cell "Vote on a shareowner proposal requesting a sustainability committee by-law amendment" [ref=e2097]
+              - cell "SECURITY HOLDER" [ref=e2098]
+              - cell "4 of 4" [ref=e2099]
+              - cell "AGAINST" [ref=e2100]
+              - cell "FOR" [ref=e2101]
+              - cell "0" [ref=e2102]
+              - 'cell "source record 26,901 of 29,891 | proposal #7,285 | search: THE COCA-COLA COMPANY, CUSIP 191216100, 2026-04-29" [ref=e2103]':
+                - link "source" [ref=e2104] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e2105]: "record 26,901 of 29,891 | proposal #7,285 | search: THE COCA-COLA COMPANY, CUSIP 191216100, 2026-04-29"
+            - row [ref=e2106]:
+              - cell "2026-04-29" [ref=e2107]
+              - cell "THE COCA-COLA COMPANY" [ref=e2108]
+              - cell "Vote on a shareowner proposal requesting a report evaluating the Company's plastics packaging policies" [ref=e2109]
+              - cell "SECURITY HOLDER" [ref=e2110]
+              - cell "1 of 4" [ref=e2111]
+              - cell "ABSTAIN" [ref=e2112]
+              - cell "AGAINST" [ref=e2113]
+              - cell "191" [ref=e2114]
+              - 'cell "source record 16,722 of 29,891 | proposal #7,286 | search: THE COCA-COLA COMPANY, CUSIP 191216100, 2026-04-29" [ref=e2115]':
+                - link "source" [ref=e2116] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e2117]: "record 16,722 of 29,891 | proposal #7,286 | search: THE COCA-COLA COMPANY, CUSIP 191216100, 2026-04-29"
+            - row [ref=e2118]:
+              - cell "2026-04-29" [ref=e2119]
+              - cell "THE COCA-COLA COMPANY" [ref=e2120]
+              - cell "Vote on a shareowner proposal requesting a report evaluating the Company's plastics packaging policies" [ref=e2121]
+              - cell "SECURITY HOLDER" [ref=e2122]
+              - cell "2 of 4" [ref=e2123]
+              - cell "FOR" [ref=e2124]
+              - cell "AGAINST" [ref=e2125]
+              - cell "199" [ref=e2126]
+              - 'cell "source record 16,723 of 29,891 | proposal #7,286 | search: THE COCA-COLA COMPANY, CUSIP 191216100, 2026-04-29" [ref=e2127]':
+                - link "source" [ref=e2128] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e2129]: "record 16,723 of 29,891 | proposal #7,286 | search: THE COCA-COLA COMPANY, CUSIP 191216100, 2026-04-29"
+            - row [ref=e2130]:
+              - cell "2026-04-29" [ref=e2131]
+              - cell "THE COCA-COLA COMPANY" [ref=e2132]
+              - cell "Vote on a shareowner proposal requesting a report evaluating the Company's plastics packaging policies" [ref=e2133]
+              - cell "SECURITY HOLDER" [ref=e2134]
+              - cell "3 of 4" [ref=e2135]
+              - cell "AGAINST" [ref=e2136]
+              - cell "FOR" [ref=e2137]
+              - cell "24,288" [ref=e2138]
+              - 'cell "source record 16,724 of 29,891 | proposal #7,286 | search: THE COCA-COLA COMPANY, CUSIP 191216100, 2026-04-29" [ref=e2139]':
+                - link "source" [ref=e2140] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e2141]: "record 16,724 of 29,891 | proposal #7,286 | search: THE COCA-COLA COMPANY, CUSIP 191216100, 2026-04-29"
+            - row [ref=e2142]:
+              - cell "2026-04-29" [ref=e2143]
+              - cell "THE COCA-COLA COMPANY" [ref=e2144]
+              - cell "Vote on a shareowner proposal requesting a report on the Company's plans to increase sustainability disclosure" [ref=e2145]
+              - cell "SECURITY HOLDER" [ref=e2146]
+              - cell "1 of 4" [ref=e2147]
+              - cell "ABSTAIN" [ref=e2148]
+              - cell "AGAINST" [ref=e2149]
+              - cell "196" [ref=e2150]
+              - 'cell "source record 16,731 of 29,891 | proposal #7,289 | search: THE COCA-COLA COMPANY, CUSIP 191216100, 2026-04-29" [ref=e2151]':
+                - link "source" [ref=e2152] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e2153]: "record 16,731 of 29,891 | proposal #7,289 | search: THE COCA-COLA COMPANY, CUSIP 191216100, 2026-04-29"
+            - row [ref=e2154]:
+              - cell "2026-04-29" [ref=e2155]
+              - cell "THE COCA-COLA COMPANY" [ref=e2156]
+              - cell "Vote on a shareowner proposal requesting a report on the Company's plans to increase sustainability disclosure" [ref=e2157]
+              - cell "SECURITY HOLDER" [ref=e2158]
+              - cell "2 of 4" [ref=e2159]
+              - cell "FOR" [ref=e2160]
+              - cell "AGAINST" [ref=e2161]
+              - cell "5,821" [ref=e2162]
+              - 'cell "source record 16,732 of 29,891 | proposal #7,289 | search: THE COCA-COLA COMPANY, CUSIP 191216100, 2026-04-29" [ref=e2163]':
+                - link "source" [ref=e2164] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e2165]: "record 16,732 of 29,891 | proposal #7,289 | search: THE COCA-COLA COMPANY, CUSIP 191216100, 2026-04-29"
+            - row [ref=e2166]:
+              - cell "2026-04-29" [ref=e2167]
+              - cell "THE COCA-COLA COMPANY" [ref=e2168]
+              - cell "Vote on a shareowner proposal requesting a report on the Company's plans to increase sustainability disclosure" [ref=e2169]
+              - cell "SECURITY HOLDER" [ref=e2170]
+              - cell "3 of 4" [ref=e2171]
+              - cell "AGAINST" [ref=e2172]
+              - cell "FOR" [ref=e2173]
+              - cell "18,661" [ref=e2174]
+              - 'cell "source record 16,733 of 29,891 | proposal #7,289 | search: THE COCA-COLA COMPANY, CUSIP 191216100, 2026-04-29" [ref=e2175]':
+                - link "source" [ref=e2176] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e2177]: "record 16,733 of 29,891 | proposal #7,289 | search: THE COCA-COLA COMPANY, CUSIP 191216100, 2026-04-29"
+            - row [ref=e2178]:
+              - cell "2026-04-29" [ref=e2179]
+              - cell "THE COCA-COLA COMPANY" [ref=e2180]
+              - cell "Vote on a shareowner proposal requesting a report on the Company's plans to increase sustainability disclosure" [ref=e2181]
+              - cell "SECURITY HOLDER" [ref=e2182]
+              - cell "4 of 4" [ref=e2183]
+              - cell "AGAINST" [ref=e2184]
+              - cell "FOR" [ref=e2185]
+              - cell "0" [ref=e2186]
+              - 'cell "source record 26,905 of 29,891 | proposal #7,289 | search: THE COCA-COLA COMPANY, CUSIP 191216100, 2026-04-29" [ref=e2187]':
+                - link "source" [ref=e2188] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e2189]: "record 26,905 of 29,891 | proposal #7,289 | search: THE COCA-COLA COMPANY, CUSIP 191216100, 2026-04-29"
+            - row [ref=e2190]:
+              - cell "2026-04-29" [ref=e2191]
+              - cell "THE GOLDMAN SACHS GROUP, INC." [ref=e2192]
+              - cell "Shareholder Proposal Regarding Disclosure of Energy Supply Ratio" [ref=e2193]
+              - cell "SECURITY HOLDER" [ref=e2194]
+              - cell "1 of 4" [ref=e2195]
+              - cell "ABSTAIN" [ref=e2196]
+              - cell "AGAINST" [ref=e2197]
+              - cell "16" [ref=e2198]
+              - 'cell "source record 16,785 of 29,891 | proposal #7,307 | search: THE GOLDMAN SACHS GROUP, INC., CUSIP 38141G104, 2026-04-29" [ref=e2199]':
+                - link "source" [ref=e2200] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e2201]: "record 16,785 of 29,891 | proposal #7,307 | search: THE GOLDMAN SACHS GROUP, INC., CUSIP 38141G104, 2026-04-29"
+            - row [ref=e2202]:
+              - cell "2026-04-29" [ref=e2203]
+              - cell "THE GOLDMAN SACHS GROUP, INC." [ref=e2204]
+              - cell "Shareholder Proposal Regarding Disclosure of Energy Supply Ratio" [ref=e2205]
+              - cell "SECURITY HOLDER" [ref=e2206]
+              - cell "2 of 4" [ref=e2207]
+              - cell "FOR" [ref=e2208]
+              - cell "AGAINST" [ref=e2209]
+              - cell "427" [ref=e2210]
+              - 'cell "source record 16,786 of 29,891 | proposal #7,307 | search: THE GOLDMAN SACHS GROUP, INC., CUSIP 38141G104, 2026-04-29" [ref=e2211]':
+                - link "source" [ref=e2212] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e2213]: "record 16,786 of 29,891 | proposal #7,307 | search: THE GOLDMAN SACHS GROUP, INC., CUSIP 38141G104, 2026-04-29"
+            - row [ref=e2214]:
+              - cell "2026-04-29" [ref=e2215]
+              - cell "THE GOLDMAN SACHS GROUP, INC." [ref=e2216]
+              - cell "Shareholder Proposal Regarding Disclosure of Energy Supply Ratio" [ref=e2217]
+              - cell "SECURITY HOLDER" [ref=e2218]
+              - cell "3 of 4" [ref=e2219]
+              - cell "AGAINST" [ref=e2220]
+              - cell "FOR" [ref=e2221]
+              - cell "1,603" [ref=e2222]
+              - 'cell "source record 16,787 of 29,891 | proposal #7,307 | search: THE GOLDMAN SACHS GROUP, INC., CUSIP 38141G104, 2026-04-29" [ref=e2223]':
+                - link "source" [ref=e2224] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e2225]: "record 16,787 of 29,891 | proposal #7,307 | search: THE GOLDMAN SACHS GROUP, INC., CUSIP 38141G104, 2026-04-29"
+            - row [ref=e2226]:
+              - cell "2026-04-29" [ref=e2227]
+              - cell "THE GOLDMAN SACHS GROUP, INC." [ref=e2228]
+              - cell "Shareholder Proposal Regarding Disclosure of Energy Supply Ratio" [ref=e2229]
+              - cell "SECURITY HOLDER" [ref=e2230]
+              - cell "4 of 4" [ref=e2231]
+              - cell "AGAINST" [ref=e2232]
+              - cell "FOR" [ref=e2233]
+              - cell "0" [ref=e2234]
+              - 'cell "source record 26,923 of 29,891 | proposal #7,307 | search: THE GOLDMAN SACHS GROUP, INC., CUSIP 38141G104, 2026-04-29" [ref=e2235]':
+                - link "source" [ref=e2236] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e2237]: "record 26,923 of 29,891 | proposal #7,307 | search: THE GOLDMAN SACHS GROUP, INC., CUSIP 38141G104, 2026-04-29"
+            - row [ref=e2238]:
+              - cell "2026-04-29" [ref=e2239]
+              - cell "The Coca-Cola Company" [ref=e2240]
+              - cell "Vote on a shareowner proposal requesting a sustainability committee by-law amendment" [ref=e2241]
+              - cell "SECURITY HOLDER" [ref=e2242]
+              - cell "2 of 3" [ref=e2243]
+              - cell "AGAINST" [ref=e2244]
+              - cell "FOR" [ref=e2245]
+              - cell "94,227.06" [ref=e2246]
+              - 'cell "source record 5,897 of 29,891 | proposal #1,397 | search: The Coca-Cola Company, CUSIP 191216100, 2026-04-29" [ref=e2247]':
+                - link "source" [ref=e2248] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e2249]: "record 5,897 of 29,891 | proposal #1,397 | search: The Coca-Cola Company, CUSIP 191216100, 2026-04-29"
+            - row [ref=e2250]:
+              - cell "2026-04-29" [ref=e2251]
+              - cell "The Coca-Cola Company" [ref=e2252]
+              - cell "Vote on a shareowner proposal requesting a sustainability committee by-law amendment" [ref=e2253]
+              - cell "SECURITY HOLDER" [ref=e2254]
+              - cell "3 of 3" [ref=e2255]
+              - cell "AGAINST" [ref=e2256]
+              - cell "FOR" [ref=e2257]
+              - cell "48,075.03" [ref=e2258]
+              - 'cell "source record 10,091 of 29,891 | proposal #1,397 | search: The Coca-Cola Company, CUSIP 191216100, 2026-04-29" [ref=e2259]':
+                - link "source" [ref=e2260] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e2261]: "record 10,091 of 29,891 | proposal #1,397 | search: The Coca-Cola Company, CUSIP 191216100, 2026-04-29"
+            - row [ref=e2262]:
+              - cell "2026-04-29" [ref=e2263]
+              - cell "The Coca-Cola Company" [ref=e2264]
+              - cell "Vote on a shareowner proposal requesting a report evaluating the Company's plastics packaging policies" [ref=e2265]
+              - cell "SECURITY HOLDER" [ref=e2266]
+              - cell "1 of 3" [ref=e2267]
+              - cell "AGAINST" [ref=e2268]
+              - cell "FOR" [ref=e2269]
+              - cell "31,805,478.35" [ref=e2270]
+              - 'cell "source record 1,504 of 29,891 | proposal #1,398 | search: The Coca-Cola Company, CUSIP 191216100, 2026-04-29" [ref=e2271]':
+                - link "source" [ref=e2272] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e2273]: "record 1,504 of 29,891 | proposal #1,398 | search: The Coca-Cola Company, CUSIP 191216100, 2026-04-29"
+            - row [ref=e2274]:
+              - cell "2026-04-29" [ref=e2275]
+              - cell "The Coca-Cola Company" [ref=e2276]
+              - cell "Vote on a shareowner proposal requesting a report evaluating the Company's plastics packaging policies" [ref=e2277]
+              - cell "SECURITY HOLDER" [ref=e2278]
+              - cell "2 of 3" [ref=e2279]
+              - cell "AGAINST" [ref=e2280]
+              - cell "FOR" [ref=e2281]
+              - cell "94,227.06" [ref=e2282]
+              - 'cell "source record 5,898 of 29,891 | proposal #1,398 | search: The Coca-Cola Company, CUSIP 191216100, 2026-04-29" [ref=e2283]':
+                - link "source" [ref=e2284] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e2285]: "record 5,898 of 29,891 | proposal #1,398 | search: The Coca-Cola Company, CUSIP 191216100, 2026-04-29"
+            - row [ref=e2286]:
+              - cell "2026-04-29" [ref=e2287]
+              - cell "The Coca-Cola Company" [ref=e2288]
+              - cell "Vote on a shareowner proposal requesting a report evaluating the Company's plastics packaging policies" [ref=e2289]
+              - cell "SECURITY HOLDER" [ref=e2290]
+              - cell "3 of 3" [ref=e2291]
+              - cell "AGAINST" [ref=e2292]
+              - cell "FOR" [ref=e2293]
+              - cell "48,075.03" [ref=e2294]
+              - 'cell "source record 10,092 of 29,891 | proposal #1,398 | search: The Coca-Cola Company, CUSIP 191216100, 2026-04-29" [ref=e2295]':
+                - link "source" [ref=e2296] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e2297]: "record 10,092 of 29,891 | proposal #1,398 | search: The Coca-Cola Company, CUSIP 191216100, 2026-04-29"
+            - row [ref=e2298]:
+              - cell "2026-04-29" [ref=e2299]
+              - cell "The Coca-Cola Company" [ref=e2300]
+              - cell "Vote on a shareowner proposal requesting a report on risks related to ingredients" [ref=e2301]
+              - cell "SECURITY HOLDER" [ref=e2302]
+              - cell "1 of 3" [ref=e2303]
+              - cell "AGAINST" [ref=e2304]
+              - cell "FOR" [ref=e2305]
+              - cell "31,805,478.35" [ref=e2306]
+              - 'cell "source record 1,506 of 29,891 | proposal #1,400 | search: The Coca-Cola Company, CUSIP 191216100, 2026-04-29" [ref=e2307]':
+                - link "source" [ref=e2308] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e2309]: "record 1,506 of 29,891 | proposal #1,400 | search: The Coca-Cola Company, CUSIP 191216100, 2026-04-29"
+            - row [ref=e2310]:
+              - cell "2026-04-29" [ref=e2311]
+              - cell "The Coca-Cola Company" [ref=e2312]
+              - cell "Vote on a shareowner proposal requesting a report on the Company's plans to increase sustainability disclosure" [ref=e2313]
+              - cell "SECURITY HOLDER" [ref=e2314]
+              - cell "2 of 3" [ref=e2315]
+              - cell "AGAINST" [ref=e2316]
+              - cell "FOR" [ref=e2317]
+              - cell "94,227.06" [ref=e2318]
+              - 'cell "source record 5,901 of 29,891 | proposal #1,401 | search: The Coca-Cola Company, CUSIP 191216100, 2026-04-29" [ref=e2319]':
+                - link "source" [ref=e2320] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e2321]: "record 5,901 of 29,891 | proposal #1,401 | search: The Coca-Cola Company, CUSIP 191216100, 2026-04-29"
+            - row [ref=e2322]:
+              - cell "2026-04-29" [ref=e2323]
+              - cell "The Coca-Cola Company" [ref=e2324]
+              - cell "Vote on a shareowner proposal requesting a report on the Company's plans to increase sustainability disclosure" [ref=e2325]
+              - cell "SECURITY HOLDER" [ref=e2326]
+              - cell "3 of 3" [ref=e2327]
+              - cell "FOR" [ref=e2328]
+              - cell "AGAINST" [ref=e2329]
+              - cell "48,075.03" [ref=e2330]
+              - 'cell "source record 10,095 of 29,891 | proposal #1,401 | search: The Coca-Cola Company, CUSIP 191216100, 2026-04-29" [ref=e2331]':
+                - link "source" [ref=e2332] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e2333]: "record 10,095 of 29,891 | proposal #1,401 | search: The Coca-Cola Company, CUSIP 191216100, 2026-04-29"
+            - row [ref=e2334]:
+              - cell "2026-04-29" [ref=e2335]
+              - cell "The Goldman Sachs Group, Inc." [ref=e2336]
+              - cell "Shareholder Proposal Regarding Disclosure of Energy Supply Ratio" [ref=e2337]
+              - cell "SECURITY HOLDER" [ref=e2338]
+              - cell "1 of 3" [ref=e2339]
+              - cell "AGAINST" [ref=e2340]
+              - cell "FOR" [ref=e2341]
+              - cell "2,637,377.09" [ref=e2342]
+              - 'cell "source record 1,525 of 29,891 | proposal #1,418 | search: The Goldman Sachs Group, Inc., CUSIP 38141G104, 2026-04-29" [ref=e2343]':
+                - link "source" [ref=e2344] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e2345]: "record 1,525 of 29,891 | proposal #1,418 | search: The Goldman Sachs Group, Inc., CUSIP 38141G104, 2026-04-29"
+            - row [ref=e2346]:
+              - cell "2026-04-29" [ref=e2347]
+              - cell "The Goldman Sachs Group, Inc." [ref=e2348]
+              - cell "Shareholder Proposal Regarding Disclosure of Energy Supply Ratio" [ref=e2349]
+              - cell "SECURITY HOLDER" [ref=e2350]
+              - cell "2 of 3" [ref=e2351]
+              - cell "AGAINST" [ref=e2352]
+              - cell "FOR" [ref=e2353]
+              - cell "7,813.51" [ref=e2354]
+              - 'cell "source record 5,919 of 29,891 | proposal #1,418 | search: The Goldman Sachs Group, Inc., CUSIP 38141G104, 2026-04-29" [ref=e2355]':
+                - link "source" [ref=e2356] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e2357]: "record 5,919 of 29,891 | proposal #1,418 | search: The Goldman Sachs Group, Inc., CUSIP 38141G104, 2026-04-29"
+            - row [ref=e2358]:
+              - cell "2026-04-29" [ref=e2359]
+              - cell "The Goldman Sachs Group, Inc." [ref=e2360]
+              - cell "Shareholder Proposal Regarding Disclosure of Energy Supply Ratio" [ref=e2361]
+              - cell "SECURITY HOLDER" [ref=e2362]
+              - cell "3 of 3" [ref=e2363]
+              - cell "FOR" [ref=e2364]
+              - cell "AGAINST" [ref=e2365]
+              - cell "3,986.48" [ref=e2366]
+              - 'cell "source record 10,113 of 29,891 | proposal #1,418 | search: The Goldman Sachs Group, Inc., CUSIP 38141G104, 2026-04-29" [ref=e2367]':
+                - link "source" [ref=e2368] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e2369]: "record 10,113 of 29,891 | proposal #1,418 | search: The Goldman Sachs Group, Inc., CUSIP 38141G104, 2026-04-29"
+            - row [ref=e2370]:
+              - cell "2026-04-30" [ref=e2371]
+              - cell "GILEAD SCIENCES, INC." [ref=e2372]
+              - cell "To vote on a stockholder proposal requesting a report on the risks of ESG and DEI executive compensation metrics, if properly presented at the Annual Meeting." [ref=e2373]
+              - cell "SECURITY HOLDER" [ref=e2374]
+              - cell "1 of 4" [ref=e2375]
+              - cell "ABSTAIN" [ref=e2376]
+              - cell "AGAINST" [ref=e2377]
+              - cell "50" [ref=e2378]
+              - 'cell "source record 16,950 of 29,891 | proposal #7,362 | search: GILEAD SCIENCES, INC., CUSIP 375558103, 2026-04-30" [ref=e2379]':
+                - link "source" [ref=e2380] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e2381]: "record 16,950 of 29,891 | proposal #7,362 | search: GILEAD SCIENCES, INC., CUSIP 375558103, 2026-04-30"
+            - row [ref=e2382]:
+              - cell "2026-04-30" [ref=e2383]
+              - cell "GILEAD SCIENCES, INC." [ref=e2384]
+              - cell "To vote on a stockholder proposal requesting a report on the risks of ESG and DEI executive compensation metrics, if properly presented at the Annual Meeting." [ref=e2385]
+              - cell "SECURITY HOLDER" [ref=e2386]
+              - cell "2 of 4" [ref=e2387]
+              - cell "FOR" [ref=e2388]
+              - cell "AGAINST" [ref=e2389]
+              - cell "49" [ref=e2390]
+              - 'cell "source record 16,951 of 29,891 | proposal #7,362 | search: GILEAD SCIENCES, INC., CUSIP 375558103, 2026-04-30" [ref=e2391]':
+                - link "source" [ref=e2392] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e2393]: "record 16,951 of 29,891 | proposal #7,362 | search: GILEAD SCIENCES, INC., CUSIP 375558103, 2026-04-30"
+            - row [ref=e2394]:
+              - cell "2026-04-30" [ref=e2395]
+              - cell "GILEAD SCIENCES, INC." [ref=e2396]
+              - cell "To vote on a stockholder proposal requesting a report on the risks of ESG and DEI executive compensation metrics, if properly presented at the Annual Meeting." [ref=e2397]
+              - cell "SECURITY HOLDER" [ref=e2398]
+              - cell "3 of 4" [ref=e2399]
+              - cell "AGAINST" [ref=e2400]
+              - cell "FOR" [ref=e2401]
+              - cell "8,837" [ref=e2402]
+              - 'cell "source record 16,952 of 29,891 | proposal #7,362 | search: GILEAD SCIENCES, INC., CUSIP 375558103, 2026-04-30" [ref=e2403]':
+                - link "source" [ref=e2404] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e2405]: "record 16,952 of 29,891 | proposal #7,362 | search: GILEAD SCIENCES, INC., CUSIP 375558103, 2026-04-30"
+            - row [ref=e2406]:
+              - cell "2026-04-30" [ref=e2407]
+              - cell "Gilead Sciences, Inc." [ref=e2408]
+              - cell "To vote on a stockholder proposal requesting a report on the risks of ESG and DEI executive compensation metrics, if properly presented at the Annual Meeting." [ref=e2409]
+              - cell "SECURITY HOLDER" [ref=e2410]
+              - cell "1 of 3" [ref=e2411]
+              - cell "AGAINST" [ref=e2412]
+              - cell "FOR" [ref=e2413]
+              - cell "11,512,239.21" [ref=e2414]
+              - 'cell "source record 1,584 of 29,891 | proposal #1,473 | search: Gilead Sciences, Inc., CUSIP 375558103, 2026-04-30" [ref=e2415]':
+                - link "source" [ref=e2416] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e2417]: "record 1,584 of 29,891 | proposal #1,473 | search: Gilead Sciences, Inc., CUSIP 375558103, 2026-04-30"
+            - row [ref=e2418]:
+              - cell "2026-05-04" [ref=e2419]
+              - cell "BANK OF AMERICA CORPORATION" [ref=e2420]
+              - cell "Shareholder proposal requesting report on board oversight of risks related to animal welfare" [ref=e2421]
+              - cell "SECURITY HOLDER" [ref=e2422]
+              - cell "4 of 4" [ref=e2423]
+              - cell "AGAINST" [ref=e2424]
+              - cell "FOR" [ref=e2425]
+              - cell "154,556.23" [ref=e2426]
+              - 'cell "source record 27,119 of 29,891 | proposal #7,503 | search: BANK OF AMERICA CORPORATION, CUSIP 060505104, 2026-05-04" [ref=e2427]':
+                - link "source" [ref=e2428] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e2429]: "record 27,119 of 29,891 | proposal #7,503 | search: BANK OF AMERICA CORPORATION, CUSIP 060505104, 2026-05-04"
+            - row [ref=e2430]:
+              - cell "2026-05-05" [ref=e2431]
+              - cell "AMERICAN EXPRESS COMPANY" [ref=e2432]
+              - cell "Shareholder proposal regarding political bias risk oversight." [ref=e2433]
+              - cell "SECURITY HOLDER" [ref=e2434]
+              - cell "1 of 3" [ref=e2435]
+              - cell "ABSTAIN" [ref=e2436]
+              - cell "AGAINST" [ref=e2437]
+              - cell "55" [ref=e2438]
+              - 'cell "source record 17,498 of 29,891 | proposal #7,544 | search: AMERICAN EXPRESS COMPANY, CUSIP 025816109, 2026-05-05" [ref=e2439]':
+                - link "source" [ref=e2440] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e2441]: "record 17,498 of 29,891 | proposal #7,544 | search: AMERICAN EXPRESS COMPANY, CUSIP 025816109, 2026-05-05"
+            - row [ref=e2442]:
+              - cell "2026-05-05" [ref=e2443]
+              - cell "AMERICAN EXPRESS COMPANY" [ref=e2444]
+              - cell "Shareholder proposal regarding political bias risk oversight." [ref=e2445]
+              - cell "SECURITY HOLDER" [ref=e2446]
+              - cell "2 of 3" [ref=e2447]
+              - cell "FOR" [ref=e2448]
+              - cell "AGAINST" [ref=e2449]
+              - cell "33" [ref=e2450]
+              - 'cell "source record 17,499 of 29,891 | proposal #7,544 | search: AMERICAN EXPRESS COMPANY, CUSIP 025816109, 2026-05-05" [ref=e2451]':
+                - link "source" [ref=e2452] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e2453]: "record 17,499 of 29,891 | proposal #7,544 | search: AMERICAN EXPRESS COMPANY, CUSIP 025816109, 2026-05-05"
+            - row [ref=e2454]:
+              - cell "2026-05-05" [ref=e2455]
+              - cell "AMERICAN EXPRESS COMPANY" [ref=e2456]
+              - cell "Shareholder proposal regarding political bias risk oversight." [ref=e2457]
+              - cell "SECURITY HOLDER" [ref=e2458]
+              - cell "3 of 3" [ref=e2459]
+              - cell "AGAINST" [ref=e2460]
+              - cell "FOR" [ref=e2461]
+              - cell "3,384" [ref=e2462]
+              - 'cell "source record 17,500 of 29,891 | proposal #7,544 | search: AMERICAN EXPRESS COMPANY, CUSIP 025816109, 2026-05-05" [ref=e2463]':
+                - link "source" [ref=e2464] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e2465]: "record 17,500 of 29,891 | proposal #7,544 | search: AMERICAN EXPRESS COMPANY, CUSIP 025816109, 2026-05-05"
+            - row [ref=e2466]:
+              - cell "2026-05-05" [ref=e2467]
+              - cell "DOMINION ENERGY, INC." [ref=e2468]
+              - cell "Shareholder Proposal Regarding a Report on the Use of ESG and DEI Metrics in Executive Compensation Plans" [ref=e2469]
+              - cell "SECURITY HOLDER" [ref=e2470]
+              - cell "1 of 4" [ref=e2471]
+              - cell "ABSTAIN" [ref=e2472]
+              - cell "AGAINST" [ref=e2473]
+              - cell "7" [ref=e2474]
+              - 'cell "source record 17,684 of 29,891 | proposal #7,606 | search: DOMINION ENERGY, INC., CUSIP 25746U109, 2026-05-05" [ref=e2475]':
+                - link "source" [ref=e2476] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e2477]: "record 17,684 of 29,891 | proposal #7,606 | search: DOMINION ENERGY, INC., CUSIP 25746U109, 2026-05-05"
+            - row [ref=e2478]:
+              - cell "2026-05-05" [ref=e2479]
+              - cell "DOMINION ENERGY, INC." [ref=e2480]
+              - cell "Shareholder Proposal Regarding a Report on the Use of ESG and DEI Metrics in Executive Compensation Plans" [ref=e2481]
+              - cell "SECURITY HOLDER" [ref=e2482]
+              - cell "2 of 4" [ref=e2483]
+              - cell "FOR" [ref=e2484]
+              - cell "AGAINST" [ref=e2485]
+              - cell "7" [ref=e2486]
+              - 'cell "source record 17,685 of 29,891 | proposal #7,606 | search: DOMINION ENERGY, INC., CUSIP 25746U109, 2026-05-05" [ref=e2487]':
+                - link "source" [ref=e2488] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e2489]: "record 17,685 of 29,891 | proposal #7,606 | search: DOMINION ENERGY, INC., CUSIP 25746U109, 2026-05-05"
+            - row [ref=e2490]:
+              - cell "2026-05-05" [ref=e2491]
+              - cell "DOMINION ENERGY, INC." [ref=e2492]
+              - cell "Shareholder Proposal Regarding a Report on the Use of ESG and DEI Metrics in Executive Compensation Plans" [ref=e2493]
+              - cell "SECURITY HOLDER" [ref=e2494]
+              - cell "3 of 4" [ref=e2495]
+              - cell "AGAINST" [ref=e2496]
+              - cell "FOR" [ref=e2497]
+              - cell "701" [ref=e2498]
+              - 'cell "source record 17,686 of 29,891 | proposal #7,606 | search: DOMINION ENERGY, INC., CUSIP 25746U109, 2026-05-05" [ref=e2499]':
+                - link "source" [ref=e2500] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e2501]: "record 17,686 of 29,891 | proposal #7,606 | search: DOMINION ENERGY, INC., CUSIP 25746U109, 2026-05-05"
+            - row [ref=e2502]:
+              - cell "2026-05-06" [ref=e2503]
+              - cell "PEPSICO, INC." [ref=e2504]
+              - cell "Shareholder Proposal - Report Evaluating the Treatment of Animals within Supply Chain." [ref=e2505]
+              - cell "SECURITY HOLDER" [ref=e2506]
+              - cell "4 of 4" [ref=e2507]
+              - cell "AGAINST" [ref=e2508]
+              - cell "FOR" [ref=e2509]
+              - cell "30,265.2" [ref=e2510]
+              - 'cell "source record 27,351 of 29,891 | proposal #7,735 | search: PEPSICO, INC., CUSIP 713448108, 2026-05-06" [ref=e2511]':
+                - link "source" [ref=e2512] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e2513]: "record 27,351 of 29,891 | proposal #7,735 | search: PEPSICO, INC., CUSIP 713448108, 2026-05-06"
+            - row [ref=e2514]:
+              - cell "2026-05-06" [ref=e2515]
+              - cell "PHILIP MORRIS INTERNATIONAL INC." [ref=e2516]
+              - cell "Shareholder Proposal to issue a report on filter cleanup costs and extended producer responsibility laws for filters" [ref=e2517]
+              - cell "SECURITY HOLDER" [ref=e2518]
+              - cell "1 of 4" [ref=e2519]
+              - cell "ABSTAIN" [ref=e2520]
+              - cell "AGAINST" [ref=e2521]
+              - cell "105" [ref=e2522]
+              - 'cell "source record 18,110 of 29,891 | proposal #7,748 | search: PHILIP MORRIS INTERNATIONAL INC., CUSIP 718172109, 2026-05-06" [ref=e2523]':
+                - link "source" [ref=e2524] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e2525]: "record 18,110 of 29,891 | proposal #7,748 | search: PHILIP MORRIS INTERNATIONAL INC., CUSIP 718172109, 2026-05-06"
+            - row [ref=e2526]:
+              - cell "2026-05-06" [ref=e2527]
+              - cell "PHILIP MORRIS INTERNATIONAL INC." [ref=e2528]
+              - cell "Shareholder Proposal to issue a report on filter cleanup costs and extended producer responsibility laws for filters" [ref=e2529]
+              - cell "SECURITY HOLDER" [ref=e2530]
+              - cell "2 of 4" [ref=e2531]
+              - cell "FOR" [ref=e2532]
+              - cell "AGAINST" [ref=e2533]
+              - cell "486" [ref=e2534]
+              - 'cell "source record 18,111 of 29,891 | proposal #7,748 | search: PHILIP MORRIS INTERNATIONAL INC., CUSIP 718172109, 2026-05-06" [ref=e2535]':
+                - link "source" [ref=e2536] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e2537]: "record 18,111 of 29,891 | proposal #7,748 | search: PHILIP MORRIS INTERNATIONAL INC., CUSIP 718172109, 2026-05-06"
+            - row [ref=e2538]:
+              - cell "2026-05-06" [ref=e2539]
+              - cell "PHILIP MORRIS INTERNATIONAL INC." [ref=e2540]
+              - cell "Shareholder Proposal to issue a report on filter cleanup costs and extended producer responsibility laws for filters" [ref=e2541]
+              - cell "SECURITY HOLDER" [ref=e2542]
+              - cell "3 of 4" [ref=e2543]
+              - cell "AGAINST" [ref=e2544]
+              - cell "FOR" [ref=e2545]
+              - cell "10,501" [ref=e2546]
+              - 'cell "source record 18,112 of 29,891 | proposal #7,748 | search: PHILIP MORRIS INTERNATIONAL INC., CUSIP 718172109, 2026-05-06" [ref=e2547]':
+                - link "source" [ref=e2548] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e2549]: "record 18,112 of 29,891 | proposal #7,748 | search: PHILIP MORRIS INTERNATIONAL INC., CUSIP 718172109, 2026-05-06"
+            - row [ref=e2550]:
+              - cell "2026-05-06" [ref=e2551]
+              - cell "Philip Morris International Inc." [ref=e2552]
+              - cell "Shareholder Proposal to issue a report on filter cleanup costs and extended producer responsibility laws for filters" [ref=e2553]
+              - cell "SECURITY HOLDER" [ref=e2554]
+              - cell "1 of 3" [ref=e2555]
+              - cell "AGAINST" [ref=e2556]
+              - cell "FOR" [ref=e2557]
+              - cell "14,476,478.82" [ref=e2558]
+              - 'cell "source record 1,980 of 29,891 | proposal #1,842 | search: Philip Morris International Inc., CUSIP 718172109, 2026-05-06" [ref=e2559]':
+                - link "source" [ref=e2560] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e2561]: "record 1,980 of 29,891 | proposal #1,842 | search: Philip Morris International Inc., CUSIP 718172109, 2026-05-06"
+            - row [ref=e2562]:
+              - cell "2026-05-07" [ref=e2563]
+              - cell "ARCHER-DANIELS-MIDLAND COMPANY" [ref=e2564]
+              - cell "Stockholder Proposal Regarding Issuance of a Report on Pesticide Use Data Reporting in Regenerative Agriculture Program Disclosures." [ref=e2565]
+              - cell "SECURITY HOLDER" [ref=e2566]
+              - cell "4 of 4" [ref=e2567]
+              - cell "AGAINST" [ref=e2568]
+              - cell "FOR" [ref=e2569]
+              - cell "11,853.32" [ref=e2570]
+              - 'cell "source record 27,430 of 29,891 | proposal #7,814 | search: ARCHER-DANIELS-MIDLAND COMPANY, CUSIP 039483102, 2026-05-07" [ref=e2571]':
+                - link "source" [ref=e2572] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e2573]: "record 27,430 of 29,891 | proposal #7,814 | search: ARCHER-DANIELS-MIDLAND COMPANY, CUSIP 039483102, 2026-05-07"
+            - row [ref=e2574]:
+              - cell "2026-05-07" [ref=e2575]
+              - cell "Archer-Daniels-Midland Company" [ref=e2576]
+              - cell "Stockholder proposal regarding issuance of a report on pesticide use data reporting in regenerative agriculture program disclosures." [ref=e2577]
+              - cell "SECURITY HOLDER" [ref=e2578]
+              - cell "1 of 2" [ref=e2579]
+              - cell "AGAINST" [ref=e2580]
+              - cell "FOR" [ref=e2581]
+              - cell "13,971.59" [ref=e2582]
+              - 'cell "source record 6,426 of 29,891 | proposal #5,111 | search: Archer-Daniels-Midland Company, CUSIP 039483102, 2026-05-07" [ref=e2583]':
+                - link "source" [ref=e2584] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e2585]: "record 6,426 of 29,891 | proposal #5,111 | search: Archer-Daniels-Midland Company, CUSIP 039483102, 2026-05-07"
+            - row [ref=e2586]:
+              - cell "2026-05-07" [ref=e2587]
+              - cell "Archer-Daniels-Midland Company" [ref=e2588]
+              - cell "Stockholder proposal regarding issuance of a report on pesticide use data reporting in regenerative agriculture program disclosures." [ref=e2589]
+              - cell "SECURITY HOLDER" [ref=e2590]
+              - cell "2 of 2" [ref=e2591]
+              - cell "FOR" [ref=e2592]
+              - cell "AGAINST" [ref=e2593]
+              - cell "7,301.28" [ref=e2594]
+              - 'cell "source record 10,620 of 29,891 | proposal #5,111 | search: Archer-Daniels-Midland Company, CUSIP 039483102, 2026-05-07" [ref=e2595]':
+                - link "source" [ref=e2596] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e2597]: "record 10,620 of 29,891 | proposal #5,111 | search: Archer-Daniels-Midland Company, CUSIP 039483102, 2026-05-07"
+            - row [ref=e2598]:
+              - cell "2026-05-07" [ref=e2599]
+              - cell "NVR, INC." [ref=e2600]
+              - cell "Shareholder proposal to disclose greenhouse gas emissions." [ref=e2601]
+              - cell "SECURITY HOLDER" [ref=e2602]
+              - cell "1 of 4" [ref=e2603]
+              - cell "ABSTAIN" [ref=e2604]
+              - cell "AGAINST" [ref=e2605]
+              - cell "0" [ref=e2606]
+              - 'cell "source record 18,791 of 29,891 | proposal #7,975 | search: NVR, INC., CUSIP 62944T105, 2026-05-07" [ref=e2607]':
+                - link "source" [ref=e2608] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e2609]: "record 18,791 of 29,891 | proposal #7,975 | search: NVR, INC., CUSIP 62944T105, 2026-05-07"
+            - row [ref=e2610]:
+              - cell "2026-05-07" [ref=e2611]
+              - cell "NVR, INC." [ref=e2612]
+              - cell "Shareholder proposal to disclose greenhouse gas emissions." [ref=e2613]
+              - cell "SECURITY HOLDER" [ref=e2614]
+              - cell "2 of 4" [ref=e2615]
+              - cell "FOR" [ref=e2616]
+              - cell "AGAINST" [ref=e2617]
+              - cell "8" [ref=e2618]
+              - 'cell "source record 18,792 of 29,891 | proposal #7,975 | search: NVR, INC., CUSIP 62944T105, 2026-05-07" [ref=e2619]':
+                - link "source" [ref=e2620] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e2621]: "record 18,792 of 29,891 | proposal #7,975 | search: NVR, INC., CUSIP 62944T105, 2026-05-07"
+            - row [ref=e2622]:
+              - cell "2026-05-07" [ref=e2623]
+              - cell "NVR, INC." [ref=e2624]
+              - cell "Shareholder proposal to disclose greenhouse gas emissions." [ref=e2625]
+              - cell "SECURITY HOLDER" [ref=e2626]
+              - cell "3 of 4" [ref=e2627]
+              - cell "AGAINST" [ref=e2628]
+              - cell "FOR" [ref=e2629]
+              - cell "11" [ref=e2630]
+              - 'cell "source record 18,793 of 29,891 | proposal #7,975 | search: NVR, INC., CUSIP 62944T105, 2026-05-07" [ref=e2631]':
+                - link "source" [ref=e2632] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e2633]: "record 18,793 of 29,891 | proposal #7,975 | search: NVR, INC., CUSIP 62944T105, 2026-05-07"
+            - row [ref=e2634]:
+              - cell "2026-05-07" [ref=e2635]
+              - cell "NVR, INC." [ref=e2636]
+              - cell "Shareholder proposal to disclose greenhouse gas emissions." [ref=e2637]
+              - cell "SECURITY HOLDER" [ref=e2638]
+              - cell "4 of 4" [ref=e2639]
+              - cell "AGAINST" [ref=e2640]
+              - cell "FOR" [ref=e2641]
+              - cell "61.61" [ref=e2642]
+              - 'cell "source record 27,591 of 29,891 | proposal #7,975 | search: NVR, INC., CUSIP 62944T105, 2026-05-07" [ref=e2643]':
+                - link "source" [ref=e2644] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e2645]: "record 27,591 of 29,891 | proposal #7,975 | search: NVR, INC., CUSIP 62944T105, 2026-05-07"
+            - row [ref=e2646]:
+              - cell "2026-05-07" [ref=e2647]
+              - cell "NVR, Inc." [ref=e2648]
+              - cell "Shareholder proposal to disclose greenhouse gas emissions." [ref=e2649]
+              - cell "SECURITY HOLDER" [ref=e2650]
+              - cell "1 of 3" [ref=e2651]
+              - cell "AGAINST" [ref=e2652]
+              - cell "FOR" [ref=e2653]
+              - cell "25,159.28" [ref=e2654]
+              - 'cell "source record 2,223 of 29,891 | proposal #2,069 | search: NVR, Inc., CUSIP 62944T105, 2026-05-07" [ref=e2655]':
+                - link "source" [ref=e2656] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e2657]: "record 2,223 of 29,891 | proposal #2,069 | search: NVR, Inc., CUSIP 62944T105, 2026-05-07"
+            - row [ref=e2658]:
+              - cell "2026-05-07" [ref=e2659]
+              - cell "NVR, Inc." [ref=e2660]
+              - cell "Shareholder proposal to disclose greenhouse gas emissions." [ref=e2661]
+              - cell "SECURITY HOLDER" [ref=e2662]
+              - cell "2 of 3" [ref=e2663]
+              - cell "AGAINST" [ref=e2664]
+              - cell "FOR" [ref=e2665]
+              - cell "75.3" [ref=e2666]
+              - 'cell "source record 6,587 of 29,891 | proposal #2,069 | search: NVR, Inc., CUSIP 62944T105, 2026-05-07" [ref=e2667]':
+                - link "source" [ref=e2668] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e2669]: "record 6,587 of 29,891 | proposal #2,069 | search: NVR, Inc., CUSIP 62944T105, 2026-05-07"
+            - row [ref=e2670]:
+              - cell "2026-05-07" [ref=e2671]
+              - cell "NVR, Inc." [ref=e2672]
+              - cell "Shareholder proposal to disclose greenhouse gas emissions." [ref=e2673]
+              - cell "SECURITY HOLDER" [ref=e2674]
+              - cell "3 of 3" [ref=e2675]
+              - cell "FOR" [ref=e2676]
+              - cell "AGAINST" [ref=e2677]
+              - cell "38.28" [ref=e2678]
+              - 'cell "source record 10,781 of 29,891 | proposal #2,069 | search: NVR, Inc., CUSIP 62944T105, 2026-05-07" [ref=e2679]':
+                - link "source" [ref=e2680] [cursor=pointer]:
+                  - /url: https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml
+                - generic [ref=e2681]: "record 10,781 of 29,891 | proposal #2,069 | search: NVR, Inc., CUSIP 62944T105, 2026-05-07"
+        - navigation "Record pages (bottom)" [ref=e1477]:
+          - button "Previous" [disabled] [ref=e1478]
+          - generic [ref=e1479]: Page 1 of 3 | records 1 to 100 of 257
+          - button "Next" [ref=e1480] [cursor=pointer]
+  - contentinfo [ref=e251]:
+    - paragraph [ref=e252]: "EqualShares - The Roll Call. Data: SEC EDGAR Form N-PX, rendered from stored filings. This page types no numbers, and every receipt link is a URL stored at ingest time from the filing's own EDGAR index page - none are constructed."

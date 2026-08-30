@@ -76,3 +76,24 @@ a comment from code - but it means a punctuation sweep of that file costs a full
 **sweep a fingerprinted file only alongside a real behaviour change, and say so in the commit.**
 Open question for the registry (`extractor-provenance`): should the fingerprint hash a
 comment-stripped form? Sent 2026-08-29, not decided here.
+
+## Lesson 6 - The gates certified a unit nobody had defined (2026-08-30)
+
+Ten gates proved every count recomputed from the store; four strangers could not say what a
+count counted. A "record" was one `<voteRecord>` lot, a proposal spans several blocks, and the
+page said "one fund, every vote" over 29,891 rows for 10,523 proposals. Nothing was wrong in the
+data and everything was wrong on the page. The fix was a vocabulary (record / lot / proposal),
+published grouping fields, and totals that hold the three counts apart so they cannot drift back
+into one number. Rule: **define the unit of a row before publishing a count of rows, and make the
+definition a published field, not a sentence.** Sibling: a filed field's name is not its meaning
+(`managementRecommendation` tracked the lot); the check that proves it is now a stored fact in
+`meta.json` (`mgmt_rec_semantics`) gated by G8, so a future filer is judged by evidence. Deposited
+in the registry 2026-08-29 (`ingestion-pipeline`, `static-publication-site`).
+
+## Lesson 7 - A multi-line script through the shell tool can fail to parse for no visible reason (2026-08-30)
+
+Three times tonight a long Python body sent through the Bash tool as a quoted heredoc died with
+"unexpected EOF while looking for matching quote" before running a line; the same body written to
+a file with the Write tool and run with `python file.py` worked first time. No byte in the body
+was at fault that I could find. Rule: **a script over roughly a hundred lines goes to a file
+first, then runs; the shell tool carries commands, not programs.** Cost: three failed rounds.

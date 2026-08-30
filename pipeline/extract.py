@@ -2,7 +2,9 @@
 
 Reads filings rows + raw XML files, parses namespace-agnostically (match on
 localname, strip namespace), emits one vote_records row per voteRecord child
-(split votes; parent proposal fields carried), tri-valued normalization
+(a VOTE LOT; parent proposal fields carried; a block with zero lots emits one
+row with the how-voted fields absent-in-source), groups rows into PROPOSALS
+across blocks (proposal_no / lot_index / lots_in_proposal), tri-valued normalization
 (extracted / absent-in-source raw NULL / unparseable raw kept + normalized
 NULL - never invent, never blank a raw), UPSERTs on (accession, seq), and
 stamps every row with engine_run_id provenance.
@@ -147,6 +149,57 @@ def normalize_vote(raw):
     return raw, sources.CONFIG["vote_normalization"].get(raw.strip().upper())
 
 
+def normalize_rec(raw):
+    """managementRecommendation: the vote enum plus the values CONFIG lists as
+    extra (NONE = the filer said there was no recommendation). NONE is an
+    EXTRACTED value, not absent-in-source - cold-read round one (2026-08-29)
+    found ten of them silently excluded from a published count because they
+    normalised to NULL. Tri-valued as normalize_vote."""
+    if raw is None:
+        return None, None
+    key = raw.strip().upper()
+    enum = sources.CONFIG["vote_normalization"].get(key)
+    if enum is None:
+        enum = sources.CONFIG["mgmt_rec_extra_values"].get(key)
+    return raw, enum
+
+
+def assign_proposals(rows):
+    """Group a filing's rows into proposals ACROSS <proxyTable> blocks.
+
+    Verified 2026-08-29 on the Vanguard filing: 21,474 blocks, 29,890 lots,
+    10,523 distinct proposals; one proposal spans 1-5 blocks and a block holds
+    1-10 lots (Medtronic's auditor ratification: seven lots in three blocks).
+    A reader asking "how did this fund vote on X" needs the lots of X together.
+
+    proposal_no      1-based, first-appearance order in the document
+    lot_index        1-based across the proposal's lots in document order;
+                     0 for the single row a zero-lot block emits
+    lots_in_proposal count of lot rows (lot_index >= 1) in the proposal
+    Mutates rows in place; deterministic, so seq-keyed UPSERTs stay corrective.
+    """
+    key_of = {}
+    counts = {}
+    for r in rows:
+        k = (r["issuer_name"], r["cusip"], r["meeting_date"],
+             r["vote_description"], r["vote_source"])
+        if k not in key_of:
+            key_of[k] = len(key_of) + 1
+            counts[k] = 0
+        r["proposal_no"] = key_of[k]
+        if r["how_voted_raw"] is None and r["mgmt_rec_raw"] is None and r.get("_zero_lot"):
+            r["lot_index"] = 0
+        else:
+            counts[k] += 1
+            r["lot_index"] = counts[k]
+    for r in rows:
+        k = (r["issuer_name"], r["cusip"], r["meeting_date"],
+             r["vote_description"], r["vote_source"])
+        r["lots_in_proposal"] = counts[k]
+        r.pop("_zero_lot", None)
+    return len(key_of)
+
+
 def to_float(raw, stats, key):
     if raw is None:
         return None
@@ -205,10 +258,10 @@ def parse_filing(raw_path, stats):
                 t for t in (text_or_none(d) for d in elem.iter()
                             if localname(d.tag) == "categoryType")
                 if t is not None) or None,
-            # ISSUER vs SECURITY HOLDER - who proposed it. Stored verbatim; the
-            # concordance caveat on the page depends on it (the filing's own
-            # managementRecommendation field reads inverted on shareholder
-            # proposals relative to the board's actual stance).
+            # ISSUER vs SECURITY HOLDER - who proposed it. Stored verbatim.
+            # The page splits "% FOR" by it; it is the only honest axis for
+            # that, because managementRecommendation is a per-lot field that
+            # tracks the lot in the filing we have (cold-read round one).
             "vote_source": direct_child_text(elem, "voteSource"),
             "vote_description": direct_child_text(elem, "voteDescription"),
             "shares_on_loan": to_float(
@@ -226,7 +279,8 @@ def parse_filing(raw_path, stats):
             # (raw NULL) - absent-in-source, not unparseable.
             rows.append({**base, "shares_voted": prop_shares,
                          "how_voted_raw": None, "how_voted": None,
-                         "mgmt_rec_raw": None, "mgmt_rec": None})
+                         "mgmt_rec_raw": None, "mgmt_rec": None,
+                         "_zero_lot": True})
         else:
             # Split votes: one row per voteRecord child, parent proposal
             # fields carried. A voteRecord-level sharesVoted (present on split
@@ -234,7 +288,7 @@ def parse_filing(raw_path, stats):
             # figure is carried.
             for vr in vote_records:
                 hv_raw, hv = normalize_vote(direct_child_text(vr, "howVoted"))
-                mr_raw, mr = normalize_vote(
+                mr_raw, mr = normalize_rec(
                     direct_child_text(vr, "managementRecommendation"))
                 if hv_raw is not None and hv is None:
                     stats["unparseable_how_voted"] += 1
@@ -390,6 +444,7 @@ def main():
             filing_failures.append((accession, detail))
             continue
 
+        n_proposals = assign_proposals(rows)
         now = utcnow()
         db_rows = []
         # seq = ordinal over emitted rows within the filing, in document
@@ -416,8 +471,11 @@ def main():
 
         cats = Counter(
             (r["category_type"] or "(no category)") for r in db_rows)
-        log(f"  parsed records: {stats['parsed_records']}")
-        log(f"  emitted rows:   {len(db_rows)}")
+        log(f"  parsed blocks:  {stats['parsed_records']}")
+        log(f"  emitted rows:   {len(db_rows)} "
+            f"({sum(1 for r in db_rows if r['lot_index'] >= 1)} lots + "
+            f"{sum(1 for r in db_rows if r['lot_index'] == 0)} zero-lot rows)")
+        log(f"  proposals:      {n_proposals}")
         log(f"  unparseable how_voted: {stats['unparseable_how_voted']} "
             f"(raw kept, normalized NULL)")
         if stats["unparseable_shares"]:

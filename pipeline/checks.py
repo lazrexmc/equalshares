@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""checks.py — THE GATES for EqualShares "The Roll Call".
+"""checks.py - THE GATES for EqualShares "The Roll Call".
 
 Usage:  python pipeline/checks.py [--skip-outage]
 
-Eight deterministic gates. Each prints PASS/FAIL with extracted evidence —
+Eight deterministic gates. Each prints PASS/FAIL with extracted evidence -
 counts and values, never just a child's exit code:
 
   G1 raw-integrity          filings exist; every raw file exists; sha256 + size match
@@ -12,7 +12,7 @@ counts and values, never just a child's exit code:
   G4 terminal-audit         every terminal row carries a non-empty written reason
   G5 reparse                extract twice: identical count, zero dupes; corrupt one
                             row, re-extract restores it (proves UPSERT, kills
-                            insert-ignore — trap 6.5)
+                            insert-ignore - trap 6.5)
   G6 provenance             zero orphan engine_run_ids; manifest ids recompute from
                             sha256(code_fp|config_hash)[:16]; EXTRACT_CONFIG_PERTURB=1
                             changes the id, unperturbed re-run does not; git_commit
@@ -20,7 +20,7 @@ counts and values, never just a child's exit code:
   G7 export-consistency     site/data artifacts agree with the DB, exactly
   G8 anti-blend             rollup.json has NO top-level blended number
 
-Exit 0 only if every gate passed. --skip-outage marks G3 SKIP (not a pass —
+Exit 0 only if every gate passed. --skip-outage marks G3 SKIP (not a pass -
 run it at least once before calling the build done).
 
 G3 uses a throwaway --db in a temp dir. G5 mutates the real DB by design and
@@ -58,12 +58,20 @@ PY = sys.executable
 
 UNCATEGORIZED = "UNCATEGORIZED"
 VOTE_ENUM = ("FOR", "AGAINST", "ABSTAIN", "WITHHOLD")
+REC_ENUM = VOTE_ENUM + ("NONE",)
+SOURCE_KEYS = ("ISSUER", "SECURITY HOLDER")
+CELL_KEYS = {"n_records", "n_lots", "n_proposals", "n_voted", "for_lots", "for_pct", "thin"}
+CATEGORY_KEYS = {"category", "slug", "n", "n_lots", "n_proposals", "votes",
+                 "shares_voted_total", "by_source"}
+# Any key carrying one of these names anywhere in the export is a blended or
+# recommendation-derived headline trying to come back (cold-read round one).
+FORBIDDEN_KEY = re.compile(r"with_mgmt|concordance|comparable|blend", re.I)
 G5_SENTINEL = "G5-CORRUPTION-SENTINEL-DO-NOT-SHIP"
 UNREACHABLE = "http://127.0.0.1:9"
 
 
 class GateError(Exception):
-    """A gate failure with a written reason — a controlled FAIL, not a crash."""
+    """A gate failure with a written reason - a controlled FAIL, not a crash."""
 
 
 def log(msg=""):
@@ -72,7 +80,7 @@ def log(msg=""):
 
 def dbcon():
     if not DB_PATH.exists():
-        raise GateError(f"database not found: {DB_PATH} — run ingest + extract first")
+        raise GateError(f"database not found: {DB_PATH} - run ingest + extract first")
     con = sqlite3.connect(str(DB_PATH))
     con.row_factory = sqlite3.Row
     return con
@@ -132,7 +140,7 @@ def parse_engine_run_id(text):
 
 def engine_run_id_formula(code_fingerprint, config_hash, git_commit=""):
     """The contract's id: sha256(code_fingerprint + "|" + config_hash)[:16].
-    git_commit is accepted and deliberately unused — trace metadata never keys
+    git_commit is accepted and deliberately unused - trace metadata never keys
     behaviour (extractor-provenance trap 6.2). G6 calls this with two different
     commits and requires equality."""
     _ = git_commit
@@ -142,7 +150,7 @@ def engine_run_id_formula(code_fingerprint, config_hash, git_commit=""):
 
 
 def bucket(category_type):
-    """LOCKSTEP copy of export_site.bucket — change both or G7 fails (the point)."""
+    """LOCKSTEP copy of export_site.bucket - change both or G7 fails (the point)."""
     if category_type is None or str(category_type).strip() == "":
         return UNCATEGORIZED
     return category_type
@@ -153,11 +161,52 @@ def slugify(category):
     return re.sub(r"[^a-z0-9]+", "-", category.lower()).strip("-")
 
 
-def record_sort_key(rec):
-    """LOCKSTEP with export_site.record_sort_key, over the JSON dict shape."""
-    md = rec.get("meeting_date")
-    issuer = rec.get("issuer_name")
-    return (md is not None, md or "", issuer is not None, issuer or "", rec.get("seq", 0))
+def source_bucket(vote_source):
+    """LOCKSTEP copy of export_site.source_bucket."""
+    if vote_source is None or str(vote_source).strip() == "":
+        return "ABSENT"
+    v = str(vote_source).strip().upper()
+    return v if v in SOURCE_KEYS else "OTHER"
+
+
+def record_sort_key(r):
+    """LOCKSTEP copy of export_site.record_sort_key - reads the JSON back, so the
+    grouping fields may be absent (then they sort first, which G7 flags anyway)."""
+    return (
+        r.get("meeting_date") is not None,
+        r.get("meeting_date") or "",
+        r.get("issuer_name") is not None,
+        r.get("issuer_name") or "",
+        r.get("proposal_no") if r.get("proposal_no") is not None else -1,
+        r.get("lot_index") if r.get("lot_index") is not None else -1,
+        r.get("seq"),
+    )
+
+
+def pct(num, den):
+    return round(100 * num / den, 1) if den else None
+
+
+def cell_from_rows(rs, thin_n):
+    """LOCKSTEP copy of export_site.source_cell over DB rows."""
+    lots = [r for r in rs if (r["lot_index"] or 0) >= 1]
+    voted = [r for r in lots if r["how_voted"] in VOTE_ENUM]
+    for_lots = sum(1 for r in voted if r["how_voted"] == "FOR")
+    return {"n_records": len(rs), "n_lots": len(lots),
+            "n_proposals": len({r["proposal_no"] for r in rs}),
+            "n_voted": len(voted), "for_lots": for_lots,
+            "for_pct": pct(for_lots, len(voted)), "thin": len(voted) < thin_n}
+
+
+def walk_keys(obj, path=""):
+    if isinstance(obj, dict):
+        for k, v in obj.items():
+            here = f"{path}.{k}" if path else k
+            yield here
+            yield from walk_keys(v, here)
+    elif isinstance(obj, list):
+        for n, v in enumerate(obj):
+            yield from walk_keys(v, f"{path}[{n}]")
 
 
 def load_json(path):
@@ -175,7 +224,7 @@ def g1_raw_integrity():
     ).fetchall()
     con.close()
     if not filings:
-        return False, "filings table is empty — nothing was ingested"
+        return False, "filings table is empty - nothing was ingested"
     log(f"  filings rows: {len(filings)}")
     ok = True
     for f in filings:
@@ -223,7 +272,7 @@ def g2_coverage():
     return ok, (
         f"every filing extracted (total {total} records)"
         if ok
-        else "a filing with ZERO records — trap 6.8: the parsed document may not be the vote-bearing one"
+        else "a filing with ZERO records - trap 6.8: the parsed document may not be the vote-bearing one"
     )
 
 
@@ -245,12 +294,12 @@ def g3_outage(skip):
         proc = sub_run(cmd, timeout=300)
     finally:
         shutil.rmtree(tmpdir, ignore_errors=True)
-    log(f"  exit code: {proc.returncode}  (0=quiet day, 1=partial, 2=total outage — MUST be 2 here)")
+    log(f"  exit code: {proc.returncode}  (0=quiet day, 1=partial, 2=total outage - MUST be 2 here)")
     print_tail(proc)
     if proc.returncode == 2:
-        return True, "total outage exits 2 — distinguishable from a quiet day"
+        return True, "total outage exits 2 - distinguishable from a quiet day"
     if proc.returncode == 0:
-        return False, "exit 0 against unreachable hosts — trap 6.1 is LIVE: an outage reads as a quiet day"
+        return False, "exit 0 against unreachable hosts - trap 6.1 is LIVE: an outage reads as a quiet day"
     return False, f"exit {proc.returncode}, expected 2 (every-source-failed must be its own code)"
 
 
@@ -262,7 +311,7 @@ def g4_terminal_audit():
     ).fetchall()
     con.close()
     if not rows:
-        log("  terminal table is empty (nothing retired) — vacuously clean")
+        log("  terminal table is empty (nothing retired) - vacuously clean")
         return True, "0 terminal rows"
     ok = True
     for r in rows:
@@ -360,17 +409,17 @@ def g5_reparse():
     ).fetchone()
     con.close()
     if row is None:
-        return False, f"row ({accession}, seq {seq}) VANISHED after re-extract — worse than insert-ignore"
+        return False, f"row ({accession}, seq {seq}) VANISHED after re-extract - worse than insert-ignore"
     value = row["how_voted_raw"]
     log(f"  after corrective extract: how_voted_raw={value!r} (expected {original!r})")
     if value == original:
         return True, (
             f"idempotent (run1==run2=={c2}, 0 dupes) and corrective "
-            f"(sentinel overwritten back to {original!r} — UPSERT proven)"
+            f"(sentinel overwritten back to {original!r} - UPSERT proven)"
         )
     if value == G5_SENTINEL:
         _restore_g5(accession, seq, original)
-        return False, "sentinel SURVIVED re-extract — insert-ignore is discarding corrections (trap 6.5); manually restored"
+        return False, "sentinel SURVIVED re-extract - insert-ignore is discarding corrections (trap 6.5); manually restored"
     _restore_g5(accession, seq, original)
     return False, f"re-extract wrote {value!r}, expected {original!r}; manually restored"
 
@@ -425,12 +474,12 @@ def g6_provenance():
     again = _fingerprint_run(perturb=False)
     log(f"  fingerprints: baseline={baseline} perturbed={perturbed} unperturbed-re-run={again}")
     if perturbed == baseline:
-        log("  [FAIL] EXTRACT_CONFIG_PERTURB=1 did NOT change engine_run_id — config is not in the fingerprint")
+        log("  [FAIL] EXTRACT_CONFIG_PERTURB=1 did NOT change engine_run_id - config is not in the fingerprint")
         ok = False
     else:
         log("  [ok] perturbed config -> different engine_run_id")
     if again != baseline:
-        log("  [FAIL] unperturbed re-run changed engine_run_id — the fingerprint is unstable")
+        log("  [FAIL] unperturbed re-run changed engine_run_id - the fingerprint is unstable")
         ok = False
     else:
         log("  [ok] unperturbed re-run -> same engine_run_id (stable)")
@@ -455,11 +504,16 @@ def g6_provenance():
 
 # ---------------------------------------------------------------- G7 --------
 def g7_export_consistency():
+    """Every published number recomputes from the DB: category counts, the
+    vote distribution, the by_source cells (numerator AND denominator), the
+    proposal/lot grouping per record, the totals (records, lots and proposals
+    held apart - RapidForge review note 3), and the managementRecommendation
+    semantics block. LOCKSTEP with export_site.py."""
     meta_path = SITE_DATA / "meta.json"
     rollup_path = SITE_DATA / "rollup.json"
     for p in (meta_path, rollup_path):
         if not p.exists():
-            raise GateError(f"missing artifact: {p} — run export_site.py first")
+            raise GateError(f"missing artifact: {p} - run export_site.py first")
     meta = load_json(meta_path)
     rollup = load_json(rollup_path)
 
@@ -472,17 +526,23 @@ def g7_export_consistency():
     acc = meta.get("filing", {}).get("accession")
     chk(bool(acc), "meta.filing.accession present", repr(acc))
     if not acc:
-        return False, "meta.json has no filing.accession — cannot scope the DB comparison"
+        return False, "meta.json has no filing.accession - cannot scope the DB comparison"
 
     thin_n = meta.get("thin_n")
     chk(isinstance(thin_n, int), "meta.thin_n is an integer", repr(thin_n))
+    sys.path.insert(0, str(PIPELINE_DIR))
+    from sources import CONFIG  # noqa: PLC0415
+    chk(thin_n == CONFIG.get("thin_n"), "meta.thin_n == CONFIG thin_n",
+        f"meta={thin_n} config={CONFIG.get('thin_n')}")
+    min_pct = CONFIG.get("mgmt_rec_board_view_min_pct")
 
     con = dbcon()
     db_filing = con.execute(
         "SELECT raw_sha256 FROM filings WHERE accession = ?", (acc,)
     ).fetchone()
     rows = con.execute(
-        "SELECT seq, category_type, how_voted, how_voted_raw, mgmt_rec "
+        "SELECT seq, category_type, how_voted, how_voted_raw, mgmt_rec, vote_source, "
+        "vote_series, proposal_no, lot_index, lots_in_proposal, shares_voted, categories_all "
         "FROM vote_records WHERE accession = ?",
         (acc,),
     ).fetchall()
@@ -495,15 +555,17 @@ def g7_export_consistency():
             "meta filing.raw_sha256 matches DB",
             f"meta={meta['filing'].get('raw_sha256')!r}",
         )
+    ungrouped = sum(1 for r in rows if r["proposal_no"] is None or r["lot_index"] is None
+                    or r["lots_in_proposal"] is None)
+    chk(ungrouped == 0, "every DB row carries proposal grouping", f"{ungrouped} ungrouped")
+    series = sorted({r["vote_series"] for r in rows if r["vote_series"]})
+    chk(len(series) == 1 and meta["filing"].get("series_id") == series[0],
+        "one series per filing, published",
+        f"db={series} meta={meta['filing'].get('series_id')!r}")
 
     db_total = len(rows)
     db_counts = Counter(bucket(r["category_type"]) for r in rows)
-    db_comparable = sum(
-        1 for r in rows if r["how_voted"] is not None and r["mgmt_rec"] is not None
-    )
-    db_unparseable = sum(
-        1 for r in rows if r["how_voted_raw"] is not None and r["how_voted"] is None
-    )
+    lots_per_proposal = Counter(r["proposal_no"] for r in rows if (r["lot_index"] or 0) >= 1)
 
     cats = rollup.get("categories")
     chk(
@@ -512,7 +574,7 @@ def g7_export_consistency():
         f"type={type(cats).__name__}, len={len(cats) if isinstance(cats, list) else 'n/a'}",
     )
     if not isinstance(cats, list):
-        return False, "rollup.json malformed — categories is not a list"
+        return False, "rollup.json malformed - categories is not a list"
 
     names = [c.get("category") for c in cats]
     chk(len(names) == len(set(names)), "category names unique in rollup", f"{len(names)} entries")
@@ -527,29 +589,36 @@ def g7_export_consistency():
         name, slug, n = c.get("category"), c.get("slug"), c.get("n")
         sum_n += n if isinstance(n, int) else 0
         expected_files.add(f"{slug}.json")
+        chk(set(c.keys()) == CATEGORY_KEYS, f"category keys for {name!r}",
+            f"extra={sorted(set(c.keys()) - CATEGORY_KEYS)} "
+            f"missing={sorted(CATEGORY_KEYS - set(c.keys()))}")
         chk(slug == slugify(name or ""), f"slug rule for {name!r}", f"slug={slug!r}")
-        dbn = db_counts.get(name, 0)
-        chk(n == dbn, f"rollup n for {name!r}", f"rollup={n} db={dbn}")
+        rs = [r for r in rows if bucket(r["category_type"]) == name]
+        chk(n == len(rs), f"rollup n for {name!r}", f"rollup={n} db={len(rs)}")
+        db_lots = sum(1 for r in rs if (r["lot_index"] or 0) >= 1)
+        db_props = len({r["proposal_no"] for r in rs})
+        chk(c.get("n_lots") == db_lots and c.get("n_proposals") == db_props,
+            f"lots/proposals for {name!r}",
+            f"rollup lots={c.get('n_lots')} props={c.get('n_proposals')} "
+            f"db lots={db_lots} props={db_props}")
         votes = c.get("votes") or {}
-        vote_sum = sum(votes.get(k, 0)
-                       for k in (*VOTE_ENUM, "UNPARSEABLE", "ABSENT"))
+        vote_sum = sum(votes.get(k, 0) for k in (*VOTE_ENUM, "UNPARSEABLE", "ABSENT"))
         chk(vote_sum == n, f"votes sum to n for {name!r}", f"sum={vote_sum} n={n}")
-        nc, wm = c.get("n_comparable"), c.get("with_mgmt")
-        if isinstance(nc, int) and isinstance(wm, int):
-            expect_pct = round(100 * wm / nc, 1) if nc else None
-            chk(
-                c.get("with_mgmt_pct") == expect_pct,
-                f"with_mgmt_pct formula for {name!r}",
-                f"stated={c.get('with_mgmt_pct')} recomputed={expect_pct}",
-            )
-            if isinstance(thin_n, int):
-                chk(
-                    c.get("thin") == (nc < thin_n),
-                    f"thin flag for {name!r}",
-                    f"n_comparable={nc} thin_n={thin_n} thin={c.get('thin')}",
-                )
-        else:
-            chk(False, f"n_comparable/with_mgmt types for {name!r}", f"n_comparable={nc!r} with_mgmt={wm!r}")
+        for k in VOTE_ENUM:
+            dbk = sum(1 for r in rs if r["how_voted"] == k)
+            if votes.get(k) != dbk:
+                chk(False, f"votes.{k} for {name!r}", f"rollup={votes.get(k)} db={dbk}")
+        bs = c.get("by_source") or {}
+        chk(all(k in bs for k in SOURCE_KEYS)
+            and set(bs) <= set(SOURCE_KEYS) | {"OTHER", "ABSENT"},
+            f"by_source keys for {name!r}", f"{sorted(bs)}")
+        for key, cell in bs.items():
+            want = cell_from_rows(
+                [r for r in rs if source_bucket(r["vote_source"]) == key], thin_n)
+            same = isinstance(cell, dict) and set(cell) == CELL_KEYS and cell == want
+            chk(same, f"by_source[{key}] for {name!r}",
+                f"{want['for_lots']}/{want['n_voted']} FOR" if same
+                else f"stated={cell} recomputed={want}")
 
         fpath = CATEGORY_DIR / f"{slug}.json"
         if not fpath.exists():
@@ -569,32 +638,75 @@ def g7_export_consistency():
         )
         if isinstance(recs, list):
             bad_urls = sum(
-                1
-                for r in recs
+                1 for r in recs
                 if not (isinstance(r.get("source_url"), str) and r["source_url"].strip())
             )
-            chk(bad_urls == 0, f"non-empty source_url in {slug}.json", f"{bad_urls} empty of {len(recs)}")
+            chk(bad_urls == 0, f"non-empty source_url in {slug}.json",
+                f"{bad_urls} empty of {len(recs)}")
             keys = [record_sort_key(r) for r in recs]
-            chk(keys == sorted(keys), f"record ordering in {slug}.json", "meeting_date, issuer_name, seq")
+            chk(keys == sorted(keys), f"record ordering in {slug}.json",
+                "meeting_date, issuer_name, proposal_no, lot_index, seq")
+            bad_group = sum(
+                1 for r in recs
+                if not (isinstance(r.get("proposal_no"), int)
+                        and isinstance(r.get("lot_index"), int)
+                        and r.get("lots_in_proposal")
+                        == lots_per_proposal.get(r.get("proposal_no"), 0)))
+            chk(bad_group == 0, f"proposal grouping in {slug}.json",
+                f"{bad_group} records disagree with the DB's lots-per-proposal")
+            bad_rec = sum(1 for r in recs
+                          if r.get("mgmt_rec") is not None and r.get("mgmt_rec") not in REC_ENUM)
+            chk(bad_rec == 0, f"mgmt_rec enum in {slug}.json", f"{bad_rec} outside {REC_ENUM}")
 
     on_disk = {p.name for p in CATEGORY_DIR.glob("*.json")} if CATEGORY_DIR.exists() else set()
     stale = sorted(on_disk - expected_files)
     chk(not stale, "no stale category files on disk", f"stale={stale}")
 
     totals = meta.get("totals") or {}
-    chk(totals.get("records") == db_total, "meta totals.records == DB", f"meta={totals.get('records')} db={db_total}")
-    chk(totals.get("categories") == len(cats), "meta totals.categories == rollup", f"meta={totals.get('categories')} rollup={len(cats)}")
-    chk(
-        totals.get("comparable_records") == db_comparable,
-        "meta totals.comparable_records == DB",
-        f"meta={totals.get('comparable_records')} db={db_comparable}",
-    )
-    chk(
-        totals.get("unparseable_how_voted") == db_unparseable,
-        "meta totals.unparseable_how_voted == DB",
-        f"meta={totals.get('unparseable_how_voted')} db={db_unparseable}",
-    )
-    chk(sum_n == totals.get("records"), "sum(category n) == totals.records", f"sum={sum_n} records={totals.get('records')}")
+    want_totals = {
+        "records": db_total,
+        "lots": sum(1 for r in rows if (r["lot_index"] or 0) >= 1),
+        "zero_lot_rows": sum(1 for r in rows if (r["lot_index"] or 0) == 0),
+        "proposals": len({r["proposal_no"] for r in rows}),
+        "categories": len(cats),
+        "unparseable_how_voted": sum(
+            1 for r in rows if r["how_voted_raw"] is not None and r["how_voted"] is None),
+        "absent_how_voted": sum(1 for r in rows if r["how_voted_raw"] is None),
+        "zero_share_lots": sum(
+            1 for r in rows if (r["lot_index"] or 0) >= 1 and r["shares_voted"] == 0),
+        "multi_category_records": sum(
+            1 for r in rows if (r["categories_all"] or "").find("|") != -1),
+    }
+    for k, v in want_totals.items():
+        chk(totals.get(k) == v, f"meta totals.{k} == DB", f"meta={totals.get(k)} db={v}")
+    chk(set(totals) == set(want_totals), "meta totals carries exactly the expected keys",
+        f"extra={sorted(set(totals) - set(want_totals))}")
+    chk(totals.get("lots", 0) + totals.get("zero_lot_rows", 0) == totals.get("records"),
+        "lots + zero-lot rows == records (held apart, never one number)",
+        f"{totals.get('lots')} + {totals.get('zero_lot_rows')} == {totals.get('records')}")
+    chk(sum_n == totals.get("records"), "sum(category n) == totals.records",
+        f"sum={sum_n} records={totals.get('records')}")
+
+    # managementRecommendation semantics - recomputed, verdict rule LOCKSTEP
+    sem = meta.get("mgmt_rec_semantics") or {}
+    sh = [r for r in rows if source_bucket(r["vote_source"]) == "SECURITY HOLDER"
+          and (r["lot_index"] or 0) >= 1]
+    with_rec = [r for r in sh if r["how_voted"] in VOTE_ENUM and r["mgmt_rec"] in VOTE_ENUM]
+    agree = sum(1 for r in with_rec if r["how_voted"] == r["mgmt_rec"])
+    if len(with_rec) < (thin_n or 0):
+        verdict = "insufficient"
+    elif (pct(agree, len(with_rec)) or 0) >= (min_pct or 0):
+        verdict = "board-view"
+    else:
+        verdict = "tracks-lot"
+    want_sem = {"shareholder_lots": len(sh),
+                "shareholder_lots_with_recommendation": len(with_rec),
+                "agreeing": agree, "agreement": f"{agree}/{len(with_rec)}",
+                "agreement_pct": pct(agree, len(with_rec)), "min_board_view_pct": min_pct,
+                "verdict": verdict, "headline_allowed": verdict == "board-view"}
+    for k, v in want_sem.items():
+        chk(sem.get(k) == v, f"meta mgmt_rec_semantics.{k}",
+            f"meta={sem.get(k)!r} recomputed={v!r}")
 
     failed = checks.count(False)
     return failed == 0, (
@@ -606,28 +718,66 @@ def g7_export_consistency():
 
 # ---------------------------------------------------------------- G8 --------
 def g8_anti_blend():
+    """No blended cross-category number, no recommendation-derived headline.
+    Walks every published artifact for forbidden key names, holds rollup.json
+    to exactly one top-level key, holds every category to exactly the contract
+    keys (a category-level percentage would blend proposers), and requires the
+    semantics block to say why no concordance headline exists."""
     rollup_path = SITE_DATA / "rollup.json"
-    if not rollup_path.exists():
-        raise GateError(f"missing artifact: {rollup_path} — run export_site.py first")
+    meta_path = SITE_DATA / "meta.json"
+    for p in (rollup_path, meta_path):
+        if not p.exists():
+            raise GateError(f"missing artifact: {p} - run export_site.py first")
     rollup = load_json(rollup_path)
+    meta = load_json(meta_path)
+    ok = True
     top = sorted(rollup.keys())
     log(f"  top-level keys: {top}")
-    ok = set(top) == {"categories"}
-    if not ok:
-        offenders = [k for k in top if k != "categories"]
-        log(f"  [FAIL] unexpected top-level key(s): {offenders} — a blended cross-category number has no home here")
-    else:
-        log("  [ok] only top-level key is 'categories' — no blended number anywhere")
-    cats = rollup.get("categories") or []
-    inside = sum(
-        1 for c in cats if isinstance(c, dict) and "with_mgmt" in c and "with_mgmt_pct" in c
-    )
-    log(f"  categories carrying per-category with_mgmt/with_mgmt_pct: {inside} of {len(cats)}")
-    if not cats or inside != len(cats):
+    if set(top) != {"categories"}:
         ok = False
-        log("  [FAIL] concordance must live inside categories[] — and ONLY there")
+        log(f"  [FAIL] unexpected top-level key(s): {[k for k in top if k != 'categories']} "
+            "- a blended cross-category number has no home here")
+    else:
+        log("  [ok] only top-level key is 'categories' - no blended number anywhere")
+
+    artifacts = {"rollup.json": rollup, "meta.json": meta}
+    for p in (sorted(CATEGORY_DIR.glob("*.json")) if CATEGORY_DIR.exists() else []):
+        artifacts[f"category/{p.name}"] = load_json(p)
+    hits = []
+    for name, obj in artifacts.items():
+        for path in walk_keys(obj):
+            leaf = path.rsplit(".", 1)[-1]
+            if FORBIDDEN_KEY.search(leaf):
+                hits.append(f"{name}:{path}")
+    log(f"  forbidden key names ({FORBIDDEN_KEY.pattern}) across {len(artifacts)} artifacts: {len(hits)}")
+    if hits:
+        ok = False
+        for h in hits[:10]:
+            log(f"  [FAIL] {h}")
+
+    cats = rollup.get("categories") or []
+    bad_cat = [c.get("category") for c in cats
+               if not isinstance(c, dict) or set(c.keys()) != CATEGORY_KEYS]
+    bad_cell = [c.get("category") for c in cats if isinstance(c, dict) and any(
+        not isinstance(cell, dict) or set(cell) != CELL_KEYS
+        for cell in (c.get("by_source") or {}).values())]
+    log(f"  categories with exactly the contract keys: {len(cats) - len(bad_cat)} of {len(cats)}")
+    if not cats or bad_cat or bad_cell:
+        ok = False
+        log(f"  [FAIL] categories off-contract: {bad_cat}; cells off-contract: {bad_cell}")
+
+    sem = meta.get("mgmt_rec_semantics") or {}
+    verdict = sem.get("verdict")
+    log(f"  mgmt_rec_semantics: {sem.get('agreement')} -> {verdict!r}, "
+        f"headline_allowed={sem.get('headline_allowed')!r}")
+    if verdict not in ("board-view", "tracks-lot", "insufficient"):
+        ok = False
+        log("  [FAIL] meta.mgmt_rec_semantics.verdict missing or unknown")
+    if sem.get("headline_allowed") is not (verdict == "board-view"):
+        ok = False
+        log("  [FAIL] headline_allowed must be true only for a board-view verdict")
     return ok, (
-        "only per-category concordance; no top-level blend"
+        "per-category only; no forbidden key anywhere; semantics block present"
         if ok
         else "anti-blend rule violated"
     )
@@ -712,7 +862,7 @@ def main():
     )
     args = parser.parse_args()
 
-    log("EqualShares gates — evidence-based PASS/FAIL; exit 0 only on all-pass")
+    log("EqualShares gates - evidence-based PASS/FAIL; exit 0 only on all-pass")
     log(f"repo root: {ROOT}")
     log(f"database : {DB_PATH}")
 
@@ -746,7 +896,7 @@ def main():
                 log(f"  {line}")
             passed, summary = False, "unhandled exception (see traceback above)"
         status = "SKIP" if passed is None else ("PASS" if passed else "FAIL")
-        log(f"{gid} {status} — {summary}")
+        log(f"{gid} {status} - {summary}")
         results.append((gid, name, status, summary))
 
     log("")
@@ -762,7 +912,7 @@ def main():
     verdict = "PASS" if n_fail == 0 else "FAIL"
     log(f"OVERALL: {verdict}  ({n_pass} passed, {n_fail} failed, {n_skip} skipped)")
     if n_skip:
-        log("note: a SKIPped gate is not evidence — run without --skip-outage before shipping")
+        log("note: a SKIPped gate is not evidence - run without --skip-outage before shipping")
     sys.exit(0 if n_fail == 0 else 1)
 
 

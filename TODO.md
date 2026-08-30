@@ -7,7 +7,7 @@
 
 ## RESUME HERE
 
-**Live state as of 2026-08-29 (23:30 CDT). This block outranks every other document in this repo.**
+**Live state as of 2026-08-30 00:12 CDT (from `date` on this machine). This block outranks every other document in this repo.**
 
 - **LIVE at https://equalshares.pages.dev/ - rung two** (built, deployed, verified at the origin).
   Rung three is Lance using it and reporting. Two dogfood findings so far, both fixed (`df0c576`
@@ -22,9 +22,11 @@
 - **Cold-read order:** `CLAUDE.md` -> this block -> `README.md` -> `PLAYBOOK_DELTA.md` -> the spec above.
 - **Standing prompt (re-arm after any session limit; Lance 2026-08-29: timers restart the previous
   prompt 60 s after the limit expires):** process unprocessed peer messages (verify in the data
-  first); build Part 1 of the spec only once RapidForge has approved it; otherwise keep
-  `verify_claims` and `verify_deploy` green and say "no change". Heartbeat job in this session:
+  first); run cold-read round two and disposition it; then build Part 2 per the spec; keep
+  `verify_claims` and `verify_deploy` green; say "no change" when nothing moved. Heartbeat job in this session:
   `637b15c4`, every 30 min, session-only, expires 2026-09-05.
+- **Time rule (Lance 2026-08-30):** every time written here comes from `date` on this machine, with
+  its zone; commit times from `git log --date=iso`; a zoneless time in a message is unknown.
 - **Expected failures: none.** Any instrument FAIL is real from here. (`checks.py` G3 needs the
   network; `--skip-outage` marks it SKIP, which is not a pass.)
 
@@ -34,9 +36,16 @@
 
 ## NOW
 
-- [ ] **Spec review by RapidForge**, then build: `docs/superpowers/specs/2026-08-29-multi-filing-and-contrast-set-design.md`.
-      Part 1 = reader fixes F3-F13 (the concordance headline goes; rows are vote lots; NONE is a
-      value; visible find-it-by; definitions). Part 2 = multi-filing, `series_match`, compare view, G11.
+- [x] ~~**Spec review by RapidForge**~~ - approved 2026-08-30 with four notes, all applied (spec section 11).
+- [x] ~~**Part 1 - reader fixes F3-F14**~~ - BUILT 2026-08-30: rows are vote lots with published grouping;
+      the concordance headline is gone; "% FOR" split by proposer with denominators;
+      `mgmt_rec_semantics` stored and gated; How-to-read block; visible finders; field-state filter.
+      Ten gates, claims 8/8, zero console messages under the production CSP.
+- [ ] **Cold-read round two** on the corrected page (same readers; EventFinds and Duarte-izer
+      excluded). Findings verified in the data, dispositioned, logged before Part 2 starts.
+- [ ] **Part 2 - multi-filing**: `series_match` per source, three Big Three sources (iShares Trust
+      0001100663, SPDR SERIES TRUST 0001064642, Vanguard 500 Index series), `site/data/index.json`
+      + per-filing dirs + `compare.json`, gate G11 index-coverage, picker and compare view.
 - [x] ~~**Dogfood** (rung three)~~ - redirected by Lance 2026-08-29 ("proceed considerable without me
       dogfooding"). Cold-read round one done by three peers (`docs/COLD_READ_PROTOCOL.md`); findings
       F3-F13 dispositioned in the spec. Rung three still means real users; unchanged.

@@ -52,9 +52,23 @@ CONFIG = {
         "ABSTAIN": "ABSTAIN",
         "WITHHOLD": "WITHHOLD",
     },
-    # Fewer than 5 comparable records in a category is "thin" (VisibleGov
-    # precedent). export_site.py reads this; it is part of the behaviour
-    # fingerprint because it changes what gets published as a headline.
+    # managementRecommendation values beyond the vote enum that are still
+    # EXTRACTED values (not absent, not unparseable). NONE = "no recommendation"
+    # as filed. Cold-read round one, 2026-08-29.
+    "mgmt_rec_extra_values": {
+        "NONE": "NONE",
+    },
+    # Semantics check for managementRecommendation, computed per filing by
+    # export_site.py and published in meta.mgmt_rec_semantics: on shareholder
+    # (SECURITY HOLDER) lots, the share of lots whose vote agrees with the
+    # filed recommendation. A field that IS the board's view agrees at least
+    # this often (funds side with boards on most shareholder proposals);
+    # below it the field tracks something else and no headline may rest on it.
+    # The Vanguard filing scores 0 of 1,433.
+    "mgmt_rec_board_view_min_pct": 50,
+    # Fewer than 5 voted lots in a cell is "thin" (VisibleGov precedent).
+    # export_site.py reads this; it is part of the behaviour fingerprint
+    # because it changes what gets published as a headline.
     "thin_n": 5,
     # EDGAR politeness floor: >= 0.5s between requests.
     "request_delay_seconds": 0.5,
