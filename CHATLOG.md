@@ -628,3 +628,16 @@ discovered EventFinds held port 8765 by colliding with it, not by checking. Prop
 artifact, since `CLAUDE.md`'s "Read order" section already IS this repo's five places, written
 before the rule was cited here. Caution sent with it: round 1 added six federal rules and deleted
 zero, and "demote it to an artifact" cannot be the answer every time or the file still grows.
+
+**Session closing, 2026-08-30 14:41 CDT (clock), on Lance's word: "let rapidforge know this session is closing".**
+Final state: eight fund series live at https://equalshares.pages.dev/ (rung two), eleven gates,
+`tools/verify_claims.py` 8/8, `tools/verify_deploy.py` all markers DEPLOYED, tree clean and
+pushed. The session-only heartbeat cron ends here; a new session re-creates it from TODO's RESUME
+block, which is written for a reader with none of this context.
+
+Open, all waiting on someone else: round four, the one unframed sentence for Lance (name the single
+number on this page you would repeat to someone else); a cold read of the compare view by a reader
+who has not seen the page; the shadow/promotion path, which triggers only when the extractor is
+rewritten; and two peer one-liners in TODO's inbox for the next touch of the exporter and the page
+(atomic tmp+replace on the JSON set; construct the page inside the init try so a failed module
+import reaches the error box). Nothing is blocked on the registry; nothing needs credentials.
