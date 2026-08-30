@@ -525,3 +525,11 @@ over 8 filings; rendered under the production CSP via serve_local.py in Playwrig
 form, not built.
 
 **Part 2.1 shipped, 2026-08-30 01:06 CDT (clock):** commit `54e169a` (git 2026-08-30 01:05:29 -0500), pushed; `verify_deploy` at 01:06 CDT: 44 markers DEPLOYED (index, compare, eight filing directories, JSON content-types, headers). Report to rapidforge-79. The build queue is now: shadow/promotion path (waits for the extractor rewrite), concordance by voteSource (the by_source split already delivers it), a cold read of the compare view when an unread reader exists, round four with Lance.
+
+**rapidforge-79 (relayed), check-in:** nothing blocked? Part 2.1 settled? And, between slices, an
+audit of the registry's 19 rows about this repo by the test "would a reader implementing from this
+row alone get the property"; the measured result across five sessions so far: 264 of 264 paths
+correct, 38 prose defects in about 78 rows; a mechanical "absent" is a candidate until `grep -c`
+is also zero (Glizzness's retraction).
+
+**Audit done, 2026-08-30 01:47 CDT (clock):** 19 of 19 paths resolve, 23 of 23 named symbols present (`grep -c` before judgement; one is a dict key). Nine prose defects in 8 rows or lines, sent to rapidforge-79: row 73 claims a filer change rotates the engine run (false: `config_hash` hashes CONFIG only; four sources added at `54e169a` left `f97e5b26827a3e1d` unchanged); row 48 names the index-page parser for the submissions-JSON listing (`list_filings` is the entry point); row 49 states the bundle path as the only path (five of eight filings came from direct siblings); row 546 says ten gates (eleven); row 579 points at the gate for a verdict computed in the exporter and implies a headline that no page renders; rows 268 and 624 keep the "land where the reader can find the row" overstatement four readers flagged; headers-aware-local-server 62 says the gates run against the server (they read files); ingestion-pipeline 391 claims DEF 14A ingestion (parked, never built). Not read, named as unknown: rows 101 and 272 (VisibleGov code), pointer-checker beyond its three lines, verify-deploy's claims about other consumers, ingestion 6.y's cross-reference, every row not citing equalshares.
