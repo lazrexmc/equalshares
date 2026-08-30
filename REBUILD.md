@@ -4,7 +4,7 @@
 > this machine, the local `data/` store, the Cloudflare Pages project, the Actions run history.
 > There are no secrets anywhere in this system, so there is no secret map to keep.
 >
-> Last updated: **2026-08-29**. Self-audit of this file's claims in section 5.
+> Last updated: **2026-08-30** (eight filings, series pins, raw-store size). Earlier: 2026-08-29. Self-audit of this file's claims in section 5.
 
 ## What the system is (one paragraph)
 
@@ -17,7 +17,8 @@ owner's word (2026-08-29, "13. C for now").
 
 ## 0. Premise and survivors
 
-- **Assume GONE:** this machine; `data/` (raw filings ~20MB, `rollcall.db`); the Cloudflare Pages
+- **Assume GONE:** this machine; `data/` (raw filings, about 600 MB across eight registrant
+  filings as of 2026-08-30, some holding dozens of series; `rollcall.db`); the Cloudflare Pages
   project; GitHub Actions run history.
 - **Assume SURVIVES:** `github.com/lazrexmc/equalshares` (private as of 2026-08-29), which holds
   the pipeline, the site, **and the publication** (`site/data/`, 14 files). The method it was built
@@ -47,8 +48,10 @@ python pipeline/export_site.py   # -> site/data/*.json (refuses mixed provenance
 python pipeline/checks.py        # ten gates, exit 0 only on all-pass; G3 needs the network
 ```
 
-EDGAR: declared User-Agent, >= 0.5s between requests, or HTTP 403. `README.md` has the gate table
-and the provenance formula. After a regeneration, `site/data/meta.json` carries the new
+EDGAR: declared User-Agent, >= 0.5s between requests, or HTTP 403. Each source is pinned to one
+fund series by SEC series id (`pipeline/sources.py`); ids for new funds come from
+https://www.sec.gov/files/company_tickers_mf.json (ticker -> CIK + series id). `README.md` has the
+gate table and the provenance formula. After a regeneration, `site/data/meta.json` carries the new
 `engine_run_id`; commit `site/data/` with the code that produced it.
 
 ## 3. Re-deploy

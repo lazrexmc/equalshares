@@ -88,8 +88,8 @@
       filing and compares the same category across them.
 - [ ] **Shadow/promotion path** for the extractor - build it the first time the extractor is
       actually rewritten (extractor-provenance 5.4; deferred review finding 1).
-- [ ] **Concordance by `voteSource`** on the category table - the 85.6% / 0.0% split belongs in the
-      rollup, not only in a footnote.
+- [x] ~~**Concordance by `voteSource`**~~ - superseded 2026-08-30: the concordance headline is gone
+      (Part 1) and "% FOR" is split by `voteSource` in every category cell and in the compare view.
 - [ ] **Rule 15 sweep of code comments and UI strings**, per file, on each file's next real edit
       (`checks.py`, `serve_local.py`, `export_site.py`, `site/js/*.js`). `export_site.py` is inside
       the behaviour fingerprint, so do it alongside a real change, never alone.
