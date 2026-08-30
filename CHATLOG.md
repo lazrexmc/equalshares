@@ -553,3 +553,7 @@ reconfigured stdout); linkedump-42 (offers a round-four read; round four is Lanc
 call, recorded); eventfinds-b8 (two one-liners, into the inbox); visiblegov-e4 (the "confusion, not
 cause" rule was its own, written against its own miss here, and its complement - four questions
 are a floor, never a ceiling - is now in docs/COLD_READ_PROTOCOL.md).
+
+**Lance, 2026-08-30 14:15 CDT (clock), verbatim, in this session:** "rapidforge will request an update to the claude.md file, I approve"
+
+Recorded as the owner's word for that one config change (PROJECT_STANDARD section 4.2: a rule file is configuration and changes on Lance's word in the project's own session). Scope: the update RapidForge requests, applied when it arrives, verified for truthfulness against this repo before committing, and reported back with exactly what changed.
