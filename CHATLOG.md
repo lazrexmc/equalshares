@@ -515,3 +515,5 @@ G8 (every artifact, plus a cross-filing aggregate-key ban), new G11 index-covera
 pass. Site: filing picker, `#filing=..&category=..` routing, compare section; rendered under the production CSP via serve_local.py in Playwright with zero console messages: four filings in the picker, a 12-category compare table, and a compare cell that switched to the SPDR filing and opened its director elections by hash. Engine
 run `f97e5b26827a3e1d`. README: sources, layout, G11 row, deferred finding 2 closed. Lesson 10 in the
 delta. verify_claims C2/C3 now find the README's filing through the index.
+
+**Part 2 shipped, 2026-08-30 00:59 CDT (clock):** commit `4843198` (git 2026-08-30 00:58:03 -0500), pushed; `verify_deploy` at 00:59 CDT: 28 markers DEPLOYED (index, compare, four filing directories, JSON content-types, headers). Report and deposit candidates to rapidforge-79. Next on the queue: the contrast set (one SOURCES entry each once their series ids are read off EDGAR), a cold read of the compare view when unread readers exist, round four with Lance.
