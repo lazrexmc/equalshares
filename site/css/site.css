@@ -409,3 +409,9 @@ td.empty-note { color: var(--ink-soft); font-style: italic; }
   .definitions { grid-template-columns: 1fr; }
   .definitions dd { margin-bottom: 0.5rem; }
 }
+
+/* Part 1.1: the glossary shows three terms, the rest collapse (round two, R11) */
+.definitions-more { margin-top: 0.75rem; }
+.definitions-more summary { cursor: pointer; color: var(--link); font-size: 0.9375rem; }
+.definitions-more .definitions { margin-top: 0.75rem; }
+td.lot .finder { white-space: normal; max-width: 12rem; }

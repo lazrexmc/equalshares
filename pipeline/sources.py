@@ -58,17 +58,15 @@ CONFIG = {
     "mgmt_rec_extra_values": {
         "NONE": "NONE",
     },
-    # Semantics check for managementRecommendation, computed per filing by
-    # export_site.py and published in meta.mgmt_rec_semantics: on shareholder
-    # (SECURITY HOLDER) lots, the share of lots whose vote agrees with the
-    # filed recommendation. A field that IS the board's view agrees at least
-    # this often (funds side with boards on most shareholder proposals);
-    # below it the field tracks something else and no headline may rest on it.
-    # The Vanguard filing scores 0 of 1,433.
-    "mgmt_rec_board_view_min_pct": 50,
-    # Fewer than 5 voted lots in a cell is "thin" (VisibleGov precedent).
-    # export_site.py reads this; it is part of the behaviour fingerprint
-    # because it changes what gets published as a headline.
+    # Fewer than 5 lots that voted shares in a cell is "thin" (VisibleGov
+    # precedent). export_site.py reads this; it is part of the behaviour
+    # fingerprint because it changes what gets published as a headline. It is
+    # also the floor for the managementRecommendation semantics check: a
+    # filing whose field carries more than one value on the lots of a single
+    # proposal at least thin_n times is not publishing a board's view (a board
+    # recommends once per item). The 50% agreement threshold that used to sit
+    # here was a typed assumption; the self-contradiction count needs none
+    # (cold-read round two, 2026-08-30).
     "thin_n": 5,
     # EDGAR politeness floor: >= 0.5s between requests.
     "request_delay_seconds": 0.5,

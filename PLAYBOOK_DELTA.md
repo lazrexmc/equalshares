@@ -110,3 +110,15 @@ container at the widths a reader actually has (1366 and 390), and treat "wider t
 as a failure unless words on the page say to scroll.** The fix was to make the row fit (wrap the
 long text, fold the finder under the proposal, narrow the receipt column) and to render a worded
 hint whenever the table still overflows. Owner's words reversed as the acceptance test.
+
+## Lesson 9 - A number is faithful to its computation, not to its label (2026-08-30)
+
+I told four readers "198 proposals span categories" and "5,022 self-contradict" from the store
+as it was, and "8,990 proposals" from a normalised key I had only run in a query. RapidForge
+re-ran all three and found the last one could not come from any name normalisation (deleting the
+name field entirely gives 9,041, a floor); it came from normalising the description too. Three
+numbers, two keys, one paragraph. The fix was structural: the key rule lives in one function
+(`extract.py` `assign_proposals`), every count derives from the `proposal_no` it assigns, and the
+counts were re-derived under it (8,906 / 495 / 4,594). Rule: **when a definition changes, every
+number that depends on it is re-derived before any of them is said aloud, and the rule is stated
+beside the count.** Same class as the "% with mgmt" headline: a true number under a wrong label.

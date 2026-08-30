@@ -178,11 +178,27 @@ def assign_proposals(rows):
     lots_in_proposal count of lot rows (lot_index >= 1) in the proposal
     Mutates rows in place; deterministic, so seq-keyed UPSERTs stay corrective.
     """
+    # Cold-read round two (2026-08-30): the filing spells one company two ways
+    # ("The Walt Disney Company" / "THE WALT DISNEY COMPANY"; the 0-share block
+    # carries the upper-case one), and a key on the name as filed gave one
+    # ballot item two proposal numbers. Normalise case, whitespace and trailing
+    # punctuation on the text fields (Medtronic's auditor item was filed three
+    # ways: ending ";", "." and nothing); the stored values stay verbatim.
+    # THE ONE KEY: every published proposal count derives from the proposal_no
+    # this function assigns, so the counts and the rule cannot diverge.
+    def norm(v):
+        if v is None:
+            return None
+        return " ".join(str(v).split()).upper().rstrip(".;:, ")
+
+    def key(r):
+        return (norm(r["issuer_name"]), r["cusip"], r["meeting_date"],
+                norm(r["vote_description"]), norm(r["vote_source"]))
+
     key_of = {}
     counts = {}
     for r in rows:
-        k = (r["issuer_name"], r["cusip"], r["meeting_date"],
-             r["vote_description"], r["vote_source"])
+        k = key(r)
         if k not in key_of:
             key_of[k] = len(key_of) + 1
             counts[k] = 0
@@ -193,9 +209,7 @@ def assign_proposals(rows):
             counts[k] += 1
             r["lot_index"] = counts[k]
     for r in rows:
-        k = (r["issuer_name"], r["cusip"], r["meeting_date"],
-             r["vote_description"], r["vote_source"])
-        r["lots_in_proposal"] = counts[k]
+        r["lots_in_proposal"] = counts[key(r)]
         r.pop("_zero_lot", None)
     return len(key_of)
 

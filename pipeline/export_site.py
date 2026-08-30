@@ -117,68 +117,109 @@ def dump_json(path, obj):
 
 
 def load_config():
-    """thin_n and the semantics threshold come from CONFIG in pipeline/sources.py - the same
-    CONFIG that is hashed into config_hash, so changing either changes the engine_run_id."""
+    """thin_n comes from CONFIG in pipeline/sources.py - the same CONFIG that is hashed into
+    config_hash, so changing it changes the engine_run_id. It is the ONE typed constant that
+    shapes what the page shows, and meta.config publishes it (cold-read round two, R6)."""
     sys.path.insert(0, str(PIPELINE_DIR))
     try:
         from sources import CONFIG  # noqa: PLC0415 - deliberate late import
     except Exception as e:
         die(f"cannot import CONFIG from pipeline/sources.py: {e!r}")
-    for key in ("thin_n", "mgmt_rec_board_view_min_pct"):
-        if key not in CONFIG:
-            die(f"CONFIG in pipeline/sources.py has no {key!r} key")
-        try:
-            int(CONFIG[key])
-        except (TypeError, ValueError):
-            die(f"CONFIG[{key!r}] is not an integer: {CONFIG[key]!r}")
-    return int(CONFIG["thin_n"]), int(CONFIG["mgmt_rec_board_view_min_pct"])
+    if "thin_n" not in CONFIG:
+        die("CONFIG in pipeline/sources.py has no 'thin_n' key")
+    try:
+        return int(CONFIG["thin_n"])
+    except (TypeError, ValueError):
+        die(f"CONFIG['thin_n'] is not an integer: {CONFIG['thin_n']!r}")
 
 
 def source_cell(rs, thin_n):
     """One by_source cell: how the fund voted on the items one kind of proposer put forward.
-    n_voted is the denominator "% FOR" is over: lots with a normalised vote. Every number a
-    reader might quote carries its numerator and denominator beside it."""
+    n_voted is the denominator "% FOR" is over: lots with a normalised vote AND shares voted
+    above zero (round two, R4: a lot that voted no shares is not a vote cast; those are counted
+    in zero_share_lots beside it). Every number a reader might quote carries its numerator and
+    denominator beside it."""
     lots = [r for r in rs if (r["lot_index"] or 0) >= 1]
-    voted = [r for r in lots if r["how_voted"] in VOTE_ENUM]
+    readable = [r for r in lots if r["how_voted"] in VOTE_ENUM]
+    voted = [r for r in readable if r["shares_voted"] is None or r["shares_voted"] > 0]
     for_lots = sum(1 for r in voted if r["how_voted"] == "FOR")
     return {
         "n_records": len(rs),
         "n_lots": len(lots),
         "n_proposals": len({r["proposal_no"] for r in rs}),
         "n_voted": len(voted),
+        "zero_share_lots": sum(1 for r in readable if r["shares_voted"] == 0),
         "for_lots": for_lots,
         "for_pct": pct(for_lots, len(voted)),
         "thin": len(voted) < thin_n,
     }
 
 
-def mgmt_rec_semantics(rows, thin_n, min_pct):
-    """The computed check behind "no headline rests on managementRecommendation". On shareholder
-    lots with a normalised vote AND a FOR/AGAINST/ABSTAIN/WITHHOLD recommendation, how often does
-    the vote agree with the recommendation? A field that is the board's view agrees at least
-    min_pct of the time; the Vanguard filing scores 0 of 1,433 (recommendation tracks the lot).
-    Published in meta.json, gated by G8: headline_allowed is false unless the verdict is
-    board-view."""
-    sh = [r for r in rows if source_bucket(r["vote_source"]) == "SECURITY HOLDER"
-          and (r["lot_index"] or 0) >= 1]
+def crosstab(rs):
+    """vote x recommendation counts over lots with both normalised. Keys "VOTE/REC"."""
+    out = {}
+    for r in rs:
+        if r["how_voted"] in VOTE_ENUM and r["mgmt_rec"] in REC_ENUM:
+            k = f"{r['how_voted']}/{r['mgmt_rec']}"
+            out[k] = out.get(k, 0) + 1
+    return out
+
+
+def mgmt_rec_semantics(rows, thin_n):
+    """The computed check behind "no headline rests on managementRecommendation", threshold-free
+    (round two, R5, three readers): a board recommends once per item, so a filing in which the
+    lots of ONE proposal carry DIFFERENT recommendation values is not publishing a board's view.
+    Published: the count of such proposals, one example a reader can open, the vote x
+    recommendation crosstab on shareholder and on management lots (the Vanguard filing is an
+    exact mirror on shareholder lots: AGAINST/FOR 819, FOR/AGAINST 408, ABSTAIN/AGAINST 206),
+    and the agreement rate as evidence, not as the test. Verdict: not-board-view when the
+    mixed-proposal count reaches thin_n; insufficient when fewer than thin_n lots carry a
+    recommendation at all; board-view otherwise. Gated by G8: headline_allowed only on board-view."""
+    lots = [r for r in rows if (r["lot_index"] or 0) >= 1]
+    with_any_rec = [r for r in lots if r["mgmt_rec"] in VOTE_ENUM]
+    by_prop = {}
+    for r in with_any_rec:
+        by_prop.setdefault(r["proposal_no"], set()).add(r["mgmt_rec"])
+    mixed = sorted(pn for pn, vals in by_prop.items() if len(vals) > 1)
+    example = None
+    if mixed:
+        # The example with the most lots, so the contradiction is visible in one place.
+        best = max(mixed, key=lambda pn: sum(1 for r in lots if r["proposal_no"] == pn))
+        ex_rows = [r for r in lots if r["proposal_no"] == best]
+        example = {
+            "proposal_no": best,
+            "issuer_name": ex_rows[0]["issuer_name"],
+            "meeting_date": ex_rows[0]["meeting_date"],
+            "vote_description": ex_rows[0]["vote_description"],
+            "category_slug": slugify(bucket(ex_rows[0]["category_type"])),
+            "lots": len(ex_rows),
+            "recommendations": sorted({r["mgmt_rec"] for r in ex_rows if r["mgmt_rec"]}),
+        }
+    sh = [r for r in lots if source_bucket(r["vote_source"]) == "SECURITY HOLDER"]
     with_rec = [r for r in sh if r["how_voted"] in VOTE_ENUM and r["mgmt_rec"] in VOTE_ENUM]
     agree = sum(1 for r in with_rec if r["how_voted"] == r["mgmt_rec"])
-    if len(with_rec) < thin_n:
+    if len(with_any_rec) < thin_n:
         verdict = "insufficient"
-    elif pct(agree, len(with_rec)) >= min_pct:
-        verdict = "board-view"
+    elif len(mixed) >= thin_n:
+        verdict = "not-board-view"
     else:
-        verdict = "tracks-lot"
+        verdict = "board-view"
     return {
         "field": "managementRecommendation",
-        "scope": "SECURITY HOLDER lots with a normalised vote and a FOR/AGAINST/ABSTAIN/WITHHOLD "
-                 "recommendation",
+        "test": "a board recommends once per item; proposals whose lots carry more than one "
+                "recommendation value are counted, and the count must stay below thin_n",
+        "lots_with_recommendation": len(with_any_rec),
+        "proposals_with_recommendation": len(by_prop),
+        "proposals_with_mixed_recommendation": len(mixed),
+        "example_mixed_proposal": example,
+        "crosstab_shareholder_lots": crosstab(sh),
+        "crosstab_management_lots": crosstab(
+            [r for r in lots if source_bucket(r["vote_source"]) == "ISSUER"]),
         "shareholder_lots": len(sh),
         "shareholder_lots_with_recommendation": len(with_rec),
         "agreeing": agree,
         "agreement": f"{agree}/{len(with_rec)}",
         "agreement_pct": pct(agree, len(with_rec)),
-        "min_board_view_pct": min_pct,
         "verdict": verdict,
         "headline_allowed": verdict == "board-view",
     }
@@ -186,8 +227,8 @@ def mgmt_rec_semantics(rows, thin_n, min_pct):
 
 def main():
     log("EqualShares export_site - data/rollcall.db -> site/data JSON artifacts")
-    thin_n, min_pct = load_config()
-    log(f"thin_n = {thin_n}, mgmt_rec_board_view_min_pct = {min_pct} (CONFIG, pipeline/sources.py)")
+    thin_n = load_config()
+    log(f"thin_n = {thin_n} (CONFIG, pipeline/sources.py)")
     if not DB_PATH.exists():
         die(f"database not found: {DB_PATH} - run the ingest + extract first")
 
@@ -276,6 +317,13 @@ def main():
     for r in rows:
         by_cat.setdefault(bucket(r["category_type"]), []).append(r)
 
+    # Round two, R2: 198 proposals have lots in more than one category, so a category list
+    # shows "2 of 3" without "1 of 3". Each record publishes the OTHER categories its sibling
+    # lots fall in, and each category counts the proposals it shares.
+    cats_of_proposal = {}
+    for r in rows:
+        cats_of_proposal.setdefault(r["proposal_no"], set()).add(bucket(r["category_type"]))
+
     slug_owner = {}
     categories = []
     for name, rs in by_cat.items():
@@ -313,13 +361,17 @@ def main():
             if sub:
                 by_source[key] = source_cell(sub, thin_n)
 
+        props_here = {r["proposal_no"] for r in rs}
         categories.append(
             {
                 "category": name,
                 "slug": slug,
                 "n": n,
                 "n_lots": sum(1 for r in rs if (r["lot_index"] or 0) >= 1),
-                "n_proposals": len({r["proposal_no"] for r in rs}),
+                "n_proposals": len(props_here),
+                "n_proposals_shared": sum(1 for pn in props_here if len(cats_of_proposal[pn]) > 1),
+                "n_zero_share_lots": sum(1 for r in rs if (r["lot_index"] or 0) >= 1
+                                         and r["shares_voted"] == 0),
                 "votes": votes,
                 "shares_voted_total": round(shares_sum, 4) if any_shares else None,
                 "by_source": by_source,
@@ -332,6 +384,10 @@ def main():
         "lots": sum(1 for r in rows if (r["lot_index"] or 0) >= 1),
         "zero_lot_rows": sum(1 for r in rows if (r["lot_index"] or 0) == 0),
         "proposals": len({r["proposal_no"] for r in rows}),
+        "proposals_in_multiple_categories": sum(
+            1 for pn, cs in cats_of_proposal.items() if len(cs) > 1),
+        "issuers": len({r["cusip"] for r in rows if r["cusip"]}),
+        "issuer_name_spellings": len({r["issuer_name"] for r in rows if r["issuer_name"]}),
         "categories": len(categories),
         "unparseable_how_voted": sum(
             1 for r in rows if r["how_voted_raw"] is not None and r["how_voted"] is None
@@ -377,7 +433,10 @@ def main():
         "engine_run": engine_obj,
         "totals": totals,
         "thin_n": thin_n,
-        "mgmt_rec_semantics": mgmt_rec_semantics(rows, thin_n, min_pct),
+        # The typed constants that shape the page, published so the "computed" claim can name
+        # its exceptions (round two, R6). One remains.
+        "config": {"thin_n": thin_n},
+        "mgmt_rec_semantics": mgmt_rec_semantics(rows, thin_n),
     }
 
     # -- write -----------------------------------------------------------------
@@ -395,7 +454,8 @@ def main():
         f"wrote site/data/meta.json  ({b} bytes; records={totals['records']}, "
         f"lots={totals['lots']}, proposals={totals['proposals']}, "
         f"categories={totals['categories']}, unparseable_how_voted={totals['unparseable_how_voted']}; "
-        f"mgmt_rec_semantics {sem['agreement']} -> {sem['verdict']})"
+        f"mgmt_rec_semantics mixed={sem['proposals_with_mixed_recommendation']} "
+        f"agreement={sem['agreement']} -> {sem['verdict']})"
     )
     b = dump_json(SITE_DATA / "rollup.json", {"categories": categories})
     log(
@@ -414,6 +474,8 @@ def main():
                     "proposal_no": r["proposal_no"],
                     "lot_index": r["lot_index"],
                     "lots_in_proposal": r["lots_in_proposal"],
+                    "other_categories": sorted(
+                        cats_of_proposal[r["proposal_no"]] - {c["category"]}),
                     "issuer_name": r["issuer_name"],
                     "cusip": r["cusip"],
                     "isin": r["isin"],

@@ -7,7 +7,7 @@
 
 ## RESUME HERE
 
-**Live state as of 2026-08-30 00:12 CDT (from `date` on this machine). This block outranks every other document in this repo.**
+**Live state as of 2026-08-30 00:32 CDT (from `date` on this machine). This block outranks every other document in this repo.**
 
 - **LIVE at https://equalshares.pages.dev/ - rung two** (built, deployed, verified at the origin).
   Rung three is Lance using it and reporting. Two dogfood findings so far, both fixed (`df0c576`
@@ -41,8 +41,11 @@
       the concordance headline is gone; "% FOR" split by proposer with denominators;
       `mgmt_rec_semantics` stored and gated; How-to-read block; visible finders; field-state filter.
       Ten gates, claims 8/8, zero console messages under the production CSP.
-- [ ] **Cold-read round two** on the corrected page (same readers; EventFinds and Duarte-izer
-      excluded). Findings verified in the data, dispositioned, logged before Part 2 starts.
+- [x] ~~**Cold-read round two**~~ - five reports plus Lance's own (the clipped table, fixed first,
+      `218d425`). All dispositioned in spec section 12 and BUILT as Part 1.1 on 2026-08-30: one proposal
+      key (8,906), zero-share lots out of the denominators, the threshold-free recommendation test,
+      `meta.config`, the glossary cut to three terms. AUDIT_LOG 2026-08-30.
+- [ ] **Cold-read round three** on the Part 1.1 page, same readers, before Part 2.
 - [ ] **Part 2 - multi-filing**: `series_match` per source, three Big Three sources (iShares Trust
       0001100663, SPDR SERIES TRUST 0001064642, Vanguard 500 Index series), `site/data/index.json`
       + per-filing dirs + `compare.json`, gate G11 index-coverage, picker and compare view.

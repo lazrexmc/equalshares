@@ -1,10 +1,13 @@
 {
+  "config": {
+    "thin_n": 5
+  },
   "engine_run": {
-    "code_fingerprint": "1a2c49a40ef697f1fc615c77d52b2412ade8582427734b69e5dd50528e1c88a0",
-    "config_hash": "2506eef9093b55ecb53b77acf5d61a76e8c3b25eb3420f490ad031338ea2b4b3",
-    "engine_run_id": "2e9a5a7bbe8a2d86",
-    "engine_version": "0.1+2e9a5a7b",
-    "git_commit": "7c59a5668ed637d0cd27c0d2ffbc9c74c095f0a7"
+    "code_fingerprint": "4c16156399c9ec611893b9ab77b7494307d83f734c9f61df4ea6581976689a73",
+    "config_hash": "10c3dfefb138a8124be76188fb562f1bc73c9cdcc8cbaf1e97485d7e1651eb06",
+    "engine_run_id": "e3b050bc2353357b",
+    "engine_version": "0.1+e3b050bc",
+    "git_commit": "33d9ce99c87fca63a83c3b221e623772fb31579f"
   },
   "filer": {
     "cik": "0000036405",
@@ -26,26 +29,61 @@
     "vote_doc_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/0001104659-26-102001.txt",
     "vote_doc_view_url": "https://www.sec.gov/Archives/edgar/data/36405/000110465926102001/xslNPX-INFO-TABLE_X01/proxytable.xml"
   },
-  "generated_at": "2026-08-30T05:02:23+00:00",
+  "generated_at": "2026-08-30T05:28:36+00:00",
   "mgmt_rec_semantics": {
     "agreeing": 0,
     "agreement": "0/1433",
     "agreement_pct": 0.0,
+    "crosstab_management_lots": {
+      "ABSTAIN/AGAINST": 3998,
+      "AGAINST/AGAINST": 4903,
+      "AGAINST/FOR": 6,
+      "AGAINST/NONE": 2,
+      "FOR/AGAINST": 5,
+      "FOR/FOR": 19367,
+      "FOR/NONE": 2,
+      "WITHHOLD/AGAINST": 80
+    },
+    "crosstab_shareholder_lots": {
+      "ABSTAIN/AGAINST": 206,
+      "ABSTAIN/NONE": 2,
+      "AGAINST/FOR": 819,
+      "AGAINST/NONE": 1,
+      "FOR/AGAINST": 408,
+      "FOR/NONE": 3
+    },
+    "example_mixed_proposal": {
+      "category_slug": "section-14a-say-on-pay-votes",
+      "issuer_name": "QUALCOMM Incorporated",
+      "lots": 9,
+      "meeting_date": "2026-03-17",
+      "proposal_no": 651,
+      "recommendations": [
+        "AGAINST",
+        "FOR"
+      ],
+      "vote_description": "Approval on an advisory basis, of the frequency of future votes on our executive compensation."
+    },
     "field": "managementRecommendation",
     "headline_allowed": false,
-    "min_board_view_pct": 50,
-    "scope": "SECURITY HOLDER lots with a normalised vote and a FOR/AGAINST/ABSTAIN/WITHHOLD recommendation",
+    "lots_with_recommendation": 29880,
+    "proposals_with_mixed_recommendation": 4594,
+    "proposals_with_recommendation": 8904,
     "shareholder_lots": 1439,
     "shareholder_lots_with_recommendation": 1433,
-    "verdict": "tracks-lot"
+    "test": "a board recommends once per item; proposals whose lots carry more than one recommendation value are counted, and the count must stay below thin_n",
+    "verdict": "not-board-view"
   },
   "thin_n": 5,
   "totals": {
     "absent_how_voted": 1,
     "categories": 12,
+    "issuer_name_spellings": 622,
+    "issuers": 318,
     "lots": 29890,
     "multi_category_records": 50,
-    "proposals": 10523,
+    "proposals": 8906,
+    "proposals_in_multiple_categories": 495,
     "records": 29891,
     "unparseable_how_voted": 88,
     "zero_lot_rows": 1,

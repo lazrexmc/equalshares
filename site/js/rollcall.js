@@ -1,5 +1,6 @@
-// rollcall.js - page logic for The Roll Call (EqualShares slice v0, Part 1 of the
-// 2026-08-29 spec: rows are vote lots, no headline rests on managementRecommendation).
+// rollcall.js - page logic for The Roll Call (EqualShares slice v0; Part 1 and
+// Part 1.1 of the 2026-08-29 spec: rows are vote lots, no headline rests on
+// managementRecommendation, every count says what it counts).
 //
 // Load-bearing properties, from the static-publication-site module:
 //   - meta.json and rollup.json load in parallel; ANY fetch or parse failure
@@ -30,7 +31,11 @@ const ABSENT = '-';
 const categoryCache = new Map(); // slug -> parsed category JSON (successes only)
 let detailState = null;          // { category, cat, records, view, page, filter }
 let thinN = null;                // from meta.thin_n, used in the thin-sample label
-let totalRecords = null;         // from meta.totals.records, for "record N of TOTAL"
+let totalRecords = null;         // from meta.totals.records, for "row N of TOTAL"
+let recVerdict = null;           // from meta.mgmt_rec_semantics.verdict
+let totalProposals = null;       // from meta.totals.proposals
+let multiCatProposals = null;    // from meta.totals.proposals_in_multiple_categories
+let rollupBySlug = new Map();    // slug -> category row, for deep links from the semantics line
 
 // ---------- tiny DOM helpers (textContent only - never innerHTML) ----------
 
@@ -99,8 +104,6 @@ function renderFatal(err) {
 // ---------- header ----------
 
 function renderHeader(meta) {
-  // A meta.json missing filer.name once rendered the literal header
-  // "undefined (CIK undefined)". Require the actual strings, loudly.
   for (const [label, v] of [
     ['filer.name', meta.filer.name],
     ['filer.cik', meta.filer.cik],
@@ -112,9 +115,6 @@ function renderHeader(meta) {
         'header with invented placeholders.');
     }
   }
-  // Cold-read round one: the trust name in the banner and the series name in a
-  // box below read as a contradiction. Lead with the fund; name the registrant
-  // as what it is.
   const filerLine = $('filer-line');
   const series = textOr(meta.filing.series_name, '');
   filerLine.textContent =
@@ -123,6 +123,16 @@ function renderHeader(meta) {
     ' | Form ' + textOr(meta.filing.form, ABSENT) +
     ' | proxy year ending ' + textOr(meta.filing.period_of_report, ABSENT);
   show(filerLine);
+
+  // Round two (league): a stranger would take the headline numbers as the
+  // registrant's. Say whose they are, on the line under the name.
+  const subject = $('subject-line');
+  if (series) {
+    subject.textContent =
+      'Every number on this page is ' + series + '\'s, not ' + meta.filer.name + '\'s: ' +
+      'the registrant files, the series votes.';
+    show(subject);
+  }
 
   const fresh = $('freshness-line');
   fresh.textContent =
@@ -164,10 +174,6 @@ function renderProvenance(meta) {
     provenanceRow(dl, 'Fund series', s, 'the one series this filing covers');
   }
 
-  // The vote document: name linked to the URL that was actually fetched and
-  // parsed, labelled with its stored size. URL comes from receipts.js
-  // verbatim; if it is null the name renders as plain text and no link is
-  // constructed.
   const voteName = textOr(filing.vote_doc_name, '');
   const voteUrl = filingVoteDocUrl(meta);
   if (voteName || voteUrl) {
@@ -194,16 +200,12 @@ function renderProvenance(meta) {
     provenanceRow(dl, 'Vote document', node);
   }
 
-  // The filing's own EDGAR index page - verbatim from meta, or nothing.
   const indexUrl = filingIndexUrl(meta);
   if (indexUrl) {
     provenanceRow(dl, 'Filing page', link('filing index at SEC EDGAR', indexUrl),
       'where the receipt URLs below were read from at ingest time');
   }
 
-  // Dogfood finding 2 (2026-08-28): the filing index page is a document
-  // list, not a place a reader can find a vote. EDGAR renders the proxy
-  // table as a searchable HTML page - link it when it was listed.
   const tableUrl = filingVoteTableUrl(meta);
   if (tableUrl) {
     provenanceRow(dl, 'Readable table',
@@ -211,7 +213,6 @@ function renderProvenance(meta) {
       'the one receipt every row points at');
   }
 
-  // Cold-read round one: a truncated hash is unverifiable as shown. Full value.
   if (typeof filing.raw_sha256 === 'string' && filing.raw_sha256) {
     const sha = el('code', 'hash', filing.raw_sha256);
     provenanceRow(dl, 'Raw SHA-256', sha,
@@ -219,17 +220,35 @@ function renderProvenance(meta) {
       'document to confirm this page read the same bytes');
   }
 
+  // Engine run: id, formula, and both inputs visible (round two: "a promise
+  // with nothing on the page I can check it against").
   const er = meta.engine_run || {};
   if (typeof er.engine_run_id === 'string' && er.engine_run_id) {
-    const run = el('code', null, er.engine_run_id);
-    const bits = [];
-    if (er.engine_version) bits.push('version ' + er.engine_version);
-    if (er.code_fingerprint) bits.push('code ' + er.code_fingerprint);
-    if (er.config_hash) bits.push('config ' + er.config_hash);
-    if (bits.length) run.title = bits.join(' | ');
-    provenanceRow(dl, 'Engine run', run,
-      'a fingerprint of the code and configuration that computed every number here; ' +
-      'two runs with the same id computed the same way');
+    const wrap = el('span');
+    wrap.appendChild(el('code', null, er.engine_run_id));
+    if (er.code_fingerprint && er.config_hash) {
+      wrap.appendChild(el('span', 'def-note',
+        '= sha256(code_fingerprint + "|" + config_hash)[0:16]'));
+      const c1 = el('code', 'hash', 'code_fingerprint ' + er.code_fingerprint);
+      const c2 = el('code', 'hash', 'config_hash ' + er.config_hash);
+      wrap.appendChild(el('br'));
+      wrap.appendChild(c1);
+      wrap.appendChild(el('br'));
+      wrap.appendChild(c2);
+    }
+    provenanceRow(dl, 'Engine run', wrap,
+      'a fingerprint of the code and configuration that computed every number here; it ' +
+      'changes whenever either changes, and two runs with the same id computed the same way');
+  }
+
+  // Configuration: the typed constants, named (round two, R6).
+  const cfg = meta.config;
+  if (cfg && typeof cfg === 'object') {
+    const parts = Object.keys(cfg).sort().map((k) => k + ' = ' + String(cfg[k]));
+    provenanceRow(dl, 'Configuration', el('code', null, parts.join(', ')),
+      'the only typed numbers that shape this page: cells with fewer lots that voted shares ' +
+      'than thin_n are marked thin; the recommendation test below needs at least thin_n ' +
+      'self-contradicting proposals before it rules. Part of the engine fingerprint.');
   }
 
   const t = meta.totals || {};
@@ -242,18 +261,34 @@ function renderProvenance(meta) {
         'span',
         null,
         fmtInt(t.records) + ' records (' + fmtInt(t.lots) + ' vote lots + ' +
-        fmtInt(t.zero_lot_rows) + ' zero-lot rows) | ' +
-        fmtInt(t.proposals) + ' proposals | ' +
+        fmtInt(t.zero_lot_rows) + ' proposal filed with no lots) | ' +
+        fmtInt(t.proposals) + ' proposals, ' + fmtInt(t.proposals_in_multiple_categories) +
+        ' of them with lots in more than one category | ' +
+        fmtInt(t.issuers) + ' companies by CUSIP | ' +
         fmtInt(t.categories) + ' categories | ' +
         fmtInt(t.unparseable_how_voted) + ' unparseable how-voted values | ' +
         fmtInt(t.absent_how_voted) + ' absent in source | ' +
-        fmtInt(t.zero_share_lots) + ' zero-share lots'
+        fmtInt(t.zero_share_lots) + ' lots of 0 shares'
       ),
-      'each of these counts is a list: open a category and use "Show"'
+      'each of these counts is a list: open a category and use "Show"; the category ' +
+      'table carries per-category counts of zero-share lots and shared proposals'
     );
   }
 
-  // Multi-category disclosure - COMPUTED from meta, never asserted.
+  // The spellings finding (round two, league): the most legible evidence on
+  // the page that the filing needs reading help. Computed, prominent.
+  const sp = $('spellings-line');
+  if (typeof t.issuers === 'number' && typeof t.issuer_name_spellings === 'number' &&
+      t.issuer_name_spellings > t.issuers) {
+    sp.textContent =
+      'The filing names its ' + fmtInt(t.issuers) + ' companies (by CUSIP) in ' +
+      fmtInt(t.issuer_name_spellings) + ' different spellings. This page groups proposals ' +
+      'after ignoring letter case, spacing and trailing punctuation, and shows every name as filed.';
+    show(sp);
+  } else {
+    hide(sp);
+  }
+
   const multiNote = $('note-multicat');
   if (multiNote && typeof t.multi_category_records === 'number') {
     if (t.multi_category_records > 0) {
@@ -269,31 +304,50 @@ function renderProvenance(meta) {
     multiNote.hidden = true;
   }
 
-  // The managementRecommendation semantics check - COMPUTED by the exporter,
-  // stated here so a reader knows why no concordance headline exists (or, for
-  // a filer whose field is the board's view, that it passed).
+  // The managementRecommendation test - COMPUTED by the exporter, stated in
+  // reader's words with the evidence and one example a reader can open.
   const sem = meta.mgmt_rec_semantics;
   const semLine = $('semantics-line');
+  clear(semLine);
   if (sem && typeof sem.verdict === 'string') {
+    recVerdict = sem.verdict;
     let text =
-      'Check on the filing\'s managementRecommendation field: on shareholder items it agrees ' +
-      'with the fund\'s own vote in ' + textOr(sem.agreement, ABSENT) + ' lots';
-    if (typeof sem.agreement_pct === 'number') text += ' (' + sem.agreement_pct + '%)';
-    text += '; ' + fmtInt(sem.shareholder_lots) + ' shareholder lots in all, ' +
-      fmtInt(sem.shareholder_lots_with_recommendation) + ' with a FOR/AGAINST/ABSTAIN/WITHHOLD recommendation. ';
-    if (sem.verdict === 'tracks-lot') {
-      text += 'A field carrying the board\'s view would agree at least ' +
-        fmtInt(sem.min_board_view_pct) + '% of the time, so in this filing the field tracks ' +
-        'something else (it varies lot by lot within one proposal). It is shown as filed on each ' +
-        'lot, and no headline on this page is computed from it.';
-    } else if (sem.verdict === 'board-view') {
-      text += 'That meets the threshold of ' + fmtInt(sem.min_board_view_pct) +
-        '% for treating the field as the board\'s recommendation.';
-    } else {
-      text += 'Too few lots to judge (fewer than ' + fmtInt(thinN) + '); the field is shown as ' +
-        'filed and nothing rests on it.';
+      'Test on the filing\'s managementRecommendation field: a board recommends once per item, ' +
+      'so the field should carry one value across all the lots of a proposal. In this filing ' +
+      fmtInt(sem.proposals_with_mixed_recommendation) + ' of ' +
+      fmtInt(sem.proposals_with_recommendation) +
+      ' proposals with a recommendation carry more than one value across their own lots';
+    const ex = sem.example_mixed_proposal;
+    if (ex && typeof ex === 'object') {
+      text += ' (for example ' + textOr(ex.issuer_name, ABSENT) + ', ' +
+        textOr(ex.meeting_date, ABSENT) + ', "' + textOr(ex.vote_description, ABSENT) + '": ' +
+        fmtInt(ex.lots) + ' lots carrying ' + (Array.isArray(ex.recommendations) ? ex.recommendations.join(' and ') : ABSENT);
+      semLine.appendChild(el('span', null, text + '; '));
+      const cat = rollupBySlug.get(ex.category_slug);
+      if (cat) {
+        const a = el('a', null, 'open its category');
+        a.href = '#category-detail';
+        a.addEventListener('click', (ev) => { ev.preventDefault(); openCategory(cat, 'split'); });
+        semLine.appendChild(a);
+      }
+      semLine.appendChild(el('span', null, ')'));
+      text = '';
     }
-    semLine.textContent = text;
+    let tail = '';
+    if (sem.verdict === 'not-board-view') {
+      tail = '. So in this filing the field is not a board\'s recommendation: on shareholder ' +
+        'items it agrees with the fund\'s own vote in ' + textOr(sem.agreement, ABSENT) +
+        ' lots, and on management items it matches the vote almost everywhere (the full vote ' +
+        'against recommendation counts are in the page\'s data file). It is shown as filed on ' +
+        'each lot, and no headline on this page is computed from it.';
+    } else if (sem.verdict === 'board-view') {
+      tail = '. That is below the configured floor, so the field is treated as the board\'s ' +
+        'recommendation in this filing.';
+    } else {
+      tail = '. Too few lots carry a recommendation to judge; the field is shown as filed and ' +
+        'nothing rests on it.';
+    }
+    semLine.appendChild(el('span', null, text + tail));
     show(semLine);
   } else {
     hide(semLine);
@@ -309,21 +363,25 @@ function thinLabelText() {
 }
 
 function pctCell(cell) {
-  // "% FOR" with its numerator and denominator beside it (RapidForge review
-  // note 1: the denominator is the first thing a reader asks for).
+  // "% FOR" with numerator and denominator beside it, and the zero-share lots
+  // that were left out of the denominator named (round two, R4).
   const td = el('td', 'num');
   if (!cell || typeof cell !== 'object' || cell.for_pct === null || cell.for_pct === undefined) {
     td.textContent = ABSENT;
-    td.title = 'No voted lots in this cell.';
+    td.title = 'No lot in this cell voted shares' +
+      (cell && cell.zero_share_lots ? ' (' + fmtInt(cell.zero_share_lots) + ' lots of 0 shares)' : '') + '.';
     return td;
   }
   td.appendChild(el('span', null, cell.for_pct + '%'));
-  td.appendChild(el('span', 'denom', ' (' + fmtInt(cell.for_lots) + ' of ' + fmtInt(cell.n_voted) + ')'));
+  let denom = ' (' + fmtInt(cell.for_lots) + ' of ' + fmtInt(cell.n_voted);
+  if (cell.zero_share_lots) denom += '; ' + fmtInt(cell.zero_share_lots) + ' of 0 shares left out';
+  denom += ')';
+  td.appendChild(el('span', 'denom', denom));
   if (cell.thin) {
     const flag = el('span', 'thin-flag', thinLabelText());
     flag.title =
       'Fewer than ' + (typeof thinN === 'number' ? thinN : 'the threshold') +
-      ' voted lots: too few to treat as a headline.';
+      ' lots that voted shares: too few to treat as a headline.';
     td.appendChild(flag);
   }
   return td;
@@ -346,8 +404,8 @@ function renderRollup(rollup) {
   }
 
   const sorted = cats.slice().sort((a, b) => (b.n || 0) - (a.n || 0));
+  rollupBySlug = new Map(sorted.map((c) => [c.slug, c]));
 
-  // Anti-blend note - COMPUTED from rollup.json at render time, never typed.
   const total = sorted.reduce((sum, c) => sum + (typeof c.n === 'number' ? c.n : 0), 0);
   const largest = sorted[0];
   if (total > 0 && largest && typeof largest.n === 'number') {
@@ -357,6 +415,24 @@ function renderRollup(rollup) {
       pct + '% of this filing\'s records are ' + largest.category +
       '. A single blended number would mostly measure that category, so none is shown.';
     show(note);
+  }
+
+  // Round two (LinkedUmp): the Proposals column sums above the distinct total
+  // because a proposal is counted in each category its lots fall in. Say so
+  // with the numbers, computed.
+  const propSum = sorted.reduce((s, c) => s + (typeof c.n_proposals === 'number' ? c.n_proposals : 0), 0);
+  const noteP = $('note-proposals');
+  if (typeof totalProposals === 'number') {
+    noteP.textContent =
+      'The Proposals column sums to ' + fmtInt(propSum) + ', which is ' +
+      fmtInt(propSum - totalProposals) + ' more than the ' + fmtInt(totalProposals) +
+      ' distinct proposals, because a proposal whose lots were filed under more than one ' +
+      'category is counted in each (' + fmtInt(multiCatProposals) + ' such proposals). ' +
+      'Use "Show: proposals with lots in another category" inside any category to see them.';
+  } else {
+    noteP.textContent =
+      'The Proposals column sums to ' + fmtInt(propSum) + '; a proposal whose lots were filed ' +
+      'under more than one category is counted in each.';
   }
 
   const tbody = $('category-tbody');
@@ -376,8 +452,16 @@ function renderRollup(rollup) {
     tr.appendChild(nameCell);
 
     const v = cat.votes || {};
-    tr.appendChild(el('td', 'num', fmtInt(cat.n_proposals)));
-    tr.appendChild(el('td', 'num', fmtInt(cat.n_lots)));
+    const props = el('td', 'num', fmtInt(cat.n_proposals));
+    if (cat.n_proposals_shared) {
+      props.title = fmtInt(cat.n_proposals_shared) + ' of these also have lots in another category.';
+    }
+    tr.appendChild(props);
+    const lots = el('td', 'num', fmtInt(cat.n_lots));
+    if (cat.n_zero_share_lots) {
+      lots.title = fmtInt(cat.n_zero_share_lots) + ' of these lots voted 0 shares.';
+    }
+    tr.appendChild(lots);
     tr.appendChild(el('td', 'num', fmtInt(v.FOR)));
     tr.appendChild(el('td', 'num', fmtInt(v.AGAINST)));
     tr.appendChild(el('td', 'num', fmtInt(v.ABSTAIN)));
@@ -408,13 +492,27 @@ let openSeq = 0; // last click must win
 
 const FILTERS = {
   all: () => true,
+  management: (r) => typeof r.vote_source === 'string' && r.vote_source.trim().toUpperCase() === 'ISSUER',
+  shareholder: (r) => typeof r.vote_source === 'string' && r.vote_source.trim().toUpperCase() === 'SECURITY HOLDER',
+  split: (r) => typeof r.lots_in_proposal === 'number' && r.lots_in_proposal > 1,
+  elsewhere: (r) => Array.isArray(r.other_categories) && r.other_categories.length > 0,
+  zero: (r) => r.shares_voted === 0 && typeof r.lot_index === 'number' && r.lot_index >= 1,
   unparseable: (r) => r.how_voted_raw !== null && r.how_voted_raw !== undefined && !r.how_voted,
   absent: (r) => r.how_voted_raw === null || r.how_voted_raw === undefined,
-  zero: (r) => r.shares_voted === 0 && typeof r.lot_index === 'number' && r.lot_index >= 1,
-  split: (r) => typeof r.lots_in_proposal === 'number' && r.lots_in_proposal > 1,
 };
 
-async function openCategory(cat) {
+const FILTER_LABEL = {
+  all: 'all lots',
+  management: 'management items',
+  shareholder: 'shareholder items',
+  split: 'split proposals',
+  elsewhere: 'proposals with lots in another category',
+  zero: 'zero-share lots',
+  unparseable: 'unparseable how-voted',
+  absent: 'absent in source',
+};
+
+async function openCategory(cat, initialFilter) {
   const seq = ++openSeq;
   const detail = $('category-detail');
   const heading = $('detail-heading');
@@ -463,7 +561,7 @@ async function openCategory(cat) {
       categoryCache.set(cat.slug, data); // cache successes only
     }
   } catch (err) {
-    if (seq !== openSeq) return; // a later click superseded this one
+    if (seq !== openSeq) return;
     heading.textContent = cat.category;
     clear(errBox);
     errBox.appendChild(el('strong', null, 'Could not load the records for this category.'));
@@ -472,10 +570,10 @@ async function openCategory(cat) {
     return;
   }
 
-  if (seq !== openSeq) return; // a later click superseded this fetch
+  if (seq !== openSeq) return;
 
-  const filterSel = $('state-filter');
-  filterSel.value = 'all';
+  const filterName = initialFilter && FILTERS[initialFilter] ? initialFilter : 'all';
+  $('state-filter').value = filterName;
   detailState = {
     category: textOr(data.category, cat.category),
     cat: cat,
@@ -484,11 +582,16 @@ async function openCategory(cat) {
     page: 0,
     filter: 'all',
   };
+  // The mgmt rec column header carries this filing's verdict (round two, R7).
+  const th = $('mgmt-rec-th');
+  clear(th);
+  th.appendChild(el('span', null, 'Mgmt rec '));
+  th.appendChild(el('span', 'th-note',
+    recVerdict === 'not-board-view' ? '(as filed; not the board\'s view in this filing)'
+      : recVerdict === 'board-view' ? '(as filed; the board\'s view in this filing)'
+      : '(as filed)'));
 
-  heading.textContent =
-    detailState.category + ': ' + fmtInt(cat.n_lots) + ' vote lots in ' +
-    fmtInt(cat.n_proposals) + ' proposals (' + fmtInt(cat.n) + ' records)';
-  renderDetailPage();
+  applyFilter(filterName);
   show(body);
   detail.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
@@ -502,9 +605,19 @@ function applyFilter(name) {
   renderDetailPage();
 }
 
-// One cell for a tri-valued vote field: normalized value, or the raw value
-// with a visible mark when normalization failed, or a plain mark when the
-// field is absent in the source filing.
+function updateHeading() {
+  // Round two (Glizzness): the heading and the pager must not disagree under
+  // a filter. The heading follows the filter.
+  const { cat, category, records, view, filter } = detailState;
+  let text = category + ': ' + fmtInt(cat.n_lots) + ' vote lots in ' +
+    fmtInt(cat.n_proposals) + ' proposals (' + fmtInt(cat.n) + ' records)';
+  if (filter !== 'all') {
+    text += ' - showing ' + fmtInt(view.length) + ' of ' + fmtInt(records.length) +
+      ' records: ' + (FILTER_LABEL[filter] || filter);
+  }
+  $('detail-heading').textContent = text;
+}
+
 function voteCell(normalized, raw) {
   const td = el('td');
   if (typeof normalized === 'string' && normalized.length > 0) {
@@ -526,8 +639,6 @@ function voteCell(normalized, raw) {
 
 function recordRow(r, prev) {
   const tr = el('tr');
-  // First lot of a proposal on this page gets a visible top rule, so the lots
-  // of one proposal read as a group (cold-read round one, F3).
   if (!prev || prev.proposal_no !== r.proposal_no) tr.className = 'proposal-first';
 
   tr.appendChild(el('td', 'nowrap', textOr(r.meeting_date, ABSENT)));
@@ -542,9 +653,6 @@ function recordRow(r, prev) {
   } else {
     desc.appendChild(el('span', null, ABSENT));
   }
-  // Where to find it (cold-read round one, F6; round two: say whose numbers
-  // these are): this page's row and proposal numbers, then what to search for
-  // in EDGAR's rendered table. Never a claim about EDGAR's own numbering.
   const finder = [];
   if (typeof r.seq === 'number') {
     finder.push('row ' + fmtInt(r.seq) + (totalRecords ? ' of ' + fmtInt(totalRecords) : '') + ' on this page');
@@ -559,7 +667,6 @@ function recordRow(r, prev) {
   desc.appendChild(el('span', 'finder', finder.join(' | ')));
   tr.appendChild(desc);
 
-  // Proposed by: the filing's voteSource, verbatim (ISSUER / SECURITY HOLDER).
   const src2 = el('td', 'nowrap');
   if (typeof r.vote_source === 'string' && r.vote_source.length > 0) {
     src2.textContent = r.vote_source;
@@ -570,26 +677,36 @@ function recordRow(r, prev) {
   }
   tr.appendChild(src2);
 
-  // Lot: "2 of 4" - which block of shares this row is, of how many the fund
-  // reported for this proposal. 0 = the proposal was filed with no lots.
+  // Lot: "2 of 7", and where the other lots are when they were filed under
+  // another category (round two: "2 of 3" with no "1 of 3" read as data loss).
   const lot = el('td', 'nowrap lot');
   if (typeof r.lot_index === 'number' && typeof r.lots_in_proposal === 'number') {
-    lot.textContent = r.lot_index >= 1
+    lot.appendChild(el('span', null, r.lot_index >= 1
       ? r.lot_index + ' of ' + r.lots_in_proposal
-      : 'no lots';
-    lot.title = r.lot_index >= 1
-      ? 'Lot ' + r.lot_index + ' of ' + r.lots_in_proposal + ' the fund reported for this proposal.'
-      : 'The filing lists this proposal with no vote lots.';
+      : 'no lots'));
+    if (Array.isArray(r.other_categories) && r.other_categories.length > 0) {
+      const note = el('span', 'finder', 'other lots under ' + r.other_categories.join(', '));
+      lot.appendChild(note);
+      lot.title = 'This proposal\'s other lots were filed under: ' + r.other_categories.join(', ') + '.';
+    } else {
+      lot.title = r.lot_index >= 1
+        ? 'Lot ' + r.lot_index + ' of ' + r.lots_in_proposal + ' the fund reported for this proposal.'
+        : 'The filing lists this proposal with no vote lots.';
+    }
   } else {
     lot.textContent = ABSENT;
   }
   tr.appendChild(lot);
 
   tr.appendChild(voteCell(r.how_voted, r.how_voted_raw));
-  tr.appendChild(voteCell(r.mgmt_rec, r.mgmt_rec_raw));
+  const rec = voteCell(r.mgmt_rec, r.mgmt_rec_raw);
+  if (recVerdict === 'not-board-view') {
+    rec.title = 'As filed. In this filing this field is not the board\'s recommendation ' +
+      '(see "Where these numbers come from"); it is shown because the filing carries it.';
+  }
+  tr.appendChild(rec);
   tr.appendChild(el('td', 'num', fmtShares(r.shares_voted)));
 
-  // Receipt: the verbatim stored URL via receipts.js, or nothing at all.
   const where = el('td', 'nowrap');
   const url = receiptUrl(r);
   if (url) {
@@ -630,6 +747,7 @@ function renderDetailPage() {
     ? ''
     : fmtInt(view.length) + ' of ' + fmtInt(detailState.records.length) + ' records match';
 
+  updateHeading();
   updatePagers();
   updateScrollHint();
 }
@@ -706,10 +824,15 @@ async function main() {
       );
     }
     thinN = typeof meta.thin_n === 'number' ? meta.thin_n : null;
+    const tt = meta.totals || {};
+    totalProposals = typeof tt.proposals === 'number' ? tt.proposals : null;
+    multiCatProposals = typeof tt.proposals_in_multiple_categories === 'number' ? tt.proposals_in_multiple_categories : null;
+    recVerdict = meta.mgmt_rec_semantics && typeof meta.mgmt_rec_semantics.verdict === 'string'
+      ? meta.mgmt_rec_semantics.verdict : null;
 
     renderHeader(meta);
+    renderRollup(rollup);      // before provenance: the semantics line links into a category
     renderProvenance(meta);
-    renderRollup(rollup);
   } catch (err) {
     renderFatal(err);
   }

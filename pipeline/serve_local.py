@@ -7,6 +7,7 @@ Cache-Control: no-store so an export_site.py re-run shows up on refresh.
 Stdlib only (Python 3.14).
 """
 
+import os
 import sys
 
 sys.stdout.reconfigure(encoding="utf-8")
@@ -18,7 +19,10 @@ from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
 HOST = "127.0.0.1"
-PORT = 8765
+# Two headers-aware local servers on one machine collide on a hard-coded port
+# (EventFinds held 8765 on 2026-08-30 while this one tried to bind it).
+# ROLLCALL_PORT overrides; the default stays 8765 so the README still holds.
+PORT = int(os.environ.get("ROLLCALL_PORT", "8765"))
 SITE = Path(__file__).resolve().parent.parent / "site"
 
 MIME = {

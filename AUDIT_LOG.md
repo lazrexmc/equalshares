@@ -173,3 +173,72 @@ Round two of the protocol is requested on the corrected page.
 ### Post-Audit Changes
 
 - 2026-08-30: Part 1 shipped (this entry). The next entry is round two's report.
+
+## Audit 2026-08-30 - Cold-read round two (five readers) and the owner's own read
+
+### Scope
+
+The Part 1 page at `f30eb0c`, read by Glizzness, league, LinkedUmp, VisibleGov and Phoenix per
+`docs/COLD_READ_PROTOCOL.md` (four in a real browser; league from the served files; VisibleGov
+could not open EDGAR's table: 403 to its fetch), plus Lance's own report of the clipped table.
+Every finding checked in `data/rollcall.db` and the raw before a disposition (CHATLOG, spec
+section 12). RapidForge re-ran the data claims independently and caught a mixed-key report.
+
+### Findings Status From Prior Audits
+
+| Prior Finding | Status | Evidence |
+| --- | --- | --- |
+| Round one F3-F14 | Fixed (unchanged), except as re-opened below | AUDIT 2026-08-29 |
+
+### Severity-Ranked Findings
+
+#### High
+
+- **Owner:** the drill-down table clipped at "Mgmt rec" with no visible scrollbar at laptop width.
+  Cause: 1,654 px of table in an 1,110 px container; overlay scrollbars invisible until touched.
+  Verdict: **Fixed** (`218d425`, verified at the origin 00:20 CDT; PLAYBOOK_DELTA Lesson 8).
+- R3 One ballot item under two proposal numbers (Disney, Coca-Cola, Constellation, Medtronic).
+  Cause: the key used text as filed; the filing spells one company and one item several ways.
+  Verdict: **Fixed** (2026-08-30: one key function normalises case, spacing and trailing
+  punctuation; 10,523 -> 8,906 proposals; Medtronic is one proposal of seven lots).
+- R2 Lots of one proposal missing from a category list ("2 of 3", no "1 of 3"); Proposals column
+  summed above the total. Cause: 495 proposals (under the one key) have lots filed under more
+  than one category. Verdict: **Fixed** (each record names the other categories; a filter lists
+  them; the column note states the rule and the counts; `totals.proposals_in_multiple_categories`).
+- R4 Zero-share lots inside "FOR of voted lots". Verdict: **Fixed** (denominator = lots with a
+  readable vote and shares above zero; zero-share lots published per cell and per category).
+- R5 The 50% threshold was an assumption presented as the test; a perfect zero looked like a
+  vocabulary mismatch (league, retracted after the crosstab). Verdict: **Fixed** (threshold
+  removed; the test is the count of proposals carrying more than one recommendation value across
+  their own lots, 4,594 of 8,904, with an example and the vote-by-recommendation crosstab
+  published; the agreement rate stays as evidence).
+- **Mixed-key report** (RapidForge): 198 and 5,022 were as-filed-key numbers quoted beside a
+  normalised-key 8,990. Verdict: **Fixed** (every count derives from one `proposal_no`; the
+  published numbers are 495 and 4,594; PLAYBOOK_DELTA Lesson 9).
+
+#### Medium
+
+- R1 heading vs pager under a filter: **Fixed** (heading follows the filter).
+- R6 typed constants under a "none are typed" claim: **Fixed** (`meta.config`, a Configuration
+  row, the claim narrowed; one constant remains).
+- R7 "Mgmt rec FOR" on a row read as the board's wish: **Fixed** (column header and cell titles
+  carry the filing's verdict).
+- R10 no proposer filter: **Fixed** (management / shareholder / elsewhere filters).
+
+#### Low
+
+- R8 whose numbering; one link per lot: **Fixed** as far as the source allows (labelled this
+  page's; EDGAR has no per-lot anchor). R9 wording and definitions ("-", ABSTAIN as filed,
+  fractional shares, engine id changes, companies count 318 by CUSIP in 622 spellings):
+  **Fixed**. R11 glossary length and the "four strangers" sentence: **Fixed** (three terms first,
+  the rest collapsed; the correction note moved beside the provenance claim). R12 whose numbers:
+  **Fixed** (a subject line under the fund name).
+
+### Sign-Off Position
+
+Part 1.1 built 2026-08-30: ten gates pass (G7 233 checks), `tools/verify_claims.py` passes,
+rendered under the production CSP via serve_local.py in Playwright with zero console messages: DEI drill-down with the elsewhere filter (21 of 23), the verdict in the Mgmt rec header, lot notes naming the other categories, the table fitting its container. Engine run `e3b050bc2353357b`. Round three of the protocol is the next check.
+
+### Post-Audit Changes
+
+- 2026-08-30: Part 1.1 shipped (this entry).

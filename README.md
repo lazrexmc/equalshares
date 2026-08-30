@@ -36,10 +36,16 @@ test of them.
    (Cold-read round one, 2026-08-29.) An N-PX `<proxyTable>` block holds 1-10
    `<voteRecord>` lots; a proposal spans 1-5 blocks. Every row is published
    with `proposal_no` / `lot_index` / `lots_in_proposal`, and totals hold
-   records, lots and proposals apart. `managementRecommendation` is a per-lot
-   field that tracks the lot in this filing (0 of 1,433 shareholder lots
-   agree); `meta.mgmt_rec_semantics` publishes that computed check per filing
-   and gate G8 refuses any recommendation-derived or blended key anywhere.
+   records, lots and proposals apart. A proposal is one distinct text as filed
+   after ignoring letter case, spacing and trailing punctuation; that rule
+   lives in ONE function (`extract.py` `assign_proposals`) and every published
+   count derives from the `proposal_no` it assigns. `managementRecommendation`
+   is a per-lot field and not a board's view in this filing: the test is
+   threshold-free (a board recommends once per item; here thousands of
+   proposals carry more than one value across their own lots), published in
+   `meta.mgmt_rec_semantics` with a crosstab and an example, and gate G8
+   refuses any recommendation-derived or blended key anywhere. The one typed
+   number that shapes the page (`thin_n`) is published in `meta.config`.
 
 ## How to run (five commands, from the repo root)
 

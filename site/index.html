@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Roll Call - EqualShares</title>
-<meta name="description" content="One fund's Form N-PX proxy votes made readable: every vote lot, grouped by the SEC's own categories, with a receipt to the filing. Every number is computed from the filing; none are typed.">
+<meta name="description" content="One fund's Form N-PX proxy votes made readable: every vote lot, grouped by the SEC's own categories, with a receipt to the filing. Every number is computed from the filing; the one configured threshold is shown.">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/css/site.css">
 </head>
@@ -19,6 +19,7 @@
     year, every vote lot, grouped by the SEC's own categories, with a receipt to the filing for
     every row.</p>
   <p id="filer-line" class="filer-line" hidden></p>
+  <p id="subject-line" class="freshness" hidden></p>
   <p id="freshness-line" class="freshness" hidden></p>
 </header>
 
@@ -34,69 +35,90 @@
 
   <section id="how-to-read" class="how-to-read" aria-labelledby="how-heading">
     <h2 id="how-heading">How to read this page</h2>
-    <p class="how-intro">Terms first; the numbers below are computed from the filing and every one
-      of them can be opened as a list. Four strangers read an earlier version of this page and could
-      not tell what a row was, so:</p>
     <dl class="definitions">
-      <dt>Fund</dt>
-      <dd>The fund named in the line above the page is one <em>series</em> of a larger registrant
-        (the trust that files with the SEC). The filing covers that one series and one proxy year.</dd>
-      <dt>Proxy year</dt>
-      <dd>Form N-PX covers votes cast from July 1 to June 30. The period shown is the year's end date.</dd>
-      <dt>Proposal</dt>
-      <dd>One item on one company's ballot: a director election, a pay plan, a shareholder's
-        climate resolution. The fund's vote on it is what a reader usually wants.</dd>
       <dt>Record, or vote lot</dt>
       <dd>One row of this page. The filing reports a proposal in one or more blocks, and each block
         holds one or more <em>lots</em>: a block of shares voted one way, with its own share count.
-        One fund can vote different lots of the same proposal differently; that is the filing's
-        own structure, shown as filed, and it is why a proposal can appear several times. Each row
-        says which lot of how many it is.</dd>
-      <dt>Category</dt>
-      <dd>The SEC's own category, as the fund filed it. This page does not classify anything. A
-        record the fund tagged with several categories is counted under the first one.</dd>
-      <dt>Proposed by</dt>
-      <dd>The filing's <code>voteSource</code>: <code>ISSUER</code> means the company's own
-        management put the item forward; <code>SECURITY HOLDER</code> means a shareholder did.</dd>
-      <dt>How voted</dt>
-      <dd>FOR, AGAINST, ABSTAIN, or WITHHOLD as filed. WITHHOLD is the director-election way of
-        not supporting a nominee where AGAINST is not on the ballot. Anything else the filing put
-        in this field (say-on-pay frequency answers like "ONE YEAR" or "1.0") is shown verbatim
-        and marked <em>unparseable</em>; it is never guessed into one of the four.</dd>
+        One fund can vote different lots of the same proposal differently; that is the filing's own
+        structure, shown as filed, and it is why a proposal can appear several times. Each row says
+        which lot of how many it is. The filing does not say what divides the lots.</dd>
+      <dt>Proposal</dt>
+      <dd>One item on one company's ballot: a director election, a pay plan, a shareholder's
+        climate resolution. This page counts a proposal as one distinct text as filed, after
+        ignoring letter case, spacing and trailing punctuation (the filing spells the same company
+        and the same item more than one way). A proposal whose lots were filed under more than one
+        category is counted in each of those categories, and its rows say where the other lots are.</dd>
       <dt>% FOR</dt>
-      <dd>Of the lots with a readable vote in that cell, the share voted FOR, with the count beside
-        it. It is split by who proposed the item because "FOR" means support for management on a
-        management item and support for a shareholder on a shareholder item. It says nothing about
-        what any board wanted.</dd>
-      <dt>Mgmt rec (as filed)</dt>
-      <dd>The filing's <code>managementRecommendation</code> field, reproduced verbatim on each
-        lot. It is a per-lot field, and this page checks whether it behaves like a board's
-        recommendation before resting anything on it; the result of that check is stated in
-        "Where these numbers come from". No headline on this page is computed from it.</dd>
-      <dt>Unparseable / absent in source</dt>
-      <dd>Two different states, never merged: <em>unparseable</em> means the filing gave a value
-        this page does not understand (shown raw); <em>absent in source</em> means the filing gave
-        no value at all, for example a proposal filed with zero lots (a withdrawn resolution).</dd>
-      <dt>Zero-share lots</dt>
-      <dd>A lot reported with 0 shares is the fund stating that a voting block held no shares at
-        that meeting. Shown as filed.</dd>
-      <dt>Receipts</dt>
-      <dd>Form N-PX has no per-row anchor, so there is one receipt per filing: EDGAR's rendered vote
-        table, stored at ingest time, never constructed. Each row tells you where to look in it: the
-        row's position in the filing, its proposal number, and the issuer, CUSIP and meeting date
-        to search for.</dd>
-      <dt>EqualShares</dt>
-      <dd>An independent project that makes fund proxy votes readable. Not affiliated with any
-        fund, registrant, or the SEC. Every number here is computed from the filing by a
-        fingerprinted run; none are typed.</dd>
+      <dd>Of the lots in that cell that voted shares (a readable vote and more than 0 shares), the
+        share voted FOR, with both counts beside it. It is split by who proposed the item because
+        "FOR" means support for management on a management item and support for a shareholder on a
+        shareholder item. It says nothing about what any board wanted. A "-" means no lot in that
+        cell voted shares.</dd>
     </dl>
+    <details class="definitions-more">
+      <summary>Every other term used on this page</summary>
+      <dl class="definitions">
+        <dt>Fund</dt>
+        <dd>The fund named above is one <em>series</em> of a larger registrant (the trust that files
+          with the SEC). The filing, and every number on this page, covers that one series and one
+          proxy year. The registrant is only the filer.</dd>
+        <dt>Proxy year</dt>
+        <dd>Form N-PX covers votes cast from July 1 to June 30. The period shown is the year's end date.</dd>
+        <dt>Category</dt>
+        <dd>The SEC's own category, as the fund filed it. This page does not classify anything. A
+          record the fund tagged with several categories is counted under the first one.</dd>
+        <dt>Proposed by</dt>
+        <dd>The filing's <code>voteSource</code>: <code>ISSUER</code> means the company's own
+          management put the item forward; <code>SECURITY HOLDER</code> means a shareholder did.</dd>
+        <dt>Voted</dt>
+        <dd>FOR, AGAINST, ABSTAIN, or WITHHOLD as filed. WITHHOLD is the director-election way of
+          not supporting a nominee where AGAINST is not on the ballot. ABSTAIN is as filed; the
+          filing does not say why a lot abstained. Anything else the filing put in this field
+          (say-on-pay frequency answers like "ONE YEAR" or "1.0") is shown verbatim and marked
+          <em>unparseable</em>; it is never guessed into one of the four.</dd>
+        <dt>Mgmt rec (as filed)</dt>
+        <dd>The filing's <code>managementRecommendation</code> field, reproduced verbatim on each
+          lot. Before resting anything on it, this page tests whether it behaves like a board's
+          recommendation (a board recommends once per item); the result for this filing is stated
+          in "Where these numbers come from" and in the column's own header. No headline on this
+          page is computed from it.</dd>
+        <dt>Unparseable / absent in source</dt>
+        <dd>Two different states, never merged: <em>unparseable</em> means the filing gave a value
+          this page does not understand (shown raw); <em>absent in source</em> means the filing gave
+          no value at all, for example a proposal filed with zero lots (a withdrawn resolution).</dd>
+        <dt>Shares</dt>
+        <dd>Share counts are as filed, fractions included (funds hold fractional shares). A lot
+          reported with 0 shares is the fund stating that a voting block held no shares at that
+          meeting; it is shown, counted separately, and left out of "% FOR".</dd>
+        <dt>Receipts</dt>
+        <dd>Form N-PX has no per-row anchor, so there is one receipt per filing: EDGAR's rendered vote
+          table, stored at ingest time from the filing's own index page, never constructed. Each row
+          gives this page's row and proposal numbers (this page's numbering, not EDGAR's) and the
+          issuer, CUSIP and meeting date to search for in that table.</dd>
+        <dt>Engine run</dt>
+        <dd>A fingerprint of the code and configuration that computed every number here:
+          <code>sha256(code_fingerprint + "|" + config_hash)</code>, first 16 hex characters. It
+          changes whenever the code or the configuration changes; two runs with the same id computed
+          the same way. Both inputs are shown so the id can be checked with any SHA-256 tool.</dd>
+        <dt>Configuration</dt>
+        <dd>One typed number shapes what this page shows: the threshold below which a cell is
+          marked <em>thin</em>, and below which the recommendation test needs more evidence. It is
+          shown in "Where these numbers come from" and is part of the engine fingerprint.</dd>
+        <dt>EqualShares</dt>
+        <dd>An independent project that makes fund proxy votes readable. Not affiliated with any
+          fund, registrant, or the SEC.</dd>
+      </dl>
+    </details>
   </section>
 
   <section id="provenance" class="provenance" aria-labelledby="provenance-heading" hidden>
     <h2 id="provenance-heading">Where these numbers come from</h2>
     <dl id="provenance-list" class="provenance-list"></dl>
+    <p id="spellings-line" class="footnote" hidden></p>
     <p id="semantics-line" class="footnote" hidden></p>
-    <p class="provenance-claim">Every number on this page is computed from the filing. None are typed.</p>
+    <p class="provenance-claim">Every number on this page is computed from the filing by the engine
+      run above; the one configured threshold is shown. This page has been corrected after
+      independent readers reported what confused them, and will be again.</p>
   </section>
 
   <section id="categories" aria-labelledby="categories-heading" hidden>
@@ -107,7 +129,7 @@
         <thead>
           <tr>
             <th scope="col">Category <span class="th-note">(as filed)</span></th>
-            <th scope="col" class="num">Proposals</th>
+            <th scope="col" class="num">Proposals <span class="th-note">(counted in each category their lots fall in)</span></th>
             <th scope="col" class="num">Lots</th>
             <th scope="col" class="num">For</th>
             <th scope="col" class="num">Against</th>
@@ -115,8 +137,8 @@
             <th scope="col" class="num">Withhold</th>
             <th scope="col" class="num">Unparseable</th>
             <th scope="col" class="num">Absent in source</th>
-            <th scope="col" class="num">% FOR, management items <span class="th-note">(FOR of voted lots)</span></th>
-            <th scope="col" class="num">% FOR, shareholder items <span class="th-note">(FOR of voted lots)</span></th>
+            <th scope="col" class="num">% FOR, management items <span class="th-note">(FOR of lots that voted shares)</span></th>
+            <th scope="col" class="num">% FOR, shareholder items <span class="th-note">(FOR of lots that voted shares)</span></th>
           </tr>
         </thead>
         <tbody id="category-tbody"></tbody>
@@ -124,11 +146,12 @@
     </div>
     <p class="hint">Select a category row to see every vote lot behind its numbers.</p>
     <div class="footnotes">
+      <p id="note-proposals" class="footnote"></p>
       <p id="note-mgmt" class="footnote">"% FOR" is the fund's own vote, split by who proposed the
-        item; every cell shows its count. Nothing on this table is derived from the filing's
-        <code>managementRecommendation</code> field (see "Mgmt rec" above and the check stated in
-        "Where these numbers come from"). Cells with fewer voted lots than the threshold are marked
-        thin.</p>
+        item; every cell shows its counts, and lots that voted 0 shares are counted beside them,
+        not inside them. Nothing on this table is derived from the filing's
+        <code>managementRecommendation</code> field. Cells with fewer voting lots than the
+        configured threshold are marked thin.</p>
       <p id="note-multicat" class="footnote"></p>
     </div>
   </section>
@@ -141,19 +164,22 @@
         <label for="state-filter">Show</label>
         <select id="state-filter">
           <option value="all">all lots</option>
+          <option value="management">management items only</option>
+          <option value="shareholder">shareholder items only</option>
+          <option value="split">split proposals only (more than one lot)</option>
+          <option value="elsewhere">proposals with lots in another category</option>
+          <option value="zero">zero-share lots only</option>
           <option value="unparseable">unparseable how-voted only</option>
           <option value="absent">absent in source only</option>
-          <option value="zero">zero-share lots only</option>
-          <option value="split">split proposals only (more than one lot)</option>
         </select>
         <span id="filter-status" class="pager-status" aria-live="polite"></span>
       </div>
+      <p id="scroll-hint" class="scroll-hint" hidden>This table is wider than your screen: scroll it sideways to reach every column.</p>
       <nav class="pager" aria-label="Record pages (top)">
         <button type="button" class="pager-prev">Previous</button>
         <span class="pager-status" aria-live="polite"></span>
         <button type="button" class="pager-next">Next</button>
       </nav>
-      <p id="scroll-hint" class="scroll-hint" hidden>This table is wider than your screen: scroll it sideways to reach every column.</p>
       <div class="table-scroll">
         <table id="detail-table">
           <thead>
@@ -164,7 +190,7 @@
               <th scope="col">Proposed by</th>
               <th scope="col">Lot</th>
               <th scope="col">Voted</th>
-              <th scope="col">Mgmt rec <span class="th-note">(as filed)</span></th>
+              <th scope="col" id="mgmt-rec-th">Mgmt rec <span class="th-note">(as filed)</span></th>
               <th scope="col" class="num">Shares</th>
               <th scope="col">Receipt</th>
             </tr>
@@ -182,7 +208,7 @@
 </main>
 
 <footer class="site-footer">
-  <p>EqualShares - The Roll Call. Data: SEC EDGAR Form N-PX, rendered from stored filings. This page types no numbers, and every receipt link is a URL stored at ingest time from the filing's own EDGAR index page - none are constructed.</p>
+  <p>EqualShares - The Roll Call. Data: SEC EDGAR Form N-PX, rendered from stored filings. Every receipt link is a URL stored at ingest time from the filing's own EDGAR index page - none are constructed.</p>
 </footer>
 
 <script type="module" src="/js/rollcall.js"></script>

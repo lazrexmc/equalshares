@@ -60,9 +60,11 @@ UNCATEGORIZED = "UNCATEGORIZED"
 VOTE_ENUM = ("FOR", "AGAINST", "ABSTAIN", "WITHHOLD")
 REC_ENUM = VOTE_ENUM + ("NONE",)
 SOURCE_KEYS = ("ISSUER", "SECURITY HOLDER")
-CELL_KEYS = {"n_records", "n_lots", "n_proposals", "n_voted", "for_lots", "for_pct", "thin"}
-CATEGORY_KEYS = {"category", "slug", "n", "n_lots", "n_proposals", "votes",
-                 "shares_voted_total", "by_source"}
+CELL_KEYS = {"n_records", "n_lots", "n_proposals", "n_voted", "zero_share_lots", "for_lots",
+             "for_pct", "thin"}
+CATEGORY_KEYS = {"category", "slug", "n", "n_lots", "n_proposals", "n_proposals_shared",
+                 "n_zero_share_lots", "votes", "shares_voted_total", "by_source"}
+VERDICTS = ("board-view", "not-board-view", "insufficient")
 # Any key carrying one of these names anywhere in the export is a blended or
 # recommendation-derived headline trying to come back (cold-read round one).
 FORBIDDEN_KEY = re.compile(r"with_mgmt|concordance|comparable|blend", re.I)
@@ -188,14 +190,28 @@ def pct(num, den):
 
 
 def cell_from_rows(rs, thin_n):
-    """LOCKSTEP copy of export_site.source_cell over DB rows."""
+    """LOCKSTEP copy of export_site.source_cell over DB rows: the denominator is lots with a
+    readable vote AND shares above zero; zero-share lots are counted beside it."""
     lots = [r for r in rs if (r["lot_index"] or 0) >= 1]
-    voted = [r for r in lots if r["how_voted"] in VOTE_ENUM]
+    readable = [r for r in lots if r["how_voted"] in VOTE_ENUM]
+    voted = [r for r in readable if r["shares_voted"] is None or r["shares_voted"] > 0]
     for_lots = sum(1 for r in voted if r["how_voted"] == "FOR")
     return {"n_records": len(rs), "n_lots": len(lots),
             "n_proposals": len({r["proposal_no"] for r in rs}),
-            "n_voted": len(voted), "for_lots": for_lots,
+            "n_voted": len(voted),
+            "zero_share_lots": sum(1 for r in readable if r["shares_voted"] == 0),
+            "for_lots": for_lots,
             "for_pct": pct(for_lots, len(voted)), "thin": len(voted) < thin_n}
+
+
+def crosstab_rows(rs):
+    """LOCKSTEP copy of export_site.crosstab over DB rows."""
+    out = {}
+    for r in rs:
+        if r["how_voted"] in VOTE_ENUM and r["mgmt_rec"] in REC_ENUM:
+            k = f"{r['how_voted']}/{r['mgmt_rec']}"
+            out[k] = out.get(k, 0) + 1
+    return out
 
 
 def walk_keys(obj, path=""):
@@ -534,7 +550,8 @@ def g7_export_consistency():
     from sources import CONFIG  # noqa: PLC0415
     chk(thin_n == CONFIG.get("thin_n"), "meta.thin_n == CONFIG thin_n",
         f"meta={thin_n} config={CONFIG.get('thin_n')}")
-    min_pct = CONFIG.get("mgmt_rec_board_view_min_pct")
+    chk(meta.get("config") == {"thin_n": CONFIG.get("thin_n")},
+        "meta.config names exactly the typed constants", f"meta={meta.get('config')!r}")
 
     con = dbcon()
     db_filing = con.execute(
@@ -542,8 +559,8 @@ def g7_export_consistency():
     ).fetchone()
     rows = con.execute(
         "SELECT seq, category_type, how_voted, how_voted_raw, mgmt_rec, vote_source, "
-        "vote_series, proposal_no, lot_index, lots_in_proposal, shares_voted, categories_all "
-        "FROM vote_records WHERE accession = ?",
+        "vote_series, proposal_no, lot_index, lots_in_proposal, shares_voted, categories_all, "
+        "cusip, issuer_name FROM vote_records WHERE accession = ?",
         (acc,),
     ).fetchall()
     con.close()
@@ -566,6 +583,9 @@ def g7_export_consistency():
     db_total = len(rows)
     db_counts = Counter(bucket(r["category_type"]) for r in rows)
     lots_per_proposal = Counter(r["proposal_no"] for r in rows if (r["lot_index"] or 0) >= 1)
+    cats_of_proposal = {}
+    for r in rows:
+        cats_of_proposal.setdefault(r["proposal_no"], set()).add(bucket(r["category_type"]))
 
     cats = rollup.get("categories")
     chk(
@@ -596,11 +616,18 @@ def g7_export_consistency():
         rs = [r for r in rows if bucket(r["category_type"]) == name]
         chk(n == len(rs), f"rollup n for {name!r}", f"rollup={n} db={len(rs)}")
         db_lots = sum(1 for r in rs if (r["lot_index"] or 0) >= 1)
-        db_props = len({r["proposal_no"] for r in rs})
+        props_here = {r["proposal_no"] for r in rs}
+        db_props = len(props_here)
         chk(c.get("n_lots") == db_lots and c.get("n_proposals") == db_props,
             f"lots/proposals for {name!r}",
             f"rollup lots={c.get('n_lots')} props={c.get('n_proposals')} "
             f"db lots={db_lots} props={db_props}")
+        db_shared = sum(1 for pn in props_here if len(cats_of_proposal[pn]) > 1)
+        db_zero = sum(1 for r in rs if (r["lot_index"] or 0) >= 1 and r["shares_voted"] == 0)
+        chk(c.get("n_proposals_shared") == db_shared and c.get("n_zero_share_lots") == db_zero,
+            f"shared proposals / zero-share lots for {name!r}",
+            f"rollup shared={c.get('n_proposals_shared')} zero={c.get('n_zero_share_lots')} "
+            f"db shared={db_shared} zero={db_zero}")
         votes = c.get("votes") or {}
         vote_sum = sum(votes.get(k, 0) for k in (*VOTE_ENUM, "UNPARSEABLE", "ABSENT"))
         chk(vote_sum == n, f"votes sum to n for {name!r}", f"sum={vote_sum} n={n}")
@@ -657,6 +684,12 @@ def g7_export_consistency():
             bad_rec = sum(1 for r in recs
                           if r.get("mgmt_rec") is not None and r.get("mgmt_rec") not in REC_ENUM)
             chk(bad_rec == 0, f"mgmt_rec enum in {slug}.json", f"{bad_rec} outside {REC_ENUM}")
+            bad_other = sum(
+                1 for r in recs
+                if r.get("other_categories") != sorted(
+                    cats_of_proposal.get(r.get("proposal_no"), set()) - {name}))
+            chk(bad_other == 0, f"other_categories in {slug}.json",
+                f"{bad_other} records disagree with the DB's categories per proposal")
 
     on_disk = {p.name for p in CATEGORY_DIR.glob("*.json")} if CATEGORY_DIR.exists() else set()
     stale = sorted(on_disk - expected_files)
@@ -668,6 +701,10 @@ def g7_export_consistency():
         "lots": sum(1 for r in rows if (r["lot_index"] or 0) >= 1),
         "zero_lot_rows": sum(1 for r in rows if (r["lot_index"] or 0) == 0),
         "proposals": len({r["proposal_no"] for r in rows}),
+        "proposals_in_multiple_categories": sum(
+            1 for cs in cats_of_proposal.values() if len(cs) > 1),
+        "issuers": len({r["cusip"] for r in rows if r["cusip"]}),
+        "issuer_name_spellings": len({r["issuer_name"] for r in rows if r["issuer_name"]}),
         "categories": len(cats),
         "unparseable_how_voted": sum(
             1 for r in rows if r["how_voted_raw"] is not None and r["how_voted"] is None),
@@ -687,26 +724,46 @@ def g7_export_consistency():
     chk(sum_n == totals.get("records"), "sum(category n) == totals.records",
         f"sum={sum_n} records={totals.get('records')}")
 
-    # managementRecommendation semantics - recomputed, verdict rule LOCKSTEP
+    # managementRecommendation semantics - recomputed, threshold-free rule LOCKSTEP
     sem = meta.get("mgmt_rec_semantics") or {}
-    sh = [r for r in rows if source_bucket(r["vote_source"]) == "SECURITY HOLDER"
-          and (r["lot_index"] or 0) >= 1]
+    lots_all = [r for r in rows if (r["lot_index"] or 0) >= 1]
+    with_any_rec = [r for r in lots_all if r["mgmt_rec"] in VOTE_ENUM]
+    by_prop = {}
+    for r in with_any_rec:
+        by_prop.setdefault(r["proposal_no"], set()).add(r["mgmt_rec"])
+    mixed = {pn for pn, vals in by_prop.items() if len(vals) > 1}
+    sh = [r for r in lots_all if source_bucket(r["vote_source"]) == "SECURITY HOLDER"]
     with_rec = [r for r in sh if r["how_voted"] in VOTE_ENUM and r["mgmt_rec"] in VOTE_ENUM]
     agree = sum(1 for r in with_rec if r["how_voted"] == r["mgmt_rec"])
-    if len(with_rec) < (thin_n or 0):
+    if len(with_any_rec) < (thin_n or 0):
         verdict = "insufficient"
-    elif (pct(agree, len(with_rec)) or 0) >= (min_pct or 0):
-        verdict = "board-view"
+    elif len(mixed) >= (thin_n or 0):
+        verdict = "not-board-view"
     else:
-        verdict = "tracks-lot"
-    want_sem = {"shareholder_lots": len(sh),
+        verdict = "board-view"
+    want_sem = {"lots_with_recommendation": len(with_any_rec),
+                "proposals_with_recommendation": len(by_prop),
+                "proposals_with_mixed_recommendation": len(mixed),
+                "crosstab_shareholder_lots": crosstab_rows(sh),
+                "crosstab_management_lots": crosstab_rows(
+                    [r for r in lots_all if source_bucket(r["vote_source"]) == "ISSUER"]),
+                "shareholder_lots": len(sh),
                 "shareholder_lots_with_recommendation": len(with_rec),
                 "agreeing": agree, "agreement": f"{agree}/{len(with_rec)}",
-                "agreement_pct": pct(agree, len(with_rec)), "min_board_view_pct": min_pct,
+                "agreement_pct": pct(agree, len(with_rec)),
                 "verdict": verdict, "headline_allowed": verdict == "board-view"}
     for k, v in want_sem.items():
         chk(sem.get(k) == v, f"meta mgmt_rec_semantics.{k}",
             f"meta={sem.get(k)!r} recomputed={v!r}")
+    ex = sem.get("example_mixed_proposal")
+    if mixed:
+        ex_ok = (isinstance(ex, dict) and ex.get("proposal_no") in mixed
+                 and ex.get("lots") == lots_per_proposal.get(ex.get("proposal_no"))
+                 and sorted(ex.get("recommendations") or []) == sorted(by_prop[ex.get("proposal_no")]))
+        chk(ex_ok, "meta mgmt_rec_semantics.example_mixed_proposal is a real mixed proposal",
+            f"{ex!r}"[:160])
+    else:
+        chk(ex is None, "no example when no proposal is mixed", f"{ex!r}")
 
     failed = checks.count(False)
     return failed == 0, (
@@ -768,9 +825,10 @@ def g8_anti_blend():
 
     sem = meta.get("mgmt_rec_semantics") or {}
     verdict = sem.get("verdict")
-    log(f"  mgmt_rec_semantics: {sem.get('agreement')} -> {verdict!r}, "
+    log(f"  mgmt_rec_semantics: mixed={sem.get('proposals_with_mixed_recommendation')} "
+        f"agreement={sem.get('agreement')} -> {verdict!r}, "
         f"headline_allowed={sem.get('headline_allowed')!r}")
-    if verdict not in ("board-view", "tracks-lot", "insufficient"):
+    if verdict not in VERDICTS:
         ok = False
         log("  [FAIL] meta.mgmt_rec_semantics.verdict missing or unknown")
     if sem.get("headline_allowed") is not (verdict == "board-view"):
