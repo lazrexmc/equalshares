@@ -7,29 +7,45 @@
 
 ## RESUME HERE
 
-**Live state as of 2026-08-30 01:03 CDT (from `date` on this machine). This block outranks every other document in this repo.**
+**Live state as of 2026-08-30 06:23 CDT (from `date` on this machine; written at shutdown). This block outranks every other document in this repo.**
 
-- **LIVE at https://equalshares.pages.dev/ - rung two** (built, deployed, verified at the origin);
-  8 fund series on the page as of 2026-08-30, the same category comparable across them.
-  Rung three is Lance using it and reporting. Two dogfood findings so far, both fixed (`df0c576`
-  cold-reader intro, `cc24368` receipts land on EDGAR's rendered vote table).
-- **The one open owner decision is CLOSED: stay static, $0.** Lance, 2026-08-29, on the EventFinds
-  Build 002 form, verbatim: "13. C for now" (relayed by `rapidforge-79`; recorded in
-  `F:/RapidForge/docs/INTERRUPTIONS.md`). The draft migration stays unapplied by his word.
-- **Standard adopted 2026-08-29** on Lance's word in this session: `CLAUDE.md` points at
-  `F:/RapidForge/docs/PROJECT_STANDARD.md` and declares deviations; `CHATLOG.md`,
-  `PLAYBOOK_DELTA.md`, `AUDIT_LOG.md`, `REBUILD.md`, `tools/verify_claims.py`,
-  `tools/verify_deploy.py` added. Measure: `python F:/RapidForge/tools/verify_standard.py`.
-- **Cold-read order:** `CLAUDE.md` -> this block -> `README.md` -> `PLAYBOOK_DELTA.md` -> the spec above.
-- **Standing prompt (re-arm after any session limit; Lance 2026-08-29: timers restart the previous
-  prompt 60 s after the limit expires):** process unprocessed peer messages (verify in the data
-  first); run cold-read round two and disposition it; then build Part 2 per the spec; keep
-  `verify_claims` and `verify_deploy` green; say "no change" when nothing moved. Heartbeat job in this session:
-  `637b15c4`, every 30 min, session-only, expires 2026-09-05.
+- **LIVE at https://equalshares.pages.dev/ - rung two, eight fund series on one page,** verified at the
+  origin byte for byte (`tools/verify_deploy.py`, 44 markers). Rung three (a real reader) has not been
+  claimed; five peer sessions read it in three cold-read rounds and Lance found the two defects that
+  mattered (AUDIT_LOG 2026-08-30, "Measured, not felt").
+- **What is on the page:** one page per fund series from its N-PX filing (picker in the header,
+  `#filing=<accession>&category=<slug>` in the address bar) and a compare section with the same SEC
+  category across all eight: Vanguard 500, Vanguard Morningstar Value, iShares Core S&P 500, SPDR
+  Portfolio S&P 500, Fidelity 500 Index, T. Rowe Price Equity Index 500, Schwab S&P 500 Index, Growth
+  Fund of America (Capital Group, active, the contrast). Every cell is that filing's own number;
+  nothing is added across filings or categories (gate G8).
+- **How it is built (the rules that hold):** a row is a vote lot; the proposal key lives in ONE
+  function (`pipeline/extract.py` `assign_proposals`: case, spacing and trailing punctuation ignored)
+  and every count derives from it; `managementRecommendation` is judged per filing by a computed,
+  threshold-free test (proposals whose own lots carry more than one value) published in each
+  `meta.json` as `mgmt_rec_semantics` and gated: Fidelity and T. Rowe are a board's view, the other
+  six are not; no page renders a concordance headline. Sources are pinned to a fund by SEC series id
+  (`pipeline/sources.py`; ids from https://www.sec.gov/files/company_tickers_mf.json), extraction is
+  scoped to the pinned series, a no-match FAILS the source. Layout: `site/data/index.json`,
+  `filings/<accession>/`, `compare.json`. Eleven gates (`pipeline/checks.py`; G7 2,041 checks, G11
+  index-coverage); `tools/verify_claims.py` 8/8; `tools/verify_deploy.py`.
+- **Run it:** `python pipeline/run_ingest.py` (EDGAR, series walks, ~600 MB raw) -> `extract.py` ->
+  `export_site.py` -> `checks.py` -> `ROLLCALL_PORT=8766 python pipeline/serve_local.py` (8765 may be
+  held by another project). Push to master deploys; then `python tools/verify_deploy.py`.
+- **Next slice, when someone picks it up:** (a) a cold read of the compare view by a reader who has
+  not seen the page (`docs/COLD_READ_PROTOCOL.md`); (b) the shadow/promotion path, only when the
+  extractor is actually rewritten; (c) proposal-level cross-filer joins (spec section 3, out of scope
+  until the description-text match rate across filers is measured - the data is on disk now).
+- **Where the why lives:** `CHATLOG.md` (every exchange, clock-timed), the spec at
+  `docs/superpowers/specs/2026-08-29-multi-filing-and-contrast-set-design.md` (sections 1-15),
+  `AUDIT_LOG.md` (three rounds with verdicts), `PLAYBOOK_DELTA.md` (Lessons 1-10). The registry's
+  rows about this repo were audited and corrected at RapidForge `a4695a5`.
+- **Standing prompt (re-arm after any session limit; Lance 2026-08-29):** process unprocessed peer
+  messages (verify in the data first); keep `verify_claims` and `verify_deploy` green; say "no change"
+  when nothing moved. The heartbeat cron dies with the session; re-create it (every 30 min, idle only).
 - **Time rule (Lance 2026-08-30):** every time written here comes from `date` on this machine, with
   its zone; commit times from `git log --date=iso`; a zoneless time in a message is unknown.
-- **Expected failures: none.** Any instrument FAIL is real from here. (`checks.py` G3 needs the
-  network; `--skip-outage` marks it SKIP, which is not a pass.)
+- **Expected failures: none.** Any instrument FAIL is real from here.
 
 ## WAITING ON LANCE
 
