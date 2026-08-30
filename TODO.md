@@ -39,8 +39,9 @@
       console errors under the production CSP. Rung two reached.
 - [x] ~~**Where does the publication database live?**~~ - CLOSED 2026-08-29, stay static ("13. C
       for now"). See RESUME HERE.
-- [ ] **Self-catalogue sweep** (PEER_GUIDANCE_2026-08-29 section 0.1): report to `rapidforge-79`
-      every callable unit on disk with no `MODULE_DIRECTORY.md` row.
+- [x] ~~**Self-catalogue sweep**~~ - sent to `rapidforge-79` 2026-08-29 23:40 CDT: `pipeline/sources.py`,
+      `.github/workflows/ingest.yml`, `site/_headers`, `tools/verify_claims.py`, `tools/verify_deploy.py`
+      have no `MODULE_DIRECTORY.md` row. The registry verifies and catalogues.
 
 ## BUILD QUEUE
 

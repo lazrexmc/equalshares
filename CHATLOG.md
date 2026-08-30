@@ -66,3 +66,11 @@ Done this session:
 Sent to `rapidforge-79`: the self-catalogue sweep (units on disk with no directory row), the
 adoption report, and one correction - the standard dates rule 15 "2026-08-30" while local time
 when it was read here was 2026-08-29 23:22 CDT (04:22 UTC on the 30th): rule 1, dates are local.
+
+**Outcome, 23:40 CDT:** committed `5140fae` and pushed. `pipeline/checks.py`: 10 passed, 0 failed,
+0 skipped. `tools/verify_claims.py`: 8/8 pass. `tools/verify_deploy.py`: `index.html` read STALE
+before the push and DEPLOYED on the second poll after it; every marker, both JSON content-types and
+all three headers DEPLOYED. `verify_standard.py`: the equalshares row is fully present (43 missing
+artifacts across the machine before, 37 after). Sweep, adoption report, the rule-1 date correction
+and the Lesson 5 candidate trap sent to `rapidforge-79`; ack and the content-type addition offered
+to `glizzness-cc`. Nothing waits on Lance except the dogfood.
