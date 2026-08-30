@@ -416,3 +416,5 @@ prominent; the engine-run formula with both inputs; a Configuration row; the rec
 stated as a count with an example that opens its category; heading follows the filter; filters
 for management / shareholder / elsewhere; the Mgmt rec header carries the verdict. Engine run
 `e3b050bc2353357b`. Gates 10/10 (G7 233 checks); claims 8/8; rendered under the production CSP via serve_local.py in Playwright with zero console messages: DEI drill-down with the elsewhere filter (21 of 23), the verdict in the Mgmt rec header, lot notes naming the other categories, the table fitting its container.
+
+**Part 1.1 shipped, 2026-08-30 00:33 CDT (clock):** commit `0041014` (git 2026-08-30 00:32:14 -0500), pushed; `verify_deploy` at 00:32 CDT, every marker DEPLOYED. Report to rapidforge-79 with three deposit candidates (the one-key rule; the self-contradiction test as the general form of "a filed name is not its meaning"; the hard-coded local port collision). Round three requested from glizzness-cc, linkedump-80, visiblegov-1d, inoculated-by-the-phoenix-90, league-73, each asked for viewport width. Part 2 after round three is dispositioned.
