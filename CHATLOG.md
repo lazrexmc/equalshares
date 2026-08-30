@@ -202,3 +202,21 @@ recs track the lots. **Correction to the paragraph above:** "10,387 proposals" w
 omitted CUSIP; grouping by (issuer, CUSIP, meeting, description, source) gives 10,523 distinct
 proposals spanning 1-5 blocks each (5,700 span two; 21,150 of the blocks carry no otherManager
 tag, so the repetition is not per manager). Spec F3 and F4 amended; F14 added (which 88, which 1).
+
+**visiblegov-1d (relayed) - a retraction, quoting what it retracts:** "I was wrong about multiple
+series, and I stated it too confidently. I wrote 'several series are clearly voting their own
+shares here.' ... It is one fund ... The discipline I should have held: a cold read reports the
+confusion, not the diagnosis." Its two notes on dispositions: dropping the column "is the stronger
+call"; the receipts note fixes "that provenance the page does not state cannot be distinguished by
+a reader from provenance it does not have." The rule is now the ask in `docs/COLD_READ_PROTOCOL.md`,
+credited. A one-line acknowledgement back was blocked by this session's permission classifier;
+not retried (it asked for nothing back).
+
+**Lance, 2026-08-29 23:5x, verbatim, relayed by rapidforge-79 for every session:** "Session
+limits should be handled with timers that restart the previous prompt 60 seconds after when the
+session says the limit has expired." Done here: a session-only recurring heartbeat (CronCreate job
+`637b15c4`, 11 and 41 past each hour, fires only when idle, auto-expires after 7 days) carrying
+this session's standing prompt: process unprocessed peer messages with data verification; build
+Part 1 only once RapidForge approves the spec; otherwise keep the instruments green and say "no
+change"; if a message states a limit reset time, arm a one-shot at reset + 60 s with the same
+prompt. The standing prompt is summarised in TODO.md RESUME HERE so a fresh session can re-arm it.

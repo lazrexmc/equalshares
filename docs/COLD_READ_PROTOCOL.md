@@ -29,7 +29,10 @@ the page's JS, and the JSON, and says what a reader would see.
 > (2) what confused you, or what you wanted to know and could not find;
 > (3) any number or claim you could not trace to a receipt link;
 > (4) anything you believe is false.
-> No fixes, no praise, no rewrite. Nothing needed from the owner.
+> Report the confusion, not the cause: "I cannot tell whether these four rows are one fund or
+> several" is the whole job. A diagnosis you could not check from where you stand is worth less
+> than it looks, and a wrong one lands in the record. No fixes, no praise, no rewrite. Nothing
+> needed from the owner.
 
 Ask for the render facts too when the reader has a browser: console errors, which row or category
 they opened.
@@ -41,7 +44,9 @@ they opened.
 2. **Verify each finding in the data before giving it a disposition.** Query the store and the raw;
    do not reason from the page. A reader's diagnosis can be wrong while the symptom is right (round
    one: "several series merged" was one series with multi-lot proposals). Both halves are recorded:
-   the symptom is the finding, the cause is what the fix addresses.
+   the symptom is the finding, the cause is what the fix addresses. (VisibleGov, retracting its
+   own diagnosis after round one: "a cold read reports the confusion, not the diagnosis ... a
+   confident cause from a stranger is worth less than it looks." Now in the ask above.)
 3. **Disposition each finding** in one line: fix / say so on the page / accepted as filed / not a
    finding, with the evidence. Findings that change a published statistic go to the spec, not
    straight to code.

@@ -20,6 +20,11 @@
   `PLAYBOOK_DELTA.md`, `AUDIT_LOG.md`, `REBUILD.md`, `tools/verify_claims.py`,
   `tools/verify_deploy.py` added. Measure: `python F:/RapidForge/tools/verify_standard.py`.
 - **Cold-read order:** `CLAUDE.md` -> this block -> `README.md` -> `PLAYBOOK_DELTA.md` -> the spec above.
+- **Standing prompt (re-arm after any session limit; Lance 2026-08-29: timers restart the previous
+  prompt 60 s after the limit expires):** process unprocessed peer messages (verify in the data
+  first); build Part 1 of the spec only once RapidForge has approved it; otherwise keep
+  `verify_claims` and `verify_deploy` green and say "no change". Heartbeat job in this session:
+  `637b15c4`, every 30 min, session-only, expires 2026-09-05.
 - **Expected failures: none.** Any instrument FAIL is real from here. (`checks.py` G3 needs the
   network; `--skip-outage` marks it SKIP, which is not a pass.)
 
