@@ -210,10 +210,9 @@ tbody th[scope="row"] {
 /* proposal text: truncate; the full text lives in the title attribute */
 
 .desc {
-  max-width: 28rem;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  max-width: 34rem;
+  min-width: 16rem;
+  overflow-wrap: anywhere;
 }
 
 /* absent-in-source cells */
@@ -379,12 +378,30 @@ td.lot { white-space: nowrap; }
 
 .finder {
   display: block;
+  margin-top: 0.25rem;
   color: var(--ink-soft);
   font-size: 0.75rem;
-  white-space: nowrap;
 }
 
-td.where { max-width: 22rem; overflow: hidden; text-overflow: ellipsis; }
+/* The drill-down table must fit a laptop width without a scroll (Lance,
+   2026-08-30): tighter cells, smaller type, wrapping text; on narrower screens
+   the container scrolls and #scroll-hint says so in words. */
+#detail-table { font-size: 0.875rem; }
+#detail-table th, #detail-table td { padding: 0.4rem 0.5rem; }
+#detail-table td.nowrap { white-space: nowrap; }
+#detail-table thead th { white-space: normal; }
+
+.scroll-hint {
+  margin: 0.5rem 0;
+  padding: 0.4rem 0.75rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 4px;
+  background: var(--panel);
+  color: var(--ink);
+  font-size: 0.875rem;
+}
+
+.table-scroll { scrollbar-gutter: stable; }
 
 td.empty-note { color: var(--ink-soft); font-style: italic; }
 

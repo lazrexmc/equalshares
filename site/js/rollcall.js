@@ -533,13 +533,30 @@ function recordRow(r, prev) {
   tr.appendChild(el('td', 'nowrap', textOr(r.meeting_date, ABSENT)));
   tr.appendChild(el('td', null, textOr(r.issuer_name, ABSENT)));
 
+  // Proposal text WRAPS (Lance, 2026-08-30 00:2x CDT: at laptop width the
+  // nine-column row clipped at "Mgmt rec" with no visible scrollbar), and the
+  // finder sits under it in the same cell so the row fits without a scroll.
   const desc = el('td', 'desc');
   if (typeof r.vote_description === 'string' && r.vote_description.length > 0) {
-    desc.textContent = r.vote_description;      // CSS truncates with ellipsis
-    desc.title = r.vote_description;            // full text on hover
+    desc.appendChild(el('span', null, r.vote_description));
   } else {
-    desc.textContent = ABSENT;
+    desc.appendChild(el('span', null, ABSENT));
   }
+  // Where to find it (cold-read round one, F6; round two: say whose numbers
+  // these are): this page's row and proposal numbers, then what to search for
+  // in EDGAR's rendered table. Never a claim about EDGAR's own numbering.
+  const finder = [];
+  if (typeof r.seq === 'number') {
+    finder.push('row ' + fmtInt(r.seq) + (totalRecords ? ' of ' + fmtInt(totalRecords) : '') + ' on this page');
+  }
+  if (typeof r.proposal_no === 'number') finder.push('this page\'s proposal #' + fmtInt(r.proposal_no));
+  const search = [
+    r.issuer_name ? r.issuer_name : null,
+    r.cusip ? 'CUSIP ' + r.cusip : null,
+    r.meeting_date ? r.meeting_date : null,
+  ].filter(Boolean).join(', ');
+  if (search) finder.push('find it in the filing by: ' + search);
+  desc.appendChild(el('span', 'finder', finder.join(' | ')));
   tr.appendChild(desc);
 
   // Proposed by: the filing's voteSource, verbatim (ISSUER / SECURITY HOLDER).
@@ -572,27 +589,17 @@ function recordRow(r, prev) {
   tr.appendChild(voteCell(r.mgmt_rec, r.mgmt_rec_raw));
   tr.appendChild(el('td', 'num', fmtShares(r.shares_voted)));
 
-  // Where to find it: the verbatim stored receipt URL via receipts.js, plus a
-  // VISIBLE finder (cold-read round one, F6): the row's position in the
-  // filing, its proposal number, and what to search for once there.
-  const where = el('td', 'where');
+  // Receipt: the verbatim stored URL via receipts.js, or nothing at all.
+  const where = el('td', 'nowrap');
   const url = receiptUrl(r);
   if (url) {
-    where.appendChild(link('source', url));
-    where.appendChild(el('span', null, ' '));
+    const a = link('source', url);
+    a.title = 'Opens EDGAR\'s rendered vote table for this filing (one receipt per filing); ' +
+      'search it by the issuer, CUSIP or meeting date shown under the proposal.';
+    where.appendChild(a);
+  } else {
+    where.textContent = ABSENT;
   }
-  const finder = [];
-  if (typeof r.seq === 'number') {
-    finder.push('record ' + fmtInt(r.seq) + (totalRecords ? ' of ' + fmtInt(totalRecords) : ''));
-  }
-  if (typeof r.proposal_no === 'number') finder.push('proposal #' + fmtInt(r.proposal_no));
-  const search = [
-    r.issuer_name ? r.issuer_name : null,
-    r.cusip ? 'CUSIP ' + r.cusip : null,
-    r.meeting_date ? r.meeting_date : null,
-  ].filter(Boolean).join(', ');
-  if (search) finder.push('search: ' + search);
-  where.appendChild(el('span', 'finder', finder.join(' | ')));
   tr.appendChild(where);
 
   return tr;
@@ -624,6 +631,17 @@ function renderDetailPage() {
     : fmtInt(view.length) + ' of ' + fmtInt(detailState.records.length) + ' records match';
 
   updatePagers();
+  updateScrollHint();
+}
+
+// A clipped table throws no console error (PLAYBOOK_DELTA Lesson 8). When the
+// table is still wider than its container - phones, narrow windows - say so in
+// words above it, because overlay scrollbars are invisible until touched.
+function updateScrollHint() {
+  const sc = document.querySelector('#detail-body .table-scroll');
+  const hint = $('scroll-hint');
+  if (!sc || !hint) return;
+  hint.hidden = !(sc.scrollWidth > sc.clientWidth + 1);
 }
 
 function updatePagers() {
@@ -660,6 +678,7 @@ function wirePagers() {
     b.addEventListener('click', () => turnPage(1))
   );
   $('state-filter').addEventListener('change', (ev) => applyFilter(ev.target.value));
+  window.addEventListener('resize', updateScrollHint);
 }
 
 // ---------- boot ----------

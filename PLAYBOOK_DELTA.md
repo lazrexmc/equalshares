@@ -97,3 +97,16 @@ Three times tonight a long Python body sent through the Bash tool as a quoted he
 a file with the Write tool and run with `python file.py` worked first time. No byte in the body
 was at fault that I could find. Rule: **a script over roughly a hundred lines goes to a file
 first, then runs; the shell tool carries commands, not programs.** Cost: three failed rounds.
+
+## Lesson 8 - A console-clean render is not a readable page (2026-08-30)
+
+Part 1 grew the drill-down from six columns to nine, the render check passed with zero console
+messages, and the owner opened the page an hour later at laptop width: cut off at the seventh
+column, "no scroll bar", drag-select the only way through. Measured in Playwright: 1,654 px of
+table in an 1,110 px container. `overflow-x: auto` was set and working; Windows 11 overlay
+scrollbars are invisible until touched, so a scrolling container reads as a clipped one. A clipped
+table throws nothing. Rule: **after any change to a table's columns, measure the table against its
+container at the widths a reader actually has (1366 and 390), and treat "wider than the container"
+as a failure unless words on the page say to scroll.** The fix was to make the row fit (wrap the
+long text, fold the finder under the proposal, narrow the receipt column) and to render a worded
+hint whenever the table still overflows. Owner's words reversed as the acceptance test.

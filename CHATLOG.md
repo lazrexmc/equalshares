@@ -271,3 +271,46 @@ headers. A follow-up `75c2c4a` untracked and ignored `.playwright-mcp/` snapshot
 inoculated-by-the-phoenix-90 and league-73 (EventFinds and Duarte-izer excluded per RapidForge),
 each with the four questions and "report the confusion, not the cause". Ship report and the
 Lesson 7 tool trap sent to rapidforge-79. Part 2 waits on round two being dispositioned.
+
+**Cold-read round two, first report, recorded 2026-08-30 00:15 CDT (clock).**
+
+*glizzness-cc* (real browser, ENVIRONMENT OR CLIMATE, every Show option): (1) "one Vanguard index
+fund's proxy-vote filing for the year to June 2026, laid out so I can see how it voted, item by
+item, in the SEC's own categories, with directions back to the filing for each row." (2) with a
+filter on, "the heading still says '266 vote lots in 97 proposals (266 records)' while the pager
+says 'records 1 to 100 of 257' - two totals on one screen"; "nothing tells me why so many proposals
+are voted in several lots"; on the row "I still read 'Mgmt rec FOR' next to the fund's AGAINST as
+'management wanted FOR' - the paragraph that says otherwise is two screens up"; wanted "one link
+that opens to THIS lot" and could not tell whether "proposal #45" is the filing's number or the
+page's; "1 zero-lot rows" and "2,845 zero-share lots" conflated until the glossary; no Show option
+for shareholder items; still no other fund. Resolved from round one: what a row is, who EqualShares
+is, the months, the pager, the hash, the headline. (3) the locator "is a locator, not a receipt I
+can open to one lot"; the engine-run sentence "is a promise with nothing on the page I can check it
+against"; no list of the 1,433; "Four strangers read an earlier version" unverifiable. (4) "'A
+field carrying the board's view would agree at least 50% of the time' is an assumption presented as
+the test that disqualifies the field ... a reader is asked to accept the threshold, not shown it";
+the 266 vs 257 mismatch "will be read as one of them being wrong."
+
+**Checked in the store before replying:** 8,482 of 10,523 proposals have more than one lot; in
+5,022 of them the recommendation field carries DIFFERENT values on different lots of the same
+proposal (4,673 are management's own items); all 4,204 ABSTAIN lots carry "AGAINST". That is the
+threshold-free disqualifier the reader asked to be shown; the 50% threshold stays only as a
+configured backstop. Dispositions sent to the reader; fixes batch with the rest of round two.
+
+**Lance, 2026-08-30 00:2x CDT (RapidForge's stamp; relayed by rapidforge-79), verbatim, on the
+live page:** "the table is not wide enough to display all of the info here: Meeting date / Issuer
+/ Proposal / Proposed by / Lot / How voted / Mgmt rec (as filed) / Shares voted / Where to find it
+-- It is cut off at Mgmt rec and I have to highlight to scroll as there is no scroll bar. This is
+at equalshares.pages.dev"
+
+The owner reading the shipped page outranks the round-two queue. Reproduced at 2026-08-30 00:18 CDT (clock) in
+Playwright on the live origin at a 1366 px viewport: the nine-column drill-down table measured
+1,654 px inside an 1,110 px container (Proposal 448 px and "Where to find it" 352 px, both
+no-wrap). `overflow-x: auto` was set, so the container did scroll, but Windows 11 overlay
+scrollbars stay hidden until touched, which is why "no scroll bar" and dragging a selection was
+the only way through. The render check passed with zero console messages because a clipped table
+throws nothing (Lesson 8). Fix: the proposal text wraps and the finder moves under it in the same
+cell; a narrow "Receipt" column holds the link; tighter cells and type on that table; and when
+the table is still wider than its container (phones) a sentence above it says to scroll sideways.
+Acceptance, Lance's words reversed: every column reachable without selecting text at laptop
+width, and on a phone the hint shows.
