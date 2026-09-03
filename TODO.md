@@ -7,7 +7,7 @@
 
 ## RESUME HERE
 
-**Live state as of 2026-08-30 06:23 CDT (from `date` on this machine; written at shutdown). This block outranks every other document in this repo.**
+**Live state as of 2026-09-02 22:06 CDT (from `date` on this machine). This block outranks every other document in this repo.**
 
 - **LIVE at https://equalshares.pages.dev/ - rung two, eight fund series on one page,** verified at the
   origin byte for byte (`tools/verify_deploy.py`, 44 markers). Rung three (a real reader) has not been
@@ -19,6 +19,11 @@
   Portfolio S&P 500, Fidelity 500 Index, T. Rowe Price Equity Index 500, Schwab S&P 500 Index, Growth
   Fund of America (Capital Group, active, the contrast). Every cell is that filing's own number;
   nothing is added across filings or categories (gate G8).
+- **Seven locked rules, not five** (`CLAUDE.md`; two added 2026-08-30 on Lance's word): the five
+  originals plus **one identity function** (`assign_proposals` decides what a proposal is and every
+  published count derives from its `proposal_no`) and **no headline rests on a filed field until a
+  computed check on that filer passes** (G8 refuses `headline_allowed` unless the verdict is
+  `board-view`; Fidelity and T. Rowe pass, the other six do not).
 - **How it is built (the rules that hold):** a row is a vote lot; the proposal key lives in ONE
   function (`pipeline/extract.py` `assign_proposals`: case, spacing and trailing punctuation ignored)
   and every count derives from it; `managementRecommendation` is judged per filing by a computed,
@@ -32,6 +37,12 @@
 - **Run it:** `python pipeline/run_ingest.py` (EDGAR, series walks, ~600 MB raw) -> `extract.py` ->
   `export_site.py` -> `checks.py` -> `ROLLCALL_PORT=8766 python pipeline/serve_local.py` (8765 may be
   held by another project). Push to master deploys; then `python tools/verify_deploy.py`.
+- **Settled with the registry 2026-08-30, so nobody re-opens it:** this repo's rule-3 scoping was
+  adopted as PROJECT_STANDARD 3a (strike through where the READER needs the correction visible -
+  README does, one entry - and rewrite the rule file to current fact); the stale-deviation finding
+  landed as an extension of standard rule 8 rather than a new rule; the one-identity-function rule
+  is filed LOCAL, not federal; and standard rule 9 is declared UNRESOLVED here - eleven gates read a
+  626 MB gitignored store, so a stranger cannot re-run them from a clone without ingesting first.
 - **Next slice, when someone picks it up:** (a) a cold read of the compare view by a reader who has
   not seen the page (`docs/COLD_READ_PROTOCOL.md`); (b) the shadow/promotion path, only when the
   extractor is actually rewritten; (c) proposal-level cross-filer joins (spec section 3, out of scope

@@ -641,3 +641,60 @@ who has not seen the page; the shadow/promotion path, which triggers only when t
 rewritten; and two peer one-liners in TODO's inbox for the next touch of the exporter and the page
 (atomic tmp+replace on the JSON set; construct the page inside the init try so a failed module
 import reaches the error box). Nothing is blocked on the registry; nothing needs credentials.
+
+**Documentation currency pass, 2026-09-02 22:07 CDT (clock).** Lance, relayed by rapidforge-d5, verbatim: "tell
+rapidforge to check all chatlogs and other documentation then have rapidforge tell all other open
+session to do the same so all sessions are up to date and current" and "all sessions should also
+check all .md's in addition to". Read cold, three days after the last commit; everything below was
+run, not read.
+
+**MEASURED CLEAN.** Trail chronology: 21 dated headings, zero out of chronological order, zero
+carrying a time without a zone - the UTC-artifact trap that cost PostKit five hours did not bite
+here, because every stamp came from `date`. Trail against commits: the last entry is 14:41 CDT
+against a last commit of 14:41:33 -0500, so no commit went unwritten. Remote: local master,
+`refs/remotes/origin/master` and `git ls-remote` all agree at `70a7537`. Counted claims
+re-derived by running rather than reading, including the ones inside CLAUDE.md's locked rules that
+no instrument checks: 8,906 proposals / 495 spanning categories / 4,594 self-contradicting, eight
+filings published, six not-board-view and two board-view (Fidelity and T. Rowe, exactly as named),
+README's ~73% director elections. All exact.
+
+**THREE FINDINGS, all fixed in this commit.**
+1. **A live document sat outside the checker.** `docs/COLD_READ_PROTOCOL.md` is a procedure in
+   force and was not in `LIVE_DOCS`, so C4 (ASCII) and C5 (pointers) had never once read it. Nine
+   markdown files exist here; seven were checked. Now eight, and the list carries a comment saying
+   why the dated spec under `docs/superpowers/specs/` stays out: it is history, and rule 3 says
+   history is not rewritten. This is the 33-of-47 problem RapidForge predicted, at this repo's
+   scale - the instrument's strictness is exactly what made the remainder easy to assume fine.
+2. **The RESUME block predated six commits and three days.** It was written at 06:23 on 08-30 and
+   the afternoon that followed - the mesh reconnect, the two locked rules added to CLAUDE.md, both
+   rules rounds with the registry, the closing - was invisible to a cold reader. Now current, with
+   the seven locked rules and the settled-with-the-registry outcomes stated so nobody re-opens them.
+3. **A declared deviation went false underneath the declaration.** CLAUDE.md said every commit here
+   carries the Fable 5 trailer; 42 do, and this session's model changed, so the next commit would
+   have made the sentence false the moment it landed. Restated to name both, with history left
+   alone. Worth the registry's attention: this is a PERMANENT-property deviation - the class 3b
+   prefers precisely because it cannot go stale - and it went stale anyway when the world changed
+   under it. The rule-8 extension covers deviations describing future work; nothing covers this.
+
+**Not findings, checked and cleared:** `.pytest_cache/README.md` is excluded by pytest's own
+`.pytest_cache/.gitignore`, so `git add -A` can never sweep it in; COLD_READ_PROTOCOL carries no
+stale peer names and no counted claim that can drift.
+
+**Two more findings, same pass, 2026-09-02 22:09 CDT (clock).**
+4. **The front door did not state its own rung.** Standard rule 5 says status is stated on the
+   three-rung ladder, and PROJECT_STANDARD names this repo's README `## Live` section as the
+   exemplar for it - yet that section named neither the rung nor the current scale: it still
+   described the 2026-08-29 one-filing verification while eight series and a compare view are
+   served. Now: rung two, named as such, with why it is not called live (no real user has read it),
+   the eight series, and the last origin check - the first-deploy date kept as the historical fact
+   it is.
+5. **A counted claim in the front door that nothing derived.** "Eight fund series" was prose. That
+   is standard rule 2's own failure mode sitting in the most-read paragraph of the repo, in the one
+   project whose claim checker is the strictest on the machine. Fixed with the instrument rather
+   than the pen: **C9** derives the filing count from `index.json` and fails unless the README
+   agrees. Negative test run and recorded rather than assumed - with the README edited to say
+   "nine", C9 printed FAIL and named both numbers; README restored, nine checks green.
+
+**Instruments after this pass:** eleven gates PASS (run at 22:07 CDT, not inferred), nine claim
+checks PASS over nine live documents, origin ALL DEPLOYED. The pass found five things and every one
+was a document or an instrument, not a number: the numbers were all exact.

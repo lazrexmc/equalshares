@@ -102,10 +102,13 @@ exercised manually against serve_local.py - break a data file and reload.
 
 ## Live
 
-**https://equalshares.pages.dev/** - deployed 2026-08-29 (Cloudflare Pages, root `site`, build
-output empty). Deploys on push to `master`. Verified at the origin, not in a browser: the CSP in
-`site/_headers` is applied by Pages, JSON is served as `application/json`, and the served payload
-carries no blended number. Re-check any time with `python tools/verify_deploy.py`.
+**https://equalshares.pages.dev/** - **rung two** on the three-rung ladder (built ->
+viewable -> **live**): deployed and verified at the origin, and not yet read by a real user, so it
+is not called live. Eight fund series and the compare view are served. First deployed 2026-08-29
+(Cloudflare Pages, root `site`, build output empty); deploys on push to `master`. Verified at the
+origin rather than in a browser, every marker DEPLOYED at the last check: the CSP in
+`site/_headers` is applied by Pages, every published JSON is served as `application/json`, and no
+served payload carries a blended number. Re-check any time with `python tools/verify_deploy.py`.
 
 **Host semantics enumerated** (`deploy-runbook` §7.1, for this host): `/` -> 200; `/index.html` ->
 308 -> `/`; **an unknown path returns 200, not 404** - there is no `404.html`, so a mistyped URL

@@ -69,8 +69,12 @@ punctuation, pointers, RESUME date, publication committed) and
 
 ### Deviations from the standard
 
-- **Commit trailer** - every commit here carries
-  `Co-Authored-By: Claude Fable 5 (1M context) <noreply@anthropic.com>`. Declared.
+- **Commit trailer** - declared, and it changed with the session's model. Every commit
+  through `70a7537` (2026-09-02: 42 of them) carries
+  `Co-Authored-By: Claude Fable 5 (1M context) <noreply@anthropic.com>`; from 2026-09-02
+  commits carry `Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>`. History is not
+  rewritten to match (standard rule 3); the trailer records which model wrote the commit,
+  which is the point of having it.
 - **`PLAYBOOK_DELTA.md` is thin by design.** The registry ran this build, so its
   lessons were deposited into `F:/RapidForge/modules/*.md` section 6 at the
   deposit gate; the local file points at them and holds only what was earned

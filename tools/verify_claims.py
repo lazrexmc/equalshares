@@ -19,6 +19,9 @@ Checks:
   C6 resume       TODO.md's first H2 is '## RESUME HERE' and it carries an 'as of YYYY-MM-DD'.
   C7 origin       README's ## Live URL equals tools/verify_deploy.py ORIGIN.
   C8 committed    site/data is tracked and not ignored (mirrors gate G10 without the database).
+  C9 filings      README's spelled-out filing count equals the number of filings in index.json.
+                  Added 2026-09-02: "eight fund series" was a counted claim in prose that no check
+                  derived, which is standard rule 2's own failure mode sitting in the front door.
 """
 import argparse
 import json
@@ -34,8 +37,13 @@ except Exception:
 
 ROOT = Path(__file__).resolve().parent.parent
 RAPIDFORGE = Path("F:/RapidForge")
+# Every LIVE markdown document in the repo. Dated design records under
+# docs/superpowers/specs/ are deliberately absent: they are history, true as of their
+# filename date, and rule 3 says history is never rewritten. Added 2026-09-02 after the
+# documentation-currency pass found COLD_READ_PROTOCOL.md - a procedure in force - outside
+# this list, so C4 and C5 had never once read it.
 LIVE_DOCS = ["CLAUDE.md", "README.md", "TODO.md", "PLAYBOOK_DELTA.md", "AUDIT_LOG.md",
-             "REBUILD.md", "CHATLOG.md"]
+             "REBUILD.md", "CHATLOG.md", "docs/COLD_READ_PROTOCOL.md"]
 SERVED_DOCS = ["site/index.html"]
 NON_ASCII_PUNCT = {
     "\u2013": "en dash", "\u2014": "em dash", "\u2192": "arrow",
@@ -179,9 +187,28 @@ def c8_committed():
     return True, f"{len(files)} publication files tracked, not ignored"
 
 
+WORDS = {1: "one", 2: "two", 3: "three", 4: "four", 5: "five", 6: "six", 7: "seven",
+         8: "eight", 9: "nine", 10: "ten", 11: "eleven", 12: "twelve"}
+
+
+def c9_filings():
+    """README says how many fund series are published; index.json is the authority. A count in
+    prose is derived or deleted (standard rule 2)."""
+    n = len(json.loads(read("site/data/index.json")).get("filings", []))
+    word = WORDS.get(n)
+    if word is None:
+        return False, f"{n} filings: past the spelled-out range this check knows"
+    readme = read("README.md")
+    phrase = f"{word} fund series"
+    if phrase.lower() not in readme.lower():
+        return False, (f"index.json has {n} filings; README does not say {phrase!r} "
+                       f"(a counted claim in prose must agree with the data)")
+    return True, f"README says {phrase!r}; index.json has {n}"
+
+
 CHECKS = [("C1", "gates", c1_gates), ("C2", "filing", c2_filing), ("C3", "director%", c3_director_share),
           ("C4", "ascii", c4_ascii), ("C5", "pointers", c5_pointers), ("C6", "resume", c6_resume),
-          ("C7", "origin", c7_origin), ("C8", "committed", c8_committed)]
+          ("C7", "origin", c7_origin), ("C8", "committed", c8_committed), ("C9", "filings", c9_filings)]
 
 
 def main():
