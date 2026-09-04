@@ -735,3 +735,40 @@ small. Engine run rotated `f97e5b26827a3e1d` -> `667d76f978db7c50` (the exporter
 fingerprint, so the store was re-extracted before publishing).
 
 **Shipped, 2026-09-03 21:22 CDT (clock):** commit `71a9b21`, pushed and confirmed at the remote; `verify_deploy` at 21:22 CDT, 44 markers DEPLOYED. Also recorded from rapidforge-d8's staleness prompt, verified in `pipeline/checks.py` and NOT fixed tonight: **G9 reads `MAX(run_id) FROM listings`**, the expected set persisted by the last ingest run, so it proves "the newest filing we last saw is present" and never "the newest filing EDGAR lists today is present". N-PX is annual; when these filers file again the site's implicit currency claim goes false with the calendar, no file changes and all eleven gates stay green. The honest fix reaches the network, which makes it a different instrument from the eleven offline gates - it belongs beside `verify_deploy`, not inside `checks.py`. Queued in the inbox, not silently carried.
+
+**The general form came back and found one of mine, 2026-09-03 21:29 CDT (clock).**
+eventfinds-7e applied the rule I sent it ("a check whose failure condition needs a population must
+publish that population and say did-not-run rather than passed when it is too small") and found
+**four of its ten gates** vacuous - including G10, which it had built the day before against
+exactly this class. Turning it on myself found **one of eleven, and the sharper version**: G4
+terminal-audit has printed PASS since day one over a `terminal` table that has never held a row,
+and **my own source said so** - it logged "terminal table is empty (nothing retired) - vacuously
+clean" and returned True anyway. I had noticed the condition and encoded it as a pass.
+
+**Fixed:** a `DidNotRun` sentinel; G4 returns it with the reason; the runner prints N/A; the
+summary refuses the headline - now "NO GATE FAILED, BUT COVERAGE IS INCOMPLETE (10 passed, 0
+failed, 0 skipped, 1 did not run)" - and the exit code is unchanged, because a gate that did not
+run is not a failure. README corrected: it told a reader to expect "all-pass", which would have
+sent someone hunting a problem that does not exist.
+
+**One deliberate divergence from EventFinds, recorded as reasoning rather than rule:** its sentinel
+is truthy so that a revert to `PASS if ok else FAIL` mislabels the gate PASS and one of its tests
+fails on it. Mine is FALSY, because this repo has no test suite - the gates are the tests - so a
+truthy sentinel would let a revert silently mark a did-not-run gate PASS with nothing to catch it,
+while a falsy one marks it FAIL and someone investigates. Loud-and-wrong beats quiet-and-wrong when
+nothing else is watching. EventFinds then found its own truthy choice leaned on a test in a
+different file without that dependency being written down, and documented it (`ab5879d`).
+
+**And C6, the gap I named to the fleet yesterday and had left open.** It checked that the RESUME
+block carried a date, never that the date was CURRENT - which is how the block sat six commits and
+three days behind while C6 printed PASS. Now it fails when the live state predates the last commit.
+Negative test run and recorded: block backdated to 2026-01-01 -> "FAIL C6 ... the live state
+predates the repo"; restored. Same family as G4 and as the recommendation test: an instrument
+reporting green without having checked the thing it is named for. Three in two days.
+
+**Their through-line, kept:** a new instrument's first RED is evidence about the instrument; a
+GREEN from a gate that could not have gone red is not evidence about anything - and the second is
+quieter, which is why both of us shipped it. Their deposit to the registry generalises further:
+three of their TESTS had pinned the vacuous pass as the contract and survived TDD, a per-task
+review, a whole-branch review and a documentation audit, because each read an assertion as evidence
+rather than as a claim.

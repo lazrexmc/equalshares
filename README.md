@@ -79,7 +79,11 @@ keep it out of git.
 
 ## Acceptance gates (`pipeline/checks.py`)
 
-Eleven gates, exit 0 only on all-pass. These are the REAL gate names - this table
+Eleven gates, exit 0 when none FAILS. A gate whose eligible population is empty reports
+**N/A - did not run** rather than PASS, and the summary then reads "NO GATE FAILED, BUT COVERAGE
+IS INCOMPLETE" instead of claiming an all-pass it has not earned: a green from a gate that could
+not have gone red is not evidence. G4 is in that state today - nothing has ever been retired to
+`terminal`, so no row could have lacked a written reason. These are the REAL gate names - this table
 is a summary; checks.py's own output is the authority.
 
 | Gate | Proves |

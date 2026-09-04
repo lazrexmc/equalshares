@@ -7,7 +7,7 @@
 
 ## RESUME HERE
 
-**Live state as of 2026-09-02 22:06 CDT (from `date` on this machine). This block outranks every other document in this repo.**
+**Live state as of 2026-09-03 21:27 CDT (from `date` on this machine). This block outranks every other document in this repo.**
 
 - **LIVE at https://equalshares.pages.dev/ - rung two, eight fund series on one page,** verified at the
   origin byte for byte (`tools/verify_deploy.py`, 44 markers). Rung three (a real reader) has not been
@@ -19,6 +19,17 @@
   Portfolio S&P 500, Fidelity 500 Index, T. Rowe Price Equity Index 500, Schwab S&P 500 Index, Growth
   Fund of America (Capital Group, active, the contrast). Every cell is that filing's own number;
   nothing is added across filings or categories (gate G8).
+- **2026-09-03, two instrument defects of the same family, both fixed.** (a) The
+  `managementRecommendation` test could not fail for a filing whose proposals report one lot each -
+  a one-lot proposal cannot contradict itself - so Fidelity and T. Rowe were cleared on a maximum
+  achievable score of 1 against a floor of 5, and the page printed it as a finding. The testable
+  population is now computed, published as `proposals_testable`, and the verdict below the floor is
+  `insufficient`; no filing now claims a clearance. (b) Gate G4 had printed PASS since day one over
+  an empty `terminal` table. A gate whose eligible population is empty now returns **N/A - did not
+  run**, and the summary refuses the all-pass headline. Exit code unchanged: not running is not
+  failing. The general form, which EventFinds then found four of its ten gates in: a check whose
+  failure condition needs a population must publish that population and say "did not run" rather
+  than "passed" when it is too small.
 - **Seven locked rules, not five** (`CLAUDE.md`; two added 2026-08-30 on Lance's word): the five
   originals plus **one identity function** (`assign_proposals` decides what a proposal is and every
   published count derives from its `proposal_no`) and **no headline rests on a filed field until a

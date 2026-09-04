@@ -77,6 +77,29 @@ class GateError(Exception):
     """A gate failure with a written reason - a controlled FAIL, not a crash."""
 
 
+class DidNotRun:
+    """A gate whose eligible population was empty, so it COULD NOT have failed.
+
+    Returned in place of True. A green from a gate that could not have gone red is not evidence
+    about anything, and it is the quieter defect because nobody investigates a pass (EventFinds,
+    2026-09-03, which found four of its ten gates in this state after this repo found one of
+    eleven).
+
+    Truthiness is deliberately FALSE. If a future edit reverts the runner to
+    `"PASS" if passed else "FAIL"`, a did-not-run gate is then mislabelled FAIL and somebody
+    investigates; the opposite choice would mislabel it PASS and nobody would. EventFinds made
+    the truthy choice correctly, because its test suite pins the label and fails on the revert;
+    this repo has no test suite, so the safe direction is the loud one."""
+
+    __slots__ = ("reason",)
+
+    def __init__(self, reason):
+        self.reason = reason
+
+    def __bool__(self):
+        return False
+
+
 def log(msg=""):
     print(f"[{datetime.now().strftime('%H:%M:%S')}] {msg}")
 
@@ -330,8 +353,11 @@ def g4_terminal_audit():
     ).fetchall()
     con.close()
     if not rows:
-        log("  terminal table is empty (nothing retired) - vacuously clean")
-        return True, "0 terminal rows"
+        # Not "vacuously clean" - not run. No row existed that could have lacked a reason.
+        log("  terminal table is empty: nothing has ever been retired, so no row could have "
+            "lacked a written reason. This gate DID NOT RUN.")
+        return (DidNotRun("terminal table is empty; no row could have lacked a reason"),
+                "0 terminal rows - gate could not fail")
     ok = True
     for r in rows:
         reason = (r["reason"] or "").strip()
@@ -1191,7 +1217,12 @@ def main():
             for line in traceback.format_exc().splitlines():
                 log(f"  {line}")
             passed, summary = False, "unhandled exception (see traceback above)"
-        status = "SKIP" if passed is None else ("PASS" if passed else "FAIL")
+        if isinstance(passed, DidNotRun):
+            status = "N/A"
+        elif passed is None:
+            status = "SKIP"
+        else:
+            status = "PASS" if passed else "FAIL"
         log(f"{gid} {status} - {summary}")
         results.append((gid, name, status, summary))
 
@@ -1205,8 +1236,20 @@ def main():
     n_pass = sum(1 for r in results if r[2] == "PASS")
     n_fail = sum(1 for r in results if r[2] == "FAIL")
     n_skip = sum(1 for r in results if r[2] == "SKIP")
-    verdict = "PASS" if n_fail == 0 else "FAIL"
-    log(f"OVERALL: {verdict}  ({n_pass} passed, {n_fail} failed, {n_skip} skipped)")
+    n_na = sum(1 for r in results if r[2] == "N/A")
+    # The headline is refused when a gate could not have failed: "all pass" would overstate
+    # coverage by exactly the gates that did not run.
+    if n_fail:
+        verdict = "FAIL"
+    elif n_na or n_skip:
+        verdict = "NO GATE FAILED, BUT COVERAGE IS INCOMPLETE"
+    else:
+        verdict = "PASS"
+    log(f"OVERALL: {verdict}  ({n_pass} passed, {n_fail} failed, {n_skip} skipped, "
+        f"{n_na} did not run)")
+    for gid, name, status, summary in results:
+        if status == "N/A":
+            log(f"  {gid} {name} DID NOT RUN: {summary}")
     if n_skip:
         log("note: a SKIPped gate is not evidence - run without --skip-outage before shipping")
     sys.exit(0 if n_fail == 0 else 1)

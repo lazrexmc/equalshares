@@ -16,7 +16,10 @@ Checks:
                   the served site/index.html.
   C5 pointers     Rule 11: every F:/RapidForge path cited in the live documents exists on disk,
                   and every bare module/doc name in CLAUDE.md resolves.
-  C6 resume       TODO.md's first H2 is '## RESUME HERE' and it carries an 'as of YYYY-MM-DD'.
+  C6 resume       TODO.md's first H2 is '## RESUME HERE', it carries an 'as of YYYY-MM-DD', and
+                  that date is NOT OLDER than the last commit. Currency added 2026-09-03: the
+                  date-exists half passed while the block sat six commits and three days behind,
+                  which is an instrument reporting green without checking the thing it is named for.
   C7 origin       README's ## Live URL equals tools/verify_deploy.py ORIGIN.
   C8 committed    site/data is tracked and not ignored (mirrors gate G10 without the database).
   C9 filings      README's spelled-out filing count equals the number of filings in index.json.
@@ -160,7 +163,13 @@ def c6_resume():
     m = re.search(r"as of (\d{4}-\d{2}-\d{2})", block)
     if not m:
         return False, "RESUME HERE has no 'as of YYYY-MM-DD'"
-    return True, f"RESUME HERE dated {m.group(1)}"
+    stamped = m.group(1)
+    last = subprocess.run(["git", "log", "-1", "--date=short", "--format=%ad"],
+                          cwd=ROOT, capture_output=True, text=True).stdout.strip()
+    if last and stamped < last:
+        return False, (f"RESUME HERE says {stamped} but the last commit is {last}: the live state "
+                       f"predates the repo, so a cold reader would miss everything since")
+    return True, f"RESUME HERE dated {stamped}, not older than the last commit ({last or 'none'})"
 
 
 def c7_origin():
