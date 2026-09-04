@@ -83,6 +83,10 @@ function fmtBytes(n) {
   return n + ' bytes';
 }
 
+function plural(n, one, many) {
+  return (n === 1 ? one : many);
+}
+
 function textOr(value, fallback) {
   return typeof value === 'string' && value.length > 0 ? value : fallback;
 }
@@ -270,10 +274,15 @@ function renderProvenance(meta) {
         'span',
         null,
         fmtInt(t.records) + ' records (' + fmtInt(t.lots) + ' vote lots + ' +
-        fmtInt(t.zero_lot_rows) + ' proposal filed with no lots) | ' +
+        fmtInt(t.zero_lot_rows) + plural(t.zero_lot_rows, ' proposal', ' proposals') +
+        ' filed with no lots) | ' +
         fmtInt(t.proposals) + ' proposals (' + fmtInt(t.proposals_in_multiple_categories) +
-        ' of them have lots in more than one category and so appear ' +
-        fmtInt(t.extra_category_entries) + ' extra times in the table below) | ' +
+        plural(t.proposals_in_multiple_categories, ' of them has', ' of them have') +
+        ' lots in more than one category and so ' +
+        plural(t.proposals_in_multiple_categories, 'appears ', 'appear ') +
+        fmtInt(t.extra_category_entries) +
+        plural(t.extra_category_entries, ' extra time', ' extra times') +
+        ' in the table below) | ' +
         fmtInt(t.issuers) + ' companies by CUSIP | ' +
         fmtInt(t.categories) + ' categories | ' +
         fmtInt(t.unparseable_how_voted) + ' unparseable how-voted values | ' +
@@ -294,7 +303,9 @@ function renderProvenance(meta) {
     sp.textContent =
       'The filing names its ' + fmtInt(t.issuers) + ' companies (by CUSIP) in ' +
       fmtInt(t.issuer_name_spellings) + ' different spellings (' +
-      fmtInt(t.issuers_with_multiple_spellings) + ' companies have more than one). This page ' +
+      fmtInt(t.issuers_with_multiple_spellings) +
+      plural(t.issuers_with_multiple_spellings, ' company has', ' companies have') +
+      ' more than one). This page ' +
       'groups proposals after ignoring letter case, spacing and trailing punctuation, and shows ' +
       'every name as filed.';
     show(sp);
@@ -353,11 +364,20 @@ function renderProvenance(meta) {
         ' lots, and on management items it matches the vote almost everywhere. It is shown as ' +
         'filed on each lot, and no headline on this page is computed from it. ';
     } else if (sem.verdict === 'board-view') {
-      tail = '. That is below the configured floor, so the field is treated as the board\'s ' +
-        'recommendation in this filing.';
+      tail = '. ' + fmtInt(sem.proposals_testable) + ' proposals report more than one lot ' +
+        'carrying a recommendation, so that many could have contradicted themselves and none ' +
+        'did, which is what a board\'s recommendation looks like. No headline on this page is ' +
+        'computed from it even so.';
     } else {
-      tail = '. Too few lots carry a recommendation to judge; the field is shown as filed and ' +
-        'nothing rests on it.';
+      // 2026-09-03: this branch used to say "too few lots to judge" while the verdict said
+      // board-view, because a filing whose proposals hold ONE lot each can never contradict
+      // itself and was scoring a clean zero. Absence of evidence is now reported as absence.
+      tail = '. This filing cannot be tested either way: only ' + fmtInt(sem.proposals_testable) +
+        plural(sem.proposals_testable, ' proposal reports', ' proposals report') +
+        ' more than one lot carrying a recommendation, so at most that many could ever have ' +
+        'contradicted themselves - fewer than the ' + fmtInt(thinN) + ' this page requires ' +
+        'before it rules. Absence of contradiction here is not evidence about the field: it is ' +
+        'shown as filed, and nothing rests on it.';
     }
     semLine.appendChild(el('span', null, text + tail));
     if (sem.verdict === 'not-board-view') {
@@ -450,8 +470,9 @@ function renderRollup(rollup) {
       'The Proposals column sums to ' + fmtInt(propSum) + ', which is ' +
       fmtInt(propSum - totalProposals) + ' more than the ' + fmtInt(totalProposals) +
       ' distinct proposals, because a proposal whose lots were filed under more than one ' +
-      'category is counted in each (' + fmtInt(multiCatProposals) + ' such proposals, ' +
-      'some in three or four categories). Lots are never counted twice: each lot sits under ' +
+      'category is counted in each (' + fmtInt(multiCatProposals) +
+      plural(multiCatProposals, ' such proposal', ' such proposals') +
+      '). Lots are never counted twice: each lot sits under ' +
       'one category, so the Lots column sums exactly to the lot total. ' +
       'Use "Show: proposals with lots in another category" inside any category to see them.';
   } else {

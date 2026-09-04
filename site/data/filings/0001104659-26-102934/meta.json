@@ -3,11 +3,11 @@
     "thin_n": 5
   },
   "engine_run": {
-    "code_fingerprint": "f3b209a2ed3a9ec9f5922dd897342500f616c6486ea35dec6d224fbb483f9818",
+    "code_fingerprint": "e04b0cc4ea4aa611ca8d4ff8c90bb9b395ba04c9b06432c557c8513447e6188e",
     "config_hash": "10c3dfefb138a8124be76188fb562f1bc73c9cdcc8cbaf1e97485d7e1651eb06",
-    "engine_run_id": "f97e5b26827a3e1d",
-    "engine_version": "0.1+f97e5b26",
-    "git_commit": "0adf01cf60f7a777746b3645bf9e51550ebe6792"
+    "engine_run_id": "667d76f978db7c50",
+    "engine_version": "0.1+667d76f9",
+    "git_commit": "6801b6b4816229fe4455226fe1d9ff5b4068c26f"
   },
   "filer": {
     "cik": "0000044201",
@@ -29,7 +29,7 @@
     "vote_doc_url": "https://www.sec.gov/Archives/edgar/data/44201/000110465926102934/proxytable.xml",
     "vote_doc_view_url": "https://www.sec.gov/Archives/edgar/data/44201/000110465926102934/xslNPX-INFO-TABLE_X01/proxytable.xml"
   },
-  "generated_at": "2026-08-30T06:02:09+00:00",
+  "generated_at": "2026-09-04T02:18:08+00:00",
   "mgmt_rec_semantics": {
     "agreeing": 0,
     "agreement": "0/210",
@@ -65,12 +65,13 @@
     "field": "managementRecommendation",
     "headline_allowed": false,
     "lots_with_recommendation": 3727,
+    "proposals_testable": 22,
     "proposals_with_mixed_recommendation": 18,
     "proposals_with_recommendation": 3705,
     "proposals_without_recommendation": 68,
     "shareholder_lots": 222,
     "shareholder_lots_with_recommendation": 210,
-    "test": "a board recommends once per item; proposals whose lots carry more than one recommendation value are counted, and the count must stay below thin_n",
+    "test": "a board recommends once per item; among proposals that report more than one lot with a recommendation (the only ones that CAN contradict themselves), those carrying more than one value are counted. Fewer than thin_n testable proposals means the test did not run and the verdict is insufficient, never board-view",
     "verdict": "not-board-view"
   },
   "thin_n": 5,

@@ -698,3 +698,38 @@ stale peer names and no counted claim that can drift.
 **Instruments after this pass:** eleven gates PASS (run at 22:07 CDT, not inferred), nine claim
 checks PASS over nine live documents, origin ALL DEPLOYED. The pass found five things and every one
 was a document or an instrument, not a number: the numbers were all exact.
+
+**A test that could not fail, found by Lance reading the page, fixed 2026-09-03 21:19 CDT (clock).**
+Lance pasted the rendered Fidelity page. Read as a reader, one sentence on it was false:
+"0 of 6,499 proposals with a recommendation carry more than one value across their own lots. That
+is below the configured floor, so the field is treated as the board's recommendation in this
+filing." **The test could not have failed.** It looks for proposals contradicting themselves across
+their own lots, and a proposal reporting ONE lot cannot. Measured across all eight filings, the
+population that could ever contradict: Fidelity **1**, T. Rowe **1**, Schwab 17, Growth Fund 22,
+iShares 2,108, SPDR 2,693, Vanguard 500 9,461, Vanguard Morningstar 7,264. The rule needs
+`thin_n` = 5 before it rules, so for two filings the maximum achievable was 1 and the verdict was
+structurally pinned to board-view. Absence of evidence, published as evidence.
+
+**Same defect class as the one the cold reads found, inverted.** Round one: the page asserted a
+number FROM a field that did not mean what its name said. This: the page CLEARED a field on
+evidence that could not have existed. Both times the wrongness was in a sentence while every number
+re-derived exactly - which is why nine claim checks and eleven gates were green throughout.
+
+**Fixed:** `mixed_recommendation_proposals` now also returns the TESTABLE set (proposals with more
+than one lot carrying a recommendation - the test's real denominator, missing since the rule was
+written); below `thin_n` testable the verdict is `insufficient`, never `board-view`; G7 recomputes
+it in lockstep; `proposals_testable` is published; and the page says "cannot be tested either way"
+with the number that could have contradicted. **Result: Fidelity and T. Rowe move board-view ->
+insufficient, no filing on the site claims a clearance, and `headline_allowed` is false
+everywhere** - the honest state, since nothing has yet earned a headline from that field.
+
+**Four reader-visible defects in the same paste, all real, all fixed:** "86 proposal filed with no
+lots"; "1 of them have ... appear 1 extra times"; "1 companies have more than one"; and the
+hard-coded "(1 such proposals, some in three or four categories)", false at n=1. Every one only
+breaks at a count of one, which is why eight filings hid them. Plus the intro still said "one fund,
+one proxy year" directly above a picker holding eight and a compare table across all of them.
+
+**The general form, for the registry:** a check whose failure condition needs a population must
+publish that population's size, and must return "did not run" rather than "passed" when it is too
+small. Engine run rotated `f97e5b26827a3e1d` -> `667d76f978db7c50` (the exporter is inside the
+fingerprint, so the store was re-extracted before publishing).

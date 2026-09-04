@@ -174,13 +174,21 @@ def crosstab(rs):
 
 def mixed_recommendation_proposals(rows):
     """Proposals whose lots carry more than one FOR/AGAINST/ABSTAIN/WITHHOLD recommendation
-    value: the set (for per-record flags and per-category counts) and the per-proposal value
-    sets. LOCKSTEP: checks.py G7."""
+    value, the per-proposal value sets, and the proposals that COULD have contradicted
+    themselves at all - those reporting more than one lot with a recommendation.
+
+    That third set is the test's denominator and was missing until 2026-09-03: a proposal with
+    one lot cannot carry two values, so a filing whose proposals are one lot each scores zero
+    contradictions no matter what the field means. Fidelity and T. Rowe each have exactly ONE
+    testable proposal and were being cleared on it. LOCKSTEP: checks.py G7."""
     by_prop = {}
+    lots_with_rec = {}
     for r in rows:
         if (r["lot_index"] or 0) >= 1 and r["mgmt_rec"] in VOTE_ENUM:
             by_prop.setdefault(r["proposal_no"], set()).add(r["mgmt_rec"])
-    return {pn for pn, vals in by_prop.items() if len(vals) > 1}, by_prop
+            lots_with_rec[r["proposal_no"]] = lots_with_rec.get(r["proposal_no"], 0) + 1
+    testable = {pn for pn, k in lots_with_rec.items() if k > 1}
+    return {pn for pn, vals in by_prop.items() if len(vals) > 1}, by_prop, testable
 
 
 def mgmt_rec_semantics(rows, thin_n, clean_categories):
@@ -195,7 +203,7 @@ def mgmt_rec_semantics(rows, thin_n, clean_categories):
     recommendation at all; board-view otherwise. Gated by G8: headline_allowed only on board-view."""
     lots = [r for r in rows if (r["lot_index"] or 0) >= 1]
     with_any_rec = [r for r in lots if r["mgmt_rec"] in VOTE_ENUM]
-    mixed_set, by_prop = mixed_recommendation_proposals(rows)
+    mixed_set, by_prop, testable = mixed_recommendation_proposals(rows)
     mixed = sorted(mixed_set)
     example = None
     if mixed:
@@ -229,7 +237,9 @@ def mgmt_rec_semantics(rows, thin_n, clean_categories):
     sh = [r for r in lots if source_bucket(r["vote_source"]) == "SECURITY HOLDER"]
     with_rec = [r for r in sh if r["how_voted"] in VOTE_ENUM and r["mgmt_rec"] in VOTE_ENUM]
     agree = sum(1 for r in with_rec if r["how_voted"] == r["mgmt_rec"])
-    if len(with_any_rec) < thin_n:
+    # A verdict needs a population that could have failed. Below thin_n testable proposals the
+    # test did not run, and "no contradictions" says nothing about the field (2026-09-03).
+    if len(with_any_rec) < thin_n or len(testable) < thin_n:
         verdict = "insufficient"
     elif len(mixed) >= thin_n:
         verdict = "not-board-view"
@@ -237,11 +247,14 @@ def mgmt_rec_semantics(rows, thin_n, clean_categories):
         verdict = "board-view"
     return {
         "field": "managementRecommendation",
-        "test": "a board recommends once per item; proposals whose lots carry more than one "
-                "recommendation value are counted, and the count must stay below thin_n",
+        "test": "a board recommends once per item; among proposals that report more than one lot "
+                "with a recommendation (the only ones that CAN contradict themselves), those "
+                "carrying more than one value are counted. Fewer than thin_n testable proposals "
+                "means the test did not run and the verdict is insufficient, never board-view",
         "lots_with_recommendation": len(with_any_rec),
         "proposals_with_recommendation": len(by_prop),
         "proposals_without_recommendation": len({r["proposal_no"] for r in rows}) - len(by_prop),
+        "proposals_testable": len(testable),
         "proposals_with_mixed_recommendation": len(mixed),
         "example_category_rule": "a category with no unparseable votes, all lots in one category, "
                                  "then the most lots, then the lowest proposal number",
@@ -335,7 +348,7 @@ def export_filing(con, filing, thin_n, expected_run):
     cats_of_proposal = {}
     for r in rows:
         cats_of_proposal.setdefault(r["proposal_no"], set()).add(bucket(r["category_type"]))
-    mixed_set, _ = mixed_recommendation_proposals(rows)
+    mixed_set, _, _ = mixed_recommendation_proposals(rows)
 
     slug_owner = {}
     categories = []

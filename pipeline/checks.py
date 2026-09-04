@@ -591,10 +591,13 @@ def g7_filing_consistency(base):
     for r in rows:
         cats_of_proposal.setdefault(r["proposal_no"], set()).add(bucket(r["category_type"]))
     by_prop_rec = {}
+    lots_with_rec_all = {}
     for r in rows:
         if (r["lot_index"] or 0) >= 1 and r["mgmt_rec"] in VOTE_ENUM:
             by_prop_rec.setdefault(r["proposal_no"], set()).add(r["mgmt_rec"])
+            lots_with_rec_all[r["proposal_no"]] = lots_with_rec_all.get(r["proposal_no"], 0) + 1
     mixed_set = {pn for pn, vals in by_prop_rec.items() if len(vals) > 1}
+    testable_set = {pn for pn, k in lots_with_rec_all.items() if k > 1}
     issuer_names = {}
     for r in rows:
         if r["cusip"]:
@@ -766,7 +769,7 @@ def g7_filing_consistency(base):
     sh = [r for r in lots_all if source_bucket(r["vote_source"]) == "SECURITY HOLDER"]
     with_rec = [r for r in sh if r["how_voted"] in VOTE_ENUM and r["mgmt_rec"] in VOTE_ENUM]
     agree = sum(1 for r in with_rec if r["how_voted"] == r["mgmt_rec"])
-    if len(with_any_rec) < (thin_n or 0):
+    if len(with_any_rec) < (thin_n or 0) or len(testable_set) < (thin_n or 0):
         verdict = "insufficient"
     elif len(mixed) >= (thin_n or 0):
         verdict = "not-board-view"
@@ -775,6 +778,7 @@ def g7_filing_consistency(base):
     want_sem = {"lots_with_recommendation": len(with_any_rec),
                 "proposals_with_recommendation": len(by_prop),
                 "proposals_without_recommendation": len({r["proposal_no"] for r in rows}) - len(by_prop),
+                "proposals_testable": len(testable_set),
                 "proposals_with_mixed_recommendation": len(mixed),
                 "crosstab_shareholder_lots": crosstab_rows(sh),
                 "crosstab_management_lots": crosstab_rows(
