@@ -733,3 +733,5 @@ one proxy year" directly above a picker holding eight and a compare table across
 publish that population's size, and must return "did not run" rather than "passed" when it is too
 small. Engine run rotated `f97e5b26827a3e1d` -> `667d76f978db7c50` (the exporter is inside the
 fingerprint, so the store was re-extracted before publishing).
+
+**Shipped, 2026-09-03 21:22 CDT (clock):** commit `71a9b21`, pushed and confirmed at the remote; `verify_deploy` at 21:22 CDT, 44 markers DEPLOYED. Also recorded from rapidforge-d8's staleness prompt, verified in `pipeline/checks.py` and NOT fixed tonight: **G9 reads `MAX(run_id) FROM listings`**, the expected set persisted by the last ingest run, so it proves "the newest filing we last saw is present" and never "the newest filing EDGAR lists today is present". N-PX is annual; when these filers file again the site's implicit currency claim goes false with the calendar, no file changes and all eleven gates stay green. The honest fix reaches the network, which makes it a different instrument from the eleven offline gates - it belongs beside `verify_deploy`, not inside `checks.py`. Queued in the inbox, not silently carried.

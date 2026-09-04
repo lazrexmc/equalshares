@@ -123,6 +123,14 @@
 
 ## INBOX (captured, not chased)
 
+- **2026-09-03, a freshness gap no gate can see.** G9 compares the store against the LAST INGEST
+  RUN's `listings`, so it can never notice that EDGAR lists a newer filing than the one published.
+  N-PX is annual: when these eight filers file again, the site's implicit "this is the fund's
+  latest filing" goes false with the calendar, nothing in the repo changes, and eleven gates stay
+  green. A freshness check must reach the network, so it belongs beside `verify_deploy` rather
+  than inside `checks.py`. Found by rapidforge-d8's prompt that a gate which only warns is not a
+  gate; verified here before recording.
+
 - **2026-08-30, from peers on reconnect, take or leave:** (EventFinds) write the export's JSON pair
   via tmp + os.replace so a failed second write cannot leave a mismatched set, and construct the page
   inside the init try so a missing script reaches the error box rather than a blank 200 (here: a
