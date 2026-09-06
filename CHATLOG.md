@@ -818,3 +818,5 @@ voted AGAINST" is false (Fidelity voted FOR 34 of 340), while the true and stron
 40.3% on climate over 490 companies both funds hold. Engine run `91dcc70d71711b7d`.
 
 **Live, 2026-09-06 12:13 CDT (clock):** commit `11ef49f`, pushed and confirmed at the remote; `verify_deploy` at 12:13 CDT, 44 markers DEPLOYED; `verify_receipts` 24 of 24 render. Every row receipt on the site now opens something that exists.
+
+**Session end, 2026-09-06 16:03 CDT (clock).** Lance: "I need to shutdown and walk away." RESUME brought current so a cold session reads today, not 09-03; C6 (currency) green. Everything pushed and confirmed at the remote. Nothing running: no background task, no cron, no local server. Open and owned here: the G9 freshness gap (a new filing next August expires the site with every gate still green), EventFinds atomic write for the exporter, round four (the one sentence for Lance), and `docs/FINDINGS.md` unpublished pending a re-derive on the live page.

@@ -7,7 +7,7 @@
 
 ## RESUME HERE
 
-**Live state as of 2026-09-03 21:27 CDT (from `date` on this machine). This block outranks every other document in this repo.**
+**Live state as of 2026-09-06 16:03 CDT (from `date` on this machine). This block outranks every other document in this repo.**
 
 - **LIVE at https://equalshares.pages.dev/ - rung two, eight fund series on one page,** verified at the
   origin byte for byte (`tools/verify_deploy.py`, 44 markers). Rung three (a real reader) has not been
@@ -19,6 +19,21 @@
   Portfolio S&P 500, Fidelity 500 Index, T. Rowe Price Equity Index 500, Schwab S&P 500 Index, Growth
   Fund of America (Capital Group, active, the contrast). Every cell is that filing's own number;
   nothing is added across filings or categories (gate G8).
+- **2026-09-06: half the row receipts were 404s wearing a 200, fixed and live.** EDGAR refuses to
+  render documents above a size limit and answers HTTP 200 whose body is "XML input exceeds maximum
+  allowed size" plus a 404 page. Four of eight filings (iShares 172 MB, Fidelity 132 MB, SPDR
+  101 MB, Schwab 84 MB) were publishing that as every row's receipt. Now `viewer_status()` probes
+  the body at ingest, `filings.vote_doc_view_status` records what EDGAR really returns, a viewer
+  that does not render is never published, those four fall back to the filing index page, and the
+  page says why. **Raw SHA-256 unchanged for all eight - only the link was wrong.** New instrument
+  `tools/verify_receipts.py` reads the body of every published link and fails on a 404 inside a
+  200; run it after any publish, like `verify_deploy`. Note for whoever is next: the FIRST version
+  of that probe asked for gzip and read raw bytes, so every broken viewer read as fine - it was
+  caught only by cross-checking the run log against a known-broken filing.
+- **2026-09-06: `docs/FINDINGS.md` holds the actual output of these sessions** - the verified finding
+  and the story frame, in the claim checker's live set. Read it before publishing any number
+  anywhere. Its own headline rule: the first draft of the finding was checkable-wrong, and the
+  check took two minutes.
 - **2026-09-03, two instrument defects of the same family, both fixed.** (a) The
   `managementRecommendation` test could not fail for a filing whose proposals report one lot each -
   a one-lot proposal cannot contradict itself - so Fidelity and T. Rowe were cleared on a maximum
