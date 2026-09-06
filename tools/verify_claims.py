@@ -46,7 +46,7 @@ RAPIDFORGE = Path("F:/RapidForge")
 # documentation-currency pass found COLD_READ_PROTOCOL.md - a procedure in force - outside
 # this list, so C4 and C5 had never once read it.
 LIVE_DOCS = ["CLAUDE.md", "README.md", "TODO.md", "PLAYBOOK_DELTA.md", "AUDIT_LOG.md",
-             "REBUILD.md", "CHATLOG.md", "docs/COLD_READ_PROTOCOL.md"]
+             "REBUILD.md", "CHATLOG.md", "docs/COLD_READ_PROTOCOL.md", "docs/FINDINGS.md"]
 SERVED_DOCS = ["site/index.html"]
 NON_ASCII_PUNCT = {
     "\u2013": "en dash", "\u2014": "em dash", "\u2192": "arrow",

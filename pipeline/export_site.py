@@ -448,7 +448,8 @@ def export_filing(con, filing, thin_n, expected_run):
     try:
         filing_obj = {k: filing[k] for k in (
             "accession", "form", "filed_at", "period_of_report", "series_name",
-            "vote_doc_view_url", "vote_doc_name", "vote_doc_type", "vote_doc_url",
+            "vote_doc_view_url", "vote_doc_view_status",
+            "vote_doc_name", "vote_doc_type", "vote_doc_url",
             "index_url", "raw_sha256", "raw_bytes", "fetched_at")}
         engine_obj = {k: engine[k] for k in (
             "engine_run_id", "engine_version", "code_fingerprint", "config_hash", "git_commit")}

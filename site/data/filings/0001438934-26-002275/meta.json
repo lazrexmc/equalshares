@@ -3,11 +3,11 @@
     "thin_n": 5
   },
   "engine_run": {
-    "code_fingerprint": "e04b0cc4ea4aa611ca8d4ff8c90bb9b395ba04c9b06432c557c8513447e6188e",
+    "code_fingerprint": "05ae86cd2d577084187584358f06d6c78317cbc1c6c54f5119011f2e570211fc",
     "config_hash": "10c3dfefb138a8124be76188fb562f1bc73c9cdcc8cbaf1e97485d7e1651eb06",
-    "engine_run_id": "667d76f978db7c50",
-    "engine_version": "0.1+667d76f9",
-    "git_commit": "6801b6b4816229fe4455226fe1d9ff5b4068c26f"
+    "engine_run_id": "91dcc70d71711b7d",
+    "engine_version": "0.1+91dcc70d",
+    "git_commit": "535727ce7d579e86630b7394e6f5bf8b99617511"
   },
   "filer": {
     "cik": "0001100663",
@@ -27,9 +27,10 @@
     "vote_doc_name": "BRDWLB_0001100663_2026.xml",
     "vote_doc_type": "PROXY VOTING RECORD",
     "vote_doc_url": "https://www.sec.gov/Archives/edgar/data/1100663/000143893426002275/BRDWLB_0001100663_2026.xml",
-    "vote_doc_view_url": "https://www.sec.gov/Archives/edgar/data/1100663/000143893426002275/xslNPX-INFO-TABLE_X01/BRDWLB_0001100663_2026.xml"
+    "vote_doc_view_status": "too-large",
+    "vote_doc_view_url": null
   },
-  "generated_at": "2026-09-04T02:18:08+00:00",
+  "generated_at": "2026-09-06T17:08:32+00:00",
   "mgmt_rec_semantics": {
     "agreeing": 0,
     "agreement": "0/583",

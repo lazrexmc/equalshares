@@ -134,6 +134,13 @@
 
 ## INBOX (captured, not chased)
 
+- **The findings and the frame now live in `docs/FINDINGS.md`** (2026-09-06), not in this inbox:
+  Fidelity voted FOR 0 of 149 social and environmental shareholder lots in BOTH directions (116
+  proponent-side and 9 ESG-critical, the latter quoted verbatim), while voting FOR 34 of 340
+  shareholder items overall - so "blanket no to shareholder voice" is false and checkable-wrong.
+  The engine of the story is the contrast: Fidelity 0% vs iShares 40.3% on climate, over 490
+  companies the two funds both hold. Nothing published yet; re-derive on the live page first.
+
 - **2026-09-03, a freshness gap no gate can see.** G9 compares the store against the LAST INGEST
   RUN's `listings`, so it can never notice that EDGAR lists a newer filing than the one published.
   N-PX is annual: when these eight filers file again, the site's implicit "this is the fund's

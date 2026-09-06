@@ -39,6 +39,7 @@ SCHEMA = [
         vote_doc_type TEXT,
         vote_doc_url TEXT,
         vote_doc_view_url TEXT,
+        vote_doc_view_status TEXT,
         index_url TEXT,
         raw_path TEXT NOT NULL,
         raw_sha256 TEXT NOT NULL,
@@ -135,6 +136,10 @@ def init_schema(conn):
     have_f = {row[1] for row in conn.execute("PRAGMA table_info(filings)")}
     if "series_id" not in have_f:
         conn.execute("ALTER TABLE filings ADD COLUMN series_id TEXT")
+    # 2026-09-06: whether EDGAR's viewer actually renders this filing. Half the receipts were
+    # 404s inside a 200 because nothing recorded the difference.
+    if "vote_doc_view_status" not in have_f:
+        conn.execute("ALTER TABLE filings ADD COLUMN vote_doc_view_status TEXT")
     conn.commit()
 
 
@@ -188,14 +193,21 @@ def update_filing_series(conn, accession, series_id, series_name):
         "WHERE accession = ?", (series_id, series_name, accession))
 
 
+def update_filing_view_status(conn, accession, status):
+    """Record what EDGAR's viewer actually returns for this filing (2026-09-06). Written on every
+    link refresh, including when the answer is that it does not render."""
+    conn.execute("UPDATE filings SET vote_doc_view_status = ? WHERE accession = ?",
+                 (status, accession))
+
+
 def update_filing_links(conn, accession, vote_doc_view_url, series_name):
     """Cheap link/series refresh for an already-ingested filing (no raw
     re-download). Only fills values that are present; never blanks a stored
     value with None (absent-in-source stays whatever was known)."""
-    if vote_doc_view_url:
-        conn.execute(
-            "UPDATE filings SET vote_doc_view_url = ? WHERE accession = ?",
-            (vote_doc_view_url, accession))
+    # The never-blank rule has one deliberate exception (2026-09-06): a viewer URL that no longer
+    # renders must be cleared, or a broken receipt survives every refresh that finds it broken.
+    conn.execute("UPDATE filings SET vote_doc_view_url = ? WHERE accession = ?",
+                 (vote_doc_view_url, accession))
     if series_name:
         conn.execute(
             "UPDATE filings SET series_name = ? WHERE accession = ? "

@@ -185,12 +185,18 @@ def process_source(conn, source, base_url_data, base_url_archives, run_id):
                 links = adapter.vote_document_links(source, filing, base_url_archives)
                 store.update_filing_links(
                     conn, accession, links["vote_doc_view_url"], links["series_name"])
+                store.update_filing_view_status(
+                    conn, accession, links.get("vote_doc_view_status"))
                 if filing.get("series_id"):
                     store.update_filing_series(
                         conn, accession, filing["series_id"], filing.get("series_name"))
                 conn.commit()
                 if links["vote_doc_view_url"]:
                     log(f"  {accession}: rendered vote-table link refreshed")
+                else:
+                    log(f"  {accession}: NO usable rendered vote table "
+                        f"({links.get('vote_doc_view_status')}) - receipts fall back to the "
+                        f"filing index page")
             except Exception as e:
                 log(f"  {accession}: link refresh failed (non-fatal): {e}")
             already += 1
@@ -239,6 +245,7 @@ def process_source(conn, source, base_url_data, base_url_archives, run_id):
             "vote_doc_type": result["vote_doc_type"],
             "vote_doc_url": result["vote_doc_url"],
             "vote_doc_view_url": result.get("vote_doc_view_url"),
+            "vote_doc_view_status": result.get("vote_doc_view_status"),
             "index_url": result["index_url"],
             "raw_path": rel_path,
             "raw_sha256": sha,

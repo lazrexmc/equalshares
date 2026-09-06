@@ -302,6 +302,45 @@ def enumerate_index_html(dir_url, index_url, base_url_archives):
     return {"docs": docs, "series_name": series_name, "series": series}
 
 
+VIEWER_TOO_LARGE = "XML input exceeds maximum allowed size"
+
+
+
+def viewer_status(url):
+    """Does EDGAR's rendered-viewer URL actually RENDER, or only return 200?
+
+    Above a size limit the viewer answers HTTP 200 whose body is
+    "XML input exceeds maximum allowed size." followed by a 404 page (verified 2026-09-06 on four
+    of eight filings, every one above ~50 MB). A status check calls that healthy, so this reads the
+    first bytes instead. Returns "renders", "too-large", "not-found", or "unreachable: <why>".
+
+    Only the first 400 bytes are read: a working viewer returns tens of megabytes of HTML and this
+    must stay cheap enough to run on every ingest."""
+    if not url:
+        return "absent"
+    # Deliberately NOT _request(): that asks for gzip, and reading the first bytes of a gzipped
+    # body yields binary, so the sentinel never matches and every broken viewer reads as
+    # "renders". That false negative shipped once (2026-09-06) and was caught only because the
+    # run log said "refreshed" for four filings already measured as broken. Ask for identity.
+    req = urllib.request.Request(url, headers={"User-Agent": EDGAR_UA,
+                                               "Accept-Encoding": "identity"})
+    try:
+        with urllib.request.urlopen(req, timeout=CONFIG["http_timeout_seconds"]) as resp:
+            head = resp.read(400).decode("utf-8", "replace")
+    except urllib.error.HTTPError as e:
+        _polite_delay()
+        return f"not-found ({e.code})"
+    except Exception as e:
+        _polite_delay()
+        return f"unreachable: {type(e).__name__}"
+    _polite_delay()
+    if VIEWER_TOO_LARGE in head:
+        return "too-large"
+    if "404 Not Found" in head or "Error 404" in head:
+        return "not-found"
+    return "renders"
+
+
 def vote_document_links(source, filing, base_url_archives):
     """Cheap link refresh for an ALREADY-INGESTED filing: one index.html fetch,
     no raw download. Returns {"vote_doc_view_url", "series_name"} - either may
@@ -317,7 +356,12 @@ def vote_document_links(source, filing, base_url_archives):
         if "proxy voting" in (d["type"] or "").lower() or name.startswith("proxytable"):
             view_url = d["view_url"]
             break
-    return {"vote_doc_view_url": view_url, "series_name": page["series_name"]}
+    status = viewer_status(view_url)
+    if status != "renders":
+        log(f"  viewer for {accession} does not render ({status}) - not publishing it as a receipt")
+        view_url = None
+    return {"vote_doc_view_url": view_url, "vote_doc_view_status": status,
+            "series_name": page["series_name"]}
 
 
 def fetch_filing(source, filing, base_url_archives):
@@ -383,6 +427,13 @@ def fetch_filing(source, filing, base_url_archives):
         if d and d["view_url"]:
             view_url = d["view_url"]
 
+    # Probe ONCE (2026-09-06): a viewer that answers 200 with "XML input exceeds maximum allowed
+    # size" is not a receipt. Both return paths below use these two values.
+    view_status = viewer_status(view_url)
+    view_url_ok = view_url if view_status == "renders" else None
+    if view_url and not view_url_ok:
+        log(f"  viewer does not render ({view_status}) - receipts will use the filing index page")
+
     if len(siblings) > 1:
         names = ", ".join(n for n, _ in siblings)
         raise AdapterError(
@@ -406,7 +457,8 @@ def fetch_filing(source, filing, base_url_archives):
             "vote_doc_name": name,
             "vote_doc_type": item_type or None,
             "vote_doc_url": vote_doc_url,
-            "vote_doc_view_url": view_url,
+            "vote_doc_view_url": view_url_ok,
+            "vote_doc_view_status": view_status,
             "index_url": index_url,
             "raw": raw,
         }
@@ -444,7 +496,8 @@ def fetch_filing(source, filing, base_url_archives):
         "vote_doc_name": doc["filename"] or "proxy_voting_record.xml",
         "vote_doc_type": doc["type"] or None,
         "vote_doc_url": txt_url,
-        "vote_doc_view_url": view_url,
+        "vote_doc_view_url": view_url_ok,
+        "vote_doc_view_status": view_status,
         "index_url": index_url,
         "raw": doc["payload"],
     }

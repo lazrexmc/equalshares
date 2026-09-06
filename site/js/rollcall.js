@@ -41,6 +41,7 @@ let detailState = null;          // { category, cat, records, view, page, filter
 let thinN = null;                // from meta.thin_n, used in the thin-sample label
 let totalRecords = null;         // from meta.totals.records, for "row N of TOTAL"
 let recVerdict = null;           // from meta.mgmt_rec_semantics.verdict
+let receiptIsViewer = true;      // do row receipts open EDGAR's viewer, or the filing index page?
 let totalProposals = null;       // from meta.totals.proposals
 let focusProposal = null;        // proposal_no the "one proposal only" filter shows
 let multiCatProposals = null;    // from meta.totals.proposals_in_multiple_categories
@@ -220,10 +221,24 @@ function renderProvenance(meta) {
   }
 
   const tableUrl = filingVoteTableUrl(meta);
+  const viewStatus = textOr(filing.vote_doc_view_status, '');
+  receiptIsViewer = Boolean(tableUrl);
   if (tableUrl) {
     provenanceRow(dl, 'Readable table',
       link('EDGAR\'s rendered vote table (search it by issuer or CUSIP)', tableUrl),
       'the one receipt every row points at');
+  } else if (viewStatus === 'too-large') {
+    // 2026-09-06: EDGAR's viewer answers 200 with "XML input exceeds maximum allowed size" for
+    // filings above its limit, so this page published 404s wearing a 200 on every row. Say what
+    // is true instead of linking a viewer that is not there.
+    provenanceRow(dl, 'Readable table',
+      el('span', 'absent', 'none - this filing is too large for EDGAR to render'),
+      'EDGAR\'s viewer refuses documents this size, so every row\'s receipt is the filing ' +
+      'index page above, and the vote document itself is linked there and here');
+  } else if (viewStatus && viewStatus !== 'renders') {
+    provenanceRow(dl, 'Readable table',
+      el('span', 'absent', 'none (' + viewStatus + ')'),
+      'checked at ingest; receipts use the filing index page instead');
   }
 
   if (typeof filing.raw_sha256 === 'string' && filing.raw_sha256) {
@@ -767,9 +782,14 @@ function recordRow(r, prev) {
   const where = el('td', 'nowrap');
   const url = receiptUrl(r);
   if (url) {
+    const viewerReceipt = receiptIsViewer;
     const a = link('source', url);
-    a.title = 'Opens EDGAR\'s rendered vote table for this filing (one receipt per filing); ' +
-      'search it by the issuer, CUSIP or meeting date shown under the proposal.';
+    a.title = viewerReceipt
+      ? 'Opens EDGAR\'s rendered vote table for this filing (one receipt per filing); ' +
+        'search it by the issuer, CUSIP or meeting date shown under the proposal.'
+      : 'Opens this filing\'s index page at EDGAR (one receipt per filing). EDGAR cannot render ' +
+        'a vote table this large, so open the vote document listed there and search it by the ' +
+        'issuer, CUSIP or meeting date shown under the proposal.';
     where.appendChild(a);
   } else {
     where.textContent = ABSENT;

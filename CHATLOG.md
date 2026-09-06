@@ -772,3 +772,47 @@ quieter, which is why both of us shipped it. Their deposit to the registry gener
 three of their TESTS had pinned the vacuous pass as the contract and survived TDD, a per-task
 review, a whole-branch review and a documentation audit, because each read an assertion as evidence
 rather than as a claim.
+
+**Half the receipts were 404s wearing a 200, 2026-09-06 12:12 CDT (clock).** Lance: "The bug is in
+pipeline/run_ingest.py, wherever vote_doc_url gets derived. It's storing the xsl.../
+rendered-viewer path instead of the raw XML path ... confirm the stored SHA-256 (4704abd6...) still
+matches so you know the underlying document is unchanged and only the link was wrong."
+
+**Verified before changing anything, and the cause is not where it was reported - it is worse.**
+`vote_doc_url` was correct: raw XML for seven of eight (the eighth is the `.txt` bundle, the
+documented fallback), all resolving as `text/xml`. The broken link is the ROW RECEIPT -
+`source_url`, which extract.py sets to `vote_doc_view_url or index_url`, EDGAR's rendered-viewer
+path. **Above a size limit that viewer answers HTTP 200 whose body is "XML input exceeds maximum
+allowed size." followed by a 404 page.** Probed all eight: iShares 172 MB, Fidelity 132 MB, SPDR
+101 MB, Schwab 84 MB BROKEN; T. Rowe 43 MB, Vanguard 500 24 MB, Vanguard Morningstar 18 MB, Growth
+Fund 3 MB render. So **four of eight filings published receipts that 404 inside a 200**, invisible
+to every status check - the same family as this week's other findings, and the reason the promise
+"a receipt to the source for every row" was false for half the site.
+
+**Fixed:** `viewer_status()` probes the first bytes at ingest and returns renders / too-large /
+not-found; a viewer that does not render is never stored as a receipt; `filings.vote_doc_view_status`
+records what EDGAR actually returns (additive migration); `update_filing_links` may now CLEAR a
+viewer URL, the one deliberate exception to never-blank, or a broken receipt survives every refresh
+that finds it broken; receipts fall back to the filing index page, which works and lists the vote
+document; and the page states the stored reason instead of linking a viewer that is not there.
+
+**My own probe shipped a false negative and was caught by cross-checking, not by the tests.** The
+first version used the adapter's standard request, which asks for gzip, then read 400 raw bytes -
+binary, so the sentinel never matched and all four broken viewers read as "renders". The run log
+said "rendered vote-table link refreshed" for filings I had measured as broken ten minutes earlier;
+that contradiction is the only thing that caught it. Now the probe requests `identity`. A check
+that cannot see the failure it exists for is this week's theme, and I wrote one while fixing one.
+
+**SHA-256 confirmed unchanged for all eight** (Fidelity still `4704abd65e011b7f...`): nothing was
+re-fetched, the raw store is untouched, only the link was wrong - exactly as Lance predicted.
+
+**New instrument `tools/verify_receipts.py`:** reads the first bytes of every published receipt,
+vote document and filing index and fails when one is a 404 wearing a 200. Network-reaching, so it
+sits beside `verify_deploy` rather than in the offline gates. First run: 24 of 24 render.
+
+**Also saved on Lance's instruction, in `docs/FINDINGS.md` (now in the checker's live set):** the
+finding and the frame, with the finding CORRECTED by verification - "every shareholder proposal
+voted AGAINST" is false (Fidelity voted FOR 34 of 340), while the true and stronger claim is 0 of
+149 across the four social and environmental categories, opposing 116 proponent-side proposals and
+9 ESG-critical ones alike (quoted verbatim). The contrast is the engine: Fidelity 0% vs iShares
+40.3% on climate over 490 companies both funds hold. Engine run `91dcc70d71711b7d`.

@@ -96,10 +96,13 @@
           reported with 0 shares is the fund stating that a voting block held no shares at that
           meeting; it is shown, counted separately, and left out of "% FOR".</dd>
         <dt>Receipts</dt>
-        <dd>Form N-PX has no per-row anchor, so there is one receipt per filing: EDGAR's rendered vote
-          table, stored at ingest time from the filing's own index page, never constructed. Each row
-          gives this page's row and proposal numbers (this page's numbering, not EDGAR's) and the
-          issuer, CUSIP and meeting date to search for in that table.</dd>
+        <dd>Form N-PX has no per-row anchor, so there is one receipt per filing, stored at ingest
+          time from the filing's own index page and never constructed. Normally that is EDGAR's
+          rendered vote table. EDGAR refuses to render documents above a size limit, and several of
+          these filings exceed it, so for those the receipt is the filing's index page and the vote
+          document is linked from there; "Where these numbers come from" says which case applies.
+          Either way each row gives this page's row and proposal numbers (this page's numbering,
+          not EDGAR's) and the issuer, CUSIP and meeting date to search for.</dd>
         <dt>Engine run</dt>
         <dd>A fingerprint of the code and configuration that computed every number here:
           <code>sha256(code_fingerprint + "|" + config_hash)</code>, first 16 hex characters. It
