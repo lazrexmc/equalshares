@@ -816,3 +816,5 @@ voted AGAINST" is false (Fidelity voted FOR 34 of 340), while the true and stron
 149 across the four social and environmental categories, opposing 116 proponent-side proposals and
 9 ESG-critical ones alike (quoted verbatim). The contrast is the engine: Fidelity 0% vs iShares
 40.3% on climate over 490 companies both funds hold. Engine run `91dcc70d71711b7d`.
+
+**Live, 2026-09-06 12:13 CDT (clock):** commit `11ef49f`, pushed and confirmed at the remote; `verify_deploy` at 12:13 CDT, 44 markers DEPLOYED; `verify_receipts` 24 of 24 render. Every row receipt on the site now opens something that exists.
